@@ -48,7 +48,7 @@ class ExpatParser:
     
     def callback(self, suffix, name, *args):
         try:
-            methodName = 'handle_' + name + suffix
+            methodName = 'handle_' + name.replace("-", "_") + suffix
             if (not hasattr(self.handler, methodName)): methodName = 'handle_default' + suffix
             method = getattr(self.handler, methodName)
             return method(*args)

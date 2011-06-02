@@ -31,9 +31,12 @@ class Compiler:
         self.input = sys.stdin.buffer
         self.output = sys.stdout.buffer
         
+        #Create all the data structures needed.
+        self.defCats = {}
+        
         #Initialize all the compiler's components.
         self.callStack = CallStack()
-        self.eventHandler = EventHandler()
+        self.eventHandler = EventHandler(self)
         self.parser = ExpatParser(self)
         
     def compile(self):
