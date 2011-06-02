@@ -28,6 +28,7 @@ class EventHandler():
         self.currentDefCat = None           #Keep the current cat to avoid extra calls to the stack.
         self.defAttrs = compiler.defAttrs
         self.currentDefAttrs = None         #Keep the current attr to avoid extra calls to the stack.
+        self.defVars = compiler.defVars
         
         #In the future we could easily change it, e.g to a binary generator. 
         self.codeGen = AssemblyCodeGenerator()
@@ -80,8 +81,24 @@ class EventHandler():
         self.currentDefAttr.append(attrItem)
         self.printDebugMessage("handle_attr_item_start", event)
         
+    def handle_def_var_start(self, event):
+        varName = event.attrs['n']
+        defaultValue = ""
+        if 'v' in event.attrs:
+            defaultValue = event.attrs['v']
+            if ';' in defaultValue:
+                defaultValue = self.unEscape(defaultValue) 
+        self.defVars[varName] = defaultValue
+        self.printDebugMessage("handle_def_var_start", event)
+        
     def printDebugMessage(self, methodName, event=None):
         if (not event):
             self.logger.debug("{}()".format(methodName))
         else:
             self.logger.debug("{}: (<{} {}>)".format(methodName, event.name, event.attrs))
+            
+    def unEscape(self, v):
+        v = v.replace("&lt;", "<")
+        v = v.replace("&gt;", ">")
+        v = v.replace("&amp;", "")
+        return v
