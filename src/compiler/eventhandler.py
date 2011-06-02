@@ -40,11 +40,11 @@ class EventHandler():
         defCatId = event.attrs['n']
         self.defCats[defCatId] = []
         self.currentDefCat = self.defCats[defCatId]
-        self.logger.debug("handle_def_cat_start: (<{} {}>)".format(event.name, event.attrs))
+        self.printDebugMessage("handle_def_cat_start", event)
         
     def handle_def_cat_end(self, event):
         self.currentDefCat = None
-        self.logger.debug("handle_def_cat_end()")
+        self.printDebugMessage("handle_def_cat_end")
         
     def handle_cat_item_start(self, event):
         catItem = ''
@@ -57,4 +57,10 @@ class EventHandler():
             catItem += tag
         
         self.currentDefCat.append(catItem)
+        self.printDebugMessage("handle_cat_item_start", event)
     
+    def printDebugMessage(self, methodName, event=None):
+        if (not event):
+            self.logger.debug("{}()".format(methodName))
+        else:
+            self.logger.debug("{}: (<{} {}>)".format(methodName, event.name, event.attrs))
