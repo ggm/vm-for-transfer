@@ -26,6 +26,8 @@ class EventHandler():
         #We need references to the compiler's data structures.
         self.defCats = compiler.defCats
         self.currentDefCat = None           #Keep the current cat to avoid extra calls to the stack.
+        self.defAttrs = compiler.defAttrs
+        self.currentDefAttrs = None         #Keep the current attr to avoid extra calls to the stack.
         
         #In the future we could easily change it, e.g to a binary generator. 
         self.codeGen = AssemblyCodeGenerator()
@@ -59,6 +61,25 @@ class EventHandler():
         self.currentDefCat.append(catItem)
         self.printDebugMessage("handle_cat_item_start", event)
     
+    def handle_def_attr_start(self, event):
+        defAttrId = event.attrs['n']
+        self.defAttrs[defAttrId] = []
+        self.currentDefAttr = self.defAttrs[defAttrId]
+        self.printDebugMessage("handle_def_attr_start", event)
+        
+    def handle_def_attr_end(self, event):
+        self.currentDefAttr = None
+        self.printDebugMessage("handle_def_attr_end")
+        
+    def handle_attr_item_start(self, event):
+        attrItem = ''        
+        for tag in event.attrs['tags'].split('.'):
+            tag = "<{}>".format(tag)
+            attrItem += tag
+        
+        self.currentDefAttr.append(attrItem)
+        self.printDebugMessage("handle_attr_item_start", event)
+        
     def printDebugMessage(self, methodName, event=None):
         if (not event):
             self.logger.debug("{}()".format(methodName))
