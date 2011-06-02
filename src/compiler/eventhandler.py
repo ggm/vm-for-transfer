@@ -22,6 +22,8 @@ class EventHandler():
     
     def __init__(self):
         self.logger = logging.getLogger('compiler')
+        
+        #In the future we could easily change it, e.g to a binary generator. 
         self.codeGen = AssemblyCodeGenerator()
     
     def handle_default_start(self, event):
