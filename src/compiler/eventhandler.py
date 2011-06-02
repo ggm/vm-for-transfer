@@ -40,16 +40,17 @@ class EventHandler():
         self.logger.debug("Ignoring call to unimplemented end handler for '{}'".format(event.name))
         
     def handle_def_cat_start(self, event):
+        self.printDebugMessage("handle_def_cat_start", event)
         defCatId = event.attrs['n']
         self.defCats[defCatId] = []
         self.currentDefCat = self.defCats[defCatId]
-        self.printDebugMessage("handle_def_cat_start", event)
         
     def handle_def_cat_end(self, event):
-        self.currentDefCat = None
         self.printDebugMessage("handle_def_cat_end")
+        self.currentDefCat = None
         
     def handle_cat_item_start(self, event):
+        self.printDebugMessage("handle_cat_item_start", event)
         catItem = ''
         if 'lemma' in event.attrs:                  #lemma attribute is optional
             lemma = event.attrs['lemma']
@@ -60,28 +61,28 @@ class EventHandler():
             catItem += tag
         
         self.currentDefCat.append(catItem)
-        self.printDebugMessage("handle_cat_item_start", event)
     
     def handle_def_attr_start(self, event):
+        self.printDebugMessage("handle_def_attr_start", event)
         defAttrId = event.attrs['n']
         self.defAttrs[defAttrId] = []
         self.currentDefAttr = self.defAttrs[defAttrId]
-        self.printDebugMessage("handle_def_attr_start", event)
         
     def handle_def_attr_end(self, event):
-        self.currentDefAttr = None
         self.printDebugMessage("handle_def_attr_end")
+        self.currentDefAttr = None
         
     def handle_attr_item_start(self, event):
+        self.printDebugMessage("handle_attr_item_start", event)
         attrItem = ''        
         for tag in event.attrs['tags'].split('.'):
             tag = "<{}>".format(tag)
             attrItem += tag
         
         self.currentDefAttr.append(attrItem)
-        self.printDebugMessage("handle_attr_item_start", event)
         
     def handle_def_var_start(self, event):
+        self.printDebugMessage("handle_def_var_start", event)
         varName = event.attrs['n']
         defaultValue = ""
         if 'v' in event.attrs:
@@ -89,15 +90,16 @@ class EventHandler():
             if ';' in defaultValue:
                 defaultValue = self.unEscape(defaultValue) 
         self.defVars[varName] = defaultValue
-        self.printDebugMessage("handle_def_var_start", event)
         
     def printDebugMessage(self, methodName, event=None):
+        """Prints the call of a method, given the method name and an optional event."""
         if (not event):
             self.logger.debug("{}()".format(methodName))
         else:
             self.logger.debug("{}: (<{} {}>)".format(methodName, event.name, event.attrs))
             
     def unEscape(self, v):
+        """Unescape values of the xml file (<, >, &) and leaves them on tag form."""
         v = v.replace("&lt;", "<")
         v = v.replace("&gt;", ">")
         v = v.replace("&amp;", "")
