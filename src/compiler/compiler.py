@@ -19,6 +19,7 @@ import logging
 from expatparser import ExpatParser
 from callstack import CallStack
 from eventhandler import EventHandler
+from assemblycodegenerator import AssemblyCodeGenerator
 
 class Compiler:
     """This class encapsulates all the compiling process."""
@@ -39,9 +40,11 @@ class Compiler:
         
         #Initialize all the compiler's components.
         self.callStack = CallStack()
-        self.eventHandler = EventHandler(self)
+        self.codeGenerator = AssemblyCodeGenerator()    #here we set the code generator to use
+        self.eventHandler = EventHandler(self, self.codeGenerator)
         self.parser = ExpatParser(self)
         
     def compile(self):
         self.parser.parse(self.input.read())
+        self.output.write('\n'.join(self.codeGenerator.code).encode('utf-8'))
 

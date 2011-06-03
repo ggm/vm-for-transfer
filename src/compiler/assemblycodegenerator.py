@@ -16,8 +16,24 @@
 import logging
 
 class AssemblyCodeGenerator:
-    """This class generates the code as a predefined pseudo-assembly."""
+    """This class generates code as a predefined pseudo-assembly."""
+    
+    #Define the instruction set as a set of constants to ease the creation
+    #of other code generators.
+    JMP_OP = "jmp"          #jmp label -> jumps to the label, unconditionally.
 
     def __init__(self):
         self.logger = logging.getLogger('compiler')
-        
+
+        #The code we are going to generate.
+        self.code = []
+
+        #Used to get the next address of an instruction if needed.
+        self.nextAddress = 0
+
+    def genTransferStart(self, event):
+        #Jump to the start of the rules, ignoring the macros until called.
+        self.code.append(self.JMP_OP + " section_rules_start")
+
+    def genTransferEnd(self, event):
+        self.code.append("section_rules_end:\n")
