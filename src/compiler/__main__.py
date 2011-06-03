@@ -53,17 +53,17 @@ def main():
             compiler.logger.setLevel(logging.DEBUG)
         elif opt in ("-i", "--inputfile"):
             try:
-                compiler.input = open(arg, 'rt', encoding='utf-8')
+                compiler.input = open(arg, mode='rt', encoding='utf-8')
             except IOError as ioe:
                 print(ioe)
                 sys.exit(2)
         elif opt in ("-o", "--outputfile"):
             try:
-                compiler.output = open(arg, 'wt', encoding='utf-8')
+                compiler.output = open(arg, mode='wb')
             except IOError as ioe:
                 print(ioe)
                 sys.exit(2)
-          
+
     #compiler.output.write(compiler.input.read())
     compiler.compile()
     
