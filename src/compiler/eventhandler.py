@@ -29,6 +29,8 @@ class EventHandler():
         self.defAttrs = compiler.defAttrs
         self.currentDefAttrs = None         #Keep the current attr to avoid extra calls to the stack.
         self.defVars = compiler.defVars
+        self.defLists = compiler.defLists
+        self.currentDefList = None          #Keep the current list to avoid extra calls to the stack.
         
         #In the future we could easily change it, e.g to a binary generator. 
         self.codeGen = AssemblyCodeGenerator()
@@ -90,7 +92,22 @@ class EventHandler():
             if ';' in defaultValue:
                 defaultValue = self.unEscape(defaultValue) 
         self.defVars[varName] = defaultValue
+    
+    def handle_def_list_start(self, event):
+        self.printDebugMessage("handle_def_list_start", event)
+        defListId = event.attrs['n']
+        self.defLists[defListId] = []
+        self.currentDefList = self.defLists[defListId]
         
+    def handle_def_list_end(self, event):
+        self.printDebugMessage("handle_def_list_end")
+        self.currentDefList = None
+        
+    def handle_list_item_start(self, event):
+        self.printDebugMessage("handle_list_item_start", event)
+        listItem = event.attrs['v']        
+        self.currentDefList.append(listItem)
+    
     def printDebugMessage(self, methodName, event=None):
         """Prints the call of a method, given the method name and an optional event."""
         if (not event):

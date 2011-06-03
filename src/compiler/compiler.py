@@ -35,6 +35,7 @@ class Compiler:
         self.defCats = {}
         self.defAttrs = {}
         self.defVars = {}
+        self.defLists = {}
         
         #Initialize all the compiler's components.
         self.callStack = CallStack()
