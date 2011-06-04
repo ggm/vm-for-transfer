@@ -15,7 +15,7 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 """
-USAGE: compiler [-d] [-i input_file] [-o output_file] [-h] 
+USAGE: compiler [-d debug_file] [-i input_file] [-o output_file] [-h] 
 Options:
   -d, --debug:\t\t show debug messages
   -i, --inputfile:\t input file (stdin by default)
@@ -26,7 +26,6 @@ Options:
 import sys
 import getopt
 from compiler import Compiler
-import logging
 
 def showHelp():
     print(__doc__.strip())
@@ -36,12 +35,10 @@ def exit():
     sys.exit(2)
 
 def main():
-    #Configure the logging module with a custom format.
-    logging.basicConfig(format=('%(levelname)s: %(filename)s[%(lineno)d]:\t%(message)s'))
     compiler = Compiler()
 
     try:                                
-        opts, args = getopt.getopt(sys.argv[1:], "di:o:h", ["debug", "inputfile=", "outputfile=", "help"])
+        opts, args = getopt.getopt(sys.argv[1:], "d:i:o:h", ["debug=", "inputfile=", "outputfile=", "help"])
     except getopt.GetoptError as error:
         print(error)          
         exit()                     
@@ -50,7 +47,7 @@ def main():
         if opt in ("-h", "--help"):
             exit()                
         elif opt in ('-d', '--debug'):
-            compiler.setDebug(True)
+            compiler.setDebug(arg)
         elif opt in ("-i", "--inputfile"):
             try:
                 compiler.input = open(arg, mode='rt', encoding='utf-8')

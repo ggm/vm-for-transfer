@@ -47,12 +47,13 @@ class Compiler:
         self.eventHandler = EventHandler(self, self.codeGenerator, self.symbolTable)
         self.parser = ExpatParser(self)
 
-    def setDebug(self, debug):
-        """Set the debug capabilities on/off."""
-        self.debug = debug
-        self.codeGenerator.debug = debug
-        if debug: self.logger.setLevel(logging.DEBUG)
-        else: self.logger.setLevel(logging.INFO)
+    def setDebug(self, fileName):
+        """Set the debug capabilities and configure it with a custom format."""
+        formatString = '%(levelname)s: %(filename)s[%(lineno)d]:\t%(message)s'
+        logging.basicConfig(filename=fileName, format=formatString)
+        self.debug = True
+        self.codeGenerator.debug = True
+        self.logger.setLevel(logging.DEBUG)
         
     def compile(self):
         self.parser.parse(self.input.read())
