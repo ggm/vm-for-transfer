@@ -24,6 +24,7 @@ class AssemblyCodeGenerator:
 
     def __init__(self):
         self.logger = logging.getLogger('compiler')
+        self.debug = False
 
         #The code we are going to generate.
         self.code = []
@@ -36,14 +37,30 @@ class AssemblyCodeGenerator:
         self.nextAddress += 1
 
     def genTransferStart(self, event):
+        self.genDebugCode(event)
         #Jump to the start of the rules, ignoring the macros until called.
         self.addCode(self.JMP_OP + " section_rules_start")
 
     def genTransferEnd(self, event):
+        self.genDebugCode(event)
         self.addCode("section_rules_end:\n")
 
     def genDefMacroStart(self, event):
+        self.genDebugCode(event)
         self.addCode("macro_{}_start:".format(event.attrs['n']))
 
     def genDefMacroEnd(self, event):
+        self.genDebugCode(event)
         self.addCode("macro_{}_end:".format(event.attrs['n']))
+
+    def genDebugCode(self, event):
+        """Generate debug messages if debug is on."""
+        if not self.debug:
+            return
+
+        attrs = ""
+        for k, v in event.attrs.items():
+            attrs += " {}={}".format(k, v)
+
+        debugInfo = "#<{}{}>".format(event.name, attrs)
+        self.code.append(debugInfo)

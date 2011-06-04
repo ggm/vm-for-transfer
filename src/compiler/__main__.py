@@ -50,7 +50,7 @@ def main():
         if opt in ("-h", "--help"):
             exit()                
         elif opt in ('-d', '--debug'):
-            compiler.logger.setLevel(logging.DEBUG)
+            compiler.setDebug(True)
         elif opt in ("-i", "--inputfile"):
             try:
                 compiler.input = open(arg, mode='rt', encoding='utf-8')

@@ -28,6 +28,7 @@ class Compiler:
     def __init__(self):
         self.logger = logging.getLogger('compiler')
         self.logger.setLevel(logging.INFO)
+        self.debug = False
         
         #We use 'buffer' to get a stream of bytes, not str.
         self.input = sys.stdin.buffer
@@ -45,9 +46,15 @@ class Compiler:
         self.codeGenerator = AssemblyCodeGenerator()    #here we set the code generator to use
         self.eventHandler = EventHandler(self, self.codeGenerator, self.symbolTable)
         self.parser = ExpatParser(self)
+
+    def setDebug(self, debug):
+        """Set the debug capabilities on/off."""
+        self.debug = debug
+        self.codeGenerator.debug = debug
+        if debug: self.logger.setLevel(logging.DEBUG)
+        else: self.logger.setLevel(logging.INFO)
         
     def compile(self):
         self.parser.parse(self.input.read())
         self.output.write('\n'.join(self.codeGenerator.code).encode('utf-8'))
         self.logger.debug(str(self.symbolTable))
-
