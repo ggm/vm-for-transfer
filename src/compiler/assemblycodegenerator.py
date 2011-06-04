@@ -30,10 +30,14 @@ class AssemblyCodeGenerator:
 
         #Used to get the next address of an instruction if needed.
         self.nextAddress = 0
+        
+    def addCode(self, code):
+        self.code.append(code)
+        self.nextAddress += 1
 
     def genTransferStart(self, event):
         #Jump to the start of the rules, ignoring the macros until called.
-        self.code.append(self.JMP_OP + " section_rules_start")
+        self.addCode(self.JMP_OP + " section_rules_start")
 
     def genTransferEnd(self, event):
-        self.code.append("section_rules_end:\n")
+        self.addCode("section_rules_end:\n")
