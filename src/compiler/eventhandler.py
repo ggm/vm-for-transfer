@@ -113,6 +113,15 @@ class EventHandler():
         self.printDebugMessage("handle_list_item_start", event)
         listItem = event.attrs['v']        
         self.currentDefList.append(listItem)
+
+    def handle_def_macro_start(self, event):
+        name = event.attrs['n']
+        npar = event.attrs['npar']
+        self.symbolTable.addMacro(name, npar)
+        self.codeGen.genDefMacroStart(event)
+
+    def handle_def_macro_end(self, event):
+        self.codeGen.genDefMacroEnd(event)
     
     def printDebugMessage(self, methodName, event=None):
         """Prints the call of a method, given the method name and an optional event."""

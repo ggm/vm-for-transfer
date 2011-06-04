@@ -41,3 +41,9 @@ class AssemblyCodeGenerator:
 
     def genTransferEnd(self, event):
         self.addCode("section_rules_end:\n")
+
+    def genDefMacroStart(self, event):
+        self.addCode("macro_{}_start:".format(event.attrs['n']))
+
+    def genDefMacroEnd(self, event):
+        self.addCode("macro_{}_end:".format(event.attrs['n']))
