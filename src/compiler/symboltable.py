@@ -54,14 +54,16 @@ class SymbolTable:
         contentsFormat = "|{:^10}|{:^23}|{:^10}|{:^14}|\n"
         border = '+' + '-' * size + '+' + '\n'
         
-        string ='\n'
+        string ='\n\n'
         string += border
         string +=  '|' + ' ' * (halfSize - 6) + "Symbol Table" + ' ' * (halfSize - 6) + '|\n'
         string += border
         string += contentsFormat.format("Id", "Name", "Nº par", "Type")
         string += border
-        
-        for name, s in self.symbols.items():
+
+        #Print symbol table sorted by ID.        
+        sortedValues = sorted(self.symbols.values(), key = lambda symbol: symbol.id)
+        for s in sortedValues:
             string += contentsFormat.format(s.id, s.name, s.numParams, s.typeToStr())
         string += border
         
