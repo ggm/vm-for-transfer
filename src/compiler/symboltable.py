@@ -35,7 +35,7 @@ class SymbolTable:
     def __init__(self):
         #Store symbols in a dictionary with their name as key.
         self.symbols = {}
-        #Each symbol has a unique id.
+        #Each symbol has a unique id (order by appearance on the rules files).
         self.nextId = 0
         
     def __addSymbol(self, name, numParams, type):
