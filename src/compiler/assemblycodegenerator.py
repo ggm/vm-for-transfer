@@ -20,6 +20,7 @@ class AssemblyCodeGenerator:
     
     #Define the instruction set as a set of constants to ease the creation
     #of other code generators.
+    INSTR_SEP = " "         #instruction and argumentes separator (' ', '\t'). 
     JMP_OP = "jmp"          #jmp label -> jumps to the label, unconditionally.
 
     def __init__(self):
@@ -39,7 +40,7 @@ class AssemblyCodeGenerator:
     def genTransferStart(self, event):
         self.genDebugCode(event)
         #Jump to the start of the rules, ignoring the macros until called.
-        self.addCode(self.JMP_OP + " section_rules_start")
+        self.addCode(self.JMP_OP + self.INSTR_SEP + "section_rules_start")
 
     def genDefMacroStart(self, event):
         self.genDebugCode(event)
