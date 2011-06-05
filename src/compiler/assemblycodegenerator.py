@@ -42,7 +42,6 @@ class AssemblyCodeGenerator:
         self.addCode(self.JMP_OP + " section_rules_start")
 
     def genTransferEnd(self, event):
-        self.genDebugCode(event)
         self.addCode("section_rules_end:\n")
 
     def genDefMacroStart(self, event):
@@ -50,7 +49,6 @@ class AssemblyCodeGenerator:
         self.addCode("macro_{}_start:".format(event.attrs['n']))
 
     def genDefMacroEnd(self, event):
-        self.genDebugCode(event)
         self.addCode("macro_{}_end:".format(event.attrs['n']))
 
     def genDebugCode(self, event):
