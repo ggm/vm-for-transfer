@@ -60,7 +60,7 @@ class AssemblyCodeGenerator:
 
         attrs = ""
         for k, v in event.attrs.items():
-            attrs += " {}={}".format(k, v)
+            attrs += " {}=\"{}\"".format(k, v)
 
         debugInfo = "#<{}{}>".format(event.name, attrs)
         self.code.append(debugInfo)
