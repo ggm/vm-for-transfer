@@ -133,6 +133,9 @@ class EventHandler():
 
     def handle_lit_start(self, event):
         self.codeGen.genLitStart(event)
+
+    def handle_equal_end(self, event):
+        self.codeGen.genEqualEnd(event)
     
     def printDebugMessage(self, methodName, event=None):
         """Prints the call of a method, given the method name and an optional event."""

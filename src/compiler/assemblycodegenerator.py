@@ -20,7 +20,10 @@ class AssemblyCodeGenerator:
     
     #Define the instruction set as a set of constants to ease the creation
     #of other code generators.
-    INSTR_SEP = " "         #instruction and argumentes separator (' ', '\t'). 
+    INSTR_SEP = " "         #instruction and argumentes separator (' ', '\t').
+
+    CMP_OP = "cmp"          #cmp -> compares the last two items in the stack.
+                            #       and leaves 0 (not equal) or 1 (equal).
     JMP_OP = "jmp"          #jmp label -> jumps to the label, unconditionally.
     PUSH_OP = "push"        #push value -> pushes a value to the stack.
     PUSHBL_OP = "pushbl"    #pushbl -> pushes a blank in the stack.
@@ -68,6 +71,9 @@ class AssemblyCodeGenerator:
     def genLitStart(self, event):
         self.genDebugCode(event)
         self.addCode(self.PUSH_OP + self.INSTR_SEP + "\"{}\"".format(event.attrs['v']))
+
+    def genEqualEnd(self, event):
+        self.addCode(self.CMP_OP)
 
     def genDebugCode(self, event):
         """Generate debug messages if debug is on."""
