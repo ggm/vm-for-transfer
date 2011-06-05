@@ -22,6 +22,8 @@ class AssemblyCodeGenerator:
     #of other code generators.
     INSTR_SEP = " "         #instruction and argumentes separator (' ', '\t'). 
     JMP_OP = "jmp"          #jmp label -> jumps to the label, unconditionally.
+    PUSHBL_OP = "pushbl"    #pushbl -> pushes a blank in the stack.
+    PUSHSB_OP = "pushsb"    #pushsb pos -> pushes a superblank at pos.
 
     def __init__(self):
         self.logger = logging.getLogger('compiler')
@@ -32,7 +34,7 @@ class AssemblyCodeGenerator:
 
         #Used to get the next address of an instruction if needed.
         self.nextAddress = 0
-        
+
     def addCode(self, code):
         self.code.append(code)
         self.nextAddress += 1
@@ -55,6 +57,12 @@ class AssemblyCodeGenerator:
 
     def genSectionRulesEnd(self, event):
         self.addCode("section_rules_end:\n")
+
+    def genBStart(self, event):
+        if 'pos' in event.attrs:
+            self.addCode(self.PUSHSB_OP + self.INSTR_SEP + event.attrs['pos'])
+        else:
+            self.addCode(self.PUSHBL_OP)
 
     def genDebugCode(self, event):
         """Generate debug messages if debug is on."""

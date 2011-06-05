@@ -127,6 +127,9 @@ class EventHandler():
     def handle_section_rules_end(self, event):
         self.printDebugMessage("handle_section_rules_end", event)
         self.codeGen.genSectionRulesEnd(event)
+
+    def handle_b_start(self, event):
+        self.codeGen.genBStart(event)
     
     def printDebugMessage(self, methodName, event=None):
         """Prints the call of a method, given the method name and an optional event."""
