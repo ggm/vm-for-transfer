@@ -35,17 +35,14 @@ class EventHandler():
         self.codeGen = codeGenerator
         self.symbolTable = symbolTable 
         
-    def handle_transfer_start(self, event):
-        self.codeGen.genTransferStart(event)
-        
-    def handle_transfer_end(self, event):
-        self.codeGen.genTransferEnd(event)
-    
     def handle_default_start(self, event):
         self.logger.debug("Ignoring call to unimplemented start handler for '{}' with attributes: {}".format(event.name, event.attrs))
-        
+
     def handle_default_end(self, event):
         self.logger.debug("Ignoring call to unimplemented end handler for '{}'".format(event.name))
+
+    def handle_transfer_start(self, event):
+        self.codeGen.genTransferStart(event)
         
     def handle_def_cat_start(self, event):
         self.printDebugMessage("handle_def_cat_start", event)
@@ -122,6 +119,14 @@ class EventHandler():
 
     def handle_def_macro_end(self, event):
         self.codeGen.genDefMacroEnd(event)
+        
+    def handle_section_rules_start(self, event):
+        self.printDebugMessage("handle_section_rules_start", event)
+        self.codeGen.genSectionRulesStart(event)
+
+    def handle_section_rules_end(self, event):
+        self.printDebugMessage("handle_section_rules_end", event)
+        self.codeGen.genSectionRulesEnd(event)
     
     def printDebugMessage(self, methodName, event=None):
         """Prints the call of a method, given the method name and an optional event."""

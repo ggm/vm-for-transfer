@@ -41,15 +41,19 @@ class AssemblyCodeGenerator:
         #Jump to the start of the rules, ignoring the macros until called.
         self.addCode(self.JMP_OP + " section_rules_start")
 
-    def genTransferEnd(self, event):
-        self.addCode("section_rules_end:\n")
-
     def genDefMacroStart(self, event):
         self.genDebugCode(event)
         self.addCode("macro_{}_start:".format(event.attrs['n']))
 
     def genDefMacroEnd(self, event):
         self.addCode("macro_{}_end:".format(event.attrs['n']))
+
+    def genSectionRulesStart(self, event):
+        self.genDebugCode(event)
+        self.addCode("section_rules_start:")
+
+    def genSectionRulesEnd(self, event):
+        self.addCode("section_rules_end:\n")
 
     def genDebugCode(self, event):
         """Generate debug messages if debug is on."""
