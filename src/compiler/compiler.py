@@ -26,8 +26,7 @@ class Compiler:
     """This class encapsulates all the compiling process."""
     
     def __init__(self):
-        self.logger = logging.getLogger('compiler')
-        self.logger.setLevel(logging.INFO)
+        self.setUpLogging()
         self.debug = False
         
         #We use 'buffer' to get a stream of bytes, not str.
@@ -47,14 +46,27 @@ class Compiler:
         self.eventHandler = EventHandler(self, self.codeGenerator, self.symbolTable)
         self.parser = ExpatParser(self)
 
+    def setUpLogging(self):
+        """Set at least an error through stderr logger"""
+        self.formatString = '%(levelname)s: %(filename)s[%(lineno)d]:\t%(message)s'
+        self.logger = logging.getLogger('compiler')
+
+        errorHandler = logging.StreamHandler(sys.stderr)
+        errorHandler.setFormatter(logging.Formatter(self.formatString))
+        errorHandler.setLevel(logging.ERROR)
+        self.logger.addHandler(errorHandler)
+
     def setDebug(self, fileName):
-        """Set the debug capabilities and configure it with a custom format."""
-        formatString = '%(levelname)s: %(filename)s[%(lineno)d]:\t%(message)s'
-        logging.basicConfig(filename=fileName, format=formatString)
+        """Set the debug capabilities using the file passed."""
         self.debug = True
         self.codeGenerator.debug = True
         self.logger.setLevel(logging.DEBUG)
         
+        debugHandler = logging.FileHandler(filename=fileName, mode='w', encoding='utf-8')
+        debugHandler.setFormatter(logging.Formatter(self.formatString))
+        debugHandler.setLevel(logging.DEBUG)
+        self.logger.addHandler(debugHandler)
+
     def compile(self):
         self.parser.parse(self.input.read())
         self.output.write('\n'.join(self.codeGenerator.code).encode('utf-8'))
