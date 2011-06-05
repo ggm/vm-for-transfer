@@ -1,0 +1,8 @@
+#<transfer default="chunk">
+jmp section_rules_start
+#<def-macro npar="2" n="f_bcond">
+macro_f_bcond_start:
+macro_f_bcond_end:
+#<section-rules>
+section_rules_start:
+section_rules_end:
