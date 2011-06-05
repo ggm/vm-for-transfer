@@ -9,7 +9,7 @@ cmp
 not
 jz macro_f_bcond_end
 pushsb 1
-out
+out 1
 macro_f_bcond_end:
 #<section-rules>
 section_rules_start:
