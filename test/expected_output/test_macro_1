@@ -3,6 +3,7 @@ jmp section_rules_start
 #<def-macro npar="2" n="f_bcond">
 macro_f_bcond_start:
 pushsb 1
+#<lit v=" ">
 push " "
 cmp
 not
