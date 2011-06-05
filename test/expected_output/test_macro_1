@@ -2,6 +2,13 @@
 jmp section_rules_start
 #<def-macro npar="2" n="f_bcond">
 macro_f_bcond_start:
+pushsb 1
+push " "
+cmp
+not
+jz macro_f_bcond_end
+pushsb 1
+out
 macro_f_bcond_end:
 #<section-rules>
 section_rules_start:
