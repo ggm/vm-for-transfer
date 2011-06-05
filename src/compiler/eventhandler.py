@@ -130,6 +130,9 @@ class EventHandler():
 
     def handle_b_start(self, event):
         self.codeGen.genBStart(event)
+
+    def handle_lit_start(self, event):
+        self.codeGen.genLitStart(event)
     
     def printDebugMessage(self, methodName, event=None):
         """Prints the call of a method, given the method name and an optional event."""

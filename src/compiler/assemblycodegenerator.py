@@ -22,6 +22,7 @@ class AssemblyCodeGenerator:
     #of other code generators.
     INSTR_SEP = " "         #instruction and argumentes separator (' ', '\t'). 
     JMP_OP = "jmp"          #jmp label -> jumps to the label, unconditionally.
+    PUSH_OP = "push"        #push value -> pushes a value to the stack.
     PUSHBL_OP = "pushbl"    #pushbl -> pushes a blank in the stack.
     PUSHSB_OP = "pushsb"    #pushsb pos -> pushes a superblank at pos.
 
@@ -63,6 +64,10 @@ class AssemblyCodeGenerator:
             self.addCode(self.PUSHSB_OP + self.INSTR_SEP + event.attrs['pos'])
         else:
             self.addCode(self.PUSHBL_OP)
+
+    def genLitStart(self, event):
+        self.genDebugCode(event)
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + "\"{}\"".format(event.attrs['v']))
 
     def genDebugCode(self, event):
         """Generate debug messages if debug is on."""
