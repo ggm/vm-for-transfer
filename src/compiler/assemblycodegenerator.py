@@ -28,6 +28,7 @@ class AssemblyCodeGenerator:
     PUSH_OP = "push"        #push value -> pushes a value to the stack.
     PUSHBL_OP = "pushbl"    #pushbl -> pushes a blank in the stack.
     PUSHSB_OP = "pushsb"    #pushsb pos -> pushes a superblank at pos.
+    NOT_OP = "not"          #not -> negates the stack top (0 -> 1, 1 -> 0).
 
     def __init__(self):
         self.logger = logging.getLogger('compiler')
@@ -74,6 +75,9 @@ class AssemblyCodeGenerator:
 
     def genEqualEnd(self, event):
         self.addCode(self.CMP_OP)
+
+    def genNotEnd(self, event):
+        self.addCode(self.NOT_OP)
 
     def genDebugCode(self, event):
         """Generate debug messages if debug is on."""
