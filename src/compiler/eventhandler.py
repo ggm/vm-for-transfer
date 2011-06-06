@@ -140,6 +140,9 @@ class EventHandler():
     def handle_not_end(self, event):
         self.codeGen.genNotEnd(event)
 
+    def handle_out_end(self, event):
+        self.codeGen.genOutEnd(event)
+
     def printDebugMessage(self, methodName, event=None):
         """Prints the call of a method, given the method name and an optional event."""
         if (not event):

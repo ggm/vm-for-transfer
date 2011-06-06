@@ -29,6 +29,7 @@ class AssemblyCodeGenerator:
     PUSHBL_OP = "pushbl"    #pushbl -> pushes a blank in the stack.
     PUSHSB_OP = "pushsb"    #pushsb pos -> pushes a superblank at pos.
     NOT_OP = "not"          #not -> negates the stack top (0 -> 1, 1 -> 0).
+    OUT_OP = "out"          #out num -> outputs a number of elements in the stack.
 
     def __init__(self):
         self.logger = logging.getLogger('compiler')
@@ -78,6 +79,9 @@ class AssemblyCodeGenerator:
 
     def genNotEnd(self, event):
         self.addCode(self.NOT_OP)
+
+    def genOutEnd(self, event):
+        self.addCode(self.OUT_OP + self.INSTR_SEP + str(event.numChilds))
 
     def genDebugCode(self, event):
         """Generate debug messages if debug is on."""
