@@ -23,6 +23,9 @@ class Event:
         self.childs = []
         self.numChilds = 0
 
+        #Variables is used to pass information between events.
+        self.variables = {}
+
     def addChild(self, event):
         self.childs.append(event)
         self.numChilds += 1

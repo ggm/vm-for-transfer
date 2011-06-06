@@ -25,6 +25,7 @@ class AssemblyCodeGenerator:
     CMP_OP = "cmp"          #cmp -> compares the last two items in the stack.
                             #       and leaves 0 (not equal) or 1 (equal).
     JMP_OP = "jmp"          #jmp label -> jumps to the label, unconditionally.
+    JZ_OP = "jz"            #jz label -> jumps to label if stack.top == 0.
     PUSH_OP = "push"        #push value -> pushes a value to the stack.
     PUSHBL_OP = "pushbl"    #pushbl -> pushes a blank in the stack.
     PUSHSB_OP = "pushsb"    #pushsb pos -> pushes a superblank at pos.
@@ -41,9 +42,17 @@ class AssemblyCodeGenerator:
         #Used to get the next address of an instruction if needed.
         self.nextAddress = 0
 
+        #Used to generate new labels by element type.
+        self.nextLabel = {'when' : 0}
+
     def addCode(self, code):
         self.code.append(code)
         self.nextAddress += 1
+
+    def getNextLabel(self, elem):
+        nextLabel = self.nextLabel[elem]
+        self.nextLabel[elem] += 1
+        return nextLabel
 
     def genTransferStart(self, event):
         self.genDebugCode(event)
@@ -63,6 +72,17 @@ class AssemblyCodeGenerator:
 
     def genSectionRulesEnd(self, event):
         self.addCode("section_rules_end:\n")
+
+    def genWhenStart(self, event):
+        event.variables['label'] = self.getNextLabel("when")
+
+    def genWhenEnd(self, event):
+        numLabel = event.variables['label']
+        self.addCode("when_{}_end:".format(numLabel))
+
+    def genTestEnd(self, event, parent):
+        numLabel = parent.variables['label']
+        self.addCode(self.JZ_OP + self.INSTR_SEP + "when_{}_end".format(numLabel))
 
     def genBStart(self, event):
         if 'pos' in event.attrs:

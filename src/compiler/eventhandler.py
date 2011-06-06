@@ -129,6 +129,16 @@ class EventHandler():
         self.printDebugMessage("handle_section_rules_end", event)
         self.codeGen.genSectionRulesEnd(event)
 
+    def handle_when_start(self, event):
+        self.codeGen.genWhenStart(event)
+
+    def handle_when_end(self, event):
+        self.codeGen.genWhenEnd(event)
+
+    def handle_test_end(self, event):
+        parent = self.callStack.top()
+        self.codeGen.genTestEnd(event, parent)
+
     def handle_b_start(self, event):
         self.codeGen.genBStart(event)
 
