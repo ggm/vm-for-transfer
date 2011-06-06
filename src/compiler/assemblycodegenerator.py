@@ -22,15 +22,17 @@ class AssemblyCodeGenerator:
     #of other code generators.
     INSTR_SEP = " "         #instruction and argumentes separator (' ', '\t').
 
-    CMP_OP = "cmp"          #cmp -> compares the last two items in the stack.
+    CLIPSL_OP = "clipsl"    #clipsl -> puts a substring of the source language on the stack.
+    CLIPTL_OP = "cliptl"    #cliptl -> puts a substring of the target language on the stack.
+    CMP_OP = "cmp"          #cmp -> compares the last two items on the stack.
                             #       and leaves 0 (not equal) or 1 (equal).
     JMP_OP = "jmp"          #jmp label -> jumps to the label, unconditionally.
     JZ_OP = "jz"            #jz label -> jumps to label if stack.top == 0.
     PUSH_OP = "push"        #push value -> pushes a value to the stack.
-    PUSHBL_OP = "pushbl"    #pushbl -> pushes a blank in the stack.
+    PUSHBL_OP = "pushbl"    #pushbl -> pushes a blank to the stack.
     PUSHSB_OP = "pushsb"    #pushsb pos -> pushes a superblank at pos.
     NOT_OP = "not"          #not -> negates the stack top (0 -> 1, 1 -> 0).
-    OUT_OP = "out"          #out num -> outputs a number of elements in the stack.
+    OUT_OP = "out"          #out num -> outputs a number of elements on the stack.
     STORESL_OP = "storesl"  #storesl -> stores the top in the source language.
     STORETL_OP = "storetl"  #storetl -> stores the top in the target language.
     STOREV_OP = "storev"    #storev -> stack(value, variable, ...) stores value in variable.
@@ -113,6 +115,21 @@ class AssemblyCodeGenerator:
     def genVarStart(self, event):
         self.genDebugCode(event)
         self.addCode(self.PUSH_OP + self.INSTR_SEP + event.attrs['n'])
+
+    def genClipStart(self, event, partAttrs):
+        self.genDebugCode(event)
+
+        #Push the position to the stack.
+        pos = event.attrs['pos']
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + str(pos))
+
+        #Push the contents of the part attribute.
+        partAttrStr = "\"" + "|".join(partAttrs) + "\""
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + partAttrStr)
+
+        #Choose the appropriate instr depending on the side of the clip op.
+        if event.attrs['side'] == 'sl': self.addCode(self.CLIPSL_OP)
+        elif event.attrs['side'] == 'tl': self.addCode(self.CLIPTL_OP)
 
     def genLetEnd(self, event, container):
         instr = None

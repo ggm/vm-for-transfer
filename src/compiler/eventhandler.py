@@ -160,6 +160,11 @@ class EventHandler():
     def handle_var_start(self, event):
         self.codeGen.genVarStart(event)
 
+    def handle_clip_start(self, event):
+        part = event.attrs['part']
+        partAttrs = self.defAttrs[part]
+        self.codeGen.genClipStart(event, partAttrs)
+
     def handle_let_end(self, event):
         container = event.childs[0]
         self.codeGen.genLetEnd(event, container)
