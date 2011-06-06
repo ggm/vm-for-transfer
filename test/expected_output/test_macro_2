@@ -53,7 +53,7 @@ push "<sg_slpl>"
 storev
 jmp choose_0_end
 when_1_end:
-#otherwise
+#<otherwise>
 #<var n="nombre">
 push nombre
 #<clip part="nbr" pos="1" side="tl">

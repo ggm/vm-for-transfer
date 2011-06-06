@@ -10,6 +10,7 @@ not
 jz when_0_end
 pushsb 1
 out 1
+jmp choose_0_end
 when_0_end:
 macro_f_bcond_end:
 #<section-rules>
