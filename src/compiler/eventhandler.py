@@ -157,6 +157,10 @@ class EventHandler():
     def handle_var_start(self, event):
         self.codeGen.genVarStart(event)
 
+    def handle_let_end(self, event):
+        container = event.childs[0]
+        self.codeGen.genLetEnd(event, container)
+
     def printDebugMessage(self, methodName, event=None):
         """Prints the call of a method, given the method name and an optional event."""
         if (not event):

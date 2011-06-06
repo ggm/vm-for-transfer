@@ -31,6 +31,9 @@ class AssemblyCodeGenerator:
     PUSHSB_OP = "pushsb"    #pushsb pos -> pushes a superblank at pos.
     NOT_OP = "not"          #not -> negates the stack top (0 -> 1, 1 -> 0).
     OUT_OP = "out"          #out num -> outputs a number of elements in the stack.
+    STORESL_OP = "storesl"  #storesl -> stores the top in the source language.
+    STORETL_OP = "storetl"  #storetl -> stores the top in the target language.
+    STOREV_OP = "storev"    #storev -> stack(value, variable, ...) stores value in variable.
 
     def __init__(self):
         self.logger = logging.getLogger('compiler')
@@ -106,6 +109,17 @@ class AssemblyCodeGenerator:
     def genVarStart(self, event):
         self.genDebugCode(event)
         self.addCode(self.PUSH_OP + self.INSTR_SEP + event.attrs['n'])
+
+    def genLetEnd(self, event, container):
+        instr = None
+
+        #Choose the appropriate instr depending on the container.
+        if 'var' in container.name: instr = self.STOREV_OP
+        elif 'clip' in container.name:
+            if container.attrs['side'] == 'sl': instr = self.STORESL_OP
+            elif container.attrs['side'] == 'tl': instr = self.STORETL_OP
+
+        self.addCode(instr)
 
     def genDebugCode(self, event):
         """Generate debug messages if debug is on."""
