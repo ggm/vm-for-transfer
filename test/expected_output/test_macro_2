@@ -21,7 +21,7 @@ cliptl
 #<lit-tag v="pl">
 push "<pl>"
 cmp
-and
+and 2
 jz when_0_end
 #<var n="nombre">
 push nombre
@@ -44,7 +44,7 @@ cliptl
 #<lit-tag v="sg">
 push "<sg>"
 cmp
-and
+and 2
 jz when_1_end
 #<var n="nombre">
 push nombre
