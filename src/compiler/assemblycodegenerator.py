@@ -50,7 +50,7 @@ class AssemblyCodeGenerator:
         self.nextAddress = 0
 
         #Used to generate new labels by element type.
-        self.nextLabel = {'when' : 0}
+        self.nextLabel = {'when' : 0, 'choose' : 0}
 
     def addCode(self, code):
         self.code.append(code)
@@ -83,12 +83,27 @@ class AssemblyCodeGenerator:
     def genSectionRulesEnd(self, event):
         self.addCode("section_rules_end:\n")
 
+    def genChooseStart(self, event):
+        event.variables['label'] = self.getNextLabel("choose")
+
+    def genChooseEnd(self, event):
+        numLabel = event.variables['label']
+        self.addCode("choose_{}_end:".format(numLabel))
+
     def genWhenStart(self, event):
         event.variables['label'] = self.getNextLabel("when")
 
-    def genWhenEnd(self, event):
+    def genWhenEnd(self, event, parent):
+        #Add a jump to the end of the choose element, if the when is successful.
+        numLabel = parent.variables['label']
+        self.addCode(self.JMP_OP  + self.INSTR_SEP + "choose_{}_end".format(numLabel))
+
+        #Add the label of the when end.
         numLabel = event.variables['label']
         self.addCode("when_{}_end:".format(numLabel))
+
+    def genOtherwiseStart(self, event):
+        self.genDebugCode(event)
 
     def genTestEnd(self, event, parent):
         numLabel = parent.variables['label']

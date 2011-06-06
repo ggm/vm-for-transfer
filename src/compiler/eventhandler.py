@@ -129,11 +129,21 @@ class EventHandler():
         self.printDebugMessage("handle_section_rules_end", event)
         self.codeGen.genSectionRulesEnd(event)
 
+    def handle_choose_start(self, event):
+        self.codeGen.genChooseStart(event)
+
+    def handle_choose_end(self, event):
+        self.codeGen.genChooseEnd(event)
+
     def handle_when_start(self, event):
         self.codeGen.genWhenStart(event)
 
     def handle_when_end(self, event):
-        self.codeGen.genWhenEnd(event)
+        parent = self.callStack.top()
+        self.codeGen.genWhenEnd(event, parent)
+
+    def handle_otherwise_start(self, event):
+        self.codeGen.genOtherwiseStart(event)
 
     def handle_test_end(self, event):
         parent = self.callStack.top()
