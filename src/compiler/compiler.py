@@ -43,7 +43,7 @@ class Compiler:
         self.callStack = CallStack()
         self.symbolTable = SymbolTable()
         self.codeGenerator = AssemblyCodeGenerator()    #here we set the code generator to use
-        self.eventHandler = EventHandler(self, self.codeGenerator, self.symbolTable)
+        self.eventHandler = EventHandler(self)
         self.parser = ExpatParser(self)
 
     def setUpLogging(self):
