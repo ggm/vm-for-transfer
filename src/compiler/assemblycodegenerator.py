@@ -61,6 +61,9 @@ class AssemblyCodeGenerator:
         self.nextLabel[elem] += 1
         return nextLabel
 
+    def getWritableCode(self):
+        return '\n'.join(self.code).encode('utf-8')
+
     def genTransferStart(self, event):
         self.genDebugCode(event)
         #Jump to the start of the rules, ignoring the macros until called.

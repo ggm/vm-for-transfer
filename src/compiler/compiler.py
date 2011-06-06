@@ -69,5 +69,5 @@ class Compiler:
 
     def compile(self):
         self.parser.parse(self.input.read())
-        self.output.write('\n'.join(self.codeGenerator.code).encode('utf-8'))
+        self.output.write(self.codeGenerator.getWritableCode())
         self.logger.debug(str(self.symbolTable))
