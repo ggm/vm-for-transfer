@@ -7,14 +7,14 @@ push nombre
 #<lit v="">
 push ""
 storev
-#<clip pos="1" side="sl" part="nbr">
+#<clip part="nbr" pos="1" side="sl">
 push 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 #<lit-tag v="sg">
 push "<sg>"
 cmp
-#<clip pos="1" side="tl" part="nbr">
+#<clip part="nbr" pos="1" side="tl">
 push 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
@@ -30,14 +30,14 @@ push "<pl_slsg>"
 storev
 jmp choose_0_end
 when_0_end:
-#<clip pos="1" side="sl" part="nbr">
+#<clip part="nbr" pos="1" side="sl">
 push 1
 push "<sg>|<pl>|<sp>|<ND>"
 clipsl
 #<lit-tag v="pl">
 push "<pl>"
 cmp
-#<clip pos="1" side="tl" part="nbr">
+#<clip part="nbr" pos="1" side="tl">
 push 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
@@ -56,7 +56,7 @@ when_1_end:
 #otherwise
 #<var n="nombre">
 push nombre
-#<clip pos="1" side="tl" part="nbr">
+#<clip part="nbr" pos="1" side="tl">
 push 1
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
