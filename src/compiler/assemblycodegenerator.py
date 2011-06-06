@@ -28,6 +28,7 @@ class AssemblyCodeGenerator:
     CLIPTL_OP = "cliptl"    #cliptl -> puts a substring of the target language on the stack.
     CMP_OP = "cmp"          #cmp -> compares the last two items on the stack.
                             #       and leaves 0 (not equal) or 1 (equal).
+    CMPI_OP = "cmpi"        #cmpi -> same as cmp but ignoring the case.
     JMP_OP = "jmp"          #jmp label -> jumps to the label, unconditionally.
     JZ_OP = "jz"            #jz label -> jumps to label if stack.top == 0.
     PUSH_OP = "push"        #push value -> pushes a value to the stack.
@@ -124,7 +125,11 @@ class AssemblyCodeGenerator:
         self.addCode(self.PUSH_OP + self.INSTR_SEP + "\"<{}>\"".format(event.attrs['v']))
 
     def genEqualEnd(self, event):
-        self.addCode(self.CMP_OP)
+        if 'caseless' not in event.attrs: self.addCode(self.CMP_OP)
+        else:
+            caseless = event.attrs['caseless']
+            if caseless == "no": self.addCode(self.CMP_OP)
+            elif caseless == "yes": self.addCode(self.CMPI_OP)
 
     def genAndEnd(self, event):
         self.addCode(self.AND_OP + self.INSTR_SEP + str(event.numChilds))
