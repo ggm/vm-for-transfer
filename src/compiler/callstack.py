@@ -40,4 +40,9 @@ class CallStack:
         
     def isEmpty(self):
         return len(self.stack) == 0
-            
+
+    def top(self):
+        if not self.isEmpty():
+            return self.stack[-1]
+        else:
+            return None

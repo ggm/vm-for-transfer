@@ -37,6 +37,9 @@ class ExpatParser:
     
     def handleStartElement(self, name, attrs):
         event = Event(name, attrs)
+        #Add the event as a child of the current top.
+        top = self.callStack.top()
+        if top: top.addChild(event)
         self.callStack.push(event)
         
         result = self.callback('_start', name, event)

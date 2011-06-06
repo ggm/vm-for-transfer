@@ -20,3 +20,9 @@ class Event:
     def __init__(self, name, attrs):
         self.name = name
         self.attrs = attrs
+        self.childs = []
+        self.numChilds = 0
+
+    def addChild(self, event):
+        self.childs.append(event)
+        self.numChilds += 1
