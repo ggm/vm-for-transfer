@@ -97,6 +97,10 @@ class AssemblyCodeGenerator:
         self.genDebugCode(event)
         self.addCode(self.PUSH_OP + self.INSTR_SEP + "\"{}\"".format(event.attrs['v']))
 
+    def genLitTagStart(self, event):
+        self.genDebugCode(event)
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + "\"<{}>\"".format(event.attrs['v']))
+
     def genEqualEnd(self, event):
         self.addCode(self.CMP_OP)
 

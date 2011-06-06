@@ -145,6 +145,9 @@ class EventHandler():
     def handle_lit_start(self, event):
         self.codeGen.genLitStart(event)
 
+    def handle_lit_tag_start(self, event):
+        self.codeGen.genLitTagStart(event)
+
     def handle_equal_end(self, event):
         self.codeGen.genEqualEnd(event)
 
