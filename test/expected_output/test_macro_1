@@ -7,9 +7,10 @@ pushsb 1
 push " "
 cmp
 not
-jz macro_f_bcond_end
+jz when_0_end
 pushsb 1
 out 1
+when_0_end:
 macro_f_bcond_end:
 #<section-rules>
 section_rules_start:
