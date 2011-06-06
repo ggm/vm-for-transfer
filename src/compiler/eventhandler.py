@@ -151,6 +151,12 @@ class EventHandler():
     def handle_equal_end(self, event):
         self.codeGen.genEqualEnd(event)
 
+    def handle_and_end(self, event):
+        self.codeGen.genAndEnd(event)
+
+    def handle_or_end(self, event):
+        self.codeGen.genOrEnd(event)
+
     def handle_not_end(self, event):
         self.codeGen.genNotEnd(event)
 

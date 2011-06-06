@@ -22,6 +22,8 @@ class AssemblyCodeGenerator:
     #of other code generators.
     INSTR_SEP = " "         #instruction and argumentes separator (' ', '\t').
 
+    AND_OP = "and"          #and num -> and of the last num elements on the stack.
+    OR_OP = "or"            #or num -> or of the last num elements on the stack.
     CLIPSL_OP = "clipsl"    #clipsl -> puts a substring of the source language on the stack.
     CLIPTL_OP = "cliptl"    #cliptl -> puts a substring of the target language on the stack.
     CMP_OP = "cmp"          #cmp -> compares the last two items on the stack.
@@ -105,6 +107,12 @@ class AssemblyCodeGenerator:
 
     def genEqualEnd(self, event):
         self.addCode(self.CMP_OP)
+
+    def genAndEnd(self, event):
+        self.addCode(self.AND_OP + self.INSTR_SEP + str(event.numChilds))
+
+    def genOrEnd(self, event):
+        self.addCode(self.OR_OP + self.INSTR_SEP + str(event.numChilds))
 
     def genNotEnd(self, event):
         self.addCode(self.NOT_OP)
