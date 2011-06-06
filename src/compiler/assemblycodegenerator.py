@@ -103,6 +103,10 @@ class AssemblyCodeGenerator:
     def genOutEnd(self, event):
         self.addCode(self.OUT_OP + self.INSTR_SEP + str(event.numChilds))
 
+    def genVarStart(self, event):
+        self.genDebugCode(event)
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + event.attrs['n'])
+
     def genDebugCode(self, event):
         """Generate debug messages if debug is on."""
         if not self.debug:
