@@ -179,12 +179,18 @@ class EventHandler():
     def handle_in_end(self, event):
         self.codeGen.genInEnd(event)
 
-    def handle_clip_start(self, event):
+    def handle_clip_end(self, event):
         part = event.attrs['part']
         partAttrs = []
         if part in "lem lemh lemq whole": partAttrs.append(part)
         else: partAttrs = self.defAttrs[part]
-        self.codeGen.genClipStart(event, partAttrs)
+
+        parent = self.callStack.top()
+        isContainer = False
+        if parent.name in ('let', 'modify-case'):
+            if parent.numChilds == 1: #If it's the first child, it's on the left
+                isContainer = True    #therefore it's a container.
+        self.codeGen.genClipEnd(event, partAttrs, isContainer)
 
     def handle_list_start(self, event):
         list = self.defLists[event.attrs['n']]

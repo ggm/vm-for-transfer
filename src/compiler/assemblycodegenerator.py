@@ -163,7 +163,7 @@ class AssemblyCodeGenerator:
             if caseless == "no": self.addCode(self.IN_OP)
             elif caseless == "yes": self.addCode(self.INIG_OP)
 
-    def genClipStart(self, event, partAttrs):
+    def genClipEnd(self, event, partAttrs, isContainer):
         self.genDebugCode(event)
 
         #Push the position to the stack.
@@ -175,9 +175,11 @@ class AssemblyCodeGenerator:
         else: partAttrStr = "\"" + "|".join(partAttrs) + "\""
         self.addCode(self.PUSH_OP + self.INSTR_SEP + partAttrStr)
 
-        #Choose the appropriate instr depending on the side of the clip op.
-        if event.attrs['side'] == 'sl': self.addCode(self.CLIPSL_OP)
-        elif event.attrs['side'] == 'tl': self.addCode(self.CLIPTL_OP)
+        #If this clip doesn't work as a container (left-side), we need a CLIP(SL|TL).
+        if not isContainer:
+            #Choose the appropriate instr depending on the side of the clip op.
+            if event.attrs['side'] == 'sl': self.addCode(self.CLIPSL_OP)
+            elif event.attrs['side'] == 'tl': self.addCode(self.CLIPTL_OP)
 
     def genListStart(self, event, list):
         self.genDebugCode(event)
@@ -188,8 +190,6 @@ class AssemblyCodeGenerator:
         self.addCode(self.PUSH_OP + self.INSTR_SEP + list)
 
     def genLetEnd(self, event, container):
-        instr = None
-
         #Choose the appropriate instr depending on the container.
         if 'var' in container.name: instr = self.STOREV_OP
         elif 'clip' in container.name:

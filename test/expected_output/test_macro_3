@@ -43,7 +43,6 @@ jz when_2_end
 #<clip part="lem" pos="1" side="tl">
 push 1
 push "lem"
-cliptl
 #<get-case-from pos="1">
 #<lit v="a">
 push "a"
@@ -53,7 +52,6 @@ storetl
 #<clip part="a_det" pos="1" side="tl">
 push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<num>"
-cliptl
 #<lit-tag v="det.ind">
 push "<det><ind>"
 storetl
@@ -70,7 +68,6 @@ jz when_3_end
 #<clip part="lem" pos="1" side="tl">
 push 1
 push "lem"
-cliptl
 #<get-case-from pos="1">
 #<lit v="another">
 push "another"
