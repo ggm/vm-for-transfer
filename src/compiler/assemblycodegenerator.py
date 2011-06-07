@@ -36,6 +36,7 @@ class AssemblyCodeGenerator:
     INIG_OP = "inig"        #inig -> search a value in a list, ignoring case.
     JMP_OP = "jmp"          #jmp label -> jumps to the label, unconditionally.
     JZ_OP = "jz"            #jz label -> jumps to label if stack.top == 0.
+    MODIFY_CASE_OP = "modify-case" #modify-case -> copy the case of one element to another.
     PUSH_OP = "push"        #push value -> pushes a value to the stack.
     PUSHBL_OP = "pushbl"    #pushbl -> pushes a blank to the stack.
     PUSHSB_OP = "pushsb"    #pushsb pos -> pushes a superblank at pos.
@@ -218,6 +219,10 @@ class AssemblyCodeGenerator:
         pos = event.attrs['pos']
         self.addCode(self.PUSH_OP + self.INSTR_SEP + str(pos))
         self.addCode(self.GET_CASE_FROM_OP)
+
+    def genModifyCaseEnd(self, event, container):
+        self.addCode(self.MODIFY_CASE_OP)
+        self.addCode(self.genStoreInstr(container))
 
     def genDebugCode(self, event):
         """Generate debug messages if debug is on."""
