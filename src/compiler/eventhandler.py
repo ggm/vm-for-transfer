@@ -239,6 +239,9 @@ class EventHandler():
     def handle_ends_with_list_end(self, event):
         self.codeGen.genEndsWithEnd(event)
 
+    def handle_contains_substring_end(self, event):
+        self.codeGen.genContainsSubstringEnd(event)
+
     def printDebugMessage(self, methodName, event=None):
         """Prints the call of a method, given the method name and an optional event."""
         if (not event):

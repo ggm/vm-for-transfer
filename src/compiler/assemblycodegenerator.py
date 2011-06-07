@@ -27,6 +27,8 @@ class AssemblyCodeGenerator:
     BEGINS_WITH_OP = "begins-with" #begins-with(-ig) -> tests if the first op contains the
     BEGINS_WITH_IG_OP = "begins-with-ig" #second one at the beginning (ig -> ignore case).
     OR_OP = "or"            #or num -> or of the last num elements on the stack.
+    CMP_SUBSTR_OP = "cmp-substr" #cmp(i)-substr -> tests if the first op contains the
+    CMPI_SUBSTR_OP = "cmpi-substr" #contains a substring of the second one (i -> ignore case).
     CLIPSL_OP = "clipsl"    #clipsl -> puts a substring of the source language on the stack.
     CLIPTL_OP = "cliptl"    #cliptl -> puts a substring of the target language on the stack.
     CMP_OP = "cmp"          #cmp -> compares the last two items on the stack.
@@ -246,6 +248,9 @@ class AssemblyCodeGenerator:
 
     def genEndsWithEnd(self, event):
         self.addCode(self.getIgnoreCaseInstr(event, self.ENDS_WITH_OP, self.ENDS_WITH_IG_OP))
+
+    def genContainsSubstringEnd(self, event):
+        self.addCode(self.getIgnoreCaseInstr(event, self.CMP_SUBSTR_OP, self.CMPI_SUBSTR_OP))
 
     def genDebugCode(self, event):
         """Generate debug messages if debug is on."""
