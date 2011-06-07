@@ -223,6 +223,19 @@ class AssemblyCodeGenerator:
         self.addCode(self.PUSH_OP + self.INSTR_SEP + str(pos))
         self.addCode(self.GET_CASE_FROM_OP)
 
+    def genCaseOfStart(self, event, partAttrs):
+        self.genDebugCode(event)
+
+        #Generate the code of the clip we are going to get the case from.
+        self.genClipCode(event, partAttrs)
+        #Add the clip instruction depending on the side attribute.
+        if event.attrs['side'] == 'sl': self.addCode(self.CLIPSL_OP)
+        elif event.attrs['side'] == 'tl': self.addCode(self.CLIPTL_OP)
+
+        #Finally, use get-case-from to get the case of the clip on the stack.
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + "1") #1 because the clip already extracted pos.
+        self.addCode(self.GET_CASE_FROM_OP)
+
     def genModifyCaseEnd(self, event, container):
         self.addCode(self.MODIFY_CASE_OP)
         self.addCode(self.genStoreInstr(container))

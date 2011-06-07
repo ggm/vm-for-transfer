@@ -215,6 +215,14 @@ class EventHandler():
     def handle_get_case_from_end(self, event):
         self.codeGen.genGetCaseFromEnd(event)
 
+    def handle_case_of_start(self, event):
+        part = event.attrs['part']
+        partAttrs = []
+        if part in "lem lemh lemq whole": partAttrs.append(part)
+        else: partAttrs = self.defAttrs[part]
+
+        self.codeGen.genCaseOfStart(event, partAttrs)
+
     def handle_modify_case_end(self, event):
         container = event.childs[0]
         self.codeGen.genModifyCaseEnd(event, container)
