@@ -163,6 +163,14 @@ class AssemblyCodeGenerator:
         if event.attrs['side'] == 'sl': self.addCode(self.CLIPSL_OP)
         elif event.attrs['side'] == 'tl': self.addCode(self.CLIPTL_OP)
 
+    def genListStart(self, event, list):
+        self.genDebugCode(event)
+
+        #Push the contents of the list to the stack.
+        if len(list) == 1: list = "\"{}\"".format(list[0])
+        else: list = "\"" + "|".join(list) + "\""
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + list)
+
     def genLetEnd(self, event, container):
         instr = None
 

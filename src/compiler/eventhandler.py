@@ -183,6 +183,10 @@ class EventHandler():
         else: partAttrs = self.defAttrs[part]
         self.codeGen.genClipStart(event, partAttrs)
 
+    def handle_list_start(self, event):
+        list = self.defLists[event.attrs['n']]
+        self.codeGen.genListStart(event, list)
+
     def handle_let_end(self, event):
         container = event.childs[0]
         self.codeGen.genLetEnd(event, container)
