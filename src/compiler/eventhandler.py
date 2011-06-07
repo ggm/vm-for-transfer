@@ -194,6 +194,12 @@ class EventHandler():
         container = event.childs[0]
         self.codeGen.genLetEnd(event, container)
 
+    def handle_get_case_from_start(self, event):
+        self.codeGen.genGetCaseFromStart(event)
+
+    def handle_get_case_from_end(self, event):
+        self.codeGen.genGetCaseFromEnd(event)
+
     def printDebugMessage(self, methodName, event=None):
         """Prints the call of a method, given the method name and an optional event."""
         if (not event):

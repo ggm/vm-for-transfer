@@ -29,6 +29,7 @@ class AssemblyCodeGenerator:
     CMP_OP = "cmp"          #cmp -> compares the last two items on the stack.
                             #       and leaves 0 (not equal) or 1 (equal).
     CMPI_OP = "cmpi"        #cmpi -> same as cmp but ignoring the case.
+    GET_CASE_FROM_OP = "get-case-from" #get the case from contens in pos.
     IN_OP = "in"            #in -> search a value in a list.
     INIG_OP = "inig"        #inig -> search a value in a list, ignoring case.
     JMP_OP = "jmp"          #jmp label -> jumps to the label, unconditionally.
@@ -190,6 +191,14 @@ class AssemblyCodeGenerator:
             elif container.attrs['side'] == 'tl': instr = self.STORETL_OP
 
         self.addCode(instr)
+
+    def genGetCaseFromStart(self, event):
+        self.genDebugCode(event)
+
+    def genGetCaseFromEnd(self, event):
+        pos = event.attrs['pos']
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + str(pos))
+        self.addCode(self.GET_CASE_FROM_OP)
 
     def genDebugCode(self, event):
         """Generate debug messages if debug is on."""
