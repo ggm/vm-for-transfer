@@ -197,6 +197,12 @@ class EventHandler():
     def handle_concat_end(self, event):
         self.codeGen.genConcatEnd(event)
 
+    def handle_append_start(self, event):
+        self.codeGen.genAppendStart(event)
+
+    def handle_append_end(self, event):
+        self.codeGen.genAppendEnd(event)
+
     def handle_get_case_from_start(self, event):
         self.codeGen.genGetCaseFromStart(event)
 

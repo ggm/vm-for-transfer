@@ -23,6 +23,7 @@ class AssemblyCodeGenerator:
     INSTR_SEP = " "         #instruction and argumentes separator (' ', '\t').
 
     AND_OP = "and"          #and num -> and of the last num elements on the stack.
+    APPEND_OP = "append"    #append num -> append the last num elements on the stack.
     OR_OP = "or"            #or num -> or of the last num elements on the stack.
     CLIPSL_OP = "clipsl"    #clipsl -> puts a substring of the source language on the stack.
     CLIPTL_OP = "cliptl"    #cliptl -> puts a substring of the target language on the stack.
@@ -199,6 +200,13 @@ class AssemblyCodeGenerator:
 
     def genConcatEnd(self, event):
         self.addCode(self.CONCAT_OP + self.INSTR_SEP + str(event.numChilds))
+
+    def genAppendStart(self, event):
+        self.genDebugCode(event)
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + event.attrs['n'])
+
+    def genAppendEnd(self, event):
+        self.addCode(self.APPEND_OP + self.INSTR_SEP + str(event.numChilds))
 
     def genGetCaseFromStart(self, event):
         self.genDebugCode(event)
