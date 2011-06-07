@@ -56,6 +56,15 @@ push "lem"
 push "aa"
 modify-case
 storetl
+#<var n="lema_SV">
+push lema_SV
+#<case-of part="lem" pos="2" side="sl">
+push 2
+push "lem"
+clipsl
+push 1
+get-case-from
+storev
 jmp choose_0_end
 when_0_end:
 choose_0_end:

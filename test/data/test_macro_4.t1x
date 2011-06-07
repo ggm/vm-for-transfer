@@ -57,6 +57,10 @@
 	      <clip pos="1" side="tl" part="lem"/>
 	      <lit v="aa"/>
 	    </modify-case>
+	    <let>
+	      <var n="lema_SV"/>
+	      <case-of pos="2" side="sl" part="lem"/>
+	    </let>
 	  </when>
 	</choose>
     </def-macro>
