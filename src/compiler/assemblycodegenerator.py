@@ -24,6 +24,8 @@ class AssemblyCodeGenerator:
 
     AND_OP = "and"          #and num -> and of the last num elements on the stack.
     APPEND_OP = "append"    #append num -> append the last num elements on the stack.
+    BEGINS_WITH_OP = "begins-with" #begins-with(-ig) -> tests if the first op contains the
+    BEGINS_WITH_IG_OP = "begins-with-ig" #second one at the beginning (ig -> ignore case).
     OR_OP = "or"            #or num -> or of the last num elements on the stack.
     CLIPSL_OP = "clipsl"    #clipsl -> puts a substring of the source language on the stack.
     CLIPTL_OP = "cliptl"    #cliptl -> puts a substring of the target language on the stack.
@@ -31,6 +33,8 @@ class AssemblyCodeGenerator:
                             #       and leaves 0 (not equal) or 1 (equal).
     CMPI_OP = "cmpi"        #cmpi -> same as cmp but ignoring the case.
     CONCAT_OP = "concat"    # concat num -> concat last num items on the stack.
+    ENDS_WITH_OP = "ends-with" #ends-with(-ig) -> tests if the first op contains the
+    ENDS_WITH_IG_OP = "ends-with-ig" #second one at the beginning (ig -> ignore case).
     GET_CASE_FROM_OP = "get-case-from" #get the case from contens in pos.
     IN_OP = "in"            #in -> search a value in a list.
     INIG_OP = "inig"        #inig -> search a value in a list, ignoring case.
@@ -236,6 +240,12 @@ class AssemblyCodeGenerator:
     def genModifyCaseEnd(self, event, container):
         self.addCode(self.MODIFY_CASE_OP)
         self.addCode(self.genStoreInstr(container))
+
+    def genBeginsWithEnd(self, event):
+        self.addCode(self.getIgnoreCaseInstr(event, self.BEGINS_WITH_OP, self.BEGINS_WITH_IG_OP))
+
+    def genEndsWithEnd(self, event):
+        self.addCode(self.getIgnoreCaseInstr(event, self.ENDS_WITH_OP, self.ENDS_WITH_IG_OP))
 
     def genDebugCode(self, event):
         """Generate debug messages if debug is on."""
