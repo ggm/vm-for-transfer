@@ -178,7 +178,9 @@ class EventHandler():
 
     def handle_clip_start(self, event):
         part = event.attrs['part']
-        partAttrs = self.defAttrs[part]
+        partAttrs = []
+        if part in "lem lemh lemq whole": partAttrs.append(part)
+        else: partAttrs = self.defAttrs[part]
         self.codeGen.genClipStart(event, partAttrs)
 
     def handle_let_end(self, event):

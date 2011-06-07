@@ -155,7 +155,8 @@ class AssemblyCodeGenerator:
         self.addCode(self.PUSH_OP + self.INSTR_SEP + str(pos))
 
         #Push the contents of the part attribute.
-        partAttrStr = "\"" + "|".join(partAttrs) + "\""
+        if len(partAttrs) == 1: partAttrStr = "\"{}\"".format(partAttrs[0])
+        else: partAttrStr = "\"" + "|".join(partAttrs) + "\""
         self.addCode(self.PUSH_OP + self.INSTR_SEP + partAttrStr)
 
         #Choose the appropriate instr depending on the side of the clip op.
