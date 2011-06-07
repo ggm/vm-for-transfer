@@ -70,6 +70,15 @@ class AssemblyCodeGenerator:
     def getWritableCode(self):
         return '\n'.join(self.code).encode('utf-8')
 
+    def genStoreInstr(self, container):
+        #Choose the appropriate instr depending on the container.
+        if 'var' in container.name: instr = self.STOREV_OP
+        elif 'clip' in container.name:
+            if container.attrs['side'] == 'sl': instr = self.STORESL_OP
+            elif container.attrs['side'] == 'tl': instr = self.STORETL_OP
+
+        return instr
+
     def genTransferStart(self, event):
         self.genDebugCode(event)
         #Jump to the start of the rules, ignoring the macros until called.
@@ -190,13 +199,7 @@ class AssemblyCodeGenerator:
         self.addCode(self.PUSH_OP + self.INSTR_SEP + list)
 
     def genLetEnd(self, event, container):
-        #Choose the appropriate instr depending on the container.
-        if 'var' in container.name: instr = self.STOREV_OP
-        elif 'clip' in container.name:
-            if container.attrs['side'] == 'sl': instr = self.STORESL_OP
-            elif container.attrs['side'] == 'tl': instr = self.STORETL_OP
-
-        self.addCode(instr)
+        self.addCode(self.genStoreInstr(container))
 
     def genConcatEnd(self, event):
         self.addCode(self.CONCAT_OP + self.INSTR_SEP + str(event.numChilds))
