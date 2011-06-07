@@ -78,6 +78,12 @@ class AssemblyCodeGenerator:
             if container.attrs['side'] == 'sl': return self.STORESL_OP
             elif container.attrs['side'] == 'tl': return self.STORETL_OP
 
+    def getIgnoreCaseInstr(self, event, instrNotIgnoreCase, instrIgnoreCase):
+        if 'caseless' not in event.attrs: return instrNotIgnoreCase
+        else:
+            caseless = event.attrs['caseless']
+            if caseless == "no": return instrNotIgnoreCase
+            elif caseless == "yes": return instrIgnoreCase
 
     def genTransferStart(self, event):
         self.genDebugCode(event)
@@ -143,11 +149,7 @@ class AssemblyCodeGenerator:
         self.addCode(self.PUSH_OP + self.INSTR_SEP + litTag)
 
     def genEqualEnd(self, event):
-        if 'caseless' not in event.attrs: self.addCode(self.CMP_OP)
-        else:
-            caseless = event.attrs['caseless']
-            if caseless == "no": self.addCode(self.CMP_OP)
-            elif caseless == "yes": self.addCode(self.CMPI_OP)
+        self.addCode(self.getIgnoreCaseInstr(event, self.CMP_OP, self.CMPI_OP))
 
     def genAndEnd(self, event):
         self.addCode(self.AND_OP + self.INSTR_SEP + str(event.numChilds))
@@ -166,11 +168,7 @@ class AssemblyCodeGenerator:
         self.addCode(self.PUSH_OP + self.INSTR_SEP + event.attrs['n'])
 
     def genInEnd(self, event):
-        if 'caseless' not in event.attrs: self.addCode(self.IN_OP)
-        else:
-            caseless = event.attrs['caseless']
-            if caseless == "no": self.addCode(self.IN_OP)
-            elif caseless == "yes": self.addCode(self.INIG_OP)
+        self.addCode(self.getIgnoreCaseInstr(event, self.IN_OP, self.INIG_OP))
 
     def genClipCode(self, event, partAttrs):
         #Push the position to the stack.
