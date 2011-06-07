@@ -57,6 +57,10 @@
 		</test>
 		  <out>
 		    <lit-tag v="det"/>
+		    <contains-substring>
+		      <lit v="long sentence"/>
+		      <lit v="sen"/>
+		    </contains-substring>
 		  </out>
 	      </when>
 	    </when>

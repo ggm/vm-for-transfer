@@ -32,7 +32,12 @@ ends-with-ig
 jz when_3_end
 #<lit-tag v="det">
 push "<det>"
-out 1
+#<lit v="long sentence">
+push "long sentence"
+#<lit v="sen">
+push "sen"
+cmp-substr
+out 2
 jmp choose_2_end
 when_3_end:
 jmp choose_1_end
