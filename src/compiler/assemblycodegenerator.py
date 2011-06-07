@@ -73,12 +73,11 @@ class AssemblyCodeGenerator:
 
     def genStoreInstr(self, container):
         #Choose the appropriate instr depending on the container.
-        if 'var' in container.name: instr = self.STOREV_OP
+        if 'var' in container.name: return self.STOREV_OP
         elif 'clip' in container.name:
-            if container.attrs['side'] == 'sl': instr = self.STORESL_OP
-            elif container.attrs['side'] == 'tl': instr = self.STORETL_OP
+            if container.attrs['side'] == 'sl': return self.STORESL_OP
+            elif container.attrs['side'] == 'tl': return self.STORETL_OP
 
-        return instr
 
     def genTransferStart(self, event):
         self.genDebugCode(event)
