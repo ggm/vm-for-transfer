@@ -125,7 +125,11 @@ class AssemblyCodeGenerator:
 
     def genLitTagStart(self, event):
         self.genDebugCode(event)
-        self.addCode(self.PUSH_OP + self.INSTR_SEP + "\"<{}>\"".format(event.attrs['v']))
+
+        #Convert <det.ind> to <det><ind> format.
+        litTag = "\"<{}>\"".format(event.attrs['v'])
+        litTag = litTag.replace(".", "><")
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + litTag)
 
     def genEqualEnd(self, event):
         if 'caseless' not in event.attrs: self.addCode(self.CMP_OP)

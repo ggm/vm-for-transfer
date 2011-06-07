@@ -55,7 +55,7 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<predet>|<num>"
 cliptl
 #<lit-tag v="det.ind">
-push "<det.ind>"
+push "<det><ind>"
 storetl
 jmp choose_2_end
 when_2_end:
