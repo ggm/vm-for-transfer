@@ -194,6 +194,9 @@ class EventHandler():
         container = event.childs[0]
         self.codeGen.genLetEnd(event, container)
 
+    def handle_concat_end(self, event):
+        self.codeGen.genConcatEnd(event)
+
     def handle_get_case_from_start(self, event):
         self.codeGen.genGetCaseFromStart(event)
 
