@@ -173,9 +173,7 @@ class AssemblyCodeGenerator:
             if caseless == "no": self.addCode(self.IN_OP)
             elif caseless == "yes": self.addCode(self.INIG_OP)
 
-    def genClipEnd(self, event, partAttrs, isContainer):
-        self.genDebugCode(event)
-
+    def genClipCode(self, event, partAttrs):
         #Push the position to the stack.
         pos = event.attrs['pos']
         self.addCode(self.PUSH_OP + self.INSTR_SEP + str(pos))
@@ -184,6 +182,11 @@ class AssemblyCodeGenerator:
         if len(partAttrs) == 1: partAttrStr = "\"{}\"".format(partAttrs[0])
         else: partAttrStr = "\"" + "|".join(partAttrs) + "\""
         self.addCode(self.PUSH_OP + self.INSTR_SEP + partAttrStr)
+
+    def genClipEnd(self, event, partAttrs, isContainer):
+        self.genDebugCode(event)
+
+        self.genClipCode(event, partAttrs)
 
         #If this clip doesn't work as a container (left-side), we need a CLIP(SL|TL).
         if not isContainer:
