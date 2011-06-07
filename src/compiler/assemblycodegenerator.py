@@ -29,6 +29,8 @@ class AssemblyCodeGenerator:
     CMP_OP = "cmp"          #cmp -> compares the last two items on the stack.
                             #       and leaves 0 (not equal) or 1 (equal).
     CMPI_OP = "cmpi"        #cmpi -> same as cmp but ignoring the case.
+    IN_OP = "in"            #in -> search a value in a list.
+    INIG_OP = "inig"        #inig -> search a value in a list, ignoring case.
     JMP_OP = "jmp"          #jmp label -> jumps to the label, unconditionally.
     JZ_OP = "jz"            #jz label -> jumps to label if stack.top == 0.
     PUSH_OP = "push"        #push value -> pushes a value to the stack.
@@ -146,6 +148,13 @@ class AssemblyCodeGenerator:
     def genVarStart(self, event):
         self.genDebugCode(event)
         self.addCode(self.PUSH_OP + self.INSTR_SEP + event.attrs['n'])
+
+    def genInEnd(self, event):
+        if 'caseless' not in event.attrs: self.addCode(self.IN_OP)
+        else:
+            caseless = event.attrs['caseless']
+            if caseless == "no": self.addCode(self.IN_OP)
+            elif caseless == "yes": self.addCode(self.INIG_OP)
 
     def genClipStart(self, event, partAttrs):
         self.genDebugCode(event)

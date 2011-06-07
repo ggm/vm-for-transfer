@@ -176,6 +176,9 @@ class EventHandler():
     def handle_var_start(self, event):
         self.codeGen.genVarStart(event)
 
+    def handle_in_end(self, event):
+        self.codeGen.genInEnd(event)
+
     def handle_clip_start(self, event):
         part = event.attrs['part']
         partAttrs = []
