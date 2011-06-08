@@ -50,6 +50,11 @@
 	<pattern-item n="adj2"/>
       </pattern>
       <action>
+	<out>
+	  <lit v="el"/>
+	  <lit-tag v="det.def"/>
+	  <lit-tag v="pl"/>
+	</out>
       </action>
     </rule>
 
@@ -61,6 +66,11 @@
 	<pattern-item n="nploc"/>
       </pattern>
       <action>
+	<out>
+	  <lit v="el"/>
+	  <lit-tag v="det.def"/>
+	  <lit-tag v="pl"/>
+	</out>
       </action>
     </rule>
   </section-rules>

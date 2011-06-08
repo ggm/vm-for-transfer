@@ -12,7 +12,21 @@ push "<np><loc><*>"
 push 3
 addtrie action_1_start
 action_0_start:
+#<lit v="el">
+push "el"
+#<lit-tag v="det.def">
+push "<det><def>"
+#<lit-tag v="pl">
+push "<pl>"
+out 3
 action_0_end:
 action_1_start:
+#<lit v="el">
+push "el"
+#<lit-tag v="det.def">
+push "<det><def>"
+#<lit-tag v="pl">
+push "<pl>"
+out 3
 action_1_end:
 section_rules_end:
