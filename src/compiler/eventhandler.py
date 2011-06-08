@@ -173,6 +173,9 @@ class EventHandler():
     def handle_lit_tag_start(self, event):
         self.codeGen.genLitTagStart(event)
 
+    def handle_tags_end(self, event):
+        self.codeGen.genTagsEnd(event)
+
     def handle_lu_end(self, event):
         self.codeGen.genLuEnd(event)
 

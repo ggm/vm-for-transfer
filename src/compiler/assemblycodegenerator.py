@@ -195,6 +195,9 @@ class AssemblyCodeGenerator:
         litTag = litTag.replace(".", "><")
         self.addCode(self.PUSH_OP + self.INSTR_SEP + litTag)
 
+    def genTagsEnd(self, event):
+        self.addCode(self.APPEND_OP + self.INSTR_SEP + str(event.numChilds))
+
     def genLuEnd(self, event):
         self.addCode(self.LU_OP + self.INSTR_SEP + str(event.numChilds))
 
