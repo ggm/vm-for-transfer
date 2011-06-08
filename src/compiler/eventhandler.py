@@ -129,6 +129,17 @@ class EventHandler():
         self.printDebugMessage("handle_section_rules_end", event)
         self.codeGen.genSectionRulesEnd(event)
 
+    def handle_rule_start(self, event):
+        self.codeGen.genRuleStart(event)
+
+    def handle_pattern_end(self, event):
+        parent = self.callStack.top()
+        self.codeGen.genPatternEnd(event, parent)
+
+    def handle_pattern_item_end(self, event):
+        cats = self.defCats[event.attrs['n']]
+        self.codeGen.genPatternItemEnd(event, cats)
+
     def handle_choose_start(self, event):
         self.codeGen.genChooseStart(event)
 

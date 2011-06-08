@@ -22,6 +22,7 @@ class AssemblyCodeGenerator:
     #of other code generators.
     INSTR_SEP = " "         #instruction and argumentes separator (' ', '\t').
 
+    ADDTRIE_OP = "addtrie"  #addtrie addr -> add a set of patterns to the trie.
     AND_OP = "and"          #and num -> and of the last num elements on the stack.
     APPEND_OP = "append"    #append num -> append the last num elements on the stack.
     BEGINS_WITH_OP = "begins-with" #begins-with(-ig) -> tests if the first op contains the
@@ -63,7 +64,7 @@ class AssemblyCodeGenerator:
         self.nextAddress = 0
 
         #Used to generate new labels by element type.
-        self.nextLabel = {'when' : 0, 'choose' : 0}
+        self.nextLabel = {'when' : 0, 'choose' : 0, 'rule' : 0}
 
     def addCode(self, code):
         self.code.append(code)
@@ -109,6 +110,22 @@ class AssemblyCodeGenerator:
 
     def genSectionRulesEnd(self, event):
         self.addCode("section_rules_end:\n")
+
+    def genRuleStart(self, event):
+        event.variables['label'] = self.getNextLabel("rule")
+
+    def genPatternEnd(self, event, parent):
+        #Push the number of patterns to add to the trie.
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + str(event.numChilds))
+        #Push the trie instruction with the destination address as operand.
+        numLabel = parent.variables['label']
+        self.addCode(self.ADDTRIE_OP + self.INSTR_SEP + "action_{}_start".format(numLabel))
+
+    def genPatternItemEnd(self, event, cats):
+        #Push the contents of the category.
+        if len(cats) == 1: catsStr = "\"{}\"".format(cats[0])
+        else: catsStr = "\"" + "|".join(cats) + "\""
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + catsStr)
 
     def genChooseStart(self, event):
         event.variables['label'] = self.getNextLabel("choose")
