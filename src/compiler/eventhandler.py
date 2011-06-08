@@ -139,6 +139,13 @@ class EventHandler():
         cats = self.defCats[event.attrs['n']]
         self.codeGen.genPatternItemEnd(event, cats)
 
+    def handle_action_start(self, event):
+        event.variables['label'] = event.parent.variables['label']
+        self.codeGen.genActionStart(event)
+
+    def handle_action_end(self, event):
+        self.codeGen.genActionEnd(event)
+
     def handle_choose_start(self, event):
         self.codeGen.genChooseStart(event)
 

@@ -83,7 +83,12 @@ class AssemblyCodeGenerator:
         return nextLabel
 
     def getWritableCode(self):
-        return '\n'.join(self.code).encode('utf-8')
+        writableCode = '\n'.join(self.code)
+        writableCode += '\n'
+        writableCode += '\n'.join(self.rulesCode)
+        writableCode += '\n'
+        writableCode = writableCode.encode('utf-8')
+        return writableCode
 
     def genStoreInstr(self, container):
         #Choose the appropriate instr depending on the container.
@@ -116,7 +121,7 @@ class AssemblyCodeGenerator:
         self.addCode("section_rules_start:")
 
     def genSectionRulesEnd(self, event):
-        self.addCode("section_rules_end:\n")
+        self.addRulesCode("section_rules_end:")
 
     def genRuleStart(self, event):
         event.variables['label'] = self.getNextLabel("rule")
@@ -133,6 +138,14 @@ class AssemblyCodeGenerator:
         if len(cats) == 1: catsStr = "\"{}\"".format(cats[0])
         else: catsStr = "\"" + "|".join(cats) + "\""
         self.addCode(self.PUSH_OP + self.INSTR_SEP + catsStr)
+
+    def genActionStart(self, event):
+        numLabel = event.variables['label']
+        self.addRulesCode("action_{}_start:".format(numLabel))
+
+    def genActionEnd(self, event):
+        numLabel = event.variables['label']
+        self.addRulesCode("action_{}_end:".format(numLabel))
 
     def genChooseStart(self, event):
         event.variables['label'] = self.getNextLabel("choose")
