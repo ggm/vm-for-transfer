@@ -57,8 +57,11 @@ class AssemblyCodeGenerator:
         self.logger = logging.getLogger('compiler')
         self.debug = False
 
-        #The code we are going to generate.
+        #The code we are going to generate, separating the contents of the rules,
+        #the actions, from the pattern of each rule. Every pattern goes to the
+        #top of the section-rules section, and later on all the action code.
         self.code = []
+        self.rulesCode = []
 
         #Used to get the next address of an instruction if needed.
         self.nextAddress = 0
@@ -68,6 +71,10 @@ class AssemblyCodeGenerator:
 
     def addCode(self, code):
         self.code.append(code)
+        self.nextAddress += 1
+
+    def addRulesCode(self, code):
+        self.rulesCode.append(code)
         self.nextAddress += 1
 
     def getNextLabel(self, elem):
