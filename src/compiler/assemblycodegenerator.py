@@ -47,6 +47,7 @@ class AssemblyCodeGenerator:
     PUSH_OP = "push"        #push value -> pushes a value to the stack.
     PUSHBL_OP = "pushbl"    #pushbl -> pushes a blank to the stack.
     PUSHSB_OP = "pushsb"    #pushsb pos -> pushes a superblank at pos.
+    LU_OP = "lu"            #lu num -> creates a lexical unit(^...$).
     NOT_OP = "not"          #not -> negates the stack top (0 -> 1, 1 -> 0).
     OUT_OP = "out"          #out num -> outputs a number of elements on the stack.
     STORESL_OP = "storesl"  #storesl -> stores the top in the source language.
@@ -190,6 +191,9 @@ class AssemblyCodeGenerator:
         litTag = "\"<{}>\"".format(event.attrs['v'])
         litTag = litTag.replace(".", "><")
         self.addCode(self.PUSH_OP + self.INSTR_SEP + litTag)
+
+    def genLuEnd(self, event):
+        self.addCode(self.LU_OP + self.INSTR_SEP + str(event.numChilds))
 
     def genEqualEnd(self, event):
         self.addCode(self.getIgnoreCaseInstr(event, self.CMP_OP, self.CMPI_OP))
