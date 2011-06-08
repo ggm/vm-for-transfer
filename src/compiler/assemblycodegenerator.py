@@ -62,7 +62,8 @@ class AssemblyCodeGenerator:
         #the actions, from the pattern of each rule. Every pattern goes to the
         #top of the section-rules section, and later on all the action code.
         self.code = []
-        self.rulesCode = []
+        self.patternsCode = []
+        self.patternsSection = 0
 
         #Used to get the next address of an instruction if needed.
         self.nextAddress = 0
@@ -74,8 +75,8 @@ class AssemblyCodeGenerator:
         self.code.append(code)
         self.nextAddress += 1
 
-    def addRulesCode(self, code):
-        self.rulesCode.append(code)
+    def addPatternsCode(self, code):
+        self.patternsCode.append(code)
         self.nextAddress += 1
 
     def getNextLabel(self, elem):
@@ -84,9 +85,9 @@ class AssemblyCodeGenerator:
         return nextLabel
 
     def getWritableCode(self):
-        writableCode = '\n'.join(self.code)
-        writableCode += '\n'
-        writableCode += '\n'.join(self.rulesCode)
+        #Insert the patterns section code in its place.
+        code = self.code[:self.patternsSection] + self.patternsCode + self.code[self.patternsSection:]
+        writableCode = '\n'.join(code)
         writableCode += '\n'
         writableCode = writableCode.encode('utf-8')
         return writableCode
@@ -120,33 +121,34 @@ class AssemblyCodeGenerator:
     def genSectionRulesStart(self, event):
         self.genDebugCode(event)
         self.addCode("section_rules_start:")
+        self.patternsSection = self.nextAddress
 
     def genSectionRulesEnd(self, event):
-        self.addRulesCode("section_rules_end:")
+        self.addCode("section_rules_end:")
 
     def genRuleStart(self, event):
         event.variables['label'] = self.getNextLabel("rule")
 
     def genPatternEnd(self, event):
         #Push the number of patterns to add to the trie.
-        self.addCode(self.PUSH_OP + self.INSTR_SEP + str(event.numChilds))
+        self.addPatternsCode(self.PUSH_OP + self.INSTR_SEP + str(event.numChilds))
         #Push the trie instruction with the destination address as operand.
         numLabel = event.parent.variables['label']
-        self.addCode(self.ADDTRIE_OP + self.INSTR_SEP + "action_{}_start".format(numLabel))
+        self.addPatternsCode(self.ADDTRIE_OP + self.INSTR_SEP + "action_{}_start".format(numLabel))
 
     def genPatternItemEnd(self, event, cats):
         #Push the contents of the category.
         if len(cats) == 1: catsStr = "\"{}\"".format(cats[0])
         else: catsStr = "\"" + "|".join(cats) + "\""
-        self.addCode(self.PUSH_OP + self.INSTR_SEP + catsStr)
+        self.addPatternsCode(self.PUSH_OP + self.INSTR_SEP + catsStr)
 
     def genActionStart(self, event):
         numLabel = event.variables['label']
-        self.addRulesCode("action_{}_start:".format(numLabel))
+        self.addCode("action_{}_start:".format(numLabel))
 
     def genActionEnd(self, event):
         numLabel = event.variables['label']
-        self.addRulesCode("action_{}_end:".format(numLabel))
+        self.addCode("action_{}_end:".format(numLabel))
 
     def genChooseStart(self, event):
         event.variables['label'] = self.getNextLabel("choose")
@@ -303,4 +305,4 @@ class AssemblyCodeGenerator:
             attrs += " {}=\"{}\"".format(k, v)
 
         debugInfo = "#<{}{}>".format(event.name, attrs)
-        self.code.append(debugInfo)
+        self.addCode(debugInfo)
