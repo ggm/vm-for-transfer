@@ -50,11 +50,18 @@
 	<pattern-item n="adj2"/>
       </pattern>
       <action>
-	<lu>
-	  <lit v="el"/>
-	  <lit-tag v="det.def"/>
-	  <lit-tag v="pl"/>
-	</lu>
+	<mlu>
+	  <lu>
+	    <lit v="el"/>
+	    <lit-tag v="det.def"/>
+	    <lit-tag v="pl"/>
+	  </lu>
+	  <lu>
+	    <lit v="el"/>
+	    <lit-tag v="det.def"/>
+	    <lit-tag v="pl"/>
+	  </lu>
+      </mlu>
       </action>
     </rule>
 
