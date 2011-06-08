@@ -66,6 +66,22 @@
 	      <lit-tag v="pl"/>
 	    </lu>
 	  </chunk>
+	  <chunk fromname="tipus_det">
+	    <tags>
+	      <tag><lit-tag v="SN"/></tag>
+	      <tag><var n="tipus_det"/></tag>
+	    </tags>
+	    <lu>
+	      <lit v="el"/>
+	      <lit-tag v="det.def"/>
+	      <lit-tag v="pl"/>
+	    </lu>
+	    <lu>
+	      <lit v="el"/>
+	      <lit-tag v="det.def"/>
+	      <lit-tag v="pl"/>
+	    </lu>
+	  </chunk>
 	</out>
       </action>
     </rule>

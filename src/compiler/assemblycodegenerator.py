@@ -36,6 +36,7 @@ class AssemblyCodeGenerator:
                             #       and leaves 0 (not equal) or 1 (equal).
     CMPI_OP = "cmpi"        #cmpi -> same as cmp but ignoring the case.
     CONCAT_OP = "concat"    # concat num -> concat last num items on the stack.
+    CHUNK_OP = "chunk"      #chunk num -> creates a chunk with num operands on the stack.
     ENDS_WITH_OP = "ends-with" #ends-with(-ig) -> tests if the first op contains the
     ENDS_WITH_IG_OP = "ends-with-ig" #second one at the beginning (ig -> ignore case).
     GET_CASE_FROM_OP = "get-case-from" #get the case from contens in pos.
@@ -203,6 +204,22 @@ class AssemblyCodeGenerator:
 
     def genMluEnd(self, event):
         self.addCode(self.MLU_OP + self.INSTR_SEP + str(event.numChilds))
+
+    def genChunkStart(self, event):
+        self.genDebugCode(event)
+        chunkName = None    #Name is optional.
+        
+        #If there is a fromname we push the var name. 
+        if 'fromname' in event.attrs: chunkName = event.attrs['fromname']
+        elif 'name' in event.attrs: chunkName = "\"{}\"".format(event.attrs['name'])
+        if chunkName: 
+            self.addCode(self.PUSH_OP + self.INSTR_SEP + chunkName)
+            event.variables['name'] = True
+
+    def genChunkEnd(self, event):
+        numOps = event.numChilds
+        if 'name' in event.variables: numOps += 1
+        self.addCode(self.CHUNK_OP + self.INSTR_SEP + str(numOps))
 
     def genEqualEnd(self, event):
         self.addCode(self.getIgnoreCaseInstr(event, self.CMP_OP, self.CMPI_OP))

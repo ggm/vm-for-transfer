@@ -182,6 +182,12 @@ class EventHandler():
     def handle_mlu_end(self, event):
         self.codeGen.genMluEnd(event)
 
+    def handle_chunk_start(self, event):
+        self.codeGen.genChunkStart(event)
+
+    def handle_chunk_end(self, event):
+        self.codeGen.genChunkEnd(event)
+
     def handle_equal_end(self, event):
         self.codeGen.genEqualEnd(event)
 

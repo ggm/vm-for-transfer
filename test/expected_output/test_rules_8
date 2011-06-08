@@ -7,6 +7,8 @@ push "<adj>|<adj><*>|<adj><sint>|<adj><sint><*>|<adj><comp>|<adj><sup>"
 push 2
 addtrie action_0_start
 action_0_start:
+#<chunk name="det_det_nom">
+push "det_det_nom"
 #<lit-tag v="SN">
 push "<SN>"
 #<var n="tipus_det">
@@ -23,6 +25,29 @@ push "<det><def>"
 #<lit-tag v="pl">
 push "<pl>"
 lu 3
-out 1
+chunk 3
+#<chunk fromname="tipus_det">
+push tipus_det
+#<lit-tag v="SN">
+push "<SN>"
+#<var n="tipus_det">
+push tipus_det
+append 2
+#<lit v="el">
+push "el"
+#<lit-tag v="det.def">
+push "<det><def>"
+#<lit-tag v="pl">
+push "<pl>"
+lu 3
+#<lit v="el">
+push "el"
+#<lit-tag v="det.def">
+push "<det><def>"
+#<lit-tag v="pl">
+push "<pl>"
+lu 3
+chunk 4
+out 2
 action_0_end:
 section_rules_end:
