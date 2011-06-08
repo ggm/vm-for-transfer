@@ -20,7 +20,9 @@ push "el"
 push "<det><def>"
 #<lit-tag v="pl">
 push "<pl>"
-lu 3
+#<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
+push "<3>"
+lu 4
 mlu 2
 action_0_end:
 section_rules_end:

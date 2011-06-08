@@ -223,7 +223,13 @@ class AssemblyCodeGenerator:
     def genInEnd(self, event):
         self.addCode(self.getIgnoreCaseInstr(event, self.IN_OP, self.INIG_OP))
 
-    def genClipCode(self, event, partAttrs):
+    def genClipCode(self, event, partAttrs, linkTo=False):
+        #If there is a link-to attribute, we ignore the other ones.
+        if linkTo:
+            link_to = "\"<{}>\"".format(str(event.attrs['link-to']))
+            self.addCode(self.PUSH_OP + self.INSTR_SEP + link_to)
+            return
+
         #Push the position to the stack.
         pos = event.attrs['pos']
         self.addCode(self.PUSH_OP + self.INSTR_SEP + str(pos))
@@ -233,13 +239,13 @@ class AssemblyCodeGenerator:
         else: partAttrStr = "\"" + "|".join(partAttrs) + "\""
         self.addCode(self.PUSH_OP + self.INSTR_SEP + partAttrStr)
 
-    def genClipEnd(self, event, partAttrs, isContainer):
+    def genClipEnd(self, event, partAttrs, isContainer, linkTo):
         self.genDebugCode(event)
 
-        self.genClipCode(event, partAttrs)
+        self.genClipCode(event, partAttrs, linkTo)
 
         #If this clip doesn't work as a container (left-side), we need a CLIP(SL|TL).
-        if not isContainer:
+        if not linkTo and not isContainer:
             #Choose the appropriate instr depending on the side of the clip op.
             if event.attrs['side'] == 'sl': self.addCode(self.CLIPSL_OP)
             elif event.attrs['side'] == 'tl': self.addCode(self.CLIPTL_OP)

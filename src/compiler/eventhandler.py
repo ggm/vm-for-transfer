@@ -201,16 +201,21 @@ class EventHandler():
         self.codeGen.genInEnd(event)
 
     def handle_clip_end(self, event):
-        part = event.attrs['part']
+        #If there is a link-to attribute, we ignore the other ones.
         partAttrs = []
-        if part in "lem lemh lemq whole": partAttrs.append(part)
-        else: partAttrs = self.defAttrs[part]
+        if 'link-to' in event.attrs:
+            linkTo = True
+        else:
+            linkTo = False
+            part = event.attrs['part']
+            if part in "lem lemh lemq whole": partAttrs.append(part)
+            else: partAttrs = self.defAttrs[part]
 
         isContainer = False
         if event.parent.name in ('let', 'modify-case'):
             if event.parent.numChilds == 1: #If it's the first child, it's on the left
                 isContainer = True    #therefore it's a container.
-        self.codeGen.genClipEnd(event, partAttrs, isContainer)
+        self.codeGen.genClipEnd(event, partAttrs, isContainer, linkTo)
 
     def handle_list_start(self, event):
         list = self.defLists[event.attrs['n']]

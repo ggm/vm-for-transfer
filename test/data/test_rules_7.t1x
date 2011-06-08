@@ -60,6 +60,7 @@
 	    <lit v="el"/>
 	    <lit-tag v="det.def"/>
 	    <lit-tag v="pl"/>
+	    <clip pos="1" side="tl" part="gen_sense_mf" link-to="3"/>
 	  </lu>
       </mlu>
       </action>
