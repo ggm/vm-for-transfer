@@ -22,6 +22,7 @@ class Event:
         self.attrs = attrs
         self.childs = []
         self.numChilds = 0
+        self.parent = None
 
         #Variables is used to pass information between events.
         self.variables = {}

@@ -121,11 +121,11 @@ class AssemblyCodeGenerator:
     def genRuleStart(self, event):
         event.variables['label'] = self.getNextLabel("rule")
 
-    def genPatternEnd(self, event, parent):
+    def genPatternEnd(self, event):
         #Push the number of patterns to add to the trie.
         self.addCode(self.PUSH_OP + self.INSTR_SEP + str(event.numChilds))
         #Push the trie instruction with the destination address as operand.
-        numLabel = parent.variables['label']
+        numLabel = event.parent.variables['label']
         self.addCode(self.ADDTRIE_OP + self.INSTR_SEP + "action_{}_start".format(numLabel))
 
     def genPatternItemEnd(self, event, cats):
@@ -144,9 +144,9 @@ class AssemblyCodeGenerator:
     def genWhenStart(self, event):
         event.variables['label'] = self.getNextLabel("when")
 
-    def genWhenEnd(self, event, parent):
+    def genWhenEnd(self, event):
         #Add a jump to the end of the choose element, if the when is successful.
-        numLabel = parent.variables['label']
+        numLabel = event.parent.variables['label']
         self.addCode(self.JMP_OP  + self.INSTR_SEP + "choose_{}_end".format(numLabel))
 
         #Add the label of the when end.
@@ -156,8 +156,8 @@ class AssemblyCodeGenerator:
     def genOtherwiseStart(self, event):
         self.genDebugCode(event)
 
-    def genTestEnd(self, event, parent):
-        numLabel = parent.variables['label']
+    def genTestEnd(self, event):
+        numLabel = event.parent.variables['label']
         self.addCode(self.JZ_OP + self.INSTR_SEP + "when_{}_end".format(numLabel))
 
     def genBStart(self, event):

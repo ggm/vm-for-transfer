@@ -133,8 +133,7 @@ class EventHandler():
         self.codeGen.genRuleStart(event)
 
     def handle_pattern_end(self, event):
-        parent = self.callStack.top()
-        self.codeGen.genPatternEnd(event, parent)
+        self.codeGen.genPatternEnd(event)
 
     def handle_pattern_item_end(self, event):
         cats = self.defCats[event.attrs['n']]
@@ -150,15 +149,13 @@ class EventHandler():
         self.codeGen.genWhenStart(event)
 
     def handle_when_end(self, event):
-        parent = self.callStack.top()
-        self.codeGen.genWhenEnd(event, parent)
+        self.codeGen.genWhenEnd(event)
 
     def handle_otherwise_start(self, event):
         self.codeGen.genOtherwiseStart(event)
 
     def handle_test_end(self, event):
-        parent = self.callStack.top()
-        self.codeGen.genTestEnd(event, parent)
+        self.codeGen.genTestEnd(event)
 
     def handle_b_start(self, event):
         self.codeGen.genBStart(event)
@@ -196,10 +193,9 @@ class EventHandler():
         if part in "lem lemh lemq whole": partAttrs.append(part)
         else: partAttrs = self.defAttrs[part]
 
-        parent = self.callStack.top()
         isContainer = False
-        if parent.name in ('let', 'modify-case'):
-            if parent.numChilds == 1: #If it's the first child, it's on the left
+        if event.parent.name in ('let', 'modify-case'):
+            if event.parent.numChilds == 1: #If it's the first child, it's on the left
                 isContainer = True    #therefore it's a container.
         self.codeGen.genClipEnd(event, partAttrs, isContainer)
 
