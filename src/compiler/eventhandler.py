@@ -176,6 +176,9 @@ class EventHandler():
     def handle_lu_end(self, event):
         self.codeGen.genLuEnd(event)
 
+    def handle_mlu_end(self, event):
+        self.codeGen.genMluEnd(event)
+
     def handle_equal_end(self, event):
         self.codeGen.genEqualEnd(event)
 

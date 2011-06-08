@@ -43,6 +43,7 @@ class AssemblyCodeGenerator:
     INIG_OP = "inig"        #inig -> search a value in a list, ignoring case.
     JMP_OP = "jmp"          #jmp label -> jumps to the label, unconditionally.
     JZ_OP = "jz"            #jz label -> jumps to label if stack.top == 0.
+    MLU_OP = "mlu"             #mlu num -> creates a multiword with num elements.
     MODIFY_CASE_OP = "modify-case" #modify-case -> copy the case of one element to another.
     PUSH_OP = "push"        #push value -> pushes a value to the stack.
     PUSHBL_OP = "pushbl"    #pushbl -> pushes a blank to the stack.
@@ -196,6 +197,9 @@ class AssemblyCodeGenerator:
 
     def genLuEnd(self, event):
         self.addCode(self.LU_OP + self.INSTR_SEP + str(event.numChilds))
+
+    def genMluEnd(self, event):
+        self.addCode(self.MLU_OP + self.INSTR_SEP + str(event.numChilds))
 
     def genEqualEnd(self, event):
         self.addCode(self.getIgnoreCaseInstr(event, self.CMP_OP, self.CMPI_OP))
