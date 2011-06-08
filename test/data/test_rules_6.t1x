@@ -14,6 +14,18 @@
       <cat-item tags="adj.comp"/>
       <cat-item tags="adj.sup"/>
     </def-cat>
+
+    <def-cat n="nomcomu">
+      <cat-item tags="n.*"/>
+    </def-cat>
+    
+    <def-cat n="nompropi">
+      <cat-item tags="np.*"/>
+    </def-cat>
+
+    <def-cat n="nploc">
+      <cat-item tags="np.loc.*"/>
+    </def-cat>
   </section-def-cats>
 
   <section-def-attrs>
@@ -41,5 +53,16 @@
       </action>
     </rule>
 
+    <rule comment="REGLA: ALL NOUNplural (BCN: per afegir l'article definit en català 'all students' :: 'tots els estudiants'"> 
+
+      <pattern>
+	<pattern-item n="nomcomu"/>
+	<pattern-item n="nompropi"/>
+	<pattern-item n="nploc"/>
+      </pattern>
+      <action>
+      </action>
+    </rule>
   </section-rules>
+
 </transfer>
