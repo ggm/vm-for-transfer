@@ -15,6 +15,7 @@
 
   <section-def-vars>
     <def-var n="nombre" v="&amp;lt;sg&amp;gt;"/>
+    <def-var n="genere" v="&amp;lt;m&amp;gt;"/>
   </section-def-vars>
 
   <section-def-lists>
