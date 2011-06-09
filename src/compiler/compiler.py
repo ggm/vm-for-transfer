@@ -21,6 +21,7 @@ from callstack import CallStack
 from eventhandler import EventHandler
 from assemblycodegenerator import AssemblyCodeGenerator
 from symboltable import SymbolTable
+from compilererror import CompilerError
 
 class Compiler:
     """This class encapsulates all the compiling process."""
@@ -28,7 +29,7 @@ class Compiler:
     def __init__(self):
         self.setUpLogging()
         self.debug = False
-        
+
         #We use 'buffer' to get a stream of bytes, not str.
         self.input = sys.stdin.buffer
         self.output = sys.stdout.buffer
@@ -68,6 +69,11 @@ class Compiler:
         self.logger.addHandler(debugHandler)
 
     def compile(self):
-        self.parser.parse(self.input.read())
-        self.output.write(self.codeGenerator.getWritableCode())
-        self.logger.debug(str(self.symbolTable))
+        try:
+            self.parser.parse(self.input.read())
+            self.output.write(self.codeGenerator.getWritableCode())
+            self.logger.debug(str(self.symbolTable))
+        except (CompilerError, Exception) as e:
+            if self.debug: self.logger.exception(e)
+            else: self.logger.error(e)
+            exit(1)

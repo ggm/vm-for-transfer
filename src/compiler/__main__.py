@@ -61,7 +61,6 @@ def main():
                 print(ioe)
                 sys.exit(2)
 
-    #compiler.output.write(compiler.input.read())
     compiler.compile()
     
     sys.exit(0)
