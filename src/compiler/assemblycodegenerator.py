@@ -30,6 +30,7 @@ class AssemblyCodeGenerator:
     OR_OP = "or"            #or num -> or of the last num elements on the stack.
     CMP_SUBSTR_OP = "cmp-substr" #cmp(i)-substr -> tests if the first op contains the
     CMPI_SUBSTR_OP = "cmpi-substr" #contains a substring of the second one (i -> ignore case).
+    CLIP_OP = "clip"        #clip -> In t2x/t3x there is only a language, we don't need a side.
     CLIPSL_OP = "clipsl"    #clipsl -> puts a substring of the source language on the stack.
     CLIPTL_OP = "cliptl"    #cliptl -> puts a substring of the target language on the stack.
     CMP_OP = "cmp"          #cmp -> compares the last two items on the stack.
@@ -259,6 +260,12 @@ class AssemblyCodeGenerator:
         else: partAttrStr = "\"" + "|".join(partAttrs) + "\""
         self.addCode(self.PUSH_OP + self.INSTR_SEP + partAttrStr)
 
+    def genClipInstr(self, event):
+        #Choose the appropriate instr depending on the side of the clip op.
+        if 'side' not in event.attrs: self.addCode(self.CLIP_OP)
+        elif event.attrs['side'] == 'sl': self.addCode(self.CLIPSL_OP)
+        elif event.attrs['side'] == 'tl': self.addCode(self.CLIPTL_OP)
+
     def genClipEnd(self, event, partAttrs, isContainer, linkTo):
         self.genDebugCode(event)
 
@@ -266,9 +273,7 @@ class AssemblyCodeGenerator:
 
         #If this clip doesn't work as a container (left-side), we need a CLIP(SL|TL).
         if not linkTo and not isContainer:
-            #Choose the appropriate instr depending on the side of the clip op.
-            if event.attrs['side'] == 'sl': self.addCode(self.CLIPSL_OP)
-            elif event.attrs['side'] == 'tl': self.addCode(self.CLIPTL_OP)
+            self.genClipInstr(event)
 
     def genListStart(self, event, list):
         self.genDebugCode(event)
@@ -305,8 +310,7 @@ class AssemblyCodeGenerator:
         #Generate the code of the clip we are going to get the case from.
         self.genClipCode(event, partAttrs)
         #Add the clip instruction depending on the side attribute.
-        if event.attrs['side'] == 'sl': self.addCode(self.CLIPSL_OP)
-        elif event.attrs['side'] == 'tl': self.addCode(self.CLIPTL_OP)
+        self.genClipInstr(event)
 
         #Finally, use get-case-from to get the case of the clip on the stack.
         self.addCode(self.PUSH_OP + self.INSTR_SEP + "1") #1 because the clip already extracted pos.
