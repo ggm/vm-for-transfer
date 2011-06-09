@@ -36,7 +36,7 @@ class ExpatParser:
         self.parser.Parse(input)
     
     def handleStartElement(self, name, attrs):
-        event = Event(name, attrs)
+        event = Event(name, attrs, self.parser.CurrentLineNumber)
         #Add the event as a child of the current top.
         top = self.callStack.top()
         if top: 

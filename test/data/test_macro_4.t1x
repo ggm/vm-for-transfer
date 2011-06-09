@@ -16,6 +16,8 @@
   </section-def-attrs>
 
   <section-def-vars>
+    <def-var n="adv_adjectiu"/>
+    <def-var n="lema_SV"/>
   </section-def-vars>
 
   <section-def-lists>

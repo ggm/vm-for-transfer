@@ -26,6 +26,7 @@
   </section-def-attrs>
 
   <section-def-vars>
+    <def-var n="nombre"/>
   </section-def-vars>
 
   <section-def-lists>

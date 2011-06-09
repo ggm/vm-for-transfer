@@ -36,7 +36,14 @@ class EventHandler():
         self.callStack = compiler.callStack
         self.codeGen = compiler.codeGenerator
         self.symbolTable = compiler.symbolTable
-        
+
+    def raiseError(self, msg, event):
+        raise CompilerError("line {}, {}".format(event.lineNumber, msg))
+
+    def checkAttributeExists(self, event, attr):
+        if attr not in event.attrs:
+            self.raiseError("{} needs attribute {}.".format(event.name, attr), event)
+
     def handle_default_start(self, event):
         self.logger.debug("Ignoring call to unimplemented start handler for '{}' with attributes: {}".format(event.name, event.attrs))
 
@@ -48,6 +55,7 @@ class EventHandler():
         
     def handle_def_cat_start(self, event):
         self.printDebugMessage("handle_def_cat_start", event)
+        self.checkAttributeExists(event, 'n')
         defCatId = event.attrs['n']
         self.defCats[defCatId] = []
         self.currentDefCat = self.defCats[defCatId]
@@ -71,6 +79,7 @@ class EventHandler():
     
     def handle_def_attr_start(self, event):
         self.printDebugMessage("handle_def_attr_start", event)
+        self.checkAttributeExists(event, 'n')
         defAttrId = event.attrs['n']
         self.defAttrs[defAttrId] = []
         self.currentDefAttr = self.defAttrs[defAttrId]
@@ -90,6 +99,7 @@ class EventHandler():
         
     def handle_def_var_start(self, event):
         self.printDebugMessage("handle_def_var_start", event)
+        self.checkAttributeExists(event, 'n')
         varName = event.attrs['n']
         defaultValue = ""
         if 'v' in event.attrs:
@@ -101,6 +111,7 @@ class EventHandler():
     
     def handle_def_list_start(self, event):
         self.printDebugMessage("handle_def_list_start", event)
+        self.checkAttributeExists(event, 'n')
         defListId = event.attrs['n']
         self.defLists[defListId] = []
         self.currentDefList = self.defLists[defListId]
@@ -111,14 +122,17 @@ class EventHandler():
         
     def handle_list_item_start(self, event):
         self.printDebugMessage("handle_list_item_start", event)
-        listItem = event.attrs['v']        
+        self.checkAttributeExists(event, 'v')
+        listItem = event.attrs['v']
         self.currentDefList.append(listItem)
 
     def handle_section_def_macros_start(self, event):
         self.codeGen.genSectionDefMacrosStart(event)
 
     def handle_def_macro_start(self, event):
+        self.checkAttributeExists(event, 'n')
         name = event.attrs['n']
+        self.checkAttributeExists(event, 'npar')
         npar = event.attrs['npar']
         self.symbolTable.addMacro(name, npar)
         self.codeGen.genDefMacroStart(event)
@@ -141,6 +155,7 @@ class EventHandler():
         self.codeGen.genPatternEnd(event)
 
     def handle_pattern_item_end(self, event):
+        self.checkAttributeExists(event, 'n')
         cats = self.defCats[event.attrs['n']]
         self.codeGen.genPatternItemEnd(event, cats)
 
@@ -153,8 +168,17 @@ class EventHandler():
 
     def handle_call_macro_start(self, event):
         self.codeGen.genCallMacroStart(event)
+        self.checkAttributeExists(event, 'n')
 
     def handle_call_macro_end(self, event):
+        macroName = event.attrs['n']
+        if macroName not in self.symbolTable.symbols:
+            self.raiseError("Macro '{}' doesn't exist.".format(macroName), event)
+        numParams = event.numChilds
+        numParamsSymb = self.symbolTable.symbols[macroName].numParams
+        if int(numParams) != int(numParamsSymb):
+            self.raiseError("Macro '{}' needs {} parameters, passed {}."
+                            .format(macroName, numParamsSymb, numParams), event)
         self.codeGen.genCallMacroEnd(event)
 
     def handle_with_param_end(self, event):
@@ -218,6 +242,10 @@ class EventHandler():
         self.codeGen.genOutEnd(event)
 
     def handle_var_start(self, event):
+        self.checkAttributeExists(event, 'n')
+        varName = event.attrs['n']
+        if varName not in self.defVars:
+            self.raiseError("var '{}' doesn't exist.".format(varName), event)
         self.codeGen.genVarStart(event)
 
     def handle_in_end(self, event):
@@ -241,7 +269,11 @@ class EventHandler():
         self.codeGen.genClipEnd(event, partAttrs, isContainer, linkTo)
 
     def handle_list_start(self, event):
-        list = self.defLists[event.attrs['n']]
+        self.checkAttributeExists(event, 'n')
+        listName = event.attrs['n']
+        if listName not in self.defLists:
+            self.raiseError("list '{}' doesn't exist.".format(listName), event)
+        list = self.defLists[listName]
         self.codeGen.genListStart(event, list)
 
     def handle_let_end(self, event):
