@@ -62,7 +62,7 @@ push "<sg>|<pl>|<sp>|<ND>"
 cliptl
 storev
 choose_0_end:
-macro_nombre_nom_end:
+macro_nombre_nom_end: ret
 #<section-rules>
 section_rules_start:
 section_rules_end:

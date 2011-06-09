@@ -68,7 +68,7 @@ storev
 jmp choose_0_end
 when_0_end:
 choose_0_end:
-macro_adv_adj_end:
+macro_adv_adj_end: ret
 #<section-rules>
 section_rules_start:
 section_rules_end:

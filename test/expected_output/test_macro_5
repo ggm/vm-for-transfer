@@ -47,7 +47,7 @@ when_1_end:
 jmp choose_0_end
 when_0_end:
 choose_0_end:
-macro_begins_ends_test_end:
+macro_begins_ends_test_end: ret
 #<section-rules>
 section_rules_start:
 section_rules_end:
