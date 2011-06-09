@@ -146,6 +146,15 @@ class EventHandler():
     def handle_action_end(self, event):
         self.codeGen.genActionEnd(event)
 
+    def handle_call_macro_start(self, event):
+        self.codeGen.genCallMacroStart(event)
+
+    def handle_call_macro_end(self, event):
+        self.codeGen.genCallMacroEnd(event)
+
+    def handle_with_param_end(self, event):
+        self.codeGen.genWithParamEnd(event)
+
     def handle_choose_start(self, event):
         self.codeGen.genChooseStart(event)
 

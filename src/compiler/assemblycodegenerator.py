@@ -28,6 +28,7 @@ class AssemblyCodeGenerator:
     BEGINS_WITH_OP = "begins-with" #begins-with(-ig) -> tests if the first op contains the
     BEGINS_WITH_IG_OP = "begins-with-ig" #second one at the beginning (ig -> ignore case).
     OR_OP = "or"            #or num -> or of the last num elements on the stack.
+    CALL_OP = "call"        # call name -> call a macro with the arguments on the stack.
     CMP_SUBSTR_OP = "cmp-substr" #cmp(i)-substr -> tests if the first op contains the
     CMPI_SUBSTR_OP = "cmpi-substr" #contains a substring of the second one (i -> ignore case).
     CLIP_OP = "clip"        #clip -> In t2x/t3x there is only a language, we don't need a side.
@@ -53,6 +54,7 @@ class AssemblyCodeGenerator:
     LU_OP = "lu"            #lu num -> creates a lexical unit(^...$).
     NOT_OP = "not"          #not -> negates the stack top (0 -> 1, 1 -> 0).
     OUT_OP = "out"          #out num -> outputs a number of elements on the stack.
+    RET_OP = "ret"          #ret -> returns from a macro.
     STORESL_OP = "storesl"  #storesl -> stores the top in the source language.
     STORETL_OP = "storetl"  #storetl -> stores the top in the target language.
     STOREV_OP = "storev"    #storev -> stack(value, variable, ...) stores value in variable.
@@ -119,7 +121,8 @@ class AssemblyCodeGenerator:
         self.addCode("macro_{}_start:".format(event.attrs['n']))
 
     def genDefMacroEnd(self, event):
-        self.addCode("macro_{}_end:".format(event.attrs['n']))
+        macroEndLabel = "macro_{}_end:".format(event.attrs['n'])
+        self.addCode(macroEndLabel + self.INSTR_SEP + self.RET_OP)
 
     def genSectionRulesStart(self, event):
         self.genDebugCode(event)
@@ -152,6 +155,16 @@ class AssemblyCodeGenerator:
     def genActionEnd(self, event):
         numLabel = event.variables['label']
         self.addCode("action_{}_end:".format(numLabel))
+
+    def genCallMacroStart(self, event):
+        self.genDebugCode(event)
+
+    def genCallMacroEnd(self, event):
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + str(event.numChilds))
+        self.addCode(self.CALL_OP + self.INSTR_SEP + event.attrs['n'])
+
+    def genWithParamEnd(self, event):
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + str(event.attrs['pos']))
 
     def genChooseStart(self, event):
         event.variables['label'] = self.getNextLabel("choose")
