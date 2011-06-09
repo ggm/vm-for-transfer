@@ -94,7 +94,8 @@ class EventHandler():
         if 'v' in event.attrs:
             defaultValue = event.attrs['v']
             if ';' in defaultValue:
-                defaultValue = self.unEscape(defaultValue) 
+                defaultValue = self.unEscape(defaultValue)
+            self.codeGen.genDefVarStart(event, defaultValue)
         self.defVars[varName] = defaultValue
     
     def handle_def_list_start(self, event):
@@ -111,6 +112,9 @@ class EventHandler():
         self.printDebugMessage("handle_list_item_start", event)
         listItem = event.attrs['v']        
         self.currentDefList.append(listItem)
+
+    def handle_section_def_macros_start(self, event):
+        self.codeGen.genSectionDefMacrosStart(event)
 
     def handle_def_macro_start(self, event):
         name = event.attrs['n']
