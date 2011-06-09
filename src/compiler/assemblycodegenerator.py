@@ -198,7 +198,8 @@ class AssemblyCodeGenerator:
         self.addCode(self.PUSH_OP + self.INSTR_SEP + litTag)
 
     def genTagsEnd(self, event):
-        self.addCode(self.APPEND_OP + self.INSTR_SEP + str(event.numChilds))
+        if event.numChilds > 1:
+            self.addCode(self.APPEND_OP + self.INSTR_SEP + str(event.numChilds))
 
     def genLuEnd(self, event):
         self.addCode(self.LU_OP + self.INSTR_SEP + str(event.numChilds))
