@@ -172,13 +172,13 @@ class EventHandler():
 
     def handle_call_macro_end(self, event):
         macroName = event.attrs['n']
-        if macroName not in self.symbolTable.symbols:
-            self.raiseError("Macro '{}' doesn't exist.".format(macroName), event)
-        numParams = event.numChilds
-        numParamsSymb = self.symbolTable.symbols[macroName].numParams
-        if int(numParams) != int(numParamsSymb):
-            self.raiseError("Macro '{}' needs {} parameters, passed {}."
-                            .format(macroName, numParamsSymb, numParams), event)
+        #In one pass we can only check for the macros already parsed.
+        if macroName in self.symbolTable.symbols:
+            numParams = event.numChilds
+            numParamsSymb = self.symbolTable.symbols[macroName].numParams
+            if int(numParams) != int(numParamsSymb):
+                self.raiseError("Macro '{}' needs {} parameters, passed {}."
+                                .format(macroName, numParamsSymb, numParams), event)
         self.codeGen.genCallMacroEnd(event)
 
     def handle_with_param_end(self, event):
