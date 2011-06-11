@@ -168,7 +168,10 @@ class EventHandler():
 
     def handle_pattern_item_end(self, event):
         self.checkAttributeExists(event, 'n')
-        cats = self.defCats[event.attrs['n']]
+        catName = event.attrs['n']
+        if catName not in self.defCats:
+            self.raiseError("cat '{}' doesn't exist.".format(catName), event)
+        cats = self.defCats[catName]
         self.codeGen.genPatternItemEnd(event, cats)
 
     def handle_action_start(self, event):
