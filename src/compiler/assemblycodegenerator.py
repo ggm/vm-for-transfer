@@ -114,14 +114,22 @@ class AssemblyCodeGenerator:
             if caseless == "no": return instrNotIgnoreCase
             elif caseless == "yes": return instrIgnoreCase
 
+    def genHeader(self, event):
+        attrs = ""
+        for k, v in event.attrs.items():
+            attrs += " {}=\"{}\"".format(k, v)
+
+        header = "#<{}{}>".format(event.name, attrs)
+        self.addCode(header)
+
     def genTransferStart(self, event):
-        self.genDebugCode(event)
+        self.genHeader(event)
 
     def genInterchunkStart(self, event):
-        self.genDebugCode(event)
+        self.genHeader(event)
 
     def genPostchunkStart(self, event):
-        self.genDebugCode(event)
+        self.genHeader(event)
 
     def genDefVarStart(self, event, defaultValue):
         self.genDebugCode(event)
