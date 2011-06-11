@@ -55,6 +55,7 @@ class AssemblyCodeGenerator:
     NOT_OP = "not"          #not -> negates the stack top (0 -> 1, 1 -> 0).
     OUT_OP = "out"          #out num -> outputs a number of elements on the stack.
     RET_OP = "ret"          #ret -> returns from a macro.
+    STORECL_OP = "storecl"  #storecl -> stores the top in the clip (interchunk, postchunk).
     STORESL_OP = "storesl"  #storesl -> stores the top in the source language.
     STORETL_OP = "storetl"  #storetl -> stores the top in the target language.
     STOREV_OP = "storev"    #storev -> stack(value, variable, ...) stores value in variable.
@@ -101,7 +102,8 @@ class AssemblyCodeGenerator:
         #Choose the appropriate instr depending on the container.
         if 'var' in container.name: return self.STOREV_OP
         elif 'clip' in container.name:
-            if container.attrs['side'] == 'sl': return self.STORESL_OP
+            if 'side' not in container.attrs: return self.STORECL_OP
+            elif container.attrs['side'] == 'sl': return self.STORESL_OP
             elif container.attrs['side'] == 'tl': return self.STORETL_OP
 
     def getIgnoreCaseInstr(self, event, instrNotIgnoreCase, instrIgnoreCase):
