@@ -52,6 +52,7 @@ class AssemblyCodeGenerator:
     PUSHBL_OP = "pushbl"    #pushbl -> pushes a blank to the stack.
     PUSHSB_OP = "pushsb"    #pushsb pos -> pushes a superblank at pos.
     LU_OP = "lu"            #lu num -> creates a lexical unit(^...$).
+    LU_COUNT_OP = "lu-count"#lu-count -> counts number of lexical units in the rule (chunk).
     NOT_OP = "not"          #not -> negates the stack top (0 -> 1, 1 -> 0).
     OUT_OP = "out"          #out num -> outputs a number of elements on the stack.
     RET_OP = "ret"          #ret -> returns from a macro.
@@ -236,6 +237,9 @@ class AssemblyCodeGenerator:
 
     def genMluEnd(self, event):
         self.addCode(self.MLU_OP + self.INSTR_SEP + str(event.numChilds))
+
+    def genLuCountEnd(self, event):
+        self.addCode(self.LU_COUNT_OP)
 
     def genChunkStart(self, event):
         self.genDebugCode(event)
