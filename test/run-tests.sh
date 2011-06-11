@@ -9,7 +9,7 @@ echo "* expected_output = $output"
 echo "============================================"
 
 for arg in `ls $output` ; do
-  python3 src/compiler/ -i $input$arg.t1x -d compiler.log > compiler.out
+  python3 src/compiler/ -i $input$arg.t?x -d compiler.log > compiler.out
   if diff compiler.out $output$arg > test_results.log ; then
     echo $arg "-- OK"
   else
