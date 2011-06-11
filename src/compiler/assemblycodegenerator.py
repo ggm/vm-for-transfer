@@ -114,6 +114,12 @@ class AssemblyCodeGenerator:
     def genTransferStart(self, event):
         self.genDebugCode(event)
 
+    def genInterchunkStart(self, event):
+        self.genDebugCode(event)
+
+    def genPostchunkStart(self, event):
+        self.genDebugCode(event)
+
     def genDefVarStart(self, event, defaultValue):
         self.genDebugCode(event)
         #Push the default value and store it in var.

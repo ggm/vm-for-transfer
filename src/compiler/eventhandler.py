@@ -53,6 +53,12 @@ class EventHandler():
     def handle_transfer_start(self, event):
         self.codeGen.genTransferStart(event)
         
+    def handle_interchunk_start(self, event):
+        self.codeGen.genInterchunkStart(event)
+
+    def handle_postchunk_start(self, event):
+        self.codeGen.genPostchunkStart(event)
+
     def handle_def_cat_start(self, event):
         self.printDebugMessage("handle_def_cat_start", event)
         self.checkAttributeExists(event, 'n')
