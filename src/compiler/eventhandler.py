@@ -22,7 +22,10 @@ class EventHandler():
     
     def __init__(self, compiler):
         self.logger = logging.getLogger('compiler')
-        
+
+        #Store the transfer stage of the file read as input.
+        self.transferStage = ""
+
         #We need references to the compiler's data structures.
         self.defCats = compiler.defCats
         self.currentDefCat = None           #Keep the current cat to avoid extra calls to the stack.
@@ -51,12 +54,15 @@ class EventHandler():
         self.logger.debug("Ignoring call to unimplemented end handler for '{}'".format(event.name))
 
     def handle_transfer_start(self, event):
+        self.transferStage = "chunk"
         self.codeGen.genTransferStart(event)
         
     def handle_interchunk_start(self, event):
+        self.transferStage = "interchunk"
         self.codeGen.genInterchunkStart(event)
 
     def handle_postchunk_start(self, event):
+        self.transferStage = "postchunk"
         self.codeGen.genPostchunkStart(event)
 
     def handle_def_cat_start(self, event):
