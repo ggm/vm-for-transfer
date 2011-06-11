@@ -79,13 +79,17 @@ class EventHandler():
     def handle_cat_item_start(self, event):
         self.printDebugMessage("handle_cat_item_start", event)
         catItem = ''
-        if 'lemma' in event.attrs:                  #lemma attribute is optional
-            lemma = event.attrs['lemma']
-            catItem = lemma
-        
-        for tag in event.attrs['tags'].split('.'):
-            tag = "<{}>".format(tag)
-            catItem += tag
+        if self.transferStage == "postchunk":
+            catItem = event.attrs['name']
+        else:
+            if 'lemma' in event.attrs:                  #lemma attribute is optional.
+                lemma = event.attrs['lemma']
+                catItem = lemma
+            
+            if 'tags' in event.attrs:
+                for tag in event.attrs['tags'].split('.'):
+                    tag = "<{}>".format(tag)
+                    catItem += tag
         
         self.currentDefCat.append(catItem)
     
