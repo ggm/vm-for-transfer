@@ -163,7 +163,7 @@ class AssemblyCodeGenerator:
 
     def genPatternEnd(self, event):
         #Push the number of patterns to add to the trie.
-        self.addPatternsCode(self.PUSH_OP + self.INSTR_SEP + str(event.numChilds))
+        self.addPatternsCode(self.PUSH_OP + self.INSTR_SEP + str(event.numChildren))
         #Push the trie instruction with the destination address as operand.
         numLabel = event.parent.variables['label']
         self.addPatternsCode(self.ADDTRIE_OP + self.INSTR_SEP + "action_{}_start".format(numLabel))
@@ -186,7 +186,7 @@ class AssemblyCodeGenerator:
         self.genDebugCode(event)
 
     def genCallMacroEnd(self, event):
-        self.addCode(self.PUSH_OP + self.INSTR_SEP + str(event.numChilds))
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + str(event.numChildren))
         self.addCode(self.CALL_OP + self.INSTR_SEP + event.attrs['n'])
 
     def genWithParamEnd(self, event):
@@ -237,14 +237,14 @@ class AssemblyCodeGenerator:
         self.addCode(self.PUSH_OP + self.INSTR_SEP + litTag)
 
     def genTagsEnd(self, event):
-        if event.numChilds > 1:
-            self.addCode(self.APPEND_OP + self.INSTR_SEP + str(event.numChilds))
+        if event.numChildren > 1:
+            self.addCode(self.APPEND_OP + self.INSTR_SEP + str(event.numChildren))
 
     def genLuEnd(self, event):
-        self.addCode(self.LU_OP + self.INSTR_SEP + str(event.numChilds))
+        self.addCode(self.LU_OP + self.INSTR_SEP + str(event.numChildren))
 
     def genMluEnd(self, event):
-        self.addCode(self.MLU_OP + self.INSTR_SEP + str(event.numChilds))
+        self.addCode(self.MLU_OP + self.INSTR_SEP + str(event.numChildren))
 
     def genLuCountEnd(self, event):
         self.addCode(self.LU_COUNT_OP)
@@ -261,7 +261,7 @@ class AssemblyCodeGenerator:
             event.variables['name'] = True
 
     def genChunkEnd(self, event):
-        numOps = event.numChilds
+        numOps = event.numChildren
         if 'name' in event.variables: numOps += 1
         self.addCode(self.CHUNK_OP + self.INSTR_SEP + str(numOps))
 
@@ -269,16 +269,16 @@ class AssemblyCodeGenerator:
         self.addCode(self.getIgnoreCaseInstr(event, self.CMP_OP, self.CMPI_OP))
 
     def genAndEnd(self, event):
-        self.addCode(self.AND_OP + self.INSTR_SEP + str(event.numChilds))
+        self.addCode(self.AND_OP + self.INSTR_SEP + str(event.numChildren))
 
     def genOrEnd(self, event):
-        self.addCode(self.OR_OP + self.INSTR_SEP + str(event.numChilds))
+        self.addCode(self.OR_OP + self.INSTR_SEP + str(event.numChildren))
 
     def genNotEnd(self, event):
         self.addCode(self.NOT_OP)
 
     def genOutEnd(self, event):
-        self.addCode(self.OUT_OP + self.INSTR_SEP + str(event.numChilds))
+        self.addCode(self.OUT_OP + self.INSTR_SEP + str(event.numChildren))
 
     def genVarStart(self, event):
         self.genDebugCode(event)
@@ -330,14 +330,14 @@ class AssemblyCodeGenerator:
         self.addCode(self.genStoreInstr(container))
 
     def genConcatEnd(self, event):
-        self.addCode(self.CONCAT_OP + self.INSTR_SEP + str(event.numChilds))
+        self.addCode(self.CONCAT_OP + self.INSTR_SEP + str(event.numChildren))
 
     def genAppendStart(self, event):
         self.genDebugCode(event)
         self.addCode(self.PUSH_OP + self.INSTR_SEP + event.attrs['n'])
 
     def genAppendEnd(self, event):
-        self.addCode(self.APPEND_OP + self.INSTR_SEP + str(event.numChilds))
+        self.addCode(self.APPEND_OP + self.INSTR_SEP + str(event.numChildren))
 
     def genGetCaseFromStart(self, event):
         self.genDebugCode(event)

@@ -21,13 +21,13 @@ class Event:
         self.name = name
         self.attrs = attrs
         self.lineNumber = lineNumber
-        self.childs = []
-        self.numChilds = 0
+        self.children = []
+        self.numChildren = 0
         self.parent = None
 
         #Variables is used to pass information between events.
         self.variables = {}
 
     def addChild(self, event):
-        self.childs.append(event)
-        self.numChilds += 1
+        self.children.append(event)
+        self.numChildren += 1

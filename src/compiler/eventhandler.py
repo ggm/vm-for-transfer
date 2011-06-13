@@ -193,7 +193,7 @@ class EventHandler():
         macroName = event.attrs['n']
         #In one pass we can only check for the macros already parsed.
         if macroName in self.symbolTable.symbols:
-            numParams = event.numChilds
+            numParams = event.numChildren
             numParamsSymb = self.symbolTable.symbols[macroName].numParams
             if int(numParams) != int(numParamsSymb):
                 self.raiseError("Macro '{}' needs {} parameters, passed {}."
@@ -288,7 +288,7 @@ class EventHandler():
 
         isContainer = False
         if event.parent.name in ('let', 'modify-case'):
-            if event.parent.numChilds == 1: #If it's the first child, it's on the left
+            if event.parent.numChildren == 1: #If it's the first child, it's on the left
                 isContainer = True    #therefore it's a container.
         self.codeGen.genClipEnd(event, partAttrs, isContainer, linkTo)
 
@@ -301,7 +301,7 @@ class EventHandler():
         self.codeGen.genListStart(event, list)
 
     def handle_let_end(self, event):
-        container = event.childs[0]
+        container = event.children[0]
         self.codeGen.genLetEnd(event, container)
 
     def handle_concat_end(self, event):
@@ -328,7 +328,7 @@ class EventHandler():
         self.codeGen.genCaseOfStart(event, partAttrs)
 
     def handle_modify_case_end(self, event):
-        container = event.childs[0]
+        container = event.children[0]
         self.codeGen.genModifyCaseEnd(event, container)
 
     def handle_begins_with_end(self, event):
