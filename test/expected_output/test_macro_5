@@ -1,3 +1,4 @@
+#<assembly>
 #<transfer default="chunk">
 jmp section_rules_start
 #<def-macro npar="2" n="begins_ends_test">

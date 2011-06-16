@@ -1,3 +1,4 @@
+#<assembly>
 #<transfer default="chunk">
 jmp section_rules_start
 #<section-rules>
