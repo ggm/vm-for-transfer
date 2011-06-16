@@ -20,11 +20,11 @@ class AssemblyCodeGenerator:
     
     #Define the instruction set as a set of constants to ease the creation
     #of other code generators.
-    INSTR_SEP = " "         #instruction and argumentes separator (' ', '\t').
+    INSTR_SEP = " "         #instruction and arguments separator (' ', '\t').
 
     ADDTRIE_OP = "addtrie"  #addtrie addr -> add a set of patterns to the trie.
     AND_OP = "and"          #and num -> and of the last num elements on the stack.
-    APPEND_OP = "append"    #append num -> append the last num elements on the stack.
+    APPEND_OP = "append"    #append num -> append the last num elements on the stack to a var/clip.
     BEGINS_WITH_OP = "begins-with" #begins-with(-ig) -> tests if the first op contains the
     BEGINS_WITH_IG_OP = "begins-with-ig" #second one at the beginning (ig -> ignore case).
     OR_OP = "or"            #or num -> or of the last num elements on the stack.
@@ -41,12 +41,12 @@ class AssemblyCodeGenerator:
     CHUNK_OP = "chunk"      #chunk num -> creates a chunk with num operands on the stack.
     ENDS_WITH_OP = "ends-with" #ends-with(-ig) -> tests if the first op contains the
     ENDS_WITH_IG_OP = "ends-with-ig" #second one at the beginning (ig -> ignore case).
-    GET_CASE_FROM_OP = "get-case-from" #get the case from contens in pos.
+    GET_CASE_FROM_OP = "get-case-from" #get the case from contents in pos.
     IN_OP = "in"            #in -> search a value in a list.
     INIG_OP = "inig"        #inig -> search a value in a list, ignoring case.
     JMP_OP = "jmp"          #jmp label -> jumps to the label, unconditionally.
     JZ_OP = "jz"            #jz label -> jumps to label if stack.top == 0.
-    MLU_OP = "mlu"             #mlu num -> creates a multiword with num elements.
+    MLU_OP = "mlu"          #mlu num -> creates a multiword with num elements.
     MODIFY_CASE_OP = "modify-case" #modify-case -> copy the case of one element to another.
     PUSH_OP = "push"        #push value -> pushes a value to the stack.
     PUSHBL_OP = "pushbl"    #pushbl -> pushes a blank to the stack.
