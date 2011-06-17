@@ -16,6 +16,7 @@
 
 import sys
 import logging
+from systemstack import SystemStack
 from interpreter import Interpreter
 from assemblyloader import AssemblyLoader
 
@@ -40,6 +41,7 @@ class VM:
         self.status = VM_STATUS.HALTED
 
         #Components used by the vm.
+        self.stack = SystemStack()
         self.loader = None
         self.interpreter = Interpreter(self)
 
