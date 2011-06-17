@@ -15,6 +15,7 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 import sys
+import logging
 from interpreter import Interpreter
 from assemblyloader import AssemblyLoader
 
@@ -28,6 +29,7 @@ class VM:
     """This class encapsulates all the VM processing."""
 
     def __init__(self):
+        self.setUpLogging()
         #Structure of the stores used in the vm.
         self.variables = {}
         self.rulesCode = {}
@@ -45,6 +47,16 @@ class VM:
         self.input = sys.stdin.buffer
         self.output = sys.stdout.buffer
 
+    def setUpLogging(self):
+        """Set at least an error through stderr logger"""
+        self.formatString = '%(levelname)s: %(filename)s[%(lineno)d]:\t%(message)s'
+        self.logger = logging.getLogger('vm')
+
+        errorHandler = logging.StreamHandler(sys.stderr)
+        errorHandler.setFormatter(logging.Formatter(self.formatString))
+        errorHandler.setLevel(logging.ERROR)
+        self.logger.addHandler(errorHandler)
+
     def setLoader(self, header):
         """Set the loader to use depending on the header of the code file."""
 
@@ -53,4 +65,8 @@ class VM:
         return True
 
     def run(self):
-        pass
+        try:
+            pass
+        except (Exception) as e:
+            self.logger.exception(e)
+            exit(1)
