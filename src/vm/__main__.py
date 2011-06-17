@@ -50,7 +50,7 @@ def main():
             try:
                 t1xFile = open(arg, mode='rt', encoding='utf-8')
                 header = t1xFile.readline()
-                if not vm.setLoader(header):
+                if not vm.setLoader(header, t1xFile):
                     print("The header of the file {} is not recognized:".format(arg))
                     print(header)
                     sys.exit(2)

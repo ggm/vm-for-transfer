@@ -33,8 +33,9 @@ class VM:
         self.setUpLogging()
         #Structure of the stores used in the vm.
         self.variables = {}
-        self.rulesCode = {}
-        self.macrosCode = {}
+        self.code = []
+        self.rulesCode = []
+        self.macrosCode = []
         self.trie = None
 
         #Execution state of the vm.
@@ -59,16 +60,43 @@ class VM:
         errorHandler.setLevel(logging.ERROR)
         self.logger.addHandler(errorHandler)
 
-    def setLoader(self, header):
+    def setLoader(self, header, t1xFile):
         """Set the loader to use depending on the header of the code file."""
 
-        if "assembly" in header: self.loader = AssemblyLoader()
+        if "assembly" in header: self.loader = AssemblyLoader(self, t1xFile)
         else: return False
         return True
 
     def run(self):
+        """Load, preprocess and execute the contents of the files."""
         try:
-            pass
+            self.loader.load()
+            self.printCodeSections()
         except (Exception) as e:
             self.logger.exception(e)
             exit(1)
+
+    def printCodeSections(self):
+        """Print all the code sections for information or debugging purposes."""
+
+        self.printSection(self.code, "Code")
+        self.printSection(self.rulesCode, "Rules", enumerate=True)
+        self.printSection(self.macrosCode, "Macros", enumerate=True)
+
+    def printSection(self, section, headerText, enumerate=False):
+        """Print a code section for information or debugging purposes."""
+
+        symbol = '='
+        header = symbol * 20 + " {:=<39}"
+        footer = symbol * 60 + '\n'
+
+        if not enumerate:
+            print(header.format(headerText + " section "))
+            for code in self.code: print(code, end='')
+        else:
+            print(header.format(headerText + " code section "))
+            number = 0
+            for code in section:
+                print("{} {}: {}".format(headerText[:-1], number, code))
+                number += 1
+        print(footer)

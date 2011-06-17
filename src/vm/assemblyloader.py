@@ -20,8 +20,43 @@ class AssemblyLoader:
     the format used by the VM.
     """
 
-    def __init__(self):
-        pass
+    def __init__(self, vm, t1xFile):
+        #Access to the data structures of the vm is needed.
+        self.vm = vm
+        self.data = t1xFile
+
+        #We convert the macro's name to a numerical address, used for indexing.
+        self.macroAddress = {}
+        self.nextMacroAddress = -1
+
+    def getNextMacroAddress(self):
+        self.nextMacroAddress += 1
+        return self.nextMacroAddress
 
     def load(self):
-        pass
+        currentSection = self.vm.code
+        for line in self.data.readlines():
+            #Ignore comments.
+            if line[0] == '#': continue
+            #Handle the contents of each rule.
+            elif line.startswith('action'):
+                #If it is the start, create a list which will contain the rule code.
+                if line.endswith('start:\n'):
+                    ruleNumber = int(line[7])
+                    currentSection = []
+                #If it is the end, create an entry on the rules section with the code.
+                elif line.endswith('end:\n'):
+                    self.vm.rulesCode.insert(ruleNumber, currentSection)
+                    currentSection = self.vm.code
+            #Handle the contents of each macro.
+            elif line.startswith('macro'):
+                if line.endswith('start:\n'):
+                    macroName = line[6:line.rfind("_start")]
+                    address = self.getNextMacroAddress()
+                    self.macroAddress[macroName] = address
+                    currentSection = []
+                elif 'end:' in line:
+                    self.vm.macrosCode.insert(address, currentSection)
+                    currentSection = self.vm.code
+            else:
+                currentSection.append(line)
