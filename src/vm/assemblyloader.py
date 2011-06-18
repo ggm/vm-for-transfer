@@ -30,31 +30,40 @@ class AssemblyLoader:
         self.nextMacroAddress = -1
 
     def getNextMacroAddress(self):
+        """Get a new unique address for a macro."""
+
         self.nextMacroAddress += 1
         return self.nextMacroAddress
 
     def load(self):
+        """
+        Load an assembly file and transform the instructions to the vm
+        representation, substituting macro names for addresses.
+        """
+
         currentSection = self.vm.code
         for line in self.data.readlines():
             #Ignore comments.
             if line[0] == '#': continue
             #Handle the contents of each rule.
             elif line.startswith('action'):
-                #If it is the start, create a list which will contain the rule code.
+                #At the start, create a list which will contain the rule's code.
                 if line.endswith('start:\n'):
                     ruleNumber = int(line[7])
                     currentSection = []
-                #If it is the end, create an entry on the rules section with the code.
+                #At the end, create an entry on the rules section with the code.
                 elif line.endswith('end:\n'):
                     self.vm.rulesCode.insert(ruleNumber, currentSection)
                     currentSection = self.vm.code
             #Handle the contents of each macro.
             elif line.startswith('macro'):
+                #At the start create a list which will contain the macro's code.
                 if line.endswith('start:\n'):
                     macroName = line[6:line.rfind("_start")]
                     address = self.getNextMacroAddress()
                     self.macroAddress[macroName] = address
                     currentSection = []
+                #At the end create an entry on the macros section with the code.
                 elif 'end:' in line:
                     self.vm.macrosCode.insert(address, currentSection)
                     currentSection = self.vm.code

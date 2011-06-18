@@ -52,6 +52,7 @@ class VM:
 
     def setUpLogging(self):
         """Set at least an error through stderr logger"""
+
         self.formatString = '%(levelname)s: %(filename)s[%(lineno)d]:\t%(message)s'
         self.logger = logging.getLogger('vm')
 
@@ -69,6 +70,7 @@ class VM:
 
     def run(self):
         """Load, preprocess and execute the contents of the files."""
+
         try:
             self.loader.load()
             self.printCodeSections()
