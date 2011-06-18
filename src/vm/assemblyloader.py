@@ -13,6 +13,7 @@
 #You should have received a copy of the GNU General Public License
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+from loadererror import LoaderError
 
 class AssemblyLoader:
     """
@@ -29,6 +30,14 @@ class AssemblyLoader:
         self.macroAddress = {}
         self.nextMacroAddress = -1
 
+        #The current line number is used in the error messages.
+        self.currentLineNumber = -1
+
+    def raiseError(self, msg):
+        """Raise an error to handle it in the main process."""
+
+        raise LoaderError("line {}, {}".format(self.currentLineNumber, msg))
+
     def getNextMacroAddress(self):
         """Get a new unique address for a macro."""
 
@@ -42,7 +51,9 @@ class AssemblyLoader:
         """
 
         currentSection = self.vm.code
-        for line in self.data.readlines():
+
+        for number, line in enumerate(self.data.readlines()):
+            self.currentLineNumber = number
             #Ignore comments.
             if line[0] == '#': continue
             #Handle the contents of each rule.
