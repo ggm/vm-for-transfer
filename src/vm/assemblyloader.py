@@ -21,6 +21,22 @@ class AssemblyLoader:
     the format used by the VM.
     """
 
+    #Assembly to vm internal representation table. We could create a dictionary
+    #from an enumerated list but it's better to keep it the more static we can.
+    #This way it's easier to check the values and tests when maintaining it.
+    opCodes = {
+               "addtrie" : 0, "and" : 1, "append" : 2, "begins-with" : 3,
+               "begins-with-ig" : 4, "or" : 5, "call" : 6, "cmp-substr": 7,
+               "cmpi-substr" : 8, "clip" : 9, "clipsl" : 10, "cliptl" : 11,
+               "cmp" : 12, "cmpi" : 13, "concat" : 14, "chunk" : 15,
+               "ends-with" : 16, "ends-with-ig" : 17, "get-case-from" : 18,
+               "in" : 19, "inig" : 20, "jmp" : 21, "jz" :22, "jnz" : 23,
+               "mlu" : 24, "modify-case" : 25, "push" : 26, "pushbl" : 27,
+               "pushsb" : 28, "lu" : 29, "lu-count" : 30, "not" : 31,
+               "out" : 32, "ret" : 33, "storecl" : 34, "storesl" : 35,
+               "storetl" : 36, "storev" : 37
+              }
+
     def __init__(self, vm, t1xFile):
         #Access to the data structures of the vm is needed.
         self.vm = vm
@@ -29,6 +45,12 @@ class AssemblyLoader:
         #We convert the macro's name to a numerical address, used for indexing.
         self.macroAddress = {}
         self.nextMacroAddress = -1
+
+        #Define some constants to handle instructions by groups.
+        self.instrWithLabel = [self.opCodes["addtrie"], self.opCodes["call"],
+                               self.opCodes["jmp"], self.opCodes["jz"],
+                               self.opCodes["jnz"]
+                               ]
 
         #The current line number is used in the error messages.
         self.currentLineNumber = -1
