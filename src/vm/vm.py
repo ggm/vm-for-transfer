@@ -82,23 +82,22 @@ class VM:
         """Print all the code sections for information or debugging purposes."""
 
         self.printSection(self.code, "Code")
-        self.printSection(self.rulesCode, "Rules", enumerate=True)
-        self.printSection(self.macrosCode, "Macros", enumerate=True)
+        self.printSection(self.rulesCode, "Rules", enum=True)
+        self.printSection(self.macrosCode, "Macros", enum=True)
 
-    def printSection(self, section, headerText, enumerate=False):
+    def printSection(self, section, headerText, enum=False):
         """Print a code section for information or debugging purposes."""
 
         symbol = '='
         header = symbol * 20 + " {:=<39}"
         footer = symbol * 60 + '\n'
 
-        if not enumerate:
+        if not enum:
             print(header.format(headerText + " section "))
             for code in self.code: print(code, end='')
         else:
             print(header.format(headerText + " code section "))
-            number = 0
-            for code in section:
+            for number, code in enumerate(section):
                 print("{} {}: {}".format(headerText[:-1], number, code))
-                number += 1
+
         print(footer)
