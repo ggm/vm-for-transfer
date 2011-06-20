@@ -2,11 +2,11 @@
 #<transfer default="chunk">
 #<def-var v="&lt;sg&gt;" n="nombre">
 push nombre
-push <sg>
+push "<sg>"
 storev
 #<def-var v="&lt;m&gt;" n="genere">
 push genere
-push <m>
+push "<m>"
 storev
 jmp section_rules_start
 #<def-macro npar="1" n="nombre_nom">
