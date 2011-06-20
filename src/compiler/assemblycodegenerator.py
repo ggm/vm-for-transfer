@@ -360,7 +360,8 @@ class AssemblyCodeGenerator:
         self.genClipInstr(event)
 
         #Finally, use get-case-from to get the case of the clip on the stack.
-        self.addCode(self.PUSH_OP + self.INSTR_SEP + "1") #1 because the clip already extracted pos.
+        # "1" because the clip already extracted the pos.
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + "1")
         self.addCode(self.GET_CASE_FROM_OP)
 
     def genModifyCaseEnd(self, event, container):

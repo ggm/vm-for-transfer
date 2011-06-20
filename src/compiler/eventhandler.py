@@ -40,12 +40,34 @@ class EventHandler():
         self.codeGen = compiler.codeGenerator
         self.symbolTable = compiler.symbolTable
 
+        #We store calls to macros not parsed to check for errors at the end.
+        self.uncheckedMacros = []
+
     def raiseError(self, msg, event):
         raise CompilerError("line {}, {}".format(event.lineNumber, msg))
 
     def checkAttributeExists(self, event, attr):
         if attr not in event.attrs:
             self.raiseError("{} needs attribute {}.".format(event.name, attr), event)
+
+    def checkMacro(self, event):
+        #Check if macro exists and it's defined.
+        macroName = event.attrs['n']
+        if macroName not in self.symbolTable.symbols:
+            self.raiseError("macro '{}' doesn't exist.".format(macroName), event)
+
+        #Check if the number of parameters passed is correct.
+        numParams = event.numChildren
+        numParamsSymb = self.symbolTable.symbols[macroName].numParams
+        if int(numParams) != int(numParamsSymb):
+            self.raiseError("Macro '{}' needs {} parameters, passed {}."
+                            .format(macroName, numParamsSymb, numParams), event)
+
+    def addUncheckedMacro(self, event):
+        self.uncheckedMacros.append(event)
+
+    def handleEndOfParsing(self):
+        for event in self.uncheckedMacros: self.checkMacro(event)
 
     def handle_default_start(self, event):
         self.logger.debug("Ignoring call to unimplemented start handler for '{}' with attributes: {}".format(event.name, event.attrs))
@@ -56,14 +78,23 @@ class EventHandler():
     def handle_transfer_start(self, event):
         self.transferStage = "chunk"
         self.codeGen.genTransferStart(event)
-        
+
+    def handle_transfer_end(self, event):
+        self.handleEndOfParsing()
+
     def handle_interchunk_start(self, event):
         self.transferStage = "interchunk"
         self.codeGen.genInterchunkStart(event)
 
+    def handle_interchunk_end(self, event):
+        self.handleEndOfParsing()
+
     def handle_postchunk_start(self, event):
         self.transferStage = "postchunk"
         self.codeGen.genPostchunkStart(event)
+
+    def handle_postchunk_end(self, event):
+        self.handleEndOfParsing()
 
     def handle_def_cat_start(self, event):
         self.printDebugMessage("handle_def_cat_start", event)
@@ -191,13 +222,12 @@ class EventHandler():
 
     def handle_call_macro_end(self, event):
         macroName = event.attrs['n']
-        #In one pass we can only check for the macros already parsed.
-        if macroName in self.symbolTable.symbols:
-            numParams = event.numChildren
-            numParamsSymb = self.symbolTable.symbols[macroName].numParams
-            if int(numParams) != int(numParamsSymb):
-                self.raiseError("Macro '{}' needs {} parameters, passed {}."
-                                .format(macroName, numParamsSymb, numParams), event)
+
+        #In one pass we can only check for the macros already parsed,
+        #so we add the other to check at the end.
+        if macroName in self.symbolTable.symbols: self.checkMacro(event)
+        else: self.addUncheckedMacro(event)
+
         self.codeGen.genCallMacroEnd(event)
 
     def handle_with_param_end(self, event):
