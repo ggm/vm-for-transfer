@@ -14,6 +14,7 @@
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 from loadererror import LoaderError
+from scope import Scope
 
 class AssemblyLoader:
     """
@@ -37,20 +38,27 @@ class AssemblyLoader:
                "storetl" : 36, "storev" : 37
               }
 
+    #For debugging purposes dict with opCode as key and string as value.
+    reversedOpCodes = dict([(v, k) for k, v in opCodes.items()])
+
     def __init__(self, vm, t1xFile):
         #Access to the data structures of the vm is needed.
         self.vm = vm
         self.data = t1xFile
 
         #We convert the macro's name to a numerical address, used for indexing.
-        self.macroAddress = {}
-        self.nextMacroAddress = -1
+        self.macroNumber = {}
+        self.nextMacroNumber = -1
+
+        #We convert each label to an internal numerical address, used by the vm.
+        #Labels have different scopes: code, rules, macros...
+        self.scopes = []
+        self.currentScope = None
 
         #Define some constants to handle instructions by groups.
         self.instrWithLabel = [self.opCodes["addtrie"], self.opCodes["call"],
                                self.opCodes["jmp"], self.opCodes["jz"],
-                               self.opCodes["jnz"]
-                               ]
+                               self.opCodes["jnz"]]
 
         #The current line number is used in the error messages.
         self.currentLineNumber = -1
@@ -60,45 +68,142 @@ class AssemblyLoader:
 
         raise LoaderError("line {}, {}".format(self.currentLineNumber, msg))
 
-    def getNextMacroAddress(self):
+    def createNewScope(self):
+        """Create a new scope and set it as the current one."""
+
+        self.scopes.append(Scope())
+        self.currentScope = self.scopes[-1]
+
+    def deleteCurrentScope(self):
+        """Delete the current scope."""
+
+        self.scopes.pop()
+        if len(self.scopes) > 0: self.currentScope = self.scopes[-1]
+        else: self.currentScope = None
+
+    def createNewLabelAddress(self, label):
+        """Create a new unique internal address for a label."""
+
+        scope = self.currentScope
+        labelAddress = scope.nextAddress
+        scope.labelAddress[label] = labelAddress
+        return labelAddress
+
+    def getReferenceToLabel(self, label, section):
+        """Get the label address if it's already processed or mark it as patch
+           needed if the label address is unknown yet.
+        """
+
+        scope = self.currentScope
+        if label in scope.labelAddress: return scope.labelAddress[label]
+        else:
+            scope.addLabelToPatch(label, len(section))
+            return "#0#"
+
+    def getRuleNumber(self, ruleLabel):
+        """Get the number assigned to a rule by the compiler."""
+
+        startIndex = ruleLabel.find('_') + 1
+        endIndex = ruleLabel.rfind('_')
+        return int(ruleLabel[startIndex:endIndex])
+
+    def getNextMacroNumber(self):
         """Get a new unique address for a macro."""
 
-        self.nextMacroAddress += 1
-        return self.nextMacroAddress
+        self.nextMacroNumber += 1
+        return self.nextMacroNumber
+
+    def getMacroName(self, name):
+        """Get the name of a macro inside a label."""
+
+        startIndex = name.find('_') + 1
+        endIndex = name.rfind('_')
+        return name[startIndex:endIndex]
+
+    def getInternalRepresentation(self, line, section):
+        """Get the vm representation of an assembly instruction."""
+
+        #First, we get the opCode of the instruction.
+        instr = line.strip().split(None, 1)
+        try:
+            opCode = self.opCodes[instr[0]]
+        except KeyError:
+            if ':' in line:
+                self.createNewLabelAddress(instr[0].replace(':', ''))
+                return
+            else: self.raiseError("Unrecognized instruction: " + line)
+
+        #Then, we handle the operand.
+        if len(instr) == 1: return [opCode]
+        else:
+            if opCode in self.instrWithLabel:
+                if opCode == self.opCodes['addtrie']:
+                    instr[1] = self.getRuleNumber(instr[1])
+                elif opCode == self.opCodes['call']:
+                    instr[1] = self.macroNumber[instr[1]]
+                else:
+                    label = instr[1].replace(':\n', '')
+                    instr[1] = self.getReferenceToLabel(label, section)
+            return [opCode, instr[1]]
+
+    def addCodeToSection(self, code, section):
+        """Add some code fragments to the section passed as argument."""
+
+        if code:
+            section.append(code)
+            self.currentScope.nextAddress += 1
 
     def load(self):
         """
         Load an assembly file and transform the instructions to the vm
-        representation, substituting macro names for addresses.
+        representation, substituting macro or rules names for addresses.
         """
 
+        #The default section is the vm.code with a default scope.
+        self.createNewScope()
         currentSection = self.vm.code
 
         for number, line in enumerate(self.data.readlines()):
             self.currentLineNumber = number
             #Ignore comments.
             if line[0] == '#': continue
+
             #Handle the contents of each rule.
             elif line.startswith('action'):
                 #At the start, create a list which will contain the rule's code.
                 if line.endswith('start:\n'):
-                    ruleNumber = int(line[7])
+                    ruleNumber = self.getRuleNumber(line)
                     currentSection = []
+                    self.createNewScope()
                 #At the end, create an entry on the rules section with the code.
                 elif line.endswith('end:\n'):
+                    self.currentScope.backPatchLabels(currentSection)
                     self.vm.rulesCode.insert(ruleNumber, currentSection)
                     currentSection = self.vm.code
+                    self.deleteCurrentScope()
+
             #Handle the contents of each macro.
             elif line.startswith('macro'):
                 #At the start create a list which will contain the macro's code.
                 if line.endswith('start:\n'):
-                    macroName = line[6:line.rfind("_start")]
-                    address = self.getNextMacroAddress()
-                    self.macroAddress[macroName] = address
+                    macroName = self.getMacroName(line)
+                    address = self.getNextMacroNumber()
+                    self.macroNumber[macroName] = address
                     currentSection = []
+                    self.createNewScope()
                 #At the end create an entry on the macros section with the code.
                 elif 'end:' in line:
+                    self.addCodeToSection([self.opCodes['ret']], currentSection)
+                    self.currentScope.backPatchLabels(currentSection)
                     self.vm.macrosCode.insert(address, currentSection)
                     currentSection = self.vm.code
+                    self.deleteCurrentScope()
+
+            #Handle all the simple instructions.
             else:
-                currentSection.append(line)
+                internalRep = self.getInternalRepresentation(line, currentSection)
+                self.addCodeToSection(internalRep, currentSection)
+
+        #Finally we backpatch the root scope if needed and delete it.
+        self.currentScope.backPatchLabels(currentSection)
+        self.deleteCurrentScope()
