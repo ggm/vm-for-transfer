@@ -31,6 +31,7 @@ class VM:
 
     def __init__(self):
         self.setUpLogging()
+
         #Structure of the stores used in the vm.
         self.variables = {}
         self.code = []
@@ -91,13 +92,19 @@ class VM:
         symbol = '='
         header = symbol * 20 + " {:=<39}"
         footer = symbol * 60 + '\n'
+        opCodes = self.loader.reversedOpCodes
 
         if not enum:
             print(header.format(headerText + " section "))
-            for code in self.code: print(code, end='')
+            for number, code in enumerate(self.code):
+                if len(code) > 1: print(number, opCodes[int(code[0])], code[1])
+                else: print(number, opCodes[code[0]])
         else:
             print(header.format(headerText + " code section "))
             for number, code in enumerate(section):
-                print("{} {}: {}".format(headerText[:-1], number, code))
+                print("\n{} {}:".format(headerText[:-1], number))
+                for v, c in enumerate(code):
+                    if len(c) > 1: print(v, opCodes[int(c[0])], c[1])
+                    else: print(v, opCodes[c[0]])
 
         print(footer)
