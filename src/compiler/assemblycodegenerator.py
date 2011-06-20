@@ -138,7 +138,8 @@ class AssemblyCodeGenerator:
         self.genDebugCode(event)
         #Push the default value and store it in var.
         self.addCode(self.PUSH_OP + self.INSTR_SEP + event.attrs['n'])
-        self.addCode(self.PUSH_OP + self.INSTR_SEP + str(defaultValue))
+        self.addCode(self.PUSH_OP + self.INSTR_SEP
+                     + "\"{}\"".format(str(defaultValue)))
         self.addCode(self.STOREV_OP)
 
     def genSectionDefMacrosStart(self, event):
