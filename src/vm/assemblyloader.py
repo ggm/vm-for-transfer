@@ -185,7 +185,8 @@ class AssemblyLoader:
                     currentSection = []
                 #At the end, add all the pattern's code to the preload section.
                 elif line.endswith('end:\n'):
-                    for code in currentSection: self.vm.preloadCode.append(code)
+                    for code in currentSection:
+                        self.vm.preprocessCode.append(code)
                     currentSection = self.vm.code
 
             #Handle the contents of each rule.
@@ -227,3 +228,6 @@ class AssemblyLoader:
         #Finally we backpatch the root scope if needed and delete it.
         self.currentScope.backPatchLabels(currentSection)
         self.deleteCurrentScope()
+
+        #Set the final address of the code loaded.
+        self.vm.finalAddress = len(self.vm.code)

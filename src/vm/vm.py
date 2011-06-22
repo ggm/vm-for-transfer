@@ -17,7 +17,6 @@
 import sys
 import logging
 from systemstack import SystemStack
-from interpreter import Interpreter
 from assemblyloader import AssemblyLoader
 from systemtrie import SystemTrie
 
@@ -27,18 +26,25 @@ class VM_STATUS:
     HALTED = 1
     FAILED = 2
 
+from interpreter import Interpreter
+
 class VM:
     """This class encapsulates all the VM processing."""
 
     def __init__(self):
         self.setUpLogging()
 
+        #Program counter: position of the next instruction to execute.
+        self.PC = 0
+        #Final address of the code loaded.
+        self.finalAddress = 0
+
         #Structure of the stores used in the vm.
         self.variables = {}
         self.code = []
         self.rulesCode = []
         self.macrosCode = []
-        self.preloadCode = []
+        self.preprocessCode = []
         self.trie = SystemTrie()
 
         #Execution state of the vm.
@@ -76,6 +82,13 @@ class VM:
 
         try:
             self.loader.load()
+            self.interpreter.preprocess()
+
+            self.PC = 0
+            self.status = VM_STATUS.RUNNING
+            while self.status == VM_STATUS.RUNNING and self.PC < self.finalAddress:
+                self.interpreter.execute(self.code[self.PC])
+
             self.printCodeSections()
         except (Exception) as e:
             self.logger.exception(e)
@@ -85,7 +98,7 @@ class VM:
         """Print all the code sections for information or debugging purposes."""
 
         self.printSection(self.code, "Code")
-        self.printSection(self.preloadCode, "Preload")
+        self.printSection(self.preprocessCode, "Preprocess")
         self.printSection(self.rulesCode, "Rules", enum=True)
         self.printSection(self.macrosCode, "Macros", enum=True)
 
