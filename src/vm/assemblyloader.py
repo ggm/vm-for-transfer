@@ -15,6 +15,7 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 from loadererror import LoaderError
 from scope import Scope
+from instructions import OpCodes
 
 class AssemblyLoader:
     """
@@ -26,16 +27,25 @@ class AssemblyLoader:
     #from an enumerated list but it's better to keep it the more static we can.
     #This way it's easier to check the values and tests when maintaining it.
     opCodes = {
-               "addtrie" : 0, "and" : 1, "append" : 2, "begins-with" : 3,
-               "begins-with-ig" : 4, "or" : 5, "call" : 6, "cmp-substr": 7,
-               "cmpi-substr" : 8, "clip" : 9, "clipsl" : 10, "cliptl" : 11,
-               "cmp" : 12, "cmpi" : 13, "concat" : 14, "chunk" : 15,
-               "ends-with" : 16, "ends-with-ig" : 17, "get-case-from" : 18,
-               "in" : 19, "inig" : 20, "jmp" : 21, "jz" :22, "jnz" : 23,
-               "mlu" : 24, "modify-case" : 25, "push" : 26, "pushbl" : 27,
-               "pushsb" : 28, "lu" : 29, "lu-count" : 30, "not" : 31,
-               "out" : 32, "ret" : 33, "storecl" : 34, "storesl" : 35,
-               "storetl" : 36, "storev" : 37
+               "addtrie" : OpCodes.ADDTRIE, "and" : OpCodes.AND,
+               "append" : OpCodes.APPEND, "begins-with" : OpCodes.BEGINS_WITH,
+               "begins-with-ig" : OpCodes.BEGINS_WITH_IG, "or" : OpCodes.OR,
+               "call" : OpCodes.CALL, "cmp-substr": OpCodes.CMP_SUBSTR,
+               "cmpi-substr" : OpCodes.CMPI_SUBSTR, "clip" : OpCodes.CLIP,
+               "clipsl" : OpCodes.CLIPSL, "cliptl" : OpCodes.CLIPTL,
+               "cmp" : OpCodes.CMP, "cmpi" : OpCodes.CMPI,
+               "concat" : OpCodes.CONCAT, "chunk" : OpCodes.CHUNK,
+               "ends-with" : OpCodes.ENDS_WITH,
+               "ends-with-ig" : OpCodes.ENDS_WITH_IG,
+               "get-case-from" : OpCodes.GET_CASE_FROM,
+               "in" : OpCodes.IN, "inig" : OpCodes.INIG, "jmp" : OpCodes.JMP,
+               "jz" : OpCodes.JZ, "jnz" : OpCodes.JNZ, "mlu" : OpCodes.MLU,
+               "modify-case" : OpCodes.MODIFY_CASE, "push" : OpCodes.PUSH,
+               "pushbl" : OpCodes.PUSHBL, "pushsb" : OpCodes.PUSHSB,
+               "lu" : OpCodes.LU, "lu-count" : OpCodes.LU_COUNT,
+               "not" : OpCodes.NOT, "out" : OpCodes.OUT, "ret" : OpCodes.RET,
+               "storecl" : OpCodes.STORECL, "storesl" : OpCodes.STORESL,
+               "storetl" : OpCodes.STORETL, "storev" : OpCodes.STOREV
               }
 
     #For debugging purposes dict with opCode as key and string as value.
