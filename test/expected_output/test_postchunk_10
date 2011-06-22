@@ -2,9 +2,11 @@
 #<postchunk>
 #<section-rules>
 section_rules_start:
+patterns_start:
 push "num_nom|det_nom|nom_adj"
 push 1
 addtrie action_0_start
+patterns_end:
 action_0_start:
 lu-count
 #<lit v="3">

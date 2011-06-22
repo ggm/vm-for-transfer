@@ -83,7 +83,11 @@ class AssemblyCodeGenerator:
         self.nextAddress += 1
 
     def addPatternsCode(self, code):
+        #As we can't know which is the last rule, we need to pop the footer,
+        #and append it at the end every time.
+        footer = self.patternsCode.pop()
         self.patternsCode.append(code)
+        self.patternsCode.append(footer)
         self.nextAddress += 1
 
     def getNextLabel(self, elem):
@@ -164,6 +168,12 @@ class AssemblyCodeGenerator:
 
     def genRuleStart(self, event):
         event.variables['label'] = self.getNextLabel("rule")
+
+    def genPatternStart(self, event):
+        #First time, add the header and footer of the patterns section.
+        if len(self.patternsCode) == 0:
+            self.patternsCode.append("patterns_start:")
+            self.patternsCode.append("patterns_end:")
 
     def genPatternEnd(self, event):
         #Push the number of patterns to add to the trie.

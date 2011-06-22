@@ -198,6 +198,9 @@ class EventHandler():
     def handle_rule_start(self, event):
         self.codeGen.genRuleStart(event)
 
+    def handle_pattern_start(self, event):
+        self.codeGen.genPatternStart(event)
+
     def handle_pattern_end(self, event):
         self.codeGen.genPatternEnd(event)
 
