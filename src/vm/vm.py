@@ -56,11 +56,11 @@ class VM:
     def setUpLogging(self):
         """Set at least an error through stderr logger"""
 
-        self.formatString = '%(levelname)s: %(filename)s[%(lineno)d]:\t%(message)s'
+        self.formatStr = '%(levelname)s: %(filename)s[%(lineno)d]:\t%(message)s'
         self.logger = logging.getLogger('vm')
 
         errorHandler = logging.StreamHandler(sys.stderr)
-        errorHandler.setFormatter(logging.Formatter(self.formatString))
+        errorHandler.setFormatter(logging.Formatter(self.formatStr))
         errorHandler.setLevel(logging.ERROR)
         self.logger.addHandler(errorHandler)
 
