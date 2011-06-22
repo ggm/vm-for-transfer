@@ -168,6 +168,16 @@ class AssemblyLoader:
             #Ignore comments.
             if line[0] == '#': continue
 
+            #Handle the patterns and addtries.
+            elif line.startswith('patterns'):
+                #At the start, create a list which for the pattern's code.
+                if line.endswith('start:\n'):
+                    currentSection = []
+                #At the end, add all the pattern's code to the preload section.
+                elif line.endswith('end:\n'):
+                    for code in currentSection: self.vm.preloadCode.append(code)
+                    currentSection = self.vm.code
+
             #Handle the contents of each rule.
             elif line.startswith('action'):
                 #At the start, create a list which will contain the rule's code.

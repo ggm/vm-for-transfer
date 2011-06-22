@@ -19,6 +19,7 @@ import logging
 from systemstack import SystemStack
 from interpreter import Interpreter
 from assemblyloader import AssemblyLoader
+from systemtrie import SystemTrie
 
 class VM_STATUS:
     """Represents the state of the vm as a set of constants."""
@@ -37,7 +38,8 @@ class VM:
         self.code = []
         self.rulesCode = []
         self.macrosCode = []
-        self.trie = None
+        self.preloadCode = []
+        self.trie = SystemTrie()
 
         #Execution state of the vm.
         self.status = VM_STATUS.HALTED
@@ -83,6 +85,7 @@ class VM:
         """Print all the code sections for information or debugging purposes."""
 
         self.printSection(self.code, "Code")
+        self.printSection(self.preloadCode, "Preload")
         self.printSection(self.rulesCode, "Rules", enum=True)
         self.printSection(self.macrosCode, "Macros", enum=True)
 
@@ -96,7 +99,7 @@ class VM:
 
         if not enum:
             print(header.format(headerText + " section "))
-            for number, code in enumerate(self.code):
+            for number, code in enumerate(section):
                 if len(code) > 1: print(number, opCodes[int(code[0])], code[1])
                 else: print(number, opCodes[code[0]])
         else:
