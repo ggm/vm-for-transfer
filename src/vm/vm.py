@@ -19,6 +19,7 @@ import logging
 from systemstack import SystemStack
 from assemblyloader import AssemblyLoader
 from systemtrie import SystemTrie
+from transferword import TransferWordTokenizer
 
 class VM_STATUS:
     """Represents the state of the vm as a set of constants."""
@@ -50,6 +51,10 @@ class VM:
         #Execution state of the vm.
         self.status = VM_STATUS.HALTED
 
+        #Input will be divided in words with their patterns information.
+        self.words = []
+        self.nextPattern = -1
+
         #Components used by the vm.
         self.stack = SystemStack()
         self.loader = None
@@ -78,17 +83,42 @@ class VM:
         else: return False
         return True
 
+    def tokenizeInput(self):
+        """Call to the tokenizer to divide the input in tokens."""
+
+        tokenizer = TransferWordTokenizer()
+        self.words = tokenizer.tokenize(self.input)
+
+    def getNextInputPattern(self):
+        """Get the next input pattern to analyse."""
+
+        self.nextPattern += 1
+        try:
+            return self.words[self.nextPattern].source
+        except IndexError:
+            return None
+
+    def initializeVM(self):
+        """Execute code to initialize the VM, e.g. default values for vars."""
+
+        self.PC = 0
+        self.status = VM_STATUS.RUNNING
+        while self.status == VM_STATUS.RUNNING and self.PC < self.finalAddress:
+            self.interpreter.execute(self.code[self.PC])
+
     def run(self):
         """Load, preprocess and execute the contents of the files."""
 
         try:
             self.loader.load()
             self.interpreter.preprocess()
+            self.initializeVM()
+            self.tokenizeInput()
 
-            self.PC = 0
-            self.status = VM_STATUS.RUNNING
-            while self.status == VM_STATUS.RUNNING and self.PC < self.finalAddress:
-                self.interpreter.execute(self.code[self.PC])
+            pattern = self.getNextInputPattern()
+            while pattern and self.status == VM_STATUS.RUNNING:
+                print(pattern)
+                pattern = self.getNextInputPattern()
 
             self.printCodeSections()
         except (Exception) as e:
