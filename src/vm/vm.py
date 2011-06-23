@@ -55,8 +55,9 @@ class VM:
         self.loader = None
         self.interpreter = Interpreter(self)
 
-        #We use 'buffer' to get a stream of bytes, not str.
-        self.input = sys.stdin.buffer
+        self.input = sys.stdin
+        #We use 'buffer' to get a stream of bytes, not str, because we want to
+        #encode it using utf-8 (just for safety).
         self.output = sys.stdout.buffer
 
     def setUpLogging(self):

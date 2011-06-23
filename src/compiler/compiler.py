@@ -30,8 +30,9 @@ class Compiler:
         self.setUpLogging()
         self.debug = False
 
-        #We use 'buffer' to get a stream of bytes, not str.
-        self.input = sys.stdin.buffer
+        self.input = sys.stdin
+        #We use 'buffer' to get a stream of bytes, not str, because we want to
+        #encode it using utf-8 (just for safety).
         self.output = sys.stdout.buffer
         
         #Create all the data structures needed.
