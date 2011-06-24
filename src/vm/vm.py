@@ -20,6 +20,7 @@ from systemstack import SystemStack
 from assemblyloader import AssemblyLoader
 from systemtrie import SystemTrie
 from transferword import TransferWordTokenizer
+from callstack import CallStack
 
 class VM_STATUS:
     """Represents the state of the vm as a set of constants."""
@@ -57,6 +58,7 @@ class VM:
         self.nextPattern = -1
 
         #Components used by the vm.
+        self.callStack = CallStack(self)
         self.stack = SystemStack()
         self.loader = None
         self.interpreter = Interpreter(self)

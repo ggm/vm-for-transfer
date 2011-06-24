@@ -28,6 +28,7 @@ class Interpreter:
         #Access to the data structures of the vm is needed.
         self.vm = vm
         self.systemStack = vm.stack
+        self.callStack = vm.callStack
 
         #Record if the last instruction modified the vm's PC.
         self.modifiedPC = False
@@ -103,7 +104,16 @@ class Interpreter:
         pass
 
     def executeCall(self, instr):
-        pass
+        #Save current PC to return later when the macro ends.
+        self.callStack.saveCurrentPC()
+
+        #Create an entry in the call stack with the macro called.
+        macroNumber = int(instr[1])
+        self.callStack.push("macros", macroNumber)
+
+    def executeRet(self, instr):
+        #Restore the last code section and its PC.
+        self.callStack.pop()
 
     def executeClip(self, instr):
         pass
@@ -185,9 +195,6 @@ class Interpreter:
         pass
 
     def executePushsb(self, instr):
-        pass
-
-    def executeRet(self, instr):
         pass
 
     def executeStorecl(self, instr):
