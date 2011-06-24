@@ -27,6 +27,7 @@ class Interpreter:
     def __init__(self, vm):
         #Access to the data structures of the vm is needed.
         self.vm = vm
+        self.systemStack = vm.stack
 
         #Record if the last instruction modified the vm's PC.
         self.modifiedPC = False
@@ -169,7 +170,7 @@ class Interpreter:
         pass
 
     def executePush(self, instr):
-        pass
+        self.systemStack.push(instr[1])
 
     def executePushbl(self, instr):
         pass
