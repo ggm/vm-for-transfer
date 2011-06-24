@@ -37,8 +37,6 @@ class VM:
 
         #Program counter: position of the next instruction to execute.
         self.PC = 0
-        #Final address of the code loaded.
-        self.finalAddress = 0
 
         #Structure of the stores used in the vm.
         self.variables = {}
@@ -47,6 +45,9 @@ class VM:
         self.macrosCode = []
         self.preprocessCode = []
         self.trie = SystemTrie()
+
+        #Current code section in execution (a macro, a rule, ...).
+        self.currentCodeSection = self.code
 
         #Execution state of the vm.
         self.status = VM_STATUS.HALTED
@@ -103,7 +104,7 @@ class VM:
 
         self.PC = 0
         self.status = VM_STATUS.RUNNING
-        while self.status == VM_STATUS.RUNNING and self.PC < self.finalAddress:
+        while self.status == VM_STATUS.RUNNING and self.PC < len(self.code):
             self.interpreter.execute(self.code[self.PC])
 
     def run(self):
