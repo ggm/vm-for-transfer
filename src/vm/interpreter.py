@@ -79,7 +79,16 @@ class Interpreter:
         else: self.modifiedPC = False
 
     def executeAddtrie(self, instr):
-        pass
+        #Append N number of patterns.
+        pattern = ""
+        numberOfPatterns = int(self.systemStack.pop())
+        while numberOfPatterns > 0:
+            pattern = self.systemStack.pop().replace("\"", '') + pattern
+            numberOfPatterns -= 1
+
+        #Add the pattern with the rule number to the trie. 
+        ruleNumber = int(instr[1])
+        self.vm.trie.addPattern(pattern, ruleNumber)
 
     def executeAnd(self, instr):
         pass
