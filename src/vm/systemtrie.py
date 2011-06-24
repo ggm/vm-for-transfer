@@ -36,15 +36,30 @@ class SystemTrie:
         self.root = TrieNode()
 
     def getRuleNumber(self, pattern):
+        if not pattern: return None
         curNode = self.root
 
         for char in pattern:
             try:
                 curNode = curNode.children[char]
             except KeyError as ke:
-                raise(ke)
+                return None
 
         return curNode.ruleNumber
+
+    def getPatternNode(self, pattern, startNode=None):
+        if not pattern: return None
+
+        if startNode: curNode = startNode
+        else: curNode = self.root
+
+        for char in pattern:
+            try:
+                curNode = curNode.children[char]
+            except KeyError as ke:
+                return None
+
+        return curNode
 
     def addPattern(self, pattern, ruleNumber):
         curNode = self.root
@@ -53,6 +68,7 @@ class SystemTrie:
             curNode = curNode.children.setdefault(char, TrieNode())
 
         curNode.ruleNumber = ruleNumber
+
 
 if __name__ == '__main__':
     #Some tests for reference.

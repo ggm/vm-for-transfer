@@ -55,7 +55,7 @@ class VM:
 
         #Input will be divided in words with their patterns information.
         self.words = []
-        self.nextPattern = -1
+        self.nextPattern = 0
 
         #Components used by the vm.
         self.callStack = CallStack(self)
@@ -95,11 +95,13 @@ class VM:
     def getNextInputPattern(self):
         """Get the next input pattern to analyse."""
 
-        self.nextPattern += 1
         try:
-            return self.words[self.nextPattern].source
+            pattern = self.words[self.nextPattern].source
+            self.nextPattern += 1
         except IndexError:
             return None
+
+        return pattern
 
     def initializeVM(self):
         """Execute code to initialize the VM, e.g. default values for vars."""
@@ -108,6 +110,46 @@ class VM:
         self.status = VM_STATUS.RUNNING
         while self.status == VM_STATUS.RUNNING and self.PC < len(self.code):
             self.interpreter.execute(self.code[self.PC])
+
+    def selectNextRule(self):
+        """Select the next rule to execute matching the LRLM pattern."""
+
+        longestMatch = None
+        nextPatternToProcess = self.nextPattern
+
+        #Go through all the patterns until one matches a rule.
+        while self.nextPattern < len(self.words):
+            #Get the next pattern to process
+            pattern = self.getNextInputPattern()
+            node = self.trie.getPatternNode(pattern)
+            nextPatternToProcess += 1
+
+            #Get the longest match, left to right
+            while node:
+                if node.ruleNumber != None:
+                    longestMatch = node
+                    nextPatternToProcess = self.nextPattern
+                node = self.trie.getPatternNode(self.getNextInputPattern(), node)
+
+            #If the pattern doesn't match, we will continue with the next one.
+            #If there is a match of a group of patterns, we will continue with
+            #the last unmatched pattern.
+            self.nextPattern = nextPatternToProcess
+
+            #If there is a longest match, set the rule to process
+            if longestMatch:
+                self.callStack.push("rules", longestMatch.ruleNumber)
+                return
+            #Otherwise, process the unmatched pattern.
+            else: self.processUnmatchedPattern(pattern)
+
+            longestMatch = None
+
+        #if there isn't any rule at all to execute, stop the vm.
+        self.status = VM_STATUS.HALTED
+
+    def processUnmatchedPattern(self, pattern):
+        print("UnmatchedPattern ", pattern)
 
     def run(self):
         """Load, preprocess and execute the contents of the files."""
@@ -118,10 +160,21 @@ class VM:
             self.initializeVM()
             self.tokenizeInput()
 
-            pattern = self.getNextInputPattern()
-            while pattern and self.status == VM_STATUS.RUNNING:
-                print(pattern)
-                pattern = self.getNextInputPattern()
+            #Select the first rule, if there isn't one, the vm work has ended.
+            self.selectNextRule()
+            while self.status == VM_STATUS.RUNNING:
+                endAddress = len(self.currentCodeSection)
+
+                #Execute the rule selected until it ends.
+                while self.status == VM_STATUS.RUNNING and self.PC < endAddress:
+                    self.interpreter.execute(self.currentCodeSection[self.PC])
+
+                #If the vm executed correctly the rule we can continue.
+                if self.status == VM_STATUS.HALTED:
+                    self.status = VM_STATUS.RUNNING
+
+                #Select the next rule to execute.
+                self.selectNextRule()
 
             self.printCodeSections()
         except (Exception) as e:
