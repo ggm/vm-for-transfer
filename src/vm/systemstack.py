@@ -43,3 +43,9 @@ class SystemStack:
             return self.stack[-1]
         else:
             return None
+
+    def __str__(self):
+        str = ""
+        for s in self.stack: str += s + '\n'
+        return str
+
