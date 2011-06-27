@@ -81,10 +81,10 @@ class Interpreter:
 
     def executeAddtrie(self, instr):
         #Append N number of patterns.
-        pattern = ""
+        pattern = []
         numberOfPatterns = int(self.systemStack.pop())
         while numberOfPatterns > 0:
-            pattern = self.systemStack.pop().replace("\"", '') + pattern
+            pattern.insert(0, self.systemStack.pop().replace("\"", ''))
             numberOfPatterns -= 1
 
         #Add the pattern with the rule number to the trie. 

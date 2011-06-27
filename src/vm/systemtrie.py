@@ -42,7 +42,7 @@ class SystemTrie:
         for char in pattern:
             try:
                 curNode = curNode.children[char]
-            except KeyError as ke:
+            except KeyError:
                 return None
 
         return curNode.ruleNumber
@@ -56,19 +56,56 @@ class SystemTrie:
         for char in pattern:
             try:
                 curNode = curNode.children[char]
-            except KeyError as ke:
+            except KeyError:
                 return None
 
         return curNode
 
     def addPattern(self, pattern, ruleNumber):
-        curNode = self.root
+        #One string will be processed by character and a list by part.
+        #Firstly we add all the parts of the pattern but the last one. Options
+        #are stored in a list of curNodes and the next part is inserted after
+        #each option, for example, given the input:
+        #
+        # Pattern: ["<det><nom>", "<adj>|<adj><sint>|<adj><comp>", "<adv_pp>"]
+        # Rule number: 12
+        #
+        # The output trie would be:
+        #                            /~~<adv_pp> -> 12
+        #                           |
+        #        <det><nom>~~<adj>~~|~~<sint>~~<adv_pp> -> 12
+        #                           |
+        #                            \~~<comp>~~<adv_pp> -> 12
+        #
+        curNodes = [self.root]
+        for part in pattern[:-1]:
+            lastNodes = []
+            for node in curNodes:
+                if '|' in part:
+                    for option in part.split('|'):
+                        lastNodes.append(self._insertPattern(option, node=node))
+                else:
+                    lastNodes.append(self._insertPattern(part, node=node))
+            curNodes = lastNodes
+
+        #Finally, we add the last part of the pattern with its rule number.
+        lastPart = pattern[-1]
+        for node in curNodes:
+            self._insertPattern(lastPart, ruleNumber, node)
+
+    def _insertPattern(self, pattern, ruleNumber=None, node=None):
+        """Internal method used only by this class to insert part of a
+           pattern, starting in a node passed as argument.
+        """
+
+        if not node: curNode = self.root
+        else: curNode = node
 
         for char in pattern:
             curNode = curNode.children.setdefault(char, TrieNode())
-
         curNode.ruleNumber = ruleNumber
 
+        return curNode
 
 if __name__ == '__main__':
     #Some tests for reference.
@@ -87,6 +124,30 @@ if __name__ == '__main__':
 
     #Test the retrieval of the trie.
     for key, expected in testDict.items():
+        actual = trie.getRuleNumber(key)
+        if actual != expected:
+            print("Error: {} is {}, not {}".format(key, actual, expected))
+        else:
+            print("Test Ok: {} is {}".format(key, actual))
+
+    #Test when there isn't a pattern.
+    actual = trie.getRuleNumber("<nonexsitent>")
+    if not actual:
+        print("Test Ok: nonexistent pattern")
+    else:
+        print("Error: nonexistent pattern exists as {}".format(actual))
+
+    #Test the option parts.
+    pattern = ["<det><nom>", "<adj>|<adj><sint>|<adj><comp>|<adj><sup>", "<adv_pp>"]
+    trie.addPattern(pattern, 40)
+
+    testOptions = {"<det><nom><adj><adv_pp>" : 40,
+                   "<det><nom><adj><sint><adv_pp>" : 40,
+                   "<det><nom><adj><comp><adv_pp>" : 40,
+                   "<det><nom><adj><sup><adv_pp>" : 40
+                   }
+
+    for key, expected in testOptions.items():
         actual = trie.getRuleNumber(key)
         if actual != expected:
             print("Error: {} is {}, not {}".format(key, actual, expected))
