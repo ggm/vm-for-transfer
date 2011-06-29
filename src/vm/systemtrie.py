@@ -35,19 +35,9 @@ class SystemTrie:
     def __init__(self):
         self.root = TrieNode()
 
-    def getRuleNumber(self, pattern):
-        if not pattern: return None
-        curNode = self.root
-
-        for char in pattern:
-            try:
-                curNode = curNode.children[char]
-            except KeyError:
-                return None
-
-        return curNode.ruleNumber
-
     def getPatternNode(self, pattern, startNode=None):
+        """Get the last node of the sequence representing the pattern."""
+
         if not pattern: return None
 
         if startNode: curNode = startNode
@@ -60,6 +50,14 @@ class SystemTrie:
                 return None
 
         return curNode
+
+    def getRuleNumber(self, pattern):
+        """Get the rule number for a given pattern."""
+
+        curNode = self.getPatternNode(pattern)
+
+        if curNode: return curNode.ruleNumber
+        else: return None
 
     def addPattern(self, pattern, ruleNumber):
         #One string will be processed by character and a list by part.
