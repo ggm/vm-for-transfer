@@ -92,18 +92,32 @@ class Interpreter:
         self.vm.trie.addPattern(pattern, ruleNumber)
 
     def executeAnd(self, instr):
-        op1 = self.systemStack.pop()
-        op2 = self.systemStack.pop()
+        #Get all the operands.
+        numOps = int(instr[1])
+        ops = []
+        for i in range(numOps): ops.append(self.systemStack.pop())
 
-        if op1 == 1 and op2 == 1: self.systemStack.push(1)
-        else: self.systemStack.push(0)
+        #Return false (0) if one operand if false.
+        for i in range(numOps):
+            if ops[i] == 0:
+                self.systemStack.push(0)
+                return
+        #Else, return true (1).
+        self.systemStack.push(1)
 
     def executeOr(self, instr):
-        op1 = self.systemStack.pop()
-        op2 = self.systemStack.pop()
+        #Get all the operands.
+        numOps = int(instr[1])
+        ops = []
+        for i in range(numOps): ops.append(self.systemStack.pop())
 
-        if op1 == 1 or op2 == 1: self.systemStack.push(1)
-        else: self.systemStack.push(0)
+        #Return true (1) if one operand if true.
+        for i in range(numOps):
+            if ops[i] == 1:
+                self.systemStack.push(1)
+                return
+        #Else, return false (0).
+        self.systemStack.push(0)
 
     def executeNot(self, instr):
         op1 = self.systemStack.pop()
