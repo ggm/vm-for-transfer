@@ -263,4 +263,6 @@ class Interpreter:
         pass
 
     def executeStorev(self, instr):
-        pass
+        value = self.systemStack.pop()
+        varName = self.systemStack.pop()
+        self.vm.variables[varName] = value
