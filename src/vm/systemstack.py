@@ -45,7 +45,7 @@ class SystemStack:
             return None
 
     def __str__(self):
-        str = ""
-        for s in self.stack: str += s + '\n'
-        return str
+        string = ""
+        for s in self.stack: string += str(s) + '\n'
+        return string
 
