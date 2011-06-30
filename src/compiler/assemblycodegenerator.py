@@ -29,8 +29,8 @@ class AssemblyCodeGenerator:
     BEGINS_WITH_IG_OP = "begins-with-ig" #second one at the beginning (ig -> ignore case).
     OR_OP = "or"            #or num -> or of the last num elements on the stack.
     CALL_OP = "call"        # call name -> call a macro with the arguments on the stack.
-    CMP_SUBSTR_OP = "cmp-substr" #cmp(i)-substr -> tests if the first op contains the
-    CMPI_SUBSTR_OP = "cmpi-substr" #contains a substring of the second one (i -> ignore case).
+    CMP_SUBSTR_OP = "cmp-substr" #cmp(i)-substr -> tests if the first op contains
+    CMPI_SUBSTR_OP = "cmpi-substr" #a substring of the second one (i -> ignore case).
     CLIP_OP = "clip"        #clip -> In t2x/t3x there is only a language, we don't need a side.
     CLIPSL_OP = "clipsl"    #clipsl -> puts a substring of the source language on the stack.
     CLIPTL_OP = "cliptl"    #cliptl -> puts a substring of the target language on the stack.

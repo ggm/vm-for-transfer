@@ -125,16 +125,32 @@ class Interpreter:
         pass
 
     def executeCmp(self, instr):
-        pass
+        op1 = self.systemStack.pop()
+        op2 = self.systemStack.pop()
+
+        if op1 == op2: self.systemStack.push(1)
+        else: self.systemStack.push(0)
 
     def executeCmpi(self, instr):
-        pass
+        op1 = str(self.systemStack.pop())
+        op2 = str(self.systemStack.pop())
+
+        if op1.lower() == op2.lower(): self.systemStack.push(1)
+        else: self.systemStack.push(0)
 
     def executeCmpSubstr(self, instr):
-        pass
+        op1 = self.systemStack.pop().replace('\"', '')
+        op2 = self.systemStack.pop().replace('\"', '')
+
+        if op1 in op2: self.systemStack.push(1)
+        else: self.systemStack.push(0)
 
     def executeCmpiSubstr(self, instr):
-        pass
+        op1 = str(self.systemStack.pop()).replace('\"', '')
+        op2 = str(self.systemStack.pop()).replace('\"', '')
+
+        if op1.lower() in op2.lower(): self.systemStack.push(1)
+        else: self.systemStack.push(0)
 
     def executeConcat(self, instr):
         pass
