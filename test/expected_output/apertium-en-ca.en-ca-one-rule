@@ -1,15 +1,15 @@
 #<assembly>
 #<transfer default="chunk">
 #<def-var v="&lt;m&gt;" n="genere">
-push genere
+push "genere"
 push "<m>"
 storev
 #<def-var v="&lt;sg&gt;" n="nombre">
-push nombre
+push "nombre"
 push "<sg>"
 storev
 #<def-var v="true" n="EOS">
-push EOS
+push "EOS"
 push "true"
 storev
 jmp section_rules_start
@@ -37,7 +37,7 @@ push "aa"
 modify-case
 storetl
 #<var n="caseFirstWord">
-push caseFirstWord
+push "caseFirstWord"
 #<lit v="Aa">
 push "Aa"
 storev
@@ -45,7 +45,7 @@ jmp choose_1_end
 when_1_end:
 #<otherwise>
 #<var n="caseFirstWord">
-push caseFirstWord
+push "caseFirstWord"
 #<lit v="aa">
 push "aa"
 storev
@@ -54,13 +54,13 @@ jmp choose_0_end
 when_0_end:
 #<otherwise>
 #<var n="caseFirstWord">
-push caseFirstWord
+push "caseFirstWord"
 #<lit v="aa">
 push "aa"
 storev
 choose_0_end:
 #<var n="EOS">
-push EOS
+push "EOS"
 #<lit v="false">
 push "false"
 storev
@@ -76,7 +76,7 @@ push "<det><ord>"
 cmp
 jz when_2_end
 #<var n="tipus_det">
-push tipus_det
+push "tipus_det"
 #<lit-tag v="UNDET">
 push "<UNDET>"
 storev
@@ -91,7 +91,7 @@ push "<det><qnt>"
 cmp
 jz when_3_end
 #<var n="tipus_det">
-push tipus_det
+push "tipus_det"
 #<lit-tag v="UNDEF">
 push "<UNDEF>"
 storev
@@ -99,7 +99,7 @@ jmp choose_2_end
 when_3_end:
 #<otherwise>
 #<var n="tipus_det">
-push tipus_det
+push "tipus_det"
 #<lit-tag v="DET">
 push "<DET>"
 storev
@@ -187,7 +187,7 @@ push "<sg>|<pl>|<sp>|<ND>"
 push "<sg>"
 storetl
 #<var n="negative">
-push negative
+push "negative"
 #<lit-tag v="negacio">
 push "<negacio>"
 storev
@@ -210,7 +210,7 @@ cmp
 and 2
 jz when_8_end
 #<var n="negative">
-push negative
+push "negative"
 #<lit-tag v="negacio">
 push "<negacio>"
 storev
@@ -218,7 +218,7 @@ jmp choose_5_end
 when_8_end:
 #<otherwise>
 #<var n="negative">
-push negative
+push "negative"
 #<lit v="">
 push ""
 storev
@@ -235,7 +235,7 @@ push "<det><ord>"
 cmp
 jz when_9_end
 #<var n="tipus_det">
-push tipus_det
+push "tipus_det"
 #<lit-tag v="UNDET">
 push "<UNDET>"
 storev
@@ -250,7 +250,7 @@ push "<det><qnt>"
 cmp
 jz when_10_end
 #<var n="tipus_det">
-push tipus_det
+push "tipus_det"
 #<lit-tag v="UNDEF">
 push "<UNDEF>"
 storev
@@ -258,7 +258,7 @@ jmp choose_6_end
 when_10_end:
 #<otherwise>
 #<var n="tipus_det">
-push tipus_det
+push "tipus_det"
 #<lit-tag v="DET">
 push "<DET>"
 storev
@@ -267,7 +267,7 @@ macro_determiner_end: ret
 #<def-macro npar="1" n="comparatiu_adj1">
 macro_comparatiu_adj1_start:
 #<var n="adjectiu1">
-push adjectiu1
+push "adjectiu1"
 #<lit v="">
 push ""
 storev
@@ -305,7 +305,7 @@ or 2
 not
 jz when_12_end
 #<append n="adjectiu1">
-push adjectiu1
+push "adjectiu1"
 #<lit v="més">
 push "més"
 #<lit-tag v="preadv">
@@ -320,7 +320,7 @@ jmp choose_7_end
 when_11_end:
 #<otherwise>
 #<append n="adjectiu1">
-push adjectiu1
+push "adjectiu1"
 #<lit v="">
 push ""
 append 1

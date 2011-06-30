@@ -141,9 +141,10 @@ class AssemblyCodeGenerator:
     def genDefVarStart(self, event, defaultValue):
         self.genDebugCode(event)
         #Push the default value and store it in var.
-        self.addCode(self.PUSH_OP + self.INSTR_SEP + event.attrs['n'])
+        varName = '"{}"'.format(event.attrs['n'])
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + varName)
         self.addCode(self.PUSH_OP + self.INSTR_SEP
-                     + "\"{}\"".format(str(defaultValue)))
+                     + '"{}"'.format(str(defaultValue)))
         self.addCode(self.STOREV_OP)
 
     def genSectionDefMacrosStart(self, event):
@@ -184,7 +185,7 @@ class AssemblyCodeGenerator:
 
     def genPatternItemEnd(self, event, cats):
         #Push the contents of the category.
-        if len(cats) == 1: catsStr = "\"{}\"".format(cats[0])
+        if len(cats) == 1: catsStr = '"{}"'.format(cats[0])
         else: catsStr = "\"" + "|".join(cats) + "\""
         self.addPatternsCode(self.PUSH_OP + self.INSTR_SEP + catsStr)
 
@@ -240,7 +241,7 @@ class AssemblyCodeGenerator:
 
     def genLitStart(self, event):
         self.genDebugCode(event)
-        self.addCode(self.PUSH_OP + self.INSTR_SEP + "\"{}\"".format(event.attrs['v']))
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + '"{}"'.format(event.attrs['v']))
 
     def genLitTagStart(self, event):
         self.genDebugCode(event)
@@ -269,7 +270,7 @@ class AssemblyCodeGenerator:
         
         #If there is a fromname we push the var name. 
         if 'fromname' in event.attrs: chunkName = event.attrs['fromname']
-        elif 'name' in event.attrs: chunkName = "\"{}\"".format(event.attrs['name'])
+        elif 'name' in event.attrs: chunkName = '"{}"'.format(event.attrs['name'])
         if chunkName: 
             self.addCode(self.PUSH_OP + self.INSTR_SEP + chunkName)
             event.variables['name'] = True
@@ -294,9 +295,13 @@ class AssemblyCodeGenerator:
     def genOutEnd(self, event):
         self.addCode(self.OUT_OP + self.INSTR_SEP + str(event.numChildren))
 
-    def genVarStart(self, event):
+    def genVarStart(self, event, isContainer):
         self.genDebugCode(event)
-        self.addCode(self.PUSH_OP + self.INSTR_SEP + event.attrs['n'])
+        #If it's a container push its name as a quoted string.
+        if isContainer: varName = '"{}"'.format(event.attrs['n'])
+        #Otherwise, push it as a symbol (without quotes). 
+        else: varName = event.attrs['n']
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + varName)
 
     def genInEnd(self, event):
         self.addCode(self.getIgnoreCaseInstr(event, self.IN_OP, self.INIG_OP))
@@ -313,7 +318,7 @@ class AssemblyCodeGenerator:
         self.addCode(self.PUSH_OP + self.INSTR_SEP + str(pos))
 
         #Push the contents of the part attribute.
-        if len(partAttrs) == 1: partAttrStr = "\"{}\"".format(partAttrs[0])
+        if len(partAttrs) == 1: partAttrStr = '"{}"'.format(partAttrs[0])
         else: partAttrStr = "\"" + "|".join(partAttrs) + "\""
         self.addCode(self.PUSH_OP + self.INSTR_SEP + partAttrStr)
 
@@ -336,7 +341,7 @@ class AssemblyCodeGenerator:
         self.genDebugCode(event)
 
         #Push the contents of the list to the stack.
-        if len(list) == 1: list = "\"{}\"".format(list[0])
+        if len(list) == 1: list = '"{}"'.format(list[0])
         else: list = "\"" + "|".join(list) + "\""
         self.addCode(self.PUSH_OP + self.INSTR_SEP + list)
 
@@ -348,7 +353,8 @@ class AssemblyCodeGenerator:
 
     def genAppendStart(self, event):
         self.genDebugCode(event)
-        self.addCode(self.PUSH_OP + self.INSTR_SEP + event.attrs['n'])
+        varName = '"{}"'.format(event.attrs['n'])
+        self.addCode(self.PUSH_OP + self.INSTR_SEP + varName)
 
     def genAppendEnd(self, event):
         self.addCode(self.APPEND_OP + self.INSTR_SEP + str(event.numChildren))

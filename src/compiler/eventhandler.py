@@ -301,7 +301,14 @@ class EventHandler():
         varName = event.attrs['n']
         if varName not in self.defVars:
             self.raiseError("var '{}' doesn't exist.".format(varName), event)
-        self.codeGen.genVarStart(event)
+
+        #Check it this var acts as a container.
+        parent = event.parent.name
+        if parent == "let" or parent == "modify-case":
+            isContainer = True
+        else: isContainer = False
+
+        self.codeGen.genVarStart(event, isContainer)        
 
     def handle_in_end(self, event):
         self.codeGen.genInEnd(event)

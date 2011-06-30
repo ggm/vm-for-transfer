@@ -1,18 +1,18 @@
 #<assembly>
 #<transfer default="chunk">
 #<def-var v="&lt;sg&gt;" n="nombre">
-push nombre
+push "nombre"
 push "<sg>"
 storev
 #<def-var v="&lt;m&gt;" n="genere">
-push genere
+push "genere"
 push "<m>"
 storev
 jmp section_rules_start
 #<def-macro npar="1" n="nombre_nom">
 macro_nombre_nom_start:
 #<var n="nombre">
-push nombre
+push "nombre"
 #<lit v="">
 push ""
 storev
@@ -33,7 +33,7 @@ cmp
 and 2
 jz when_0_end
 #<var n="nombre">
-push nombre
+push "nombre"
 #<lit-tag v="pl_slsg">
 push "<pl_slsg>"
 storev
@@ -56,7 +56,7 @@ cmp
 and 2
 jz when_1_end
 #<var n="nombre">
-push nombre
+push "nombre"
 #<lit-tag v="sg_slpl">
 push "<sg_slpl>"
 storev
@@ -64,7 +64,7 @@ jmp choose_0_end
 when_1_end:
 #<otherwise>
 #<var n="nombre">
-push nombre
+push "nombre"
 #<clip part="nbr" pos="1" side="tl">
 push 1
 push "<sg>|<pl>|<sp>|<ND>"

@@ -56,7 +56,7 @@
 	      <lit v="_enc"/>
 	    </append>
 	    <modify-case>
-	      <clip pos="1" side="tl" part="lem"/>
+	      <var n="lema_SV" />
 	      <lit v="aa"/>
 	    </modify-case>
 	    <let>

@@ -12,7 +12,7 @@ push "<adj><sint>"
 cmp
 jz when_0_end
 #<var n="adv_adjectiu">
-push adv_adjectiu
+push "adv_adjectiu"
 #<clip part="lem" pos="2" side="tl">
 push 2
 push "lem"
@@ -26,7 +26,7 @@ push "<comp>"
 concat 3
 storev
 #<var n="adv_adjectiu">
-push adv_adjectiu
+push "adv_adjectiu"
 #<clip part="whole" pos="1" side="tl">
 push 1
 push "whole"
@@ -46,19 +46,18 @@ push "<comp>"
 concat 5
 storev
 #<append n="lema_SV">
-push lema_SV
+push "lema_SV"
 #<lit v="_enc">
 push "_enc"
 append 1
-#<clip part="lem" pos="1" side="tl">
-push 1
-push "lem"
+#<var n="lema_SV">
+push "lema_SV"
 #<lit v="aa">
 push "aa"
 modify-case
-storetl
+storev
 #<var n="lema_SV">
-push lema_SV
+push "lema_SV"
 #<case-of part="lem" pos="2" side="sl">
 push 2
 push "lem"
