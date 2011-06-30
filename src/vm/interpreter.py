@@ -183,6 +183,25 @@ class Interpreter:
         if op1.lower() in op2.lower(): self.systemStack.push(1)
         else: self.systemStack.push(0)
 
+    def executeIn(self, instr):
+        list = self.systemStack.pop().replace('\"', '')
+        list = list.split('|')
+        value = self.systemStack.pop().replace('\"', '')
+
+        if value in list: self.systemStack.push(1)
+        else: self.systemStack.push(0)
+
+    def executeInig(self, instr):
+        list = self.systemStack.pop().replace('\"', '')
+        list = list.split('|')
+        list = [w.lower() for w in list]
+
+        value = self.systemStack.pop().replace('\"', '')
+        value = value.lower()
+
+        if value in list: self.systemStack.push(1)
+        else: self.systemStack.push(0)
+
     def executeConcat(self, instr):
         pass
 
@@ -196,12 +215,6 @@ class Interpreter:
         pass
 
     def executeGetCaseFrom(self, instr):
-        pass
-
-    def executeIn(self, instr):
-        pass
-
-    def executeInig(self, instr):
         pass
 
     def executeJmp(self, instr):
