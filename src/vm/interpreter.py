@@ -170,33 +170,33 @@ class Interpreter:
         else: self.systemStack.push(0)
 
     def executeCmpSubstr(self, instr):
-        op1 = self.systemStack.pop().replace('\"', '')
-        op2 = self.systemStack.pop().replace('\"', '')
+        op1 = self.systemStack.pop()
+        op2 = self.systemStack.pop()
 
         if op1 in op2: self.systemStack.push(1)
         else: self.systemStack.push(0)
 
     def executeCmpiSubstr(self, instr):
-        op1 = str(self.systemStack.pop()).replace('\"', '')
-        op2 = str(self.systemStack.pop()).replace('\"', '')
+        op1 = str(self.systemStack.pop())
+        op2 = str(self.systemStack.pop())
 
         if op1.lower() in op2.lower(): self.systemStack.push(1)
         else: self.systemStack.push(0)
 
     def executeIn(self, instr):
-        list = self.systemStack.pop().replace('\"', '')
+        list = self.systemStack.pop()
         list = list.split('|')
-        value = self.systemStack.pop().replace('\"', '')
+        value = self.systemStack.pop()
 
         if value in list: self.systemStack.push(1)
         else: self.systemStack.push(0)
 
     def executeInig(self, instr):
-        list = self.systemStack.pop().replace('\"', '')
+        list = self.systemStack.pop()
         list = list.split('|')
         list = [w.lower() for w in list]
 
-        value = self.systemStack.pop().replace('\"', '')
+        value = self.systemStack.pop()
         value = value.lower()
 
         if value in list: self.systemStack.push(1)
@@ -243,7 +243,9 @@ class Interpreter:
         pass
 
     def executePush(self, instr):
-        self.systemStack.push(instr[1])
+        #If it's a string, push it without quotes.
+        if '"' in instr[1]: self.systemStack.push(instr[1].replace('"', ''))
+        else: self.systemStack.push(instr[1])
 
     def executePushbl(self, instr):
         pass
