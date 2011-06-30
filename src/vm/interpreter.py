@@ -92,7 +92,24 @@ class Interpreter:
         self.vm.trie.addPattern(pattern, ruleNumber)
 
     def executeAnd(self, instr):
-        pass
+        op1 = self.systemStack.pop()
+        op2 = self.systemStack.pop()
+
+        if op1 == 1 and op2 == 1: self.systemStack.push(1)
+        else: self.systemStack.push(0)
+
+    def executeOr(self, instr):
+        op1 = self.systemStack.pop()
+        op2 = self.systemStack.pop()
+
+        if op1 == 1 or op2 == 1: self.systemStack.push(1)
+        else: self.systemStack.push(0)
+
+    def executeNot(self, instr):
+        op1 = self.systemStack.pop()
+
+        if op1 == 0: self.systemStack.push(1)
+        elif op1 == 1: self.systemStack.push(0)
 
     def executeAppend(self, instr):
         pass
@@ -193,12 +210,6 @@ class Interpreter:
         pass
 
     def executeModifyCase(self, instr):
-        pass
-
-    def executeNot(self, instr):
-        pass
-
-    def executeOr(self, instr):
         pass
 
     def executeOut(self, instr):
