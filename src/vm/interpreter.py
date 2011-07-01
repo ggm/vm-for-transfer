@@ -213,7 +213,11 @@ class Interpreter:
         else: self.systemStack.push(0)
 
     def executeConcat(self, instr):
-        pass
+        ops = self.getOperands(instr)
+        string = ""
+        for op in ops: string += op
+
+        self.systemStack.push(string)
 
     def executeChunk(self, instr):
         pass
