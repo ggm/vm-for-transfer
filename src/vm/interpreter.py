@@ -86,7 +86,7 @@ class Interpreter:
         ops = []
         for i in range(numOps): ops.insert(0, self.systemStack.pop())
 
-        return numOps, ops
+        return ops
 
     def executeAddtrie(self, instr):
         #Append N number of patterns.
@@ -102,11 +102,11 @@ class Interpreter:
 
     def executeAnd(self, instr):
         #Get all the operands.
-        numOps, ops = self.getOperands(instr)
+        ops = self.getOperands(instr)
 
         #Return false (0) if one operand if false.
-        for i in range(numOps):
-            if ops[i] == 0:
+        for op in ops:
+            if op == 0:
                 self.systemStack.push(0)
                 return
         #Else, return true (1).
@@ -114,11 +114,11 @@ class Interpreter:
 
     def executeOr(self, instr):
         #Get all the operands.
-        numOps, ops = self.getOperands(instr)
+        ops = self.getOperands(instr)
 
         #Return true (1) if one operand if true.
-        for i in range(numOps):
-            if ops[i] == 1:
+        for op in ops:
+            if op == 1:
                 self.systemStack.push(1)
                 return
         #Else, return false (0).
@@ -131,7 +131,7 @@ class Interpreter:
         elif op1 == 1: self.systemStack.push(0)
 
     def executeAppend(self, instr):
-        numOps, ops = self.getOperands(instr)
+        ops = self.getOperands(instr)
         string = ""
         for op in ops: string += op
 
