@@ -79,6 +79,15 @@ class Interpreter:
         if not self.modifiedPC: self.vm.PC += 1
         else: self.modifiedPC = False
 
+    def getOperands(self, instr):
+        """Get n operands from the stack and return them reversed."""
+
+        numOps = int(instr[1])
+        ops = []
+        for i in range(numOps): ops.insert(0, self.systemStack.pop())
+
+        return numOps, ops
+
     def executeAddtrie(self, instr):
         #Append N number of patterns.
         pattern = []
@@ -93,9 +102,7 @@ class Interpreter:
 
     def executeAnd(self, instr):
         #Get all the operands.
-        numOps = int(instr[1])
-        ops = []
-        for i in range(numOps): ops.append(self.systemStack.pop())
+        numOps, ops = self.getOperands(instr)
 
         #Return false (0) if one operand if false.
         for i in range(numOps):
@@ -107,9 +114,7 @@ class Interpreter:
 
     def executeOr(self, instr):
         #Get all the operands.
-        numOps = int(instr[1])
-        ops = []
-        for i in range(numOps): ops.append(self.systemStack.pop())
+        numOps, ops = self.getOperands(instr)
 
         #Return true (1) if one operand if true.
         for i in range(numOps):
