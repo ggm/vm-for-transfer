@@ -131,7 +131,12 @@ class Interpreter:
         elif op1 == 1: self.systemStack.push(0)
 
     def executeAppend(self, instr):
-        pass
+        numOps, ops = self.getOperands(instr)
+        string = ""
+        for op in ops: string += op
+
+        varName = self.systemStack.pop()
+        self.vm.variables[varName] += string
 
     def executeBeginsWith(self, instr):
         pass
