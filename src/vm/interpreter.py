@@ -139,10 +139,26 @@ class Interpreter:
         self.vm.variables[varName] += string
 
     def executeBeginsWith(self, instr):
-        pass
+        prefixes = self.systemStack.pop()
+        word = self.systemStack.pop()
+
+        for prefix in prefixes.split("|"):
+            if word.startswith(prefix):
+                self.systemStack.push(1)
+                return
+
+        self.systemStack.push(0)
 
     def executeBeginsWithIg(self, instr):
-        pass
+        prefixes = self.systemStack.pop()
+        word = self.systemStack.pop().lower()
+
+        for prefix in prefixes.split("|"):
+            if word.startswith(prefix.lower()):
+                self.systemStack.push(1)
+                return
+
+        self.systemStack.push(0)
 
     def executeCall(self, instr):
         #Save current PC to return later when the macro ends.
@@ -173,8 +189,8 @@ class Interpreter:
         else: self.systemStack.push(0)
 
     def executeCmpi(self, instr):
-        op1 = str(self.systemStack.pop())
-        op2 = str(self.systemStack.pop())
+        op1 = self.systemStack.pop()
+        op2 = self.systemStack.pop()
 
         if op1.lower() == op2.lower(): self.systemStack.push(1)
         else: self.systemStack.push(0)
@@ -187,8 +203,8 @@ class Interpreter:
         else: self.systemStack.push(0)
 
     def executeCmpiSubstr(self, instr):
-        op1 = str(self.systemStack.pop())
-        op2 = str(self.systemStack.pop())
+        op1 = self.systemStack.pop()
+        op2 = self.systemStack.pop()
 
         if op1.lower() in op2.lower(): self.systemStack.push(1)
         else: self.systemStack.push(0)
@@ -223,10 +239,26 @@ class Interpreter:
         pass
 
     def executeEndsWith(self, instr):
-        pass
+        suffixes = self.systemStack.pop()
+        word = self.systemStack.pop()
+
+        for suffix in suffixes.split("|"):
+            if word.endswith(suffix):
+                self.systemStack.push(1)
+                return
+
+        self.systemStack.push(0)
 
     def executeEndsWithIg(self, instr):
-        pass
+        suffixes = self.systemStack.pop()
+        word = self.systemStack.pop().lower()
+
+        for suffix in suffixes.split("|"):
+            if word.endswith(suffix.lower()):
+                self.systemStack.push(1)
+                return
+
+        self.systemStack.push(0)
 
     def executeGetCaseFrom(self, instr):
         pass
