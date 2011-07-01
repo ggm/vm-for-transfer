@@ -82,13 +82,13 @@ class Interpreter:
     def executeAddtrie(self, instr):
         #Append N number of patterns.
         pattern = []
-        numberOfPatterns = int(self.systemStack.pop())
+        numberOfPatterns = self.systemStack.pop()
         while numberOfPatterns > 0:
             pattern.insert(0, self.systemStack.pop().replace("\"", ''))
             numberOfPatterns -= 1
 
         #Add the pattern with the rule number to the trie. 
-        ruleNumber = int(instr[1])
+        ruleNumber = instr[1]
         self.vm.trie.addPattern(pattern, ruleNumber)
 
     def executeAnd(self, instr):
@@ -245,6 +245,17 @@ class Interpreter:
     def executePush(self, instr):
         #If it's a string, push it without quotes.
         if '"' in instr[1]: self.systemStack.push(instr[1].replace('"', ''))
+        #Push strings containing numbers as int.
+        elif instr[1].isnumeric(): self.systemStack.push(int(instr[1]))
+        #If it's a variable reference, eval it and push the value.
+        elif instr[1].isalpha():
+            print("Varname: ", instr[1])
+            varName = instr[1]
+            try:
+                self.systemStack.push(self.vm.variables[varName])
+            except:
+                self.raiseError("Variable {} is not defined.".format(varName))
+        #If it's another thing push it as it comes.
         else: self.systemStack.push(instr[1])
 
     def executePushbl(self, instr):
