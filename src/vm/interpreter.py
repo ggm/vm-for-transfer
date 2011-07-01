@@ -248,13 +248,25 @@ class Interpreter:
             self.modifyPC(jumpTo)
 
     def executeLu(self, instr):
-        pass
+        ops = self.getOperands(instr)
+        lu = "^"
+        for op in ops: lu += op
+        lu += "$"
+
+        self.systemStack.push(lu)
 
     def executeLuCount(self, instr):
         pass
 
     def executeMlu(self, instr):
-        pass
+        ops = self.getOperands(instr)
+
+        #Append the lexical units, removing its ^...$
+        mlu = "^" + ops[0][1:-1]
+        for op in ops[1:]: mlu += "+" + op[1:-1]
+        mlu += "$"
+
+        self.systemStack.push(mlu)
 
     def executeModifyCase(self, instr):
         pass
