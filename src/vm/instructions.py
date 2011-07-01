@@ -59,3 +59,4 @@ class OpCodes:
     STORESL = 35
     STORETL = 36
     STOREV = 37
+    CASE_OF = 38

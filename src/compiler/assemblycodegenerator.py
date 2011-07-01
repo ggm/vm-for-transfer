@@ -29,6 +29,7 @@ class AssemblyCodeGenerator:
     BEGINS_WITH_IG_OP = "begins-with-ig" #second one at the beginning (ig -> ignore case).
     OR_OP = "or"            #or num -> or of the last num elements on the stack.
     CALL_OP = "call"        # call name -> call a macro with the arguments on the stack.
+    CASE_OF_OP = "case-of"  #case-of -> get the case from the container in the stack.
     CMP_SUBSTR_OP = "cmp-substr" #cmp(i)-substr -> tests if the first op contains
     CMPI_SUBSTR_OP = "cmpi-substr" #a substring of the second one (i -> ignore case).
     CLIP_OP = "clip"        #clip -> In t2x/t3x there is only a language, we don't need a side.
@@ -375,10 +376,8 @@ class AssemblyCodeGenerator:
         #Add the clip instruction depending on the side attribute.
         self.genClipInstr(event)
 
-        #Finally, use get-case-from to get the case of the clip on the stack.
-        # "1" because the clip already extracted the pos.
-        self.addCode(self.PUSH_OP + self.INSTR_SEP + "1")
-        self.addCode(self.GET_CASE_FROM_OP)
+        #Finally, use case-of to get the case of the clip on the stack.
+        self.addCode(self.CASE_OF_OP)
 
     def genModifyCaseEnd(self, event, container):
         self.addCode(self.MODIFY_CASE_OP)

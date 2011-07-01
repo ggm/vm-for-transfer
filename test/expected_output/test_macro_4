@@ -62,8 +62,7 @@ push "lema_SV"
 push 2
 push "lem"
 clipsl
-push 1
-get-case-from
+case-of
 storev
 jmp choose_0_end
 when_0_end:

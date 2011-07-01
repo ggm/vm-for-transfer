@@ -45,7 +45,8 @@ class AssemblyLoader:
                "lu" : OpCodes.LU, "lu-count" : OpCodes.LU_COUNT,
                "not" : OpCodes.NOT, "out" : OpCodes.OUT, "ret" : OpCodes.RET,
                "storecl" : OpCodes.STORECL, "storesl" : OpCodes.STORESL,
-               "storetl" : OpCodes.STORETL, "storev" : OpCodes.STOREV
+               "storetl" : OpCodes.STORETL, "storev" : OpCodes.STOREV,
+               "case-of" : OpCodes.CASE_OF
               }
 
     #For debugging purposes dict with opCode as key and string as value.
