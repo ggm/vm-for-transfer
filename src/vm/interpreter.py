@@ -236,10 +236,16 @@ class Interpreter:
         self.modifyPC(jumpTo)
 
     def executeJz(self, instr):
-        pass
+        condition = self.systemStack.pop()
+        if condition == 0:
+            jumpTo = int(instr[1])
+            self.modifyPC(jumpTo)
 
     def executeJnz(self, instr):
-        pass
+        condition = self.systemStack.pop()
+        if condition != 0:
+            jumpTo = int(instr[1])
+            self.modifyPC(jumpTo)
 
     def executeLu(self, instr):
         pass
