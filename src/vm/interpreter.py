@@ -254,7 +254,6 @@ class Interpreter:
         elif instr[1].isnumeric(): self.systemStack.push(int(instr[1]))
         #If it's a variable reference, eval it and push the value.
         elif instr[1].isalpha():
-            print("Varname: ", instr[1])
             varName = instr[1]
             try:
                 self.systemStack.push(self.vm.variables[varName])
