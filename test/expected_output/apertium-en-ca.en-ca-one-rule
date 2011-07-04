@@ -32,6 +32,9 @@ jz when_1_end
 #<clip part="lem" pos="1" side="tl">
 push 1
 push "lem"
+push 1
+push "lem"
+cliptl
 #<lit v="aa">
 push "aa"
 modify-case

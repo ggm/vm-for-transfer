@@ -334,8 +334,14 @@ class AssemblyCodeGenerator:
 
         self.genClipCode(event, partAttrs, linkTo)
 
-        #If this clip doesn't work as a container (left-side), we need a CLIP(SL|TL).
+        #If this clip doesn't work as a container (left-side),
+        #we need a CLIP(SL|TL).
         if not linkTo and not isContainer:
+            self.genClipInstr(event)
+        elif isContainer and event.parent.name == "modify-case":
+            #If it's a container of a modify-case, we need to generate another
+            #clip instruction to get the clip value needed by the modify-case.
+            self.genClipCode(event, partAttrs)
             self.genClipInstr(event)
 
     def genListStart(self, event, list):
