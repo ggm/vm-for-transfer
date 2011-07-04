@@ -312,14 +312,12 @@ class Interpreter:
         #Push strings containing numbers as int.
         elif instr[1].isnumeric(): self.systemStack.push(int(instr[1]))
         #If it's a variable reference, eval it and push the value.
-        elif instr[1].isalpha():
+        else:
             varName = instr[1]
             try:
                 self.systemStack.push(self.vm.variables[varName])
             except:
                 self.raiseError("Variable {} is not defined.".format(varName))
-        #If it's another thing push it as it comes.
-        else: self.systemStack.push(instr[1])
 
     def executePushbl(self, instr):
         pass
