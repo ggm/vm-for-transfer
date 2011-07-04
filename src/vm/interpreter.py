@@ -260,9 +260,6 @@ class Interpreter:
 
         self.systemStack.push(0)
 
-    def executeGetCaseFrom(self, instr):
-        pass
-
     def executeJmp(self, instr):
         jumpTo = int(instr[1])
         self.modifyPC(jumpTo)
@@ -300,8 +297,21 @@ class Interpreter:
 
         self.systemStack.push(mlu)
 
-    def executeModifyCase(self, instr):
+    def executeCaseOf(self, instr):
         pass
+
+    def executeGetCaseFrom(self, instr):
+        pass
+
+    def executeModifyCase(self, instr):
+        case = self.systemStack.pop()
+        container = self.systemStack.pop()
+
+        if case == "aa": container = container.lower()
+        elif case == "Aa": container = container.capitalize()
+        elif case == "AA": container = container.upper()
+
+        self.systemStack.push(container)
 
     def executeOut(self, instr):
         pass
