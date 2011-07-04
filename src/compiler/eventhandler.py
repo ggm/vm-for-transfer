@@ -304,7 +304,7 @@ class EventHandler():
 
         #Check it this var acts as a container.
         parent = event.parent.name
-        if parent == "let" or parent == "modify-case":
+        if parent == "let":
             isContainer = True
         else: isContainer = False
 
