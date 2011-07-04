@@ -125,7 +125,7 @@ class AssemblyCodeGenerator:
         #Add the rest of the header as the first element of the xml.
         attrs = ""
         for k, v in event.attrs.items():
-            attrs += " {}=\"{}\"".format(k, v)
+            attrs += ' {}="{}"'.format(k, v)
 
         header = "#<{}{}>".format(event.name, attrs)
         self.addCode(header)
@@ -187,7 +187,7 @@ class AssemblyCodeGenerator:
     def genPatternItemEnd(self, event, cats):
         #Push the contents of the category.
         if len(cats) == 1: catsStr = '"{}"'.format(cats[0])
-        else: catsStr = "\"" + "|".join(cats) + "\""
+        else: catsStr = '"' + "|".join(cats) + '"'
         self.addPatternsCode(self.PUSH_OP + self.INSTR_SEP + catsStr)
 
     def genActionStart(self, event):
@@ -248,7 +248,7 @@ class AssemblyCodeGenerator:
         self.genDebugCode(event)
 
         #Convert <det.ind> to <det><ind> format.
-        litTag = "\"<{}>\"".format(event.attrs['v'])
+        litTag = '"<{}>"'.format(event.attrs['v'])
         litTag = litTag.replace(".", "><")
         self.addCode(self.PUSH_OP + self.INSTR_SEP + litTag)
 
@@ -310,7 +310,7 @@ class AssemblyCodeGenerator:
     def genClipCode(self, event, partAttrs, linkTo=False):
         #If there is a link-to attribute, we ignore the other ones.
         if linkTo:
-            link_to = "\"<{}>\"".format(str(event.attrs['link-to']))
+            link_to = '"<{}>"'.format(str(event.attrs['link-to']))
             self.addCode(self.PUSH_OP + self.INSTR_SEP + link_to)
             return
 
@@ -320,7 +320,7 @@ class AssemblyCodeGenerator:
 
         #Push the contents of the part attribute.
         if len(partAttrs) == 1: partAttrStr = '"{}"'.format(partAttrs[0])
-        else: partAttrStr = "\"" + "|".join(partAttrs) + "\""
+        else: partAttrStr = '"' + "|".join(partAttrs) + '"'
         self.addCode(self.PUSH_OP + self.INSTR_SEP + partAttrStr)
 
     def genClipInstr(self, event):
@@ -343,7 +343,7 @@ class AssemblyCodeGenerator:
 
         #Push the contents of the list to the stack.
         if len(list) == 1: list = '"{}"'.format(list[0])
-        else: list = "\"" + "|".join(list) + "\""
+        else: list = '"' + "|".join(list) + '"'
         self.addCode(self.PUSH_OP + self.INSTR_SEP + list)
 
     def genLetEnd(self, event, container):
@@ -399,7 +399,7 @@ class AssemblyCodeGenerator:
 
         attrs = ""
         for k, v in event.attrs.items():
-            attrs += " {}=\"{}\"".format(k, v)
+            attrs += ' {}="{}"'.format(k, v)
 
         debugInfo = "#<{}{}>".format(event.name, attrs)
         self.addCode(debugInfo)
