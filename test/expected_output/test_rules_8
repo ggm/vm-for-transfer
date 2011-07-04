@@ -29,7 +29,7 @@ push "<det><def>"
 push "<pl>"
 lu 3
 chunk 3
-#<chunk fromname="tipus_det">
+#<chunk namefrom="tipus_det">
 push tipus_det
 #<lit-tag v="SN">
 push "<SN>"

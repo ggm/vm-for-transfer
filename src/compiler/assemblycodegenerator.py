@@ -270,7 +270,7 @@ class AssemblyCodeGenerator:
         chunkName = None    #Name is optional.
         
         #If there is a fromname we push the var name. 
-        if 'fromname' in event.attrs: chunkName = event.attrs['fromname']
+        if 'namefrom' in event.attrs: chunkName = event.attrs['namefrom']
         elif 'name' in event.attrs: chunkName = '"{}"'.format(event.attrs['name'])
         if chunkName: 
             self.addCode(self.PUSH_OP + self.INSTR_SEP + chunkName)

@@ -66,7 +66,7 @@
 	      <lit-tag v="pl"/>
 	    </lu>
 	  </chunk>
-	  <chunk fromname="tipus_det">
+	  <chunk namefrom="tipus_det">
 	    <tags>
 	      <tag><lit-tag v="SN"/></tag>
 	      <tag><var n="tipus_det"/></tag>
