@@ -358,6 +358,9 @@ push 1
 call determiner
 #<chunk case="caseFirstWord" name="det_det_nom">
 push "det_det_nom"
+push caseFirstWord
+case-of
+modify-case
 #<lit-tag v="SN">
 push "<SN>"
 #<var n="tipus_det">

@@ -272,9 +272,16 @@ class AssemblyCodeGenerator:
         #If there is a fromname we push the var name. 
         if 'namefrom' in event.attrs: chunkName = event.attrs['namefrom']
         elif 'name' in event.attrs: chunkName = '"{}"'.format(event.attrs['name'])
+
         if chunkName: 
             self.addCode(self.PUSH_OP + self.INSTR_SEP + chunkName)
             event.variables['name'] = True
+
+        if 'case' in event.attrs:
+            #Push the var name, get its case and modify the case of the name.
+            self.addCode(self.PUSH_OP + self.INSTR_SEP + event.attrs['case'])
+            self.addCode(self.CASE_OF_OP)
+            self.addCode(self.MODIFY_CASE_OP)
 
     def genChunkEnd(self, event):
         numOps = event.numChildren
