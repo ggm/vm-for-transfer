@@ -184,30 +184,8 @@ class VM:
     def printCodeSections(self):
         """Print all the code sections for information or debugging purposes."""
 
-        self.printSection(self.code, "Code")
-        self.printSection(self.preprocessCode, "Preprocess")
-        self.printSection(self.rulesCode, "Rules", enum=True)
-        self.printSection(self.macrosCode, "Macros", enum=True)
+        self.loader.printSection(self.code, "Code")
+        self.loader.printSection(self.preprocessCode, "Preprocess")
+        self.loader.printSection(self.rulesCode, "Rules", enum=True)
+        self.loader.printSection(self.macrosCode, "Macros", enum=True)
 
-    def printSection(self, section, headerText, enum=False):
-        """Print a code section for information or debugging purposes."""
-
-        symbol = '='
-        header = symbol * 20 + " {:=<39}"
-        footer = symbol * 60 + '\n'
-        opCodes = self.loader.reversedOpCodes
-
-        if not enum:
-            print(header.format(headerText + " section "))
-            for number, code in enumerate(section):
-                if len(code) > 1: print(number, opCodes[int(code[0])], code[1])
-                else: print(number, opCodes[code[0]])
-        else:
-            print(header.format(headerText + " code section "))
-            for number, code in enumerate(section):
-                print("\n{} {}:".format(headerText[:-1], number))
-                for v, c in enumerate(code):
-                    if len(c) > 1: print(v, opCodes[int(c[0])], c[1])
-                    else: print(v, opCodes[c[0]])
-
-        print(footer)

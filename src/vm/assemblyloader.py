@@ -232,3 +232,26 @@ class AssemblyLoader:
 
         #Set the final address of the code loaded.
         self.vm.finalAddress = len(self.vm.code)
+
+    def printSection(self, section, headerText, enum=False):
+        """Print a code section for information or debugging purposes."""
+
+        symbol = '='
+        header = symbol * 20 + " {:=<39}"
+        footer = symbol * 60 + '\n'
+        opCodes = self.reversedOpCodes
+
+        if not enum:
+            print(header.format(headerText + " section "))
+            for number, code in enumerate(section):
+                if len(code) > 1: print(number, opCodes[int(code[0])], code[1])
+                else: print(number, opCodes[code[0]])
+        else:
+            print(header.format(headerText + " code section "))
+            for number, code in enumerate(section):
+                print("\n{} {}:".format(headerText[:-1], number))
+                for v, c in enumerate(code):
+                    if len(c) > 1: print(v, opCodes[int(c[0])], c[1])
+                    else: print(v, opCodes[c[0]])
+
+        print(footer)
