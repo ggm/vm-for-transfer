@@ -88,6 +88,18 @@ class Interpreter:
 
         return ops
 
+    def getCase(self, string):
+        """Get the case of a string, defaulting to capitals."""
+
+        isFirstUpper = string[0].isupper()
+        isUpper = string.isupper()
+
+        #If it's a 1-length string and is upper, capitalize it.
+        if isUpper and len(string) == 1: return "Aa"
+        elif isFirstUpper and not isUpper: return "Aa"
+        elif isUpper: return "AA"
+        else: return "aa"
+
     def executeAddtrie(self, instr):
         #Append N number of patterns.
         pattern = []
@@ -298,7 +310,9 @@ class Interpreter:
         self.systemStack.push(mlu)
 
     def executeCaseOf(self, instr):
-        pass
+        value = self.systemStack.pop()
+        case = self.getCase(value)
+        self.systemStack.push(case)
 
     def executeGetCaseFrom(self, instr):
         pass
