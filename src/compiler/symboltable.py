@@ -13,6 +13,7 @@
 #You should have received a copy of the GNU General Public License
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+from compilererror import CompilerError
 
 class Symbol:
     """Stores all the necessary information about symbols."""
@@ -45,6 +46,8 @@ class SymbolTable:
         self.symbols[name] = s
         
     def addMacro(self, name, numParams):
+        if name in self.symbols:
+            raise CompilerError("Macro '{}' already defined".format(name))
         self.__addSymbol(name, numParams, Symbol.TYPE_MACRO)
         
     def __str__(self):
