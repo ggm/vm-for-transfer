@@ -56,11 +56,26 @@ choose_1_end:
 jmp choose_0_end
 when_0_end:
 #<otherwise>
+#<var n="EOS">
+push EOS
+#<lit v="true">
+push "true"
+cmp
+jz when_2_end
+#<var n="caseFirstWord">
+push "caseFirstWord"
+#<lit v="Aa">
+push "Aa"
+storev
+jmp choose_2_end
+when_2_end:
+#<otherwise>
 #<var n="caseFirstWord">
 push "caseFirstWord"
 #<lit v="aa">
 push "aa"
 storev
+choose_2_end:
 choose_0_end:
 #<var n="EOS">
 push "EOS"
@@ -77,14 +92,14 @@ cliptl
 #<lit-tag v="det.ord">
 push "<det><ord>"
 cmp
-jz when_2_end
+jz when_3_end
 #<var n="tipus_det">
 push "tipus_det"
 #<lit-tag v="UNDET">
 push "<UNDET>"
 storev
-jmp choose_2_end
-when_2_end:
+jmp choose_3_end
+when_3_end:
 #<clip part="a_det" pos="1" side="tl">
 push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
@@ -92,24 +107,257 @@ cliptl
 #<lit-tag v="det.qnt">
 push "<det><qnt>"
 cmp
-jz when_3_end
+jz when_4_end
 #<var n="tipus_det">
 push "tipus_det"
 #<lit-tag v="UNDEF">
 push "<UNDEF>"
 storev
-jmp choose_2_end
-when_3_end:
+jmp choose_3_end
+when_4_end:
 #<otherwise>
 #<var n="tipus_det">
 push "tipus_det"
 #<lit-tag v="DET">
 push "<DET>"
 storev
-choose_2_end:
+choose_3_end:
 macro_determiner_end: ret
 #<def-macro npar="2" n="f_concord2">
 macro_f_concord2_start:
+#<var n="gen_chunk">
+push "gen_chunk"
+#<lit v="">
+push ""
+storev
+#<var n="nbr_chunk">
+push "nbr_chunk"
+#<lit v="">
+push ""
+storev
+#<clip part="a_num" pos="2" side="tl">
+push 2
+push "<num>|<num><percent>|<num><ord>|<num><mon>"
+cliptl
+#<lit v="">
+push ""
+cmp
+jz when_5_end
+#<clip part="gen" pos="2" side="tl">
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+#<lit v="">
+push ""
+cmp
+jz when_6_end
+#<var n="paraula1">
+push "paraula1"
+#<clip part="lemh" pos="2" side="tl">
+push 2
+push "lemh"
+cliptl
+storev
+#<append n="paraula1">
+push "paraula1"
+#<clip part="tags" pos="2" side="tl">
+push 2
+push "tags"
+cliptl
+#<lit-tag v="GD">
+push "<GD>"
+#<lit-tag v="ND">
+push "<ND>"
+#<clip part="lemq" pos="2" side="tl">
+push 2
+push "lemq"
+cliptl
+append 4
+#<clip part="whole" pos="2" side="tl">
+push 2
+push "whole"
+#<var n="paraula1">
+push "paraula1"
+storetl
+jmp choose_5_end
+when_6_end:
+#<clip part="nbr" pos="2" side="tl">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit v="">
+push ""
+cmp
+jz when_7_end
+#<var n="paraula1">
+push "paraula1"
+#<clip part="lemh" pos="2" side="tl">
+push 2
+push "lemh"
+cliptl
+storev
+#<append n="paraula1">
+push "paraula1"
+#<clip part="tags" pos="2" side="tl">
+push 2
+push "tags"
+cliptl
+#<lit-tag v="ND">
+push "<ND>"
+#<clip part="lemq" pos="2" side="tl">
+push 2
+push "lemq"
+cliptl
+append 3
+#<clip part="whole" pos="2" side="tl">
+push 2
+push "whole"
+#<var n="paraula1">
+push "paraula1"
+storetl
+jmp choose_5_end
+when_7_end:
+choose_5_end:
+jmp choose_4_end
+when_5_end:
+choose_4_end:
+#<clip part="gen" pos="2" side="tl">
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+#<lit-tag v="GD">
+push "<GD>"
+cmp
+jz when_8_end
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+#<lit-tag v="GD">
+push "<GD>"
+cmp
+jz when_9_end
+#<var n="gen_chunk">
+push "gen_chunk"
+#<lit-tag v="GD">
+push "<GD>"
+storev
+jmp choose_7_end
+when_9_end:
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+#<lit-tag v="mf">
+push "<mf>"
+cmp
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+#<lit v="">
+push ""
+cmp
+or 2
+not
+jz when_10_end
+#<clip part="gen" pos="2" side="tl">
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+storetl
+#<var n="gen_chunk">
+push "gen_chunk"
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+storev
+jmp choose_7_end
+when_10_end:
+#<otherwise>
+#<var n="gen_chunk">
+push "gen_chunk"
+#<lit-tag v="GD">
+push "<GD>"
+storev
+choose_7_end:
+jmp choose_6_end
+when_8_end:
+choose_6_end:
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+#<lit-tag v="GD">
+push "<GD>"
+cmp
+jz when_11_end
+#<var n="gen_chunk">
+push "gen_chunk"
+#<lit-tag v="GD">
+push "<GD>"
+storev
+jmp choose_8_end
+when_11_end:
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+#<lit-tag v="mf">
+push "<mf>"
+cmp
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+#<lit v="">
+push ""
+cmp
+or 2
+not
+jz when_12_end
+#<var n="gen_chunk">
+push "gen_chunk"
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+storev
+jmp choose_8_end
+when_12_end:
+#<otherwise>
+#<clip part="gen" pos="2" side="tl">
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+#<lit-tag v="GD">
+push "<GD>"
+cmp
+not
+jz when_13_end
+#<var n="gen_chunk">
+push "gen_chunk"
+#<clip part="gen" pos="1" side="tl">
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl
+storev
+jmp choose_9_end
+when_13_end:
+choose_9_end:
+choose_8_end:
+#<clip part="nbr" pos="2" side="tl">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit-tag v="ND">
+push "<ND>"
+cmp
+jz when_14_end
 #<clip part="nbr" pos="1" side="tl">
 push 1
 push "<sg>|<pl>|<sp>|<ND>"
@@ -117,7 +365,100 @@ cliptl
 #<lit-tag v="ND">
 push "<ND>"
 cmp
-jz when_4_end
+jz when_15_end
+#<var n="nbr_chunk">
+push "nbr_chunk"
+#<lit-tag v="ND">
+push "<ND>"
+storev
+jmp choose_11_end
+when_15_end:
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit-tag v="sp">
+push "<sp>"
+cmp
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit v="">
+push ""
+cmp
+or 2
+not
+jz when_16_end
+#<clip part="nbr" pos="2" side="tl">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+storetl
+#<var n="nbr_chunk">
+push "nbr_chunk"
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+storev
+jmp choose_11_end
+when_16_end:
+#<otherwise>
+#<var n="nbr_chunk">
+push "nbr_chunk"
+#<lit-tag v="ND">
+push "<ND>"
+storev
+choose_11_end:
+jmp choose_10_end
+when_14_end:
+choose_10_end:
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit-tag v="ND">
+push "<ND>"
+cmp
+jz when_17_end
+#<var n="nbr_chunk">
+push "nbr_chunk"
+#<lit-tag v="ND">
+push "<ND>"
+storev
+jmp choose_12_end
+when_17_end:
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit-tag v="sp">
+push "<sp>"
+cmp
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit v="">
+push ""
+cmp
+or 2
+not
+jz when_18_end
+#<var n="nbr_chunk">
+push "nbr_chunk"
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+storev
+jmp choose_12_end
+when_18_end:
+#<otherwise>
 #<clip part="nbr" pos="2" side="tl">
 push 2
 push "<sg>|<pl>|<sp>|<ND>"
@@ -133,37 +474,52 @@ cliptl
 push "<pl>"
 cmp
 or 2
-jz when_5_end
-#<clip part="nbr" pos="1" side="tl">
-push 1
-push "<sg>|<pl>|<sp>|<ND>"
+jz when_19_end
+#<var n="nbr_chunk">
+push "nbr_chunk"
 #<clip part="nbr" pos="2" side="tl">
 push 2
 push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-storetl
-jmp choose_4_end
-when_5_end:
-#<clip part="a_num" pos="2" side="tl">
+storev
+jmp choose_13_end
+when_19_end:
+#<clip part="nbr" pos="2" side="tl">
 push 2
-push "<num>|<num><percent>|<num><ord>|<num><mon>"
+push "<sg>|<pl>|<sp>|<ND>"
 cliptl
-#<lit-tag v="num">
-push "<num>"
+#<lit-tag v="sp">
+push "<sp>"
 cmp
-jz when_6_end
+jz when_20_end
+#<var n="nbr_chunk">
+push "nbr_chunk"
 #<clip part="nbr" pos="1" side="tl">
 push 1
 push "<sg>|<pl>|<sp>|<ND>"
-#<lit-tag v="pl">
-push "<pl>"
-storetl
-jmp choose_4_end
-when_6_end:
-choose_4_end:
-jmp choose_3_end
-when_4_end:
-choose_3_end:
+cliptl
+storev
+jmp choose_13_end
+when_20_end:
+#<clip part="nbr" pos="2" side="tl">
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+#<lit v="">
+push ""
+cmp
+jz when_21_end
+#<var n="nbr_chunk">
+push "nbr_chunk"
+#<clip part="nbr" pos="1" side="tl">
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl
+storev
+jmp choose_13_end
+when_21_end:
+choose_13_end:
+choose_12_end:
 macro_f_concord2_end: ret
 #<def-macro npar="2" n="det_no">
 macro_det_no_start:
@@ -182,7 +538,7 @@ clipsl
 push "<pl>"
 cmp
 and 2
-jz when_7_end
+jz when_22_end
 #<clip part="nbr" pos="2" side="tl">
 push 2
 push "<sg>|<pl>|<sp>|<ND>"
@@ -194,8 +550,8 @@ push "negative"
 #<lit-tag v="negacio">
 push "<negacio>"
 storev
-jmp choose_5_end
-when_7_end:
+jmp choose_14_end
+when_22_end:
 #<clip part="lem" pos="1" side="sl">
 push 1
 push "lem"
@@ -211,21 +567,21 @@ clipsl
 push "<sg>"
 cmp
 and 2
-jz when_8_end
+jz when_23_end
 #<var n="negative">
 push "negative"
 #<lit-tag v="negacio">
 push "<negacio>"
 storev
-jmp choose_5_end
-when_8_end:
+jmp choose_14_end
+when_23_end:
 #<otherwise>
 #<var n="negative">
 push "negative"
 #<lit v="">
 push ""
 storev
-choose_5_end:
+choose_14_end:
 macro_det_no_end: ret
 #<section-rules>
 section_rules_start:
