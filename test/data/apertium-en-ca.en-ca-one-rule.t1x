@@ -238,13 +238,9 @@
     <def-var n="tipus_det"/>
   </section-def-vars>
 
-  <section-def-lists>
-
-  </section-def-lists>
-
   <section-def-macros>
 
-<def-macro n="firstWord" npar="1">
+  <def-macro n="firstWord" npar="1">
       <choose>
 	<when>
 	  <test>
