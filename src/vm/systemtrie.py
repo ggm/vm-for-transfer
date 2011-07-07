@@ -111,7 +111,8 @@ class SystemTrie:
                 #If there are several possible rules, return the first which
                 #appears on the rules file.
                 return min(node.ruleNumber
-                                for node in curNodes if node.ruleNumber)
+                                for node in curNodes 
+                                if node.ruleNumber is not None)
             except ValueError: return None
         else: return None
 
