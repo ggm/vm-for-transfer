@@ -60,7 +60,11 @@ class SystemTrie:
         for char in pattern:
             if char == '*': curNode = self.__insertTagStar(curNode)
             else: curNode = curNode.children.setdefault(char, TrieNode())
-        curNode.ruleNumber = ruleNumber
+
+        #If a pattern already exists, keep the first rule on the rule's file.
+        if ruleNumber is not None:
+            if curNode.ruleNumber is None: curNode.ruleNumber = ruleNumber
+            else: curNode.ruleNumber = min(curNode.ruleNumber, ruleNumber)
 
         return curNode
 
