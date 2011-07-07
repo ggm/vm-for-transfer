@@ -100,7 +100,7 @@ class SystemTrie:
     def getPatternNodes(self, pattern, startNode=None):
         """Get the last nodes of the sequence representing the pattern."""
 
-        if not pattern: return None
+        if not pattern: return []
 
         if startNode: curNodes = [startNode]
         else: curNodes = [self.root]
@@ -110,7 +110,7 @@ class SystemTrie:
             for node in curNodes:
                 nextNodes.extend(self.__getNextNodes(char, node))
             curNodes = nextNodes
-            if len(curNodes) == 0: return None
+            if len(curNodes) == 0: return []
 
         return curNodes
 

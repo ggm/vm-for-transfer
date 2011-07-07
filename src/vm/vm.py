@@ -92,6 +92,14 @@ class VM:
         tokenizer = TransferWordTokenizer()
         self.words = tokenizer.tokenize(self.input)
 
+    def initializeVM(self):
+        """Execute code to initialize the VM, e.g. default values for vars."""
+
+        self.PC = 0
+        self.status = VM_STATUS.RUNNING
+        while self.status == VM_STATUS.RUNNING and self.PC < len(self.code):
+            self.interpreter.execute(self.code[self.PC])
+
     def getNextInputPattern(self):
         """Get the next input pattern to analyse."""
 
@@ -103,14 +111,6 @@ class VM:
 
         return pattern
 
-    def initializeVM(self):
-        """Execute code to initialize the VM, e.g. default values for vars."""
-
-        self.PC = 0
-        self.status = VM_STATUS.RUNNING
-        while self.status == VM_STATUS.RUNNING and self.PC < len(self.code):
-            self.interpreter.execute(self.code[self.PC])
-
     def selectNextRule(self):
         """Select the next rule to execute matching the LRLM pattern."""
 
@@ -121,27 +121,43 @@ class VM:
         while self.nextPattern < len(self.words):
             #Get the next pattern to process
             pattern = self.getNextInputPattern()
-            node = self.trie.getPatternNode(pattern)
+            curNodes = self.trie.getPatternNodes(pattern)
             nextPatternToProcess += 1
 
             #Get the longest match, left to right
-            while node:
-                if node.ruleNumber != None:
-                    longestMatch = node
+            fullPattern = pattern
+            while len(curNodes) > 0:
+                #Update the longest match if needed.
+                ruleNumber = self.trie.getRuleNumber(fullPattern)
+                if ruleNumber is not None:
+                    longestMatch = ruleNumber
                     nextPatternToProcess = self.nextPattern
-                node = self.trie.getPatternNode(self.getNextInputPattern(), node)
+
+                #Continue trying to match current pattern + the next one.
+                pattern = self.getNextInputPattern()
+                if pattern: fullPattern += pattern 
+                nextNodes = []
+                for node in curNodes:
+                    nextNodes.extend(self.trie.getPatternNodes(pattern, node))
+                curNodes = nextNodes
 
             #If the pattern doesn't match, we will continue with the next one.
             #If there is a match of a group of patterns, we will continue with
             #the last unmatched pattern.
             self.nextPattern = nextPatternToProcess
 
+            #Get the full pattern matched by the rule.
+            if self.nextPattern < len(self.words):
+                end = fullPattern.find(self.words[self.nextPattern].source)
+                if end > 0: fullPattern = fullPattern[:end]
+
             #If there is a longest match, set the rule to process
-            if longestMatch:
-                self.callStack.push("rules", longestMatch.ruleNumber)
+            if longestMatch is not None:
+                print('Pattern "{}" match rule: {}'.format(fullPattern, longestMatch))
+                self.callStack.push("rules", longestMatch)
                 return
             #Otherwise, process the unmatched pattern.
-            else: self.processUnmatchedPattern(pattern)
+            else: self.processUnmatchedPattern(fullPattern)
 
             longestMatch = None
 
