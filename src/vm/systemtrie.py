@@ -68,6 +68,19 @@ class SystemTrie:
 
         return curNode
 
+    def __insertStar(self, node):
+        """Insert a star node which can contain any alphabetic character."""
+
+        #If there is already a tag star, create a new different star node,
+        #so that it does not eat every consequent lemma<tag>.
+        if '<' in node.children and '*' in node.children['<'].children:
+            node = node.children.setdefault('*', TrieNode())
+
+        #Add a reference to itself to accept every alphabet char.
+        node.addChild('*', node)
+
+        return node
+
     def __insertTagStar(self, node):
         """Insert a <*> to get a series of tags."""
 
@@ -145,18 +158,24 @@ class SystemTrie:
             for node in curNodes:
                 if '|' in part:
                     for option in part.split('|'):
-                        if option[0] == '<': node.addChild('*', node)
+                        if option[0] == '<': node = self.__insertStar(node)
                         lastNodes.append(self.__insertPattern(option, node=node))
                 else:
-                    if part[0] == '<': node.addChild('*', node)
+                    if part[0] == '<': node = self.__insertStar(node)
                     lastNodes.append(self.__insertPattern(part, node=node))
             curNodes = lastNodes
 
         #Finally, we add the last part of the pattern with its rule number.
         lastPart = pattern[-1]
         for node in curNodes:
-            if lastPart[0] == '<': node.addChild('*', node)
-            self.__insertPattern(lastPart, ruleNumber, node)
+            if '|' in lastPart:
+                for option in lastPart.split('|'):
+                    if option[0] == '<': node = self.__insertStar(node)
+                    self.__insertPattern(option, ruleNumber, node=node)
+            else:
+                if lastPart[0] == '<': node = self.__insertStar(node)
+                self.__insertPattern(lastPart, ruleNumber, node=node)
+
     def printTrie(self):
         """Print trie's contents and structure just for debugging purposes."""
 
