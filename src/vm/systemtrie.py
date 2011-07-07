@@ -156,6 +156,39 @@ class SystemTrie:
         for node in curNodes:
             if lastPart[0] == '<': node.addChild('*', node)
             self.__insertPattern(lastPart, ruleNumber, node)
+    def printTrie(self):
+        """Print trie's contents and structure just for debugging purposes."""
+
+        self.ids = {}
+        self.nextId = -1
+        self.visitedNodes = {}
+        self.__printNode(self.root)
+
+    def __printNode(self, node):
+        """Print a trie node and all of its children (debugging purposes)."""
+
+        if node in self.visitedNodes: return
+        else: self.visitedNodes[node] = True
+
+        print("Node #{}: rule={}, children ="
+              .format(self.__getNodePrintableId(node), node.ruleNumber), end='')
+        string = ""
+        for char in node.children:
+            string += " '{}' -> {}" \
+            .format(char, self.__getNodePrintableId(node.children[char]))
+        print(string)
+
+        for char in node.children:
+            self.__printNode(node.children[char])
+
+    def __getNodePrintableId(self, node):
+        """Get a printable ID for a trie node (debugging purposes)."""
+
+        if node not in self.ids:
+            self.nextId += 1
+            self.ids[node] = self.nextId
+
+        return self.ids[node]
 
 if __name__ == '__main__':
 
