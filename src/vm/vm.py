@@ -55,6 +55,7 @@ class VM:
 
         #Input will be divided in words with their patterns information.
         self.words = []
+        self.currentWords = []
         self.nextPattern = 0
 
         #Components used by the vm.
@@ -119,6 +120,7 @@ class VM:
 
         #Go through all the patterns until one matches a rule.
         while self.nextPattern < len(self.words):
+            startPatternPos = self.nextPattern
             #Get the next pattern to process
             pattern = self.getNextInputPattern()
             curNodes = self.trie.getPatternNodes(pattern)
@@ -154,7 +156,7 @@ class VM:
             #If there is a longest match, set the rule to process
             if longestMatch is not None:
                 print('Pattern "{}" match rule: {}'.format(fullPattern, longestMatch))
-                self.callStack.push("rules", longestMatch)
+                self.setRuleSelected(longestMatch, startPatternPos)
                 return
             #Otherwise, process the unmatched pattern.
             else: self.processUnmatchedPattern(fullPattern)
@@ -163,6 +165,18 @@ class VM:
 
         #if there isn't any rule at all to execute, stop the vm.
         self.status = VM_STATUS.HALTED
+
+    def setRuleSelected(self, ruleNumber, startPos):
+        """Set a rule and its words as current ones."""
+
+        #Add only a reference to the index pos of words, to avoid copying them.
+        wordsIndex = []
+        while startPos != self.nextPattern:
+            wordsIndex.append(startPos)
+            startPos += 1
+
+        #Create an entry in the call stack with the rule to execute.
+        self.callStack.push("rules", ruleNumber, wordsIndex)
 
     def processUnmatchedPattern(self, pattern):
         print("UnmatchedPattern ", pattern)

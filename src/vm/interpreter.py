@@ -79,8 +79,16 @@ class Interpreter:
         if not self.modifiedPC: self.vm.PC += 1
         else: self.modifiedPC = False
 
-    def getOperands(self, instr):
+    def getNOperands(self, n):
         """Get n operands from the stack and return them reversed."""
+
+        ops = []
+        for i in range(n): ops.insert(0, self.systemStack.pop())
+
+        return ops
+
+    def getOperands(self, instr):
+        """Get the operands of instr from the stack and return them reversed."""
 
         numOps = int(instr[1])
         ops = []
@@ -176,9 +184,15 @@ class Interpreter:
         #Save current PC to return later when the macro ends.
         self.callStack.saveCurrentPC()
 
+        #Get the words passed as argument to the macro.
+        ops = self.getNOperands(self.systemStack.pop())
+        words = []
+        for op in ops:
+            words.append(self.vm.currentWords[op - 1])
+
         #Create an entry in the call stack with the macro called.
         macroNumber = int(instr[1])
-        self.callStack.push("macros", macroNumber)
+        self.callStack.push("macros", macroNumber, words)
 
     def executeRet(self, instr):
         #Restore the last code section and its PC.

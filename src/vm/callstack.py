@@ -24,15 +24,15 @@ class CallStack:
         #The actual stack used to track the calls and returns.
         self.stack = []
 
-    def push(self, section, number, PC=0):
+    def push(self, section, number, words, PC=0):
         """Push a code section in the call stack. This is needed because a rule
            can call a macro and a macro can also call a macro, so storing the
            last PC isn't enough, we also need the code section.
         """
 
         self.stack.append({'section' : section, 'number' : number,
-                               'PC' : PC})
-        self.setCurrentSection(section, number, PC)
+                           'words' : words, 'PC' : PC})
+        self.setCurrentSection(section, number, words, PC)
 
     def pop(self):
         """Pop the current code section and set the last one as the current one.
@@ -41,11 +41,13 @@ class CallStack:
 
         self.stack.pop()
         call = self.stack[-1]
-        self.setCurrentSection(call['section'], call['number'], call['PC'])
+        self.setCurrentSection(call['section'], call['number'],
+                               call['words'], call['PC'])
 
-    def setCurrentSection(self, section, number, PC):
+    def setCurrentSection(self, section, number, words, PC):
         """Set the current section as the one passed as parameters."""
 
+        self.vm.currentWords = words
         self.vm.PC = PC
         n = number
         if section == "rules":
