@@ -14,18 +14,23 @@
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
+class LexicalUnit:
+    """Represent a lexical unit and all its attributes."""
+
+    def __init__(self):
+        self.lu = ""
+        self.attrs = {}
+
 class TransferWord:
     """Represent a word as a source/target language pair."""
 
     def __init__(self):
-        self.source = ""
-        self.sourceAttrs = {}
-        self.target = ""
-        self.targetAttrs = {}
+        self.source = LexicalUnit()
+        self.target = LexicalUnit()
 
     def __str__(self):
-        return "^{}/{}$: {}/{}".format(self.source, self.target,
-                                       self.sourceAttrs, self.targetAttrs)
+        return "^{}/{}$: {}/{}".format(self.source.lu, self.target.lu,
+                                       self.source.attrs, self.target.attrs)
 
 class TransferWordTokenizer():
     """Create a set of transfer words from an input stream."""
@@ -46,12 +51,12 @@ class TransferWordTokenizer():
         for char in input:
             if char == '^': pass
             elif char == '$':
-                word.target = token.strip()
+                word.target.lu = token.strip()
                 #Set the queue and tags attributes.
-                tag = word.target.find('<')
-                head = word.target.find('#')
-                if head > -1: word.targetAttrs['queue'] = word.target[head:tag]
-                word.targetAttrs['tags'] = word.target[tag:]
+                tag = word.target.lu.find('<')
+                head = word.target.lu.find('#')
+                if head > -1: word.target.attrs['lemq'] = word.target.lu[head:tag]
+                word.target.attrs['tags'] = word.target.lu[tag:]
                 tokens.append(word)
                 #Initialize auxiliary variables.
                 source = True
@@ -59,26 +64,26 @@ class TransferWordTokenizer():
                 token = ""
                 word = TransferWord()
             elif char == '/':
-                word.source = token.strip()
+                word.source.lu = token.strip()
                 #Set the queue and tags attributes.
-                head = word.source.find('#')
-                tag = word.source.find('<')
-                if head > -1: word.sourceAttrs['queue'] = word.source[head:tag]
-                word.sourceAttrs['tags'] = word.source[tag:]
+                head = word.source.lu.find('#')
+                tag = word.source.lu.find('<')
+                if head > -1: word.source.attrs['lemq'] = word.source.lu[head:tag]
+                word.source.attrs['tags'] = word.source.lu[tag:]
                 #Initialize auxiliary variables.
                 source = False
                 firstTag = True
                 token = ""
             elif firstTag and char == '<' :
                 #The lemma is everything until the first tag.
-                if source: word.sourceAttrs['lem'] = token.strip()
-                else: word.targetAttrs['lem'] = token.strip()
+                if source: word.source.attrs['lem'] = token.strip()
+                else: word.target.attrs['lem'] = token.strip()
                 token += str(char)
                 firstTag = False
             elif char == '#':
                 #The head is the part of the lemma until the '#' character.
-                if source: word.sourceAttrs['head'] = token.strip()
-                else: word.targetAttrs['head'] = token.strip()
+                if source: word.source.attrs['lemh'] = token.strip()
+                else: word.target.attrs['lemh'] = token.strip()
                 token += str(char)
             else: token += str(char)
 

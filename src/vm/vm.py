@@ -105,7 +105,7 @@ class VM:
         """Get the next input pattern to analyse."""
 
         try:
-            pattern = self.words[self.nextPattern].source
+            pattern = self.words[self.nextPattern].source.lu
             self.nextPattern += 1
         except IndexError:
             return None
@@ -150,7 +150,7 @@ class VM:
 
             #Get the full pattern matched by the rule.
             if self.nextPattern < len(self.words):
-                end = fullPattern.find(self.words[self.nextPattern].source)
+                end = fullPattern.find(self.words[self.nextPattern].source.lu)
                 if end > 0: fullPattern = fullPattern[:end]
 
             #If there is a longest match, set the rule to process
