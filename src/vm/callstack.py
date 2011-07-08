@@ -54,6 +54,7 @@ class CallStack:
             self.vm.currentCodeSection = self.vm.rulesCode[n]
         elif section == "macros":
             self.vm.currentCodeSection = self.vm.macrosCode[n]
+        self.vm.endAddress = len(self.vm.currentCodeSection)
 
     def saveCurrentPC(self):
         """Save the current PC so we can return to it and the end of a call."""

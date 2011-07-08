@@ -38,6 +38,7 @@ class VM:
 
         #Program counter: position of the next instruction to execute.
         self.PC = 0
+        self.endAddress = 0
 
         #Structure of the stores used in the vm.
         self.variables = {}
@@ -193,10 +194,8 @@ class VM:
             #Select the first rule, if there isn't one, the vm work has ended.
             self.selectNextRule()
             while self.status == VM_STATUS.RUNNING:
-                endAddress = len(self.currentCodeSection)
-
                 #Execute the rule selected until it ends.
-                while self.status == VM_STATUS.RUNNING and self.PC < endAddress:
+                while self.status == VM_STATUS.RUNNING and self.PC < self.endAddress:
                     self.interpreter.execute(self.currentCodeSection[self.PC])
 
                 #If the vm executed correctly the rule we can continue.

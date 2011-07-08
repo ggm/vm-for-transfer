@@ -193,6 +193,8 @@ class Interpreter:
         #Create an entry in the call stack with the macro called.
         macroNumber = int(instr[1])
         self.callStack.push("macros", macroNumber, words)
+        #Tell the interpreter that the PC has been modified, so it does not.
+        self.modifyPC(self.vm.PC)
 
     def executeRet(self, instr):
         #Restore the last code section and its PC.
