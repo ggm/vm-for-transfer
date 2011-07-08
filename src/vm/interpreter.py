@@ -108,6 +108,9 @@ class Interpreter:
         elif isUpper: return "AA"
         else: return "aa"
 
+    def getWord(self, pos):
+        return self.vm.words[self.vm.currentWords[pos - 1]]
+
     def executeAddtrie(self, instr):
         #Append N number of patterns.
         pattern = []
@@ -204,10 +207,37 @@ class Interpreter:
         pass
 
     def executeClipsl(self, instr):
-        pass
+        parts = self.systemStack.pop()
+        pos = self.systemStack.pop()
+        word = self.getWord(pos)
+
+        self.handleClipInstruction(parts, word.source)
 
     def executeCliptl(self, instr):
-        pass
+        parts = self.systemStack.pop()
+        pos = self.systemStack.pop()
+        word = self.getWord(pos)
+
+        self.handleClipInstruction(parts, word.target)
+
+    def handleClipInstruction(self, parts, word):
+        if parts in ("lem", "lemh", "lemq", "tags"):
+            try:
+                self.systemStack.push(word.attrs[parts])
+            except KeyError:
+                self.systemStack.push("")
+            return
+        elif parts == "whole":
+            self.systemStack.push(word.lu)
+            return
+        else:
+            for part in parts.split('|'):
+                if part in word.lu:
+                    self.systemStack.push(part)
+                    return
+
+        #If the word doesn't have the part needed, return "".
+        self.systemStack.push("")
 
     def executeCmp(self, instr):
         op1 = self.systemStack.pop()
