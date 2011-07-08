@@ -399,10 +399,33 @@ class Interpreter:
         pass
 
     def executeStoresl(self, instr):
-        pass
+        value = self.systemStack.pop()
+        parts = self.systemStack.pop()
+        pos = self.systemStack.pop()
+        word = self.getWord(pos)
+
+        self.handleStoreClipInstruction(parts, word.source, value)
 
     def executeStoretl(self, instr):
-        pass
+        value = self.systemStack.pop()
+        parts = self.systemStack.pop()
+        pos = self.systemStack.pop()
+        word = self.getWord(pos)
+
+        self.handleStoreClipInstruction(parts, word.target, value)
+
+    def handleStoreClipInstruction(self, parts, word, value):
+        if parts in ("lem", "lemh", "lemq", "tags"):
+            word.modifyAttr(parts, value)
+            return
+        else:
+            for part in parts.split('|'):
+                if part in word.lu:
+                    word.modifyTag(part, value)
+                    return
+
+        #If the word doesn't have the part needed, return "".
+        self.systemStack.push("")
 
     def executeStorev(self, instr):
         value = self.systemStack.pop()

@@ -21,6 +21,18 @@ class LexicalUnit:
         self.lu = ""
         self.attrs = {}
 
+    def modifyAttr(self, attr, value):
+        """Modify the part of the full lexical unit and the attr."""
+
+        self.lu = self.lu.replace(self.attrs[attr], value)
+        self.attrs[attr] = value
+
+    def modifyTag(self, tag, value):
+        """Modify the tag of the full lexical unit and the attr."""
+
+        self.lu = self.lu.replace(tag, value)
+        self.attrs["tags"] = self.attrs["tags"].replace(tag, value)
+
 class TransferWord:
     """Represent a word as a source/target language pair."""
 
