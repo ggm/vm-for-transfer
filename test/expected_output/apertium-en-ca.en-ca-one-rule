@@ -623,7 +623,7 @@ push tipus_det
 push gen_chunk
 #<var n="nbr_chunk">
 push nbr_chunk
-append 4
+concat 4
 #<clip part="lem" pos="1" side="tl">
 push 1
 push "lem"

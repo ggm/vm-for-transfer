@@ -20,7 +20,7 @@ push tipus_det
 push gen_chunk
 #<var n="nbr_chunk">
 push nbr_chunk
-append 4
+concat 4
 #<lit v="el">
 push "el"
 #<lit-tag v="det.def">
@@ -35,7 +35,7 @@ push tipus_det
 push "<SN>"
 #<var n="tipus_det">
 push tipus_det
-append 2
+concat 2
 #<lit v="el">
 push "el"
 #<lit-tag v="det.def">
