@@ -56,6 +56,9 @@ class TransferWordTokenizer():
         input = input.read()
         tokens = []
         token = ""
+        superblanks = []
+        sb = ""
+        insideSb = False
         firstTag = True
         source = True
 
@@ -101,6 +104,15 @@ class TransferWordTokenizer():
                 if source: word.source.attrs['lemh'] = token.strip()
                 else: word.target.attrs['lemh'] = token.strip()
                 token += str(char)
+            elif char == '[' or (insideSb and char != ']'):
+                sb += char
+                insideSb = True
+            elif char == ']':
+                sb += char
+                if sb == "[]": superblanks.append("")
+                else: superblanks.append(sb)
+                insideSb = False
+                sb = ""
             else: token += str(char)
 
-        return tokens
+        return tokens, superblanks

@@ -383,7 +383,11 @@ class Interpreter:
         self.systemStack.push(container)
 
     def executeOut(self, instr):
-        pass
+        ops = self.getOperands(instr)
+        out = ""
+        for op in ops: out += op
+        out += '\n'
+        self.vm.output.write(out.encode("utf-8"))
 
     def executePush(self, instr):
         #If it's a string, push it without quotes.
@@ -399,10 +403,14 @@ class Interpreter:
                 self.raiseError("Variable {} is not defined.".format(varName))
 
     def executePushbl(self, instr):
-        pass
+        self.systemStack.push(" ")
 
     def executePushsb(self, instr):
-        pass
+        pos = int(instr[1])
+        try:
+            self.systemStack.push(self.vm.superblanks[pos - 1])
+        except:
+            self.systemStack.push("")
 
     def executeStorecl(self, instr):
         pass

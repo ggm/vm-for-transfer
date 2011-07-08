@@ -56,6 +56,7 @@ class VM:
 
         #Input will be divided in words with their patterns information.
         self.words = []
+        self.superblanks = []
         self.currentWords = []
         self.nextPattern = 0
 
@@ -92,7 +93,7 @@ class VM:
         """Call to the tokenizer to divide the input in tokens."""
 
         tokenizer = TransferWordTokenizer()
-        self.words = tokenizer.tokenize(self.input)
+        self.words, self.superblanks = tokenizer.tokenize(self.input)
 
     def initializeVM(self):
         """Execute code to initialize the VM, e.g. default values for vars."""
