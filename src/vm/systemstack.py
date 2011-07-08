@@ -46,6 +46,8 @@ class SystemStack:
 
     def __str__(self):
         string = ""
-        for s in self.stack: string += str(s) + '\n'
+        for s in self.stack:
+            if s == "": string += '""\n'
+            else: string += str(s) + '\n'
         return string
 
