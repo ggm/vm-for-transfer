@@ -294,7 +294,16 @@ class Interpreter:
         self.systemStack.push(string)
 
     def executeChunk(self, instr):
-        pass
+        ops = self.getOperands(instr)
+        name = ops[0]
+        tags = ops[1]
+        chunk = '^' + name + tags
+        if len(ops) > 2:
+            chunk += '{'
+            for op in ops[2:]: chunk += op
+            chunk += '}'
+        chunk += '$'
+        self.systemStack.push(chunk)
 
     def executeEndsWith(self, instr):
         suffixes = self.systemStack.pop()
