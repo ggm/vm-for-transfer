@@ -57,6 +57,8 @@ class TransferWordTokenizer():
                 head = word.target.lu.find('#')
                 if head > -1: word.target.attrs['lemq'] = word.target.lu[head:tag]
                 word.target.attrs['tags'] = word.target.lu[tag:]
+                if 'lemh' not in word.target.attrs:
+                    word.target.attrs['lemh'] = word.target.attrs['lem']
                 tokens.append(word)
                 #Initialize auxiliary variables.
                 source = True
@@ -70,6 +72,8 @@ class TransferWordTokenizer():
                 tag = word.source.lu.find('<')
                 if head > -1: word.source.attrs['lemq'] = word.source.lu[head:tag]
                 word.source.attrs['tags'] = word.source.lu[tag:]
+                if 'lemh' not in word.source.attrs:
+                    word.source.attrs['lemh'] = word.source.attrs['lem']
                 #Initialize auxiliary variables.
                 source = False
                 firstTag = True
