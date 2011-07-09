@@ -77,6 +77,7 @@ class EventHandler():
 
     def handle_transfer_start(self, event):
         self.transferStage = "chunk"
+        self.chunkDefault = "chunk" in event.attrs['default']
         self.codeGen.genTransferStart(event)
 
     def handle_transfer_end(self, event):
@@ -276,6 +277,9 @@ class EventHandler():
         self.codeGen.genLuCountEnd(event)
 
     def handle_chunk_start(self, event):
+        if self.transferStage == "chunk" and not self.chunkDefault:
+            self.raiseError("Unexpected '<chunk>' element in a non '<transfer"
+                            + " default=chunk>'.", event)
         self.codeGen.genChunkStart(event)
 
     def handle_chunk_end(self, event):
