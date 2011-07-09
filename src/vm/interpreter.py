@@ -386,7 +386,6 @@ class Interpreter:
         ops = self.getOperands(instr)
         out = ""
         for op in ops: out += op
-        out += '\n'
         self.vm.output.write(out.encode("utf-8"))
 
     def executePush(self, instr):

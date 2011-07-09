@@ -193,7 +193,7 @@ class VM:
                 self.setRuleSelected(longestMatch, startPatternPos)
                 return
             #Otherwise, process the unmatched pattern.
-            else: self.processUnmatchedPattern(fullPattern)
+            else: self.processUnmatchedPattern(self.words[self.nextPattern - 1])
 
             longestMatch = None
 
@@ -212,8 +212,27 @@ class VM:
         #Create an entry in the call stack with the rule to execute.
         self.callStack.push("rules", ruleNumber, wordsIndex)
 
-    def processUnmatchedPattern(self, pattern):
-        print("UnmatchedPattern ", pattern)
+    def processUnmatchedPattern(self, word):
+        """Output unmatched patterns as the default form."""
+
+        #If it isn't the first pattern print a blank.
+        if self.nextPattern != 1: default = " "
+        else: default = ""
+
+        #Output the default version of the unmatched pattern.
+        wordTL = '^' + word.target.lu + '$'
+        if self.chunkerMode == CHUNKER_MODE.CHUNK:
+            if wordTL[1] == '*': default += "^unknown<unknown>{" + wordTL + "}$"
+            else: default += "^default<default>{" + wordTL + "}$"
+        else:
+            default += wordTL
+        self.output.write(default.encode("utf-8"))
+
+    def terminateVM(self):
+        """Do all the processing needed when the vm is being turned off."""
+
+        if self.status != VM_STATUS.FAILED:
+            self.output.write('\n'.encode("utf-8"))
 
     def run(self):
         """Load, preprocess and execute the contents of the files."""
@@ -223,6 +242,7 @@ class VM:
             self.interpreter.preprocess()
             self.initializeVM()
             self.tokenizeInput()
+#            self.printCodeSections()
 
             #Select the first rule, if there isn't one, the vm work has ended.
             self.selectNextRule()
@@ -238,10 +258,11 @@ class VM:
                 #Select the next rule to execute.
                 self.selectNextRule()
 
-            self.printCodeSections()
         except (Exception) as e:
             self.logger.exception(e)
             exit(1)
+
+        self.terminateVM()
 
     def printCodeSections(self):
         """Print all the code sections for information or debugging purposes."""
