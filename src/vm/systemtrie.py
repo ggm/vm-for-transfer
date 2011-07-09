@@ -39,7 +39,7 @@ class SystemTrie:
         """Get a list of next nodes given a char and a start node."""
 
         nextNodes = []
-        if char.isalpha() and '*' in startNode.children:
+        if (char.isalpha() or char == '_') and '*' in startNode.children:
             nextNodes.append(startNode.children['*'])
 
         try:
