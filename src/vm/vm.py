@@ -24,9 +24,23 @@ from callstack import CallStack
 
 class VM_STATUS:
     """Represents the state of the vm as a set of constants."""
+
     RUNNING = 0
     HALTED = 1
     FAILED = 2
+
+class TRANSFER_STAGE:
+    """Represents the current stage of the transfer system."""
+
+    CHUNKER = 0
+    INTERCHUNK = 1
+    POSTCHUNK = 2
+
+class CHUNKER_MODE:
+    """Represents the default behavior in the chunker stage."""
+
+    CHUNK = 0
+    LU = 1
 
 from interpreter import Interpreter
 
@@ -53,6 +67,11 @@ class VM:
 
         #Execution state of the vm.
         self.status = VM_STATUS.HALTED
+
+        #Transfer stage (chunker, interchunk or postchunk).
+        self.transferStage = None
+        #Chunker mode to process in shallow mode or advanced transfer.
+        self.chunkerMode = None
 
         #Input will be divided in words with their patterns information.
         self.words = []
@@ -88,6 +107,19 @@ class VM:
         if "assembly" in header: self.loader = AssemblyLoader(self, t1xFile)
         else: return False
         return True
+
+    def setTransferStage(self, transferHeader):
+        """Set the transfer stage to process by the vm."""
+
+        if "transfer" in transferHeader:
+            self.transferStage = TRANSFER_STAGE.CHUNKER
+            #Set chunker mode, by default 'lu'.
+            if "chunk" in transferHeader: self.chunkerMode = CHUNKER_MODE.CHUNK
+            else: self.chunkerMode = CHUNKER_MODE.LU
+        elif "interchunk" in transferHeader:
+            self.transferStage = TRANSFER_STAGE.INTERCHUNK
+        elif "postchunk" in transferHeader:
+            self.transferStage = TRANSFER_STAGE.POSTCHUNK
 
     def tokenizeInput(self):
         """Call to the tokenizer to divide the input in tokens."""

@@ -54,6 +54,9 @@ def main():
                     print("The header of the file {} is not recognized:".format(arg))
                     print(header)
                     sys.exit(2)
+
+                transferHeader = t1xFile.readline()
+                vm.setTransferStage(transferHeader)
             except IOError as ioe:
                 print(ioe)
                 sys.exit(2)
