@@ -141,14 +141,16 @@ class VM:
 
     def getSourceWord(self, pos):
         if self.transferStage == TRANSFER_STAGE.CHUNKER:
-                return self.words[self.nextPattern].source
-        else: return self.words[self.nextPattern].chunk
+                return self.words[self.nextPattern].source.lu
+        else:
+            word = self.words[self.nextPattern].chunk
+            return word.attrs['lem'] + word.attrs['tags']
 
     def getNextInputPattern(self):
         """Get the next input pattern to analyse."""
 
         try:
-            pattern = self.getSourceWord(self.nextPattern).lu
+            pattern = self.getSourceWord(self.nextPattern)
             self.nextPattern += 1
         except IndexError:
             return None
@@ -193,7 +195,7 @@ class VM:
 
             #Get the full pattern matched by the rule.
             if self.nextPattern < len(self.words):
-                end = fullPattern.find(self.getSourceWord(self.nextPattern).lu)
+                end = fullPattern.find(self.getSourceWord(self.nextPattern))
                 if end > 0: fullPattern = fullPattern[:end]
 
             #If there is a longest match, set the rule to process
