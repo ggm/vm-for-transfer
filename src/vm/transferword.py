@@ -118,3 +118,85 @@ class TransferWordTokenizer():
         #If it's not a multiword, then the lemh is the lemma.
         if 'lemh' not in word.attrs:
             word.attrs['lemh'] = word.attrs['lem']
+
+class ChunkWord:
+    """Represent a word as a chunk for the interchunk and postchunk stages."""
+
+    def __init__(self):
+        self.chunk = LexicalUnit()
+
+    def __str__(self):
+        return "^{}$: {}".format(self.chunk.lu, self.chunk.attrs)
+
+class ChunkWordTokenizer():
+    """Create a set of chunk words from an input stream."""
+
+    def __init__(self):
+        pass
+
+    def tokenize(self, input):
+        """Tokenize the input in ^name<tags>{^...$} tokens."""
+
+        input = input.read()
+        tokens = []
+        token = ""
+        superblanks = []
+        sb = ""
+        insideSb = False
+        firstTag = True
+        chunkStart = True
+
+        word = ChunkWord()
+        for char in input:
+            #Read the ^ and $ of the lexical units but not of the chunks.
+            if char == '^':
+                if not chunkStart: token += str(char)
+                else: chunkStart = False
+            elif char == '$':
+                if not chunkStart: token += str(char)
+            elif char == '}':
+                token += str(char)
+                word.chunk.lu = token.strip()
+                self.setAttributes(word.chunk)
+                tokens.append(word)
+                #Initialize auxiliary variables.
+                chunkStart = True
+                firstTag = True
+                token = ""
+                word = ChunkWord()
+            elif firstTag and char == '<' :
+                #The lemma is everything until the first tag.
+                word.chunk.attrs['lem'] = token.strip()
+                token += str(char)
+                firstTag = False
+            elif char == '[' or (insideSb and char != ']'):
+                sb += char
+                insideSb = True
+            elif char == ']':
+                sb += char
+                if sb == "[]": superblanks.append("")
+                else: superblanks.append(sb)
+                insideSb = False
+                sb = ""
+            else: token += str(char)
+
+        return tokens, superblanks
+
+    def setAttributes(self, word):
+        """Set some of the attributes of a transfer word."""
+
+        #Get the position of the key characters.
+        token = word.lu
+        tag = token.find('<')
+        contentsStart = token.find('{')
+        contentsEnd = token.find('}') + 1
+
+        #Initialize the attributes using the positions.
+        word.attrs['tags'] = token[tag:contentsStart]
+        word.attrs['chcontent'] = token[contentsStart:contentsEnd]
+        #If there isn't any tag, the lemma is everything until the '{'.
+        if 'lem' not in word.attrs:
+            word.attrs['lem'] = token[:contentsStart]
+        #If it's not a multiword, then the lemh is the lemma.
+        if 'lemh' not in word.attrs:
+            word.attrs['lemh'] = word.attrs['lem']

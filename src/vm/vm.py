@@ -20,6 +20,7 @@ from systemstack import SystemStack
 from assemblyloader import AssemblyLoader
 from systemtrie import SystemTrie
 from transferword import TransferWordTokenizer
+from transferword import ChunkWordTokenizer
 from callstack import CallStack
 
 class VM_STATUS:
@@ -80,6 +81,7 @@ class VM:
         self.nextPattern = 0
 
         #Components used by the vm.
+        self.tokenizer = None
         self.callStack = CallStack(self)
         self.stack = SystemStack()
         self.loader = None
@@ -113,19 +115,21 @@ class VM:
 
         if "transfer" in transferHeader:
             self.transferStage = TRANSFER_STAGE.CHUNKER
+            self.tokenizer = TransferWordTokenizer()
             #Set chunker mode, by default 'lu'.
             if "chunk" in transferHeader: self.chunkerMode = CHUNKER_MODE.CHUNK
             else: self.chunkerMode = CHUNKER_MODE.LU
         elif "interchunk" in transferHeader:
             self.transferStage = TRANSFER_STAGE.INTERCHUNK
+            self.tokenizer = ChunkWordTokenizer()
         elif "postchunk" in transferHeader:
             self.transferStage = TRANSFER_STAGE.POSTCHUNK
+            self.tokenizer = ChunkWordTokenizer()
 
     def tokenizeInput(self):
         """Call to the tokenizer to divide the input in tokens."""
 
-        tokenizer = TransferWordTokenizer()
-        self.words, self.superblanks = tokenizer.tokenize(self.input)
+        self.words, self.superblanks = self.tokenizer.tokenize(self.input)
 
     def initializeVM(self):
         """Execute code to initialize the VM, e.g. default values for vars."""
@@ -135,11 +139,16 @@ class VM:
         while self.status == VM_STATUS.RUNNING and self.PC < len(self.code):
             self.interpreter.execute(self.code[self.PC])
 
+    def getSourceWord(self, pos):
+        if self.transferStage == TRANSFER_STAGE.CHUNKER:
+                return self.words[self.nextPattern].source
+        else: return self.words[self.nextPattern].chunk
+
     def getNextInputPattern(self):
         """Get the next input pattern to analyse."""
 
         try:
-            pattern = self.words[self.nextPattern].source.lu
+            pattern = self.getSourceWord(self.nextPattern).lu
             self.nextPattern += 1
         except IndexError:
             return None
@@ -184,7 +193,7 @@ class VM:
 
             #Get the full pattern matched by the rule.
             if self.nextPattern < len(self.words):
-                end = fullPattern.find(self.words[self.nextPattern].source.lu)
+                end = fullPattern.find(self.getSourceWord(self.nextPattern).lu)
                 if end > 0: fullPattern = fullPattern[:end]
 
             #If there is a longest match, set the rule to process
