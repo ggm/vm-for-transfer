@@ -49,6 +49,7 @@ push "lem"
 push "a"
 push 1
 get-case-from
+modify-case
 storetl
 #<clip part="a_det" pos="1" side="tl">
 push 1
@@ -74,6 +75,7 @@ push "lem"
 push "another"
 push 1
 get-case-from
+modify-case
 storetl
 jmp choose_2_end
 when_3_end:

@@ -380,6 +380,8 @@ class AssemblyCodeGenerator:
         pos = event.attrs['pos']
         self.addCode(self.PUSH_OP + self.INSTR_SEP + str(pos))
         self.addCode(self.GET_CASE_FROM_OP)
+        #After getting the case we call modify-case to modify the container.
+        self.addCode(self.MODIFY_CASE_OP)
 
     def genCaseOfStart(self, event, partAttrs):
         self.genDebugCode(event)
