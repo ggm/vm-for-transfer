@@ -230,6 +230,12 @@ class VM:
         if self.nextPattern != 1: default = " "
         else: default = ""
 
+        #For the interchunk stage only need to output the complete chunk.
+        if self.transferStage == TRANSFER_STAGE.INTERCHUNK:
+            default += '^' + word.chunk.lu + '$'
+            self.output.write(default.encode("utf-8"))
+            return
+
         #Output the default version of the unmatched pattern.
         wordTL = '^' + word.target.lu + '$'
         if self.chunkerMode == CHUNKER_MODE.CHUNK:
