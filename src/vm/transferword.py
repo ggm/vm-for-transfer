@@ -67,13 +67,7 @@ class TransferWordTokenizer():
             if char == '^': pass
             elif char == '$':
                 word.target.lu = token.strip()
-                #Set the queue and tags attributes.
-                tag = word.target.lu.find('<')
-                head = word.target.lu.find('#')
-                if head > -1: word.target.attrs['lemq'] = word.target.lu[head:tag]
-                word.target.attrs['tags'] = word.target.lu[tag:]
-                if 'lemh' not in word.target.attrs:
-                    word.target.attrs['lemh'] = word.target.attrs['lem']
+                self.setAttributes(word.target, token)
                 tokens.append(word)
                 #Initialize auxiliary variables.
                 source = True
@@ -82,13 +76,7 @@ class TransferWordTokenizer():
                 word = TransferWord()
             elif char == '/':
                 word.source.lu = token.strip()
-                #Set the queue and tags attributes.
-                head = word.source.lu.find('#')
-                tag = word.source.lu.find('<')
-                if head > -1: word.source.attrs['lemq'] = word.source.lu[head:tag]
-                word.source.attrs['tags'] = word.source.lu[tag:]
-                if 'lemh' not in word.source.attrs:
-                    word.source.attrs['lemh'] = word.source.attrs['lem']
+                self.setAttributes(word.source, token)
                 #Initialize auxiliary variables.
                 source = False
                 firstTag = True
@@ -116,3 +104,17 @@ class TransferWordTokenizer():
             else: token += str(char)
 
         return tokens, superblanks
+
+    def setAttributes(self, word, token):
+        """Set some of the attributes of a transfer word."""
+
+        tag = word.lu.find('<')
+        head = word.lu.find('#')
+        if head > -1: word.attrs['lemq'] = word.lu[head:tag]
+        if tag > -1: word.attrs['tags'] = word.lu[tag:]
+        #If there isn't any tag, the lemma is everything until the moment.
+        if 'lem' not in word.attrs:
+            word.attrs['lem'] = token.strip()
+        #If it's not a multiword, then the lemh is the lemma.
+        if 'lemh' not in word.attrs:
+            word.attrs['lemh'] = word.attrs['lem']
