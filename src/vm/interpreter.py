@@ -370,7 +370,10 @@ class Interpreter:
         self.systemStack.push(case)
 
     def executeGetCaseFrom(self, instr):
-        pass
+        pos = self.systemStack.pop()
+        word = self.getWord(pos).source.attrs['lem']
+        case = self.getCase(word)
+        self.systemStack.push(case)
 
     def executeModifyCase(self, instr):
         case = self.systemStack.pop()
