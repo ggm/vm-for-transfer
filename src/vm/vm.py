@@ -124,7 +124,7 @@ class VM:
             self.tokenizer = ChunkWordTokenizer()
         elif "postchunk" in transferHeader:
             self.transferStage = TRANSFER_STAGE.POSTCHUNK
-            self.tokenizer = ChunkWordTokenizer()
+            self.tokenizer = ChunkWordTokenizer(solveRefs=True)
 
     def tokenizeInput(self):
         """Call to the tokenizer to divide the input in tokens."""

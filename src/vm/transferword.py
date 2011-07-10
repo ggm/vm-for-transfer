@@ -124,15 +124,21 @@ class ChunkWord:
 
     def __init__(self):
         self.chunk = LexicalUnit()
+        self.content = []
 
     def __str__(self):
-        return "^{}$: {}".format(self.chunk.lu, self.chunk.attrs)
+        string = "^{}$: {}, content = [ ".format(self.chunk.lu, self.chunk.attrs)
+        for lu in self.content:
+            string += "^{}$: {} ".format(lu.lu, lu.attrs)
+        string += ']'
+
+        return string
 
 class ChunkWordTokenizer():
     """Create a set of chunk words from an input stream."""
 
-    def __init__(self):
-        pass
+    def __init__(self, solveRefs=False):
+        self.solveRefs = solveRefs
 
     def tokenize(self, input):
         """Tokenize the input in ^name<tags>{^...$} tokens."""
@@ -158,6 +164,8 @@ class ChunkWordTokenizer():
                 token += str(char)
                 word.chunk.lu = token.strip()
                 self.setAttributes(word.chunk)
+                if self.solveRefs: self.solveReferences(word)
+                self.setContent(word)
                 tokens.append(word)
                 #Initialize auxiliary variables.
                 chunkStart = True
@@ -183,7 +191,7 @@ class ChunkWordTokenizer():
         return tokens, superblanks
 
     def setAttributes(self, word):
-        """Set some of the attributes of a transfer word."""
+        """Set some of the attributes of a chunk word."""
 
         #Get the position of the key characters.
         token = word.lu
@@ -201,3 +209,41 @@ class ChunkWordTokenizer():
         #If it's not a multiword, then the lemh is the lemma.
         if 'lemh' not in word.attrs:
             word.attrs['lemh'] = word.attrs['lem']
+
+    def solveReferences(self, word):
+        """Solve the references to the chunk tags."""
+
+        tags = word.chunk.attrs['tags']
+        tags = tags.replace('<', '')
+        tags = tags.split('>')
+        lu = word.chunk.lu
+        chcontent = word.chunk.attrs['chcontent']
+        for char in word.chunk.attrs['chcontent']:
+            if char.isnumeric():
+                pos = int(char)
+                lu = lu.replace(char, tags[pos - 1])
+                chcontent = chcontent.replace(char, tags[pos - 1])
+        word.chunk.lu = lu
+        word.chunk.attrs['chcontent'] = chcontent
+
+    def setContent(self, word):
+        """Set the content of the chunk word as a list of lexical units."""
+
+        content = []
+        chcontent = word.chunk.attrs['chcontent']
+        for token in chcontent.split('$'):
+            if len(token) < 2: continue
+            lu = LexicalUnit()
+            token = token.replace('^', '')  #Ignore the '^' symbol.
+            lu.lu = token
+            tag = token.find('<')
+            lu.attrs['lem'] = token[:tag]
+            lu.attrs['tags'] = token[tag:]
+            head = token.find('#')
+            if head > -1:
+                lu.attrs['lemh'] = token[:head]
+                lu.attrs['lemq'] = token[head:tag]
+            else: lu.attrs['lemh'] = lu.attrs['lem']
+
+            content.append(lu)
+        word.content = content
