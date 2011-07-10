@@ -17,6 +17,7 @@
 from string import capwords
 
 from vm import VM_STATUS
+from vm import TRANSFER_STAGE
 from instructions import OpCodes
 from assemblyloader import AssemblyLoader
 from interpretererror import InterpreterError
@@ -108,8 +109,22 @@ class Interpreter:
         elif isUpper: return "AA"
         else: return "aa"
 
-    def getWord(self, pos):
-        return self.vm.words[self.vm.currentWords[pos - 1]]
+    def getSourceWord(self, pos):
+        """Get a word from the source side for every transfer stage."""
+
+        if self.vm.transferStage == TRANSFER_STAGE.CHUNKER:
+            return self.vm.words[self.vm.currentWords[pos - 1]].source
+        elif self.vm.transferStage == TRANSFER_STAGE.INTERCHUNK:
+            return self.vm.words[self.vm.currentWords[pos - 1]].chunk
+        else:
+            word = self.vm.words[self.vm.currentWords[0]]
+            if pos == 0: return word.chunk
+            else: return word.content[pos - 1]
+
+    def getTargetWord(self, pos):
+        """Get a word from the target side only for the chunker stage."""
+
+        return self.vm.words[self.vm.currentWords[pos - 1]].target
 
     def executeAddtrie(self, instr):
         #Append N number of patterns.
@@ -206,24 +221,24 @@ class Interpreter:
     def executeClip(self, instr):
         parts = self.systemStack.pop()
         pos = self.systemStack.pop()
-        word = self.getWord(pos)
+        word = self.getSourceWord(pos)
 
-        lu = word.chunk.attrs['lem'] + word.chunk.attrs['tags']
-        self.handleClipInstruction(parts, word.chunk, lu)
+        lu = word.attrs['lem'] + word.attrs['tags']
+        self.handleClipInstruction(parts, word, lu)
 
     def executeClipsl(self, instr):
         parts = self.systemStack.pop()
         pos = self.systemStack.pop()
-        word = self.getWord(pos)
+        word = self.getSourceWord(pos)
 
-        self.handleClipInstruction(parts, word.source, word.source.lu)
+        self.handleClipInstruction(parts, word, word.lu)
 
     def executeCliptl(self, instr):
         parts = self.systemStack.pop()
         pos = self.systemStack.pop()
-        word = self.getWord(pos)
+        word = self.getTargetWord(pos)
 
-        self.handleClipInstruction(parts, word.target, word.target.lu)
+        self.handleClipInstruction(parts, word, word.lu)
 
     def handleClipInstruction(self, parts, word, lu):
         if parts in ("lem", "lemh", "lemq", "tags", "chcontent"):
@@ -363,7 +378,8 @@ class Interpreter:
         self.systemStack.push(lu)
 
     def executeLuCount(self, instr):
-        pass
+        chunk = self.vm.words[self.vm.currentWords[0]]
+        self.systemStack.push(len(chunk.content))
 
     def executeMlu(self, instr):
         ops = self.getOperands(instr)
@@ -382,11 +398,9 @@ class Interpreter:
 
     def executeGetCaseFrom(self, instr):
         pos = self.systemStack.pop()
-        word = self.getWord(pos)
-        try:
-            lem = word.source.attrs['lem']
-        except AttributeError:
-            lem = word.chunk.attrs['lem']
+        word = self.getSourceWord(pos)
+        lem = word.attrs['lem']
+
         case = self.getCase(lem)
         self.systemStack.push(case)
 
@@ -433,31 +447,29 @@ class Interpreter:
         value = self.systemStack.pop()
         parts = self.systemStack.pop()
         pos = self.systemStack.pop()
-        word = self.getWord(pos)
+        word = self.getSourceWord(pos)
 
-        lu = word.chunk.attrs['lem'] + word.chunk.attrs['tags']
-        self.handleStoreClipInstruction(parts, word.chunk, lu, value)
+        lu = word.attrs['lem'] + word.attrs['tags']
+        self.handleStoreClipInstruction(parts, word, lu, value)
 
     def executeStoresl(self, instr):
         value = self.systemStack.pop()
         parts = self.systemStack.pop()
         pos = self.systemStack.pop()
-        word = self.getWord(pos)
+        word = self.getSourceWord(pos)
 
-        lu = word.source.lu
-        self.handleStoreClipInstruction(parts, word.source, lu, value)
+        self.handleStoreClipInstruction(parts, word, word.lu, value)
 
     def executeStoretl(self, instr):
         value = self.systemStack.pop()
         parts = self.systemStack.pop()
         pos = self.systemStack.pop()
-        word = self.getWord(pos)
+        word = self.getTargetWord(pos)
 
-        lu = word.target.lu
-        self.handleStoreClipInstruction(parts, word.target, lu, value)
+        self.handleStoreClipInstruction(parts, word, word.lu, value)
 
     def handleStoreClipInstruction(self, parts, word, lu, value):
-        if parts in ("lem", "lemh", "lemq", "tags"):
+        if parts in ('lem', 'lemh', 'lemq', 'tags', 'chcontent'):
             word.modifyAttr(parts, value)
             return
         else:
