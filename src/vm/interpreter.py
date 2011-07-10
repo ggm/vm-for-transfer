@@ -204,24 +204,29 @@ class Interpreter:
         self.callStack.pop()
 
     def executeClip(self, instr):
-        pass
+        parts = self.systemStack.pop()
+        pos = self.systemStack.pop()
+        word = self.getWord(pos)
+
+        lu = word.chunk.attrs['lem'] + word.chunk.attrs['tags']
+        self.handleClipInstruction(parts, word.chunk, lu)
 
     def executeClipsl(self, instr):
         parts = self.systemStack.pop()
         pos = self.systemStack.pop()
         word = self.getWord(pos)
 
-        self.handleClipInstruction(parts, word.source)
+        self.handleClipInstruction(parts, word.source, word.source.lu)
 
     def executeCliptl(self, instr):
         parts = self.systemStack.pop()
         pos = self.systemStack.pop()
         word = self.getWord(pos)
 
-        self.handleClipInstruction(parts, word.target)
+        self.handleClipInstruction(parts, word.target, word.target.lu)
 
-    def handleClipInstruction(self, parts, word):
-        if parts in ("lem", "lemh", "lemq", "tags"):
+    def handleClipInstruction(self, parts, word, lu):
+        if parts in ("lem", "lemh", "lemq", "tags", "chcontent"):
             try:
                 self.systemStack.push(word.attrs[parts])
             except KeyError:
@@ -232,7 +237,7 @@ class Interpreter:
             return
         else:
             for part in parts.split('|'):
-                if part in word.lu:
+                if part in lu:
                     self.systemStack.push(part)
                     return
 
@@ -295,14 +300,20 @@ class Interpreter:
 
     def executeChunk(self, instr):
         ops = self.getOperands(instr)
-        name = ops[0]
-        tags = ops[1]
-        chunk = '^' + name + tags
-        if len(ops) > 2:
-            chunk += '{'
-            for op in ops[2:]: chunk += op
-            chunk += '}'
-        chunk += '$'
+
+        #If there is only one operand it's the full content of the chunk.
+        if len(ops) == 1:
+            chunk = '^' + ops[0] + '$'
+        else:
+            name = ops[0]
+            tags = ops[1]
+            chunk = '^' + name + tags
+            if len(ops) > 2:
+                chunk += '{'
+                for op in ops[2:]: chunk += op
+                chunk += '}'
+            chunk += '$'
+
         self.systemStack.push(chunk)
 
     def executeEndsWith(self, instr):
@@ -371,8 +382,12 @@ class Interpreter:
 
     def executeGetCaseFrom(self, instr):
         pos = self.systemStack.pop()
-        word = self.getWord(pos).source.attrs['lem']
-        case = self.getCase(word)
+        word = self.getWord(pos)
+        try:
+            lem = word.source.attrs['lem']
+        except AttributeError:
+            lem = word.chunk.attrs['lem']
+        case = self.getCase(lem)
         self.systemStack.push(case)
 
     def executeModifyCase(self, instr):
@@ -415,7 +430,13 @@ class Interpreter:
             self.systemStack.push("")
 
     def executeStorecl(self, instr):
-        pass
+        value = self.systemStack.pop()
+        parts = self.systemStack.pop()
+        pos = self.systemStack.pop()
+        word = self.getWord(pos)
+
+        lu = word.chunk.attrs['lem'] + word.chunk.attrs['tags']
+        self.handleStoreClipInstruction(parts, word.chunk, lu, value)
 
     def executeStoresl(self, instr):
         value = self.systemStack.pop()
@@ -423,7 +444,8 @@ class Interpreter:
         pos = self.systemStack.pop()
         word = self.getWord(pos)
 
-        self.handleStoreClipInstruction(parts, word.source, value)
+        lu = word.source.lu
+        self.handleStoreClipInstruction(parts, word.source, lu, value)
 
     def executeStoretl(self, instr):
         value = self.systemStack.pop()
@@ -431,15 +453,16 @@ class Interpreter:
         pos = self.systemStack.pop()
         word = self.getWord(pos)
 
-        self.handleStoreClipInstruction(parts, word.target, value)
+        lu = word.target.lu
+        self.handleStoreClipInstruction(parts, word.target, lu, value)
 
-    def handleStoreClipInstruction(self, parts, word, value):
+    def handleStoreClipInstruction(self, parts, word, lu, value):
         if parts in ("lem", "lemh", "lemq", "tags"):
             word.modifyAttr(parts, value)
             return
         else:
             for part in parts.split('|'):
-                if part in word.lu:
+                if part in lu:
                     word.modifyTag(part, value)
                     return
 
