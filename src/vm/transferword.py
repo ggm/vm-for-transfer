@@ -193,7 +193,8 @@ class ChunkWordTokenizer():
 
         #Initialize the attributes using the positions.
         word.attrs['tags'] = token[tag:contentsStart]
-        word.attrs['chcontent'] = token[contentsStart:contentsEnd]
+        #Store chunk contents without the '{' and '}'.
+        word.attrs['chcontent'] = token[contentsStart + 1:contentsEnd - 1]
         #If there isn't any tag, the lemma is everything until the '{'.
         if 'lem' not in word.attrs:
             word.attrs['lem'] = token[:contentsStart]
