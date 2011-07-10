@@ -142,9 +142,11 @@ class VM:
     def getSourceWord(self, pos):
         if self.transferStage == TRANSFER_STAGE.CHUNKER:
                 return self.words[self.nextPattern].source.lu
-        else:
+        elif self.transferStage == TRANSFER_STAGE.INTERCHUNK:
             word = self.words[self.nextPattern].chunk
             return word.attrs['lem'] + word.attrs['tags']
+        else:
+            return self.words[self.nextPattern].chunk.attrs['lem']
 
     def getNextInputPattern(self):
         """Get the next input pattern to analyse."""
@@ -158,6 +160,32 @@ class VM:
         return pattern
 
     def selectNextRule(self):
+        """Select the next rule to execute depending on the transfer stage."""
+
+        if self.transferStage == TRANSFER_STAGE.POSTCHUNK:
+            self.selectNextRulePostChunk()
+        else: self.selectNextRuleLRLM()
+
+
+    def selectNextRulePostChunk(self):
+        """Select the next rule trying to match patterns one by one."""
+
+        #Go through all the patterns until one matches a rule.
+        while self.nextPattern < len(self.words):
+            pattern = self.getNextInputPattern()
+            ruleNumber = self.trie.getRuleNumber(pattern)
+            startPatternPos = self.nextPattern - 1
+            if ruleNumber is not None:
+#                print('Pattern "{}" match rule: {}'.format(pattern, ruleNumber))
+                self.setRuleSelected(ruleNumber, startPatternPos)
+                return
+            else:
+                self.processUnmatchedPattern(self.words[startPatternPos])
+
+        #if there isn't any rule at all to execute, stop the vm.
+        self.status = VM_STATUS.HALTED
+
+    def selectNextRuleLRLM(self):
         """Select the next rule to execute matching the LRLM pattern."""
 
         longestMatch = None
@@ -200,7 +228,7 @@ class VM:
 
             #If there is a longest match, set the rule to process
             if longestMatch is not None:
-                print('Pattern "{}" match rule: {}'.format(fullPattern, longestMatch))
+#                print('Pattern "{}" match rule: {}'.format(fullPattern, longestMatch))
                 self.setRuleSelected(longestMatch, startPatternPos)
                 return
             #Otherwise, process the unmatched pattern.
@@ -230,20 +258,51 @@ class VM:
         if self.nextPattern != 1: default = " "
         else: default = ""
 
+        #For the chunker, output the default version of the unmatched pattern.
+        if self.transferStage == TRANSFER_STAGE.CHUNKER:
+            wordTL = '^' + word.target.lu + '$'
+            if self.chunkerMode == CHUNKER_MODE.CHUNK:
+                if wordTL[1] == '*': default += "^unknown<unknown>{" + wordTL + "}$"
+                else: default += "^default<default>{" + wordTL + "}$"
+            else:
+                default += wordTL
+
         #For the interchunk stage only need to output the complete chunk.
-        if self.transferStage == TRANSFER_STAGE.INTERCHUNK:
+        elif self.transferStage == TRANSFER_STAGE.INTERCHUNK:
             default += '^' + word.chunk.lu + '$'
             self.output.write(default.encode("utf-8"))
-            return
 
-        #Output the default version of the unmatched pattern.
-        wordTL = '^' + word.target.lu + '$'
-        if self.chunkerMode == CHUNKER_MODE.CHUNK:
-            if wordTL[1] == '*': default += "^unknown<unknown>{" + wordTL + "}$"
-            else: default += "^default<default>{" + wordTL + "}$"
+        #Lastly, for the postchunk stage output the lexical units inside chunks
+        #with the case of the chunk pseudolemma.
         else:
-            default += wordTL
+            case = self.getCase(word.chunk.attrs['lem'])
+            for lu in word.chunk.attrs['chcontent'].split('$'):
+                if lu:
+                    default += self.changeLemmaCase(lu, case) + '$'
+
         self.output.write(default.encode("utf-8"))
+
+    def getCase(self, string):
+        """Get the case of a string, defaulting to capitals."""
+
+        isFirstUpper = string[0].isupper()
+        isUpper = string.isupper()
+
+        #If it's a 1-length string and is upper, capitalize it.
+        if isUpper and len(string) == 1: return "Aa"
+        elif isFirstUpper and not isUpper: return "Aa"
+        elif isUpper: return "AA"
+        else: return "aa"
+
+    def changeLemmaCase(self, lu, case):
+        """Change the case of the lemma in a lexical unit."""
+
+        tag = lu.find('<')
+        oldLem = lu[1:tag]
+        if case == "aa": newLem = oldLem.lower()
+        elif case == "Aa": newLem = oldLem.capitalize()
+        elif case == "AA": newLem = oldLem.upper()
+        return lu.replace(oldLem, newLem)
 
     def terminateVM(self):
         """Do all the processing needed when the vm is being turned off."""
