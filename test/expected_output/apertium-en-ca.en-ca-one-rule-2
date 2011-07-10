@@ -242,11 +242,19 @@ jmp choose_4_end
 when_6_end:
 choose_4_end:
 #<chunk>
-#<clip part="whole" pos="2">
+#<clip part="lem" pos="2">
 push 2
-push "whole"
+push "lem"
 clip
-chunk 1
+#<clip part="tags" pos="2">
+push 2
+push "tags"
+clip
+#<clip part="chcontent" pos="2">
+push 2
+push "chcontent"
+clip
+chunk 3
 pushsb 1
 #<chunk>
 #<clip part="whole" pos="1">
