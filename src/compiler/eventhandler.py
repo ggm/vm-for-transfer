@@ -326,7 +326,8 @@ class EventHandler():
             linkTo = False
             part = event.attrs['part']
             if part not in self.defAttrs:
-                if part in "lem lemh lemq whole tags": partAttrs.append(part)
+                if part in ('lem', 'lemh', 'lemq', 'whole', 'tags', 'chcontent'):
+                    partAttrs.append(part)
                 else: self.raiseError("attr '{}' doesn't exist.".format(part), event)
             else: partAttrs = self.defAttrs[part]
 
