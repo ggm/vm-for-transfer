@@ -54,6 +54,8 @@ class SystemTrie:
            pattern, starting in a node passed as argument.
         """
 
+        pattern = self.__lemmaToLower(pattern)
+
         if not node: curNode = self.root
         else: curNode = node
 
@@ -97,10 +99,26 @@ class SystemTrie:
 
         return starNode
 
+    def __lemmaToLower(self, pattern):
+        """Convert the case of the lemma of a pattern to lowercase."""
+
+        tag = pattern.find('<')
+        #If there are some characters before the '<' (a lemma), lower them.
+        if tag > 1:
+            lemma = pattern[:tag]
+            pattern = pattern.replace(lemma, lemma.lower())
+        #or there aren't any tags at all.
+        elif tag == -1:
+            pattern = pattern.replace(pattern, pattern.lower())
+
+        return pattern
+
     def getPatternNodes(self, pattern, startNode=None):
         """Get the last nodes of the sequence representing the pattern."""
 
         if not pattern: return []
+
+        pattern = self.__lemmaToLower(pattern)
 
         if startNode: curNodes = [startNode]
         else: curNodes = [self.root]
@@ -253,9 +271,9 @@ if __name__ == '__main__':
         testPattern(key, expected)
 
     #Test that a pattern starting with tag is inserted as *<pattern>.
-    patterns = ["all<predet><sp><n><pl>", "all<predet><sp>student<n><pl>"]
+    patterns = ["all<predet><sp><n><pl>", "ALL<predet><sp>student<n><pl>"]
     expected = 50
-    trie.addPattern(["all<predet><sp>", "<n><pl>"], expected)
+    trie.addPattern(["AlL<predet><sp>", "<n><pl>"], expected)
     for key in patterns:
         testPattern(key, expected)
 
