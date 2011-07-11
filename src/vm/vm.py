@@ -270,7 +270,6 @@ class VM:
         #For the interchunk stage only need to output the complete chunk.
         elif self.transferStage == TRANSFER_STAGE.INTERCHUNK:
             default += '^' + word.chunk.lu + '$'
-            self.output.write(default.encode("utf-8"))
 
         #Lastly, for the postchunk stage output the lexical units inside chunks
         #with the case of the chunk pseudolemma.
