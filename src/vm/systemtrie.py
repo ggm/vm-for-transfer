@@ -35,11 +35,17 @@ class SystemTrie:
     def __init__(self):
         self.root = TrieNode()
 
+    def __canSkipChar(self, char):
+        """Return if a char can be skipped in a '*' node."""
+
+        if char != '<' and char != '>': return True
+        else: return False
+
     def __getNextNodes(self, char, startNode):
         """Get a list of next nodes given a char and a start node."""
 
         nextNodes = []
-        if (char.isalpha() or char == '_') and '*' in startNode.children:
+        if '*' in startNode.children and self.__canSkipChar(char):
             nextNodes.append(startNode.children['*'])
 
         try:
