@@ -15,9 +15,9 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 """
-USAGE: vm -1 t1x_file [-i input_file] [-o output_file] [-h]
+USAGE: vm -c code_file [-i input_file] [-o output_file] [-h]
 Options:
-  -1, --t1xfile:\t\t transfer rules level 1 file
+  -c, --codefile:\t\t a [chunker|interchunk|postchunk] compiled rules file
   -i, --inputfile:\t input file (stdin by default)
   -o, --outputfile:\t output file (stdout by default)
   -h, --help:\t\t show this help
@@ -38,7 +38,7 @@ def main():
     vm = VM()
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "1:i:o:h", ["t1xfile=", "inputfile=", "outputfile=", "help"])
+        opts, args = getopt.getopt(sys.argv[1:], "c:i:o:h", ["codefile=", "inputfile=", "outputfile=", "help"])
     except getopt.GetoptError as error:
         print(error)
         exit()                     
@@ -46,16 +46,16 @@ def main():
     for opt, arg in opts:
         if opt in ("-h", "--help"):
             exit()
-        elif opt in ('-1', '--t1xfile'):
+        elif opt in ('-c', '--codefile'):
             try:
-                t1xFile = open(arg, mode='rt', encoding='utf-8')
-                header = t1xFile.readline()
-                if not vm.setLoader(header, t1xFile):
+                codeFile = open(arg, mode='rt', encoding='utf-8')
+                header = codeFile.readline()
+                if not vm.setLoader(header, codeFile):
                     print("The header of the file {} is not recognized:".format(arg))
                     print(header)
                     sys.exit(2)
 
-                transferHeader = t1xFile.readline()
+                transferHeader = codeFile.readline()
                 vm.setTransferStage(transferHeader)
             except IOError as ioe:
                 print(ioe)
