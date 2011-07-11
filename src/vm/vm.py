@@ -275,9 +275,10 @@ class VM:
         #with the case of the chunk pseudolemma.
         else:
             case = self.getCase(word.chunk.attrs['lem'])
-            for lu in word.chunk.attrs['chcontent'].split('$'):
-                if lu:
-                    default += self.changeLemmaCase(lu, case) + '$'
+            lus = word.chunk.attrs['chcontent'].split('$')
+            default += self.changeLemmaCase(lus[0], case) + '$'
+            for lu in lus[1:]:
+                if lu: default += lu + '$'
 
         self.output.write(default.encode("utf-8"))
 
@@ -296,8 +297,9 @@ class VM:
     def changeLemmaCase(self, lu, case):
         """Change the case of the lemma in a lexical unit."""
 
+        lemStart = lu.find('^') + 1
         tag = lu.find('<')
-        oldLem = lu[1:tag]
+        oldLem = lu[lemStart:tag]
         if case == "aa": newLem = oldLem.lower()
         elif case == "Aa": newLem = oldLem.capitalize()
         elif case == "AA": newLem = oldLem.upper()
