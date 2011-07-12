@@ -174,7 +174,7 @@ class Interpreter:
         for op in ops: string += op
 
         varName = self.systemStack.pop()
-        self.vm.variables[varName] += string
+        self.vm.variables[varName] = self.vm.variables[varName] + string
 
     def executeBeginsWith(self, instr):
         prefixes = self.systemStack.pop()
