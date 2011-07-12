@@ -66,6 +66,16 @@ class EventHandler():
     def addUncheckedMacro(self, event):
         self.uncheckedMacros.append(event)
 
+    def isContainer(self, event):
+        """Check if a var or clip acts as a container."""
+
+        if event.parent.name in ('let'):
+            #If it's the first child, it's on the left, so it's a container.
+            if event.parent.numChildren == 1:
+                return True
+
+        return False
+
     def handleEndOfParsing(self):
         for event in self.uncheckedMacros: self.checkMacro(event)
 
@@ -113,8 +123,8 @@ class EventHandler():
         catItem = ''
         if self.transferStage == "postchunk":
             catItem = event.attrs['name']
-        else:
-            if 'lemma' in event.attrs:                  #lemma attribute is optional.
+        else: #lemma attribute is optional.
+            if 'lemma' in event.attrs:
                 lemma = event.attrs['lemma']
                 catItem = lemma
             
@@ -306,11 +316,8 @@ class EventHandler():
         if varName not in self.defVars:
             self.raiseError("var '{}' doesn't exist.".format(varName), event)
 
-        #Check it this var acts as a container.
-        parent = event.parent.name
-        if parent == "let":
-            isContainer = True
-        else: isContainer = False
+        #Check if this var acts as a container.
+        isContainer = self.isContainer(event)
 
         self.codeGen.genVarStart(event, isContainer)        
 
@@ -320,21 +327,19 @@ class EventHandler():
     def handle_clip_end(self, event):
         #If there is a link-to attribute, we ignore the other ones.
         partAttrs = []
-        if 'link-to' in event.attrs:
-            linkTo = True
-        else:
-            linkTo = False
-            part = event.attrs['part']
-            if part not in self.defAttrs:
-                if part in ('lem', 'lemh', 'lemq', 'whole', 'tags', 'chcontent'):
-                    partAttrs.append(part)
-                else: self.raiseError("attr '{}' doesn't exist.".format(part), event)
-            else: partAttrs = self.defAttrs[part]
+        if 'link-to' in event.attrs: linkTo = True
+        else: linkTo = False
 
-        isContainer = False
-        if event.parent.name in ('let', 'modify-case'):
-            if event.parent.numChildren == 1: #If it's the first child, it's on the left
-                isContainer = True    #therefore it's a container.
+        part = event.attrs['part']
+        if part not in self.defAttrs:
+            if part in ('lem', 'lemh', 'lemq', 'whole', 'tags', 'chcontent'):
+                partAttrs.append(part)
+            else: self.raiseError("attr '{}' doesn't exist.".format(part), event)
+        else: partAttrs = self.defAttrs[part]
+
+        #Check if this clip acts as a container.
+        isContainer = self.isContainer(event)
+
         self.codeGen.genClipEnd(event, partAttrs, isContainer, linkTo)
 
     def handle_list_start(self, event):

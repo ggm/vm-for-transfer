@@ -314,13 +314,7 @@ class AssemblyCodeGenerator:
     def genInEnd(self, event):
         self.addCode(self.getIgnoreCaseInstr(event, self.IN_OP, self.INIG_OP))
 
-    def genClipCode(self, event, partAttrs, linkTo=False):
-        #If there is a link-to attribute, we ignore the other ones.
-        if linkTo:
-            link_to = '"<{}>"'.format(str(event.attrs['link-to']))
-            self.addCode(self.PUSH_OP + self.INSTR_SEP + link_to)
-            return
-
+    def genClipCode(self, event, partAttrs):
         #Push the position to the stack.
         pos = event.attrs['pos']
         self.addCode(self.PUSH_OP + self.INSTR_SEP + str(pos))
@@ -330,26 +324,30 @@ class AssemblyCodeGenerator:
         else: partAttrStr = '"' + "|".join(partAttrs) + '"'
         self.addCode(self.PUSH_OP + self.INSTR_SEP + partAttrStr)
 
-    def genClipInstr(self, event):
+    def genClipInstr(self, event, linkTo=False):
+        if not linkTo: link = ""
+        else:
+            link = self.INSTR_SEP + '"<{}>"'.format(str(event.attrs['link-to']))
+
         #Choose the appropriate instr depending on the side of the clip op.
-        if 'side' not in event.attrs: self.addCode(self.CLIP_OP)
-        elif event.attrs['side'] == 'sl': self.addCode(self.CLIPSL_OP)
-        elif event.attrs['side'] == 'tl': self.addCode(self.CLIPTL_OP)
+        if 'side' not in event.attrs: self.addCode(self.CLIP_OP + link)
+        elif event.attrs['side'] == 'sl': self.addCode(self.CLIPSL_OP + link)
+        elif event.attrs['side'] == 'tl': self.addCode(self.CLIPTL_OP + link)
 
     def genClipEnd(self, event, partAttrs, isContainer, linkTo):
         self.genDebugCode(event)
 
-        self.genClipCode(event, partAttrs, linkTo)
+        self.genClipCode(event, partAttrs)
 
-        #If this clip doesn't work as a container (left-side),
-        #we need a CLIP(SL|TL).
-        if not linkTo and not isContainer:
-            self.genClipInstr(event)
-        elif isContainer and event.parent.name == "modify-case":
+        if event.parent.name == "modify-case":
             #If it's a container of a modify-case, we need to generate another
             #clip instruction to get the clip value needed by the modify-case.
             self.genClipCode(event, partAttrs)
             self.genClipInstr(event)
+        #If this clip doesn't work as a container (left-side),
+        #we need a CLIP(SL|TL).
+        elif not isContainer:
+            self.genClipInstr(event, linkTo)
 
     def genListStart(self, event, list):
         self.genDebugCode(event)

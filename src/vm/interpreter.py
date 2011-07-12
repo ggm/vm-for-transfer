@@ -223,37 +223,48 @@ class Interpreter:
         pos = self.systemStack.pop()
         word = self.getSourceWord(pos)
 
+        if len(instr) > 1: linkTo = str(instr[1].replace('"', ''))
+        else: linkTo = None
+
         lu = word.attrs['lem'] + word.attrs['tags']
-        self.handleClipInstruction(parts, word, lu)
+        self.handleClipInstruction(parts, word, lu, linkTo)
 
     def executeClipsl(self, instr):
         parts = self.systemStack.pop()
         pos = self.systemStack.pop()
         word = self.getSourceWord(pos)
 
-        self.handleClipInstruction(parts, word, word.lu)
+        if len(instr) > 1: linkTo = str(instr[1].replace('"', ''))
+        else: linkTo = None
+
+        self.handleClipInstruction(parts, word, word.lu, linkTo)
 
     def executeCliptl(self, instr):
         parts = self.systemStack.pop()
         pos = self.systemStack.pop()
         word = self.getTargetWord(pos)
 
-        self.handleClipInstruction(parts, word, word.lu)
+        if len(instr) > 1: linkTo = str(instr[1].replace('"', ''))
+        else: linkTo = None
 
-    def handleClipInstruction(self, parts, word, lu):
-        if parts in ("lem", "lemh", "lemq", "tags", "chcontent"):
+        self.handleClipInstruction(parts, word, word.lu, linkTo)
+
+    def handleClipInstruction(self, parts, word, lu, linkTo):
+        if linkTo is None and parts in ("lem", "lemh", "lemq", "tags", "chcontent"):
             try:
                 self.systemStack.push(word.attrs[parts])
             except KeyError:
                 self.systemStack.push("")
             return
-        elif parts == "whole":
+        elif linkTo is None and parts == "whole":
             self.systemStack.push(word.lu)
             return
         else:
             for part in parts.split('|'):
                 if part in lu:
-                    self.systemStack.push(part)
+                    if linkTo:
+                        self.systemStack.push(linkTo)
+                    else: self.systemStack.push(part)
                     return
 
         #If the word doesn't have the part needed, return "".
