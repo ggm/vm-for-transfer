@@ -86,7 +86,7 @@ append 4
 push 1
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_2_end
 when_2_end:
@@ -122,7 +122,7 @@ append 3
 push 1
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_2_end
 when_3_end:
@@ -229,7 +229,7 @@ append 4
 push 2
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_6_end
 when_7_end:
@@ -265,7 +265,7 @@ append 3
 push 2
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_6_end
 when_8_end:
@@ -627,7 +627,7 @@ append 4
 push 2
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_16_end
 when_24_end:
@@ -663,7 +663,7 @@ append 3
 push 2
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_16_end
 when_25_end:
@@ -713,7 +713,7 @@ append 4
 push 3
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_18_end
 when_27_end:
@@ -749,7 +749,7 @@ append 3
 push 3
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_18_end
 when_28_end:
@@ -914,7 +914,7 @@ jz when_36_end
 push 3
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="gen_chunk">
-push "gen_chunk"
+push gen_chunk
 storetl
 jmp choose_24_end
 when_36_end:
@@ -1163,7 +1163,7 @@ jz when_48_end
 push 3
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nbr_chunk">
-push "nbr_chunk"
+push nbr_chunk
 storetl
 jmp choose_32_end
 when_48_end:
@@ -1232,7 +1232,7 @@ append 4
 push 2
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_34_end
 when_50_end:
@@ -1268,7 +1268,7 @@ append 3
 push 2
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_34_end
 when_51_end:
@@ -1318,7 +1318,7 @@ append 4
 push 3
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_36_end
 when_53_end:
@@ -1354,7 +1354,7 @@ append 3
 push 3
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_36_end
 when_54_end:
@@ -1404,7 +1404,7 @@ append 4
 push 4
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_38_end
 when_56_end:
@@ -1440,7 +1440,7 @@ append 3
 push 4
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_38_end
 when_57_end:
@@ -1613,7 +1613,7 @@ jz when_65_end
 push 3
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="gen_chunk">
-push "gen_chunk"
+push gen_chunk
 storetl
 jmp choose_44_end
 when_65_end:
@@ -1646,7 +1646,7 @@ jz when_67_end
 push 4
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="gen_chunk">
-push "gen_chunk"
+push gen_chunk
 storetl
 jmp choose_46_end
 when_67_end:
@@ -1956,7 +1956,7 @@ jz when_82_end
 push 3
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nbr_chunk">
-push "nbr_chunk"
+push nbr_chunk
 storetl
 jmp choose_55_end
 when_82_end:
@@ -1989,7 +1989,7 @@ jz when_84_end
 push 4
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nbr_chunk">
-push "nbr_chunk"
+push nbr_chunk
 storetl
 jmp choose_57_end
 when_84_end:
@@ -2058,7 +2058,7 @@ append 4
 push 2
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_59_end
 when_86_end:
@@ -2094,7 +2094,7 @@ append 3
 push 2
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_59_end
 when_87_end:
@@ -2144,7 +2144,7 @@ append 4
 push 3
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_61_end
 when_89_end:
@@ -2180,7 +2180,7 @@ append 3
 push 3
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_61_end
 when_90_end:
@@ -2230,7 +2230,7 @@ append 4
 push 4
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_63_end
 when_92_end:
@@ -2266,7 +2266,7 @@ append 3
 push 4
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_63_end
 when_93_end:
@@ -2316,7 +2316,7 @@ append 4
 push 5
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_65_end
 when_95_end:
@@ -2352,7 +2352,7 @@ append 3
 push 5
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_65_end
 when_96_end:
@@ -2533,7 +2533,7 @@ jz when_104_end
 push 3
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="gen_chunk">
-push "gen_chunk"
+push gen_chunk
 storetl
 jmp choose_71_end
 when_104_end:
@@ -2566,7 +2566,7 @@ jz when_106_end
 push 4
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="gen_chunk">
-push "gen_chunk"
+push gen_chunk
 storetl
 jmp choose_73_end
 when_106_end:
@@ -2599,7 +2599,7 @@ jz when_108_end
 push 5
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="gen_chunk">
-push "gen_chunk"
+push gen_chunk
 storetl
 jmp choose_75_end
 when_108_end:
@@ -2970,7 +2970,7 @@ jz when_126_end
 push 3
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nbr_chunk">
-push "nbr_chunk"
+push nbr_chunk
 storetl
 jmp choose_85_end
 when_126_end:
@@ -3003,7 +3003,7 @@ jz when_128_end
 push 4
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nbr_chunk">
-push "nbr_chunk"
+push nbr_chunk
 storetl
 jmp choose_87_end
 when_128_end:
@@ -3036,7 +3036,7 @@ jz when_130_end
 push 5
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nbr_chunk">
-push "nbr_chunk"
+push nbr_chunk
 storetl
 jmp choose_89_end
 when_130_end:
@@ -6789,13 +6789,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -6807,7 +6811,9 @@ push "el"
 #<lit-tag v="det.def">
 push "<det><def>"
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<lit-tag v="pl">
 push "<pl>"
 lu 4
@@ -6822,13 +6828,17 @@ push 2
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -6888,13 +6898,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -6906,7 +6920,9 @@ push "el"
 #<lit-tag v="det.def">
 push "<det><def>"
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<lit-tag v="pl">
 push "<pl>"
 lu 4
@@ -6920,13 +6936,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -6949,15 +6969,21 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip link-to="4" part="nbr_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sp>"
+cliptl "<4>"
 #<clip part="lemq" pos="2" side="tl">
 push 2
 push "lemq"
@@ -7010,13 +7036,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -7032,13 +7062,17 @@ push 2
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -7091,13 +7125,17 @@ push 1
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -7113,13 +7151,17 @@ push 2
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -7170,13 +7212,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -7192,13 +7238,17 @@ push 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -7214,13 +7264,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -7280,13 +7334,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -7302,13 +7360,17 @@ push 2
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -7324,13 +7386,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -7423,13 +7489,17 @@ push 1
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -7445,13 +7515,17 @@ push 2
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -7467,13 +7541,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -7534,13 +7612,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -7556,13 +7638,17 @@ push 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -7578,13 +7664,17 @@ push 3
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -7600,13 +7690,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -7706,13 +7800,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -7728,13 +7826,17 @@ push 2
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -7750,13 +7852,17 @@ push 3
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -7772,13 +7878,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -7863,13 +7973,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -7895,13 +8009,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -7949,13 +8067,17 @@ push 2
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -7977,13 +8099,17 @@ push 1
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -8045,13 +8171,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -8067,13 +8197,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -8095,13 +8229,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -8160,13 +8298,17 @@ push 1
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -8182,13 +8324,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -8210,13 +8356,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -8268,13 +8418,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -8290,13 +8444,17 @@ push 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -8312,13 +8470,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -8340,13 +8502,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -8407,13 +8573,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -8429,13 +8599,17 @@ push 2
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -8451,13 +8625,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -8479,13 +8657,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -8540,13 +8722,17 @@ push 1
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -8562,13 +8748,17 @@ push 2
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -8584,13 +8774,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -8612,13 +8806,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -8674,13 +8872,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -8696,13 +8898,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -8730,13 +8936,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -8794,13 +9004,17 @@ push 1
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -8816,13 +9030,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -8850,13 +9068,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -8904,13 +9126,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -8938,13 +9164,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -9001,13 +9231,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -9023,13 +9257,17 @@ push 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -9045,13 +9283,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -9079,13 +9321,17 @@ push 4
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -9150,13 +9396,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -9172,13 +9422,17 @@ push 2
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -9194,13 +9448,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -9228,13 +9486,17 @@ push 4
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -9278,13 +9540,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -9304,13 +9570,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -9377,13 +9647,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -9399,13 +9673,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -9427,13 +9705,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -9451,13 +9733,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -9519,13 +9805,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -9541,13 +9831,17 @@ push 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -9563,13 +9857,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -9591,13 +9889,17 @@ push 4
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -9615,13 +9917,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -9682,13 +9988,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -9704,13 +10014,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -9732,13 +10046,17 @@ push 4
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -9762,13 +10080,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -9818,13 +10140,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -9840,13 +10166,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -9868,13 +10198,17 @@ push 4
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -9898,13 +10232,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -9963,13 +10301,17 @@ push 1
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -9985,13 +10327,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -10013,13 +10359,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -10037,13 +10387,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -10109,13 +10463,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -10131,13 +10489,17 @@ push 2
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -10153,13 +10515,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -10181,13 +10547,17 @@ push 4
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -10205,13 +10575,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -10260,13 +10634,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -10288,13 +10666,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -10316,13 +10698,17 @@ push 1
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -10392,13 +10778,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -10414,13 +10804,17 @@ push 2
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -10436,13 +10830,17 @@ push 6
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="6" side="tl">
-push "<3>"
+push 6
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="6" side="tl">
 push 6
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="6" side="tl">
-push "<4>"
+push 6
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="6" side="tl">
 push 6
 push "<sp>"
@@ -10464,13 +10862,17 @@ push 5
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -10498,13 +10900,17 @@ push 4
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -10574,13 +10980,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -10596,13 +11006,17 @@ push 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -10618,13 +11032,17 @@ push 6
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="6" side="tl">
-push "<3>"
+push 6
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="6" side="tl">
 push 6
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="6" side="tl">
-push "<4>"
+push 6
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="6" side="tl">
 push 6
 push "<sp>"
@@ -10646,13 +11064,17 @@ push 5
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -10680,13 +11102,17 @@ push 4
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -10739,13 +11165,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -10767,13 +11197,17 @@ push 1
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -10801,13 +11235,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -10860,13 +11298,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -10888,13 +11330,17 @@ push 1
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -10928,13 +11374,17 @@ push 4
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -10999,13 +11449,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -11021,13 +11475,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -11049,13 +11507,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -11083,13 +11545,17 @@ push 4
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -11154,13 +11620,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -11176,13 +11646,17 @@ push 6
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="6" side="tl">
-push "<3>"
+push 6
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="6" side="tl">
 push 6
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="6" side="tl">
-push "<4>"
+push 6
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="6" side="tl">
 push 6
 push "<sp>"
@@ -11204,13 +11678,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -11244,13 +11722,17 @@ push 5
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -11315,13 +11797,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -11337,13 +11823,17 @@ push 6
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="6" side="tl">
-push "<3>"
+push 6
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="6" side="tl">
 push 6
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="6" side="tl">
-push "<4>"
+push 6
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="6" side="tl">
 push 6
 push "<sp>"
@@ -11371,13 +11861,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -11405,13 +11899,17 @@ push 5
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -11476,13 +11974,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -11498,13 +12000,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -11526,13 +12032,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -11559,13 +12069,17 @@ push 4
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -11618,13 +12132,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -11646,13 +12164,17 @@ push 1
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -11679,13 +12201,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -11733,13 +12259,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -11766,13 +12296,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -11830,13 +12364,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -11863,13 +12401,17 @@ push 1
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -11929,13 +12471,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -11956,13 +12502,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -11989,13 +12539,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -12055,15 +12609,21 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip link-to="4" part="nbr_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sp>"
+cliptl "<4>"
 lu 6
 pushsb 1
 #<clip part="lemh" pos="5" side="tl">
@@ -12075,13 +12635,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -12108,13 +12672,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -12218,9 +12786,13 @@ push 2
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 #<clip part="lemq" pos="2" side="tl">
 push 2
 push "lemq"
@@ -12288,9 +12860,13 @@ push 1
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 #<clip part="lemq" pos="1" side="tl">
 push 1
 push "lemq"
@@ -12415,13 +12991,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -12437,13 +13017,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -12518,13 +13102,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -12540,13 +13128,17 @@ push 2
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -12678,13 +13270,17 @@ push 1
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -12700,13 +13296,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -12779,13 +13379,17 @@ push 1
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -12801,13 +13405,17 @@ push 2
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -12924,9 +13532,13 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 #<clip part="lemq" pos="4" side="tl">
 push 4
 push "lemq"
@@ -13097,9 +13709,13 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 #<clip part="lemq" pos="4" side="tl">
 push 4
 push "lemq"
@@ -13284,13 +13900,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -13306,13 +13926,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -13499,13 +14123,17 @@ push 1
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -13521,13 +14149,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -13708,9 +14340,13 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 #<clip part="lemq" pos="5" side="tl">
 push 5
 push "lemq"
@@ -13927,13 +14563,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -13949,13 +14589,17 @@ push 6
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="6" side="tl">
-push "<3>"
+push 6
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="6" side="tl">
 push 6
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="6" side="tl">
-push "<4>"
+push 6
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="6" side="tl">
 push 6
 push "<sp>"
@@ -14174,13 +14818,17 @@ push 1
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -14196,13 +14844,17 @@ push 6
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="6" side="tl">
-push "<3>"
+push 6
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="6" side="tl">
 push 6
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="6" side="tl">
-push "<4>"
+push 6
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="6" side="tl">
 push 6
 push "<sp>"
@@ -14320,13 +14972,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -14352,13 +15008,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -14412,13 +15072,17 @@ push 1
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -14434,13 +15098,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -14466,13 +15134,17 @@ push 4
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -14528,13 +15200,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -14550,13 +15226,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -14582,13 +15262,17 @@ push 4
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -14695,13 +15379,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -14717,13 +15405,17 @@ push 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -14739,13 +15431,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -14821,13 +15517,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -14843,13 +15543,17 @@ push 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -14865,13 +15569,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -15010,13 +15718,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -15032,13 +15744,17 @@ push 2
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -15054,13 +15770,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -15136,13 +15856,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -15158,13 +15882,17 @@ push 2
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -15180,13 +15908,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -15310,13 +16042,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -15332,13 +16068,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -15565,9 +16305,13 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 #<clip part="lemq" pos="3" side="tl">
 push 3
 push "lemq"
@@ -15660,13 +16404,17 @@ push 2
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -15688,13 +16436,17 @@ push 1
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -15828,13 +16580,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -15850,13 +16606,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -15906,13 +16666,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -15960,13 +16724,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -15982,13 +16750,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -16010,13 +16782,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -16148,13 +16924,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -16204,13 +16984,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -16232,13 +17016,17 @@ push 1
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -16280,13 +17068,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -16308,13 +17100,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -16336,13 +17132,17 @@ push 1
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -16477,13 +17277,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -16499,13 +17303,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -16555,13 +17363,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -16583,13 +17395,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -16634,13 +17450,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -16656,13 +17476,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -16684,13 +17508,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -16712,13 +17540,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -16809,9 +17641,13 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 #<clip part="lemq" pos="3" side="tl">
 push 3
 push "lemq"
@@ -16925,9 +17761,13 @@ push 2
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 #<clip part="lemq" pos="2" side="tl">
 push 2
 push "lemq"
@@ -17031,9 +17871,13 @@ push 1
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 #<clip part="lemq" pos="1" side="tl">
 push 1
 push "lemq"
@@ -17156,13 +18000,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -17178,13 +18026,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -17305,13 +18157,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -17327,13 +18183,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -17467,13 +18327,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -17551,13 +18415,17 @@ push 1
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -17606,13 +18474,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -17662,13 +18534,17 @@ push 1
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -17771,13 +18647,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -17793,13 +18673,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -17877,13 +18761,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -17935,13 +18823,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -17957,13 +18849,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -18013,13 +18909,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -18097,9 +18997,13 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 #<clip part="lemq" pos="4" side="tl">
 push 4
 push "lemq"
@@ -18258,13 +19162,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -18280,13 +19188,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -18425,13 +19337,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -18447,13 +19363,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -19062,9 +19982,13 @@ push 6
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="6" side="tl">
-push "<3>"
+push 6
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="6" side="tl">
-push "<4>"
+push 6
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 #<clip part="lemq" pos="6" side="tl">
 push 6
 push "lemq"
@@ -19178,9 +20102,13 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 #<clip part="lemq" pos="4" side="tl">
 push 4
 push "lemq"
@@ -19301,13 +20229,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -19323,13 +20255,17 @@ push 7
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="7" side="tl">
-push "<3>"
+push 7
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="7" side="tl">
 push 7
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="7" side="tl">
-push "<4>"
+push 7
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="7" side="tl">
 push 7
 push "<sp>"
@@ -19454,13 +20390,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -19476,13 +20416,17 @@ push 5
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="5" side="tl">
-push "<3>"
+push 5
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="5" side="tl">
 push 5
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="5" side="tl">
-push "<4>"
+push 5
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="5" side="tl">
 push 5
 push "<sp>"
@@ -19896,13 +20840,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -20580,9 +21528,13 @@ push 1
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="2" part="gen" pos="1" side="tl">
-push "<2>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<2>"
 #<clip link-to="3" part="nbr" pos="1" side="tl">
-push "<3>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<3>"
 lu 4
 chunk 3
 out 1
@@ -20617,13 +21569,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="2" part="gen_sense_mf" pos="1" side="tl">
-push "<2>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<2>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="3" part="nbr_sense_sp" pos="1" side="tl">
-push "<3>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<3>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -20662,9 +21618,13 @@ push 1
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 #<clip part="lemq" pos="1" side="tl">
 push 1
 push "lemq"
@@ -20734,7 +21694,9 @@ push 1
 push "<prn>"
 cliptl
 #<clip link-to="2" part="tipus_prn" pos="1" side="tl">
-push "<2>"
+push 1
+push "<tn>|<obj>|<enc>|<itg>|<pos>"
+cliptl "<2>"
 #<clip part="pers" pos="1" side="tl">
 push 1
 push "<p1>|<p2>|<p3>|<PD>"
@@ -20789,7 +21751,9 @@ push 1
 push "<prn>"
 cliptl
 #<clip link-to="2" part="tipus_prn" pos="1" side="tl">
-push "<2>"
+push 1
+push "<tn>|<obj>|<enc>|<itg>|<pos>"
+cliptl "<2>"
 #<clip part="pers" pos="1" side="tl">
 push 1
 push "<p1>|<p2>|<p3>|<PD>"
@@ -20843,13 +21807,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -20865,13 +21833,17 @@ push 2
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -21014,9 +21986,13 @@ push 2
 push "<p1>|<p2>|<p3>|<PD>"
 cliptl
 #<clip link-to="4" part="gen" pos="2" side="tl">
-push "<4>"
+push 2
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<4>"
 #<clip link-to="5" part="nbr" pos="2" side="tl">
-push "<5>"
+push 2
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<5>"
 lu 6
 chunk 3
 out 3
@@ -21099,13 +22075,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -21121,13 +22101,17 @@ push 2
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -21153,7 +22137,9 @@ push 4
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="5" part="temps" pos="4" side="tl">
-push "<5>"
+push 4
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<5>"
 lu 3
 #<lit v="es">
 push "es"
@@ -21195,13 +22181,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -21217,13 +22207,17 @@ push 2
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -21249,7 +22243,9 @@ push 4
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="5" part="temps" pos="4" side="tl">
-push "<5>"
+push 4
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<5>"
 #<clip part="lemq" pos="4" side="tl">
 push 4
 push "lemq"
@@ -21337,13 +22333,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -21359,13 +22359,17 @@ push 2
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -21391,7 +22395,9 @@ push 4
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="5" part="temps" pos="4" side="tl">
-push "<5>"
+push 4
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<5>"
 lu 3
 #<lit v="es">
 push "es"
@@ -21452,13 +22458,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -21474,13 +22484,17 @@ push 2
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -21506,7 +22520,9 @@ push 4
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="5" part="temps" pos="4" side="tl">
-push "<5>"
+push 4
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<5>"
 lu 3
 #<clip part="lem" pos="5" side="tl">
 push 5
@@ -21607,9 +22623,13 @@ push 1
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 #<clip part="lemq" pos="1" side="tl">
 push 1
 push "lemq"
@@ -21631,7 +22651,9 @@ push 3
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="5" part="temps" pos="3" side="tl">
-push "<5>"
+push 3
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<5>"
 lu 3
 #<lit v="es">
 push "es"
@@ -21675,9 +22697,13 @@ push 1
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 #<clip part="lemq" pos="1" side="tl">
 push 1
 push "lemq"
@@ -21699,7 +22725,9 @@ push 3
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="5" part="temps" pos="3" side="tl">
-push "<5>"
+push 3
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<5>"
 #<clip part="lemq" pos="3" side="tl">
 push 3
 push "lemq"
@@ -21775,9 +22803,13 @@ push 1
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 #<clip part="lemq" pos="1" side="tl">
 push 1
 push "lemq"
@@ -21799,7 +22831,9 @@ push 3
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="5" part="temps" pos="3" side="tl">
-push "<5>"
+push 3
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<5>"
 lu 3
 #<lit v="es">
 push "es"
@@ -21862,9 +22896,13 @@ push 1
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 #<clip part="lemq" pos="1" side="tl">
 push 1
 push "lemq"
@@ -21886,7 +22924,9 @@ push 3
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="5" part="temps" pos="3" side="tl">
-push "<5>"
+push 3
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<5>"
 lu 3
 #<clip part="lem" pos="4" side="tl">
 push 4
@@ -22004,13 +23044,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -22026,13 +23070,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -22054,13 +23102,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -22086,7 +23138,9 @@ push 5
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="5" part="temps" pos="5" side="tl">
-push "<5>"
+push 5
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<5>"
 lu 3
 #<lit v="es">
 push "es"
@@ -22128,13 +23182,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -22150,13 +23208,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -22178,13 +23240,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -22210,7 +23276,9 @@ push 5
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="5" part="temps" pos="5" side="tl">
-push "<5>"
+push 5
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<5>"
 #<clip part="lemq" pos="5" side="tl">
 push 5
 push "lemq"
@@ -22307,13 +23375,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -22329,13 +23401,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -22357,13 +23433,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -22389,7 +23469,9 @@ push 5
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="5" part="temps" pos="5" side="tl">
-push "<5>"
+push 5
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<5>"
 lu 3
 #<lit v="es">
 push "es"
@@ -22450,13 +23532,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -22472,13 +23558,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -22500,13 +23590,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -22532,7 +23626,9 @@ push 5
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="5" part="temps" pos="5" side="tl">
-push "<5>"
+push 5
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<5>"
 lu 3
 #<clip part="lem" pos="6" side="tl">
 push 6
@@ -22584,7 +23680,7 @@ jz when_277_end
 #<var n="gen_qual">
 push "gen_qual"
 #<var n="gen_chunk">
-push "gen_chunk"
+push gen_chunk
 storev
 jmp choose_206_end
 when_277_end:
@@ -22611,7 +23707,7 @@ jz when_278_end
 #<var n="nbr_qual">
 push "nbr_qual"
 #<var n="nbr_chunk">
-push "nbr_chunk"
+push nbr_chunk
 storev
 jmp choose_207_end
 when_278_end:
@@ -22648,13 +23744,17 @@ push "el"
 #<lit-tag v="det.def">
 push "<det><def>"
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -22670,13 +23770,17 @@ push 2
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -22718,7 +23822,7 @@ jz when_279_end
 #<var n="gen_qual">
 push "gen_qual"
 #<var n="gen_chunk">
-push "gen_chunk"
+push gen_chunk
 storev
 jmp choose_208_end
 when_279_end:
@@ -22745,7 +23849,7 @@ jz when_280_end
 #<var n="nbr_qual">
 push "nbr_qual"
 #<var n="nbr_chunk">
-push "nbr_chunk"
+push nbr_chunk
 storev
 jmp choose_209_end
 when_280_end:
@@ -22783,13 +23887,17 @@ push "el"
 #<lit-tag v="det.def">
 push "<det><def>"
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -22805,13 +23913,17 @@ push 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -22827,13 +23939,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -22875,7 +23991,7 @@ jz when_281_end
 #<var n="gen_qual">
 push "gen_qual"
 #<var n="gen_chunk">
-push "gen_chunk"
+push gen_chunk
 storev
 jmp choose_210_end
 when_281_end:
@@ -22902,7 +24018,7 @@ jz when_282_end
 #<var n="nbr_qual">
 push "nbr_qual"
 #<var n="nbr_chunk">
-push "nbr_chunk"
+push nbr_chunk
 storev
 jmp choose_211_end
 when_282_end:
@@ -22949,13 +24065,17 @@ push "el"
 #<lit-tag v="det.def">
 push "<det><def>"
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -22971,13 +24091,17 @@ push 2
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -22993,13 +24117,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -23045,7 +24173,7 @@ jz when_283_end
 #<var n="gen_qual">
 push "gen_qual"
 #<var n="gen_chunk">
-push "gen_chunk"
+push gen_chunk
 storev
 jmp choose_212_end
 when_283_end:
@@ -23072,7 +24200,7 @@ jz when_284_end
 #<var n="nbr_qual">
 push "nbr_qual"
 #<var n="nbr_chunk">
-push "nbr_chunk"
+push nbr_chunk
 storev
 jmp choose_213_end
 when_284_end:
@@ -23116,13 +24244,17 @@ push "el"
 #<lit-tag v="det.def">
 push "<det><def>"
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -23138,13 +24270,17 @@ push 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -23160,13 +24296,17 @@ push 3
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -23182,13 +24322,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -23278,7 +24422,7 @@ jz when_286_end
 #<var n="gen_qual">
 push "gen_qual"
 #<var n="gen_chunk">
-push "gen_chunk"
+push gen_chunk
 storev
 jmp choose_215_end
 when_286_end:
@@ -23305,7 +24449,7 @@ jz when_287_end
 #<var n="nbr_qual">
 push "nbr_qual"
 #<var n="nbr_chunk">
-push "nbr_chunk"
+push nbr_chunk
 storev
 jmp choose_216_end
 when_287_end:
@@ -23344,13 +24488,17 @@ push "el"
 #<lit-tag v="det.def">
 push "<det><def>"
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -23366,13 +24514,17 @@ push 2
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -23388,13 +24540,17 @@ push 3
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -23410,13 +24566,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -23462,7 +24622,7 @@ jz when_288_end
 #<var n="gen_qual">
 push "gen_qual"
 #<var n="gen_chunk">
-push "gen_chunk"
+push gen_chunk
 storev
 jmp choose_217_end
 when_288_end:
@@ -23489,7 +24649,7 @@ jz when_289_end
 #<var n="nbr_qual">
 push "nbr_qual"
 #<var n="nbr_chunk">
-push "nbr_chunk"
+push nbr_chunk
 storev
 jmp choose_218_end
 when_289_end:
@@ -23527,13 +24687,17 @@ push "el"
 #<lit-tag v="det.def">
 push "<det><def>"
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -23549,13 +24713,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -23577,13 +24745,17 @@ push 2
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -23621,7 +24793,7 @@ jz when_290_end
 #<var n="gen_qual">
 push "gen_qual"
 #<var n="gen_chunk">
-push "gen_chunk"
+push gen_chunk
 storev
 jmp choose_219_end
 when_290_end:
@@ -23648,7 +24820,7 @@ jz when_291_end
 #<var n="nbr_qual">
 push "nbr_qual"
 #<var n="nbr_chunk">
-push "nbr_chunk"
+push nbr_chunk
 storev
 jmp choose_220_end
 when_291_end:
@@ -23691,13 +24863,17 @@ push "el"
 #<lit-tag v="det.def">
 push "<det><def>"
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -23713,13 +24889,17 @@ push 2
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -23735,13 +24915,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -23763,13 +24947,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -23807,7 +24995,7 @@ jz when_292_end
 #<var n="gen_qual">
 push "gen_qual"
 #<var n="gen_chunk">
-push "gen_chunk"
+push gen_chunk
 storev
 jmp choose_221_end
 when_292_end:
@@ -23834,7 +25022,7 @@ jz when_293_end
 #<var n="nbr_qual">
 push "nbr_qual"
 #<var n="nbr_chunk">
-push "nbr_chunk"
+push nbr_chunk
 storev
 jmp choose_222_end
 when_293_end:
@@ -23886,13 +25074,17 @@ push "el"
 #<lit-tag v="det.def">
 push "<det><def>"
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -23908,13 +25100,17 @@ push 2
 push "<num>|<num><percent>|<num><ord>|<num><mon>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"
@@ -23930,13 +25126,17 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="4" side="tl">
-push "<3>"
+push 4
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="4" side="tl">
 push 4
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="4" side="tl">
-push "<4>"
+push 4
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="4" side="tl">
 push 4
 push "<sp>"
@@ -23958,13 +25158,17 @@ push 3
 push "<adj>|<adj><pos>|<vblex><pp>|<vbmod><pp>|<vblex><pron><pp>|<adjant>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="3" side="tl">
-push "<3>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="3" side="tl">
-push "<4>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -24476,7 +25680,9 @@ push 3
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="4" part="temps" pos="3" side="tl">
-push "<4>"
+push 3
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<4>"
 lu 3
 #<lit v="es">
 push "es"
@@ -24538,7 +25744,9 @@ push 3
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="4" part="temps" pos="3" side="tl">
-push "<4>"
+push 3
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<4>"
 #<clip part="lemq" pos="3" side="tl">
 push 3
 push "lemq"
@@ -24636,7 +25844,9 @@ push 3
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="4" part="temps" pos="3" side="tl">
-push "<4>"
+push 3
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<4>"
 lu 3
 #<lit v="es">
 push "es"
@@ -24717,7 +25927,9 @@ push 3
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="4" part="temps" pos="3" side="tl">
-push "<4>"
+push 3
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<4>"
 lu 3
 #<clip part="lem" pos="4" side="tl">
 push 4
@@ -24846,7 +26058,9 @@ push 4
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="4" part="temps" pos="4" side="tl">
-push "<4>"
+push 4
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<4>"
 lu 3
 #<lit v="es">
 push "es"
@@ -24914,7 +26128,9 @@ push 4
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="4" part="temps" pos="4" side="tl">
-push "<4>"
+push 4
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<4>"
 #<clip part="lemq" pos="4" side="tl">
 push 4
 push "lemq"
@@ -25018,7 +26234,9 @@ push 4
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="4" part="temps" pos="4" side="tl">
-push "<4>"
+push 4
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<4>"
 lu 3
 #<lit v="es">
 push "es"
@@ -25105,7 +26323,9 @@ push 4
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="4" part="temps" pos="4" side="tl">
-push "<4>"
+push 4
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<4>"
 lu 3
 #<clip part="lem" pos="5" side="tl">
 push 5
@@ -25741,7 +26961,9 @@ push 1
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="3" part="temps" pos="1" side="tl">
-push "<3>"
+push 1
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<3>"
 #<var n="pronomenc">
 push pronomenc
 #<clip part="lemq" pos="1" side="tl">
@@ -25858,7 +27080,9 @@ push 1
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="3" part="temps" pos="1" side="tl">
-push "<3>"
+push 1
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<3>"
 #<var n="pronomenc">
 push pronomenc
 lu 4
@@ -26013,7 +27237,9 @@ push 2
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="3" part="temps" pos="2" side="tl">
-push "<3>"
+push 2
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<3>"
 #<var n="pronomenc">
 push pronomenc
 #<clip part="lemq" pos="2" side="tl">
@@ -26148,7 +27374,9 @@ push 2
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="3" part="temps" pos="2" side="tl">
-push "<3>"
+push 2
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<3>"
 #<var n="pronomenc">
 push pronomenc
 lu 4
@@ -26708,7 +27936,9 @@ push 2
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="3" part="temps" pos="2" side="tl">
-push "<3>"
+push 2
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<3>"
 #<var n="pronomenc">
 push pronomenc
 #<clip part="lemq" pos="2" side="tl">
@@ -26847,7 +28077,9 @@ push 2
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="3" part="temps" pos="2" side="tl">
-push "<3>"
+push 2
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<3>"
 #<var n="pronomenc">
 push pronomenc
 lu 4
@@ -27009,7 +28241,9 @@ push 2
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="3" part="temps" pos="2" side="tl">
-push "<3>"
+push 2
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<3>"
 #<var n="pronomenc">
 push pronomenc
 #<clip part="lemq" pos="2" side="tl">
@@ -27167,7 +28401,9 @@ push 2
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="3" part="temps" pos="2" side="tl">
-push "<3>"
+push 2
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<3>"
 #<var n="pronomenc">
 push pronomenc
 #<clip part="lemq" pos="2" side="tl">
@@ -27265,9 +28501,13 @@ push 4
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="4" part="gen" pos="4" side="tl">
-push "<4>"
+push 4
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<4>"
 #<clip link-to="5" part="nbr" pos="4" side="tl">
-push "<5>"
+push 4
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<5>"
 #<clip part="lemq" pos="4" side="tl">
 push 4
 push "lemq"
@@ -27348,9 +28588,13 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="4" part="gen" pos="3" side="tl">
-push "<4>"
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<4>"
 #<clip link-to="5" part="nbr" pos="3" side="tl">
-push "<5>"
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<5>"
 #<clip part="lemq" pos="3" side="tl">
 push 3
 push "lemq"
@@ -27445,13 +28689,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="4" part="gen_sense_mf" pos="1" side="tl">
-push "<4>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<4>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="5" part="nbr_sense_sp" pos="1" side="tl">
-push "<5>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<5>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -27467,13 +28715,17 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="4" part="gen_sense_mf" pos="3" side="tl">
-push "<4>"
+push 3
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<4>"
 #<clip part="gen_mf" pos="3" side="tl">
 push 3
 push "<mf>"
 cliptl
 #<clip link-to="5" part="nbr_sense_sp" pos="3" side="tl">
-push "<5>"
+push 3
+push "<sg>|<pl>|<ND>"
+cliptl "<5>"
 #<clip part="nbr_sp" pos="3" side="tl">
 push 3
 push "<sp>"
@@ -27560,9 +28812,13 @@ push 3
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="4" part="gen" pos="3" side="tl">
-push "<4>"
+push 3
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<4>"
 #<clip link-to="5" part="nbr" pos="3" side="tl">
-push "<5>"
+push 3
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<5>"
 #<clip part="lemq" pos="3" side="tl">
 push 3
 push "lemq"
@@ -28333,7 +29589,9 @@ push 1
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="3" part="temps" pos="1" side="tl">
-push "<3>"
+push 1
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<3>"
 #<var n="pronomenc">
 push pronomenc
 #<clip part="lemq" pos="1" side="tl">
@@ -28409,7 +29667,9 @@ push 1
 push "<vblex>|<vblex><pron>|<vbhaver>|<vbser>|<vbmod>"
 cliptl
 #<clip link-to="3" part="temps" pos="1" side="tl">
-push "<3>"
+push 1
+push "<cni>|<fti>|<ifi>|<imp>|<pii>|<pis>|<inf>|<prs>|<pres>|<past>|<pri>|<pp>|<ger>|<pprs>|<subs>"
+cliptl "<3>"
 #<var n="pronomenc">
 push pronomenc
 lu 4
@@ -34524,9 +35784,13 @@ push 1
 push "<rel><nn>|<rel><an>|<rel><aa>|<rel><adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 lu 4
 chunk 3
 out 1
@@ -34565,9 +35829,13 @@ push 1
 push "<rel><nn>|<rel><an>|<rel><aa>|<rel><adv>"
 cliptl
 #<clip link-to="3" part="gen" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 lu 4
 chunk 3
 out 1
@@ -34649,9 +35917,13 @@ push 1
 push "<tn>|<obj>|<enc>|<itg>|<pos>"
 cliptl
 #<clip link-to="3" part="gen" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<mf>|<GD>|<nt>"
+cliptl "<3>"
 #<clip link-to="4" part="nbr" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<sp>|<ND>"
+cliptl "<4>"
 lu 5
 chunk 3
 out 1

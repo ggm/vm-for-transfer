@@ -177,7 +177,7 @@ append 4
 push 2
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_5_end
 when_6_end:
@@ -213,7 +213,7 @@ append 3
 push 2
 push "whole"
 #<var n="paraula1">
-push "paraula1"
+push paraula1
 storetl
 jmp choose_5_end
 when_7_end:
@@ -633,13 +633,17 @@ push 1
 push "<det><dem>|<det><ind>|<det><def>|<det><pos>|<det><qnt>|<det><itg>|<det><ord>|<adj><pos>|<num>|<predet>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="1" side="tl">
 push 1
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="1" side="tl">
-push "<4>"
+push 1
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="1" side="tl">
 push 1
 push "<sp>"
@@ -651,7 +655,9 @@ push "el"
 #<lit-tag v="det.def">
 push "<det><def>"
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<lit-tag v="pl">
 push "<pl>"
 lu 4
@@ -666,13 +672,17 @@ push 2
 push "<n>|<n><acr>|<np><loc>|<np><ant>|<np><cog>|<np><al>|<adv>"
 cliptl
 #<clip link-to="3" part="gen_sense_mf" pos="2" side="tl">
-push "<3>"
+push 2
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 #<clip part="gen_mf" pos="2" side="tl">
 push 2
 push "<mf>"
 cliptl
 #<clip link-to="4" part="nbr_sense_sp" pos="2" side="tl">
-push "<4>"
+push 2
+push "<sg>|<pl>|<ND>"
+cliptl "<4>"
 #<clip part="nbr_sp" pos="2" side="tl">
 push 2
 push "<sp>"

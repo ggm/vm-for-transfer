@@ -24,7 +24,9 @@ push "<det><def>"
 #<lit-tag v="pl">
 push "<pl>"
 #<clip link-to="3" part="gen_sense_mf" pos="1" side="tl">
-push "<3>"
+push 1
+push "<m>|<f>|<GD>|<nt>"
+cliptl "<3>"
 lu 4
 mlu 2
 action_0_end:

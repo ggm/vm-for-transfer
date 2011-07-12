@@ -29,6 +29,12 @@
   </section-def-cats>
 
   <section-def-attrs>
+   <def-attr n="gen_sense_mf">
+      <attr-item tags="m"/>
+      <attr-item tags="f"/>
+      <attr-item tags="GD"/>
+      <attr-item tags="nt"/>
+    </def-attr>
   </section-def-attrs>
 
   <section-def-vars>

@@ -6260,7 +6260,7 @@ jz when_161_end
 push 3
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nombre">
-push "nombre"
+push nombre
 storecl
 jmp choose_149_end
 when_161_end:
@@ -6277,7 +6277,7 @@ jz when_162_end
 push 3
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="genere">
-push "genere"
+push genere
 storecl
 jmp choose_150_end
 when_162_end:
@@ -6537,7 +6537,7 @@ jz when_169_end
 push 3
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nombre">
-push "nombre"
+push nombre
 storecl
 jmp choose_157_end
 when_169_end:
@@ -6554,7 +6554,7 @@ jz when_170_end
 push 5
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nombre">
-push "nombre"
+push nombre
 storecl
 jmp choose_158_end
 when_170_end:
@@ -6571,7 +6571,7 @@ jz when_171_end
 push 3
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="genere">
-push "genere"
+push genere
 storecl
 jmp choose_159_end
 when_171_end:
@@ -6588,7 +6588,7 @@ jz when_172_end
 push 5
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="genere">
-push "genere"
+push genere
 storecl
 jmp choose_160_end
 when_172_end:
@@ -6723,7 +6723,7 @@ jz when_175_end
 push 4
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nombre">
-push "nombre"
+push nombre
 storecl
 jmp choose_163_end
 when_175_end:
@@ -6740,7 +6740,7 @@ jz when_176_end
 push 4
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="genere">
-push "genere"
+push genere
 storecl
 jmp choose_164_end
 when_176_end:
@@ -6875,7 +6875,7 @@ jz when_179_end
 push 5
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nombre">
-push "nombre"
+push nombre
 storecl
 jmp choose_167_end
 when_179_end:
@@ -6892,7 +6892,7 @@ jz when_180_end
 push 5
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="genere">
-push "genere"
+push genere
 storecl
 jmp choose_168_end
 when_180_end:
@@ -7347,7 +7347,7 @@ jz when_192_end
 push 3
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nombre">
-push "nombre"
+push nombre
 storecl
 jmp choose_180_end
 when_192_end:
@@ -7364,7 +7364,7 @@ jz when_193_end
 push 3
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="genere">
-push "genere"
+push genere
 storecl
 jmp choose_181_end
 when_193_end:
@@ -7509,7 +7509,7 @@ jz when_197_end
 push 4
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nombre">
-push "nombre"
+push nombre
 storecl
 jmp choose_185_end
 when_197_end:
@@ -7526,7 +7526,7 @@ jz when_198_end
 push 4
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="genere">
-push "genere"
+push genere
 storecl
 jmp choose_186_end
 when_198_end:
@@ -7722,7 +7722,7 @@ jz when_205_end
 push 5
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nombre">
-push "nombre"
+push nombre
 storecl
 jmp choose_193_end
 when_205_end:
@@ -7739,7 +7739,7 @@ jz when_206_end
 push 5
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="genere">
-push "genere"
+push genere
 storecl
 jmp choose_194_end
 when_206_end:
@@ -7942,7 +7942,7 @@ jz when_213_end
 push 6
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nombre">
-push "nombre"
+push nombre
 storecl
 jmp choose_201_end
 when_213_end:
@@ -7959,7 +7959,7 @@ jz when_214_end
 push 6
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="genere">
-push "genere"
+push genere
 storecl
 jmp choose_202_end
 when_214_end:
@@ -8962,7 +8962,7 @@ jz when_242_end
 push 5
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nombre">
-push "nombre"
+push nombre
 storecl
 jmp choose_230_end
 when_242_end:
@@ -8979,7 +8979,7 @@ jz when_243_end
 push 5
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="genere">
-push "genere"
+push genere
 storecl
 jmp choose_231_end
 when_243_end:
@@ -9151,7 +9151,7 @@ jz when_249_end
 push 5
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nombre">
-push "nombre"
+push nombre
 storecl
 jmp choose_237_end
 when_249_end:
@@ -9168,7 +9168,7 @@ jz when_250_end
 push 7
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nombre">
-push "nombre"
+push nombre
 storecl
 jmp choose_238_end
 when_250_end:
@@ -9185,7 +9185,7 @@ jz when_251_end
 push 5
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="genere">
-push "genere"
+push genere
 storecl
 jmp choose_239_end
 when_251_end:
@@ -9202,7 +9202,7 @@ jz when_252_end
 push 7
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="genere">
-push "genere"
+push genere
 storecl
 jmp choose_240_end
 when_252_end:
@@ -9625,7 +9625,7 @@ jz when_263_end
 push 2
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nombre">
-push "nombre"
+push nombre
 storecl
 jmp choose_251_end
 when_263_end:
@@ -9659,7 +9659,7 @@ jz when_265_end
 push 2
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="genere">
-push "genere"
+push genere
 storecl
 jmp choose_253_end
 when_265_end:
@@ -9743,7 +9743,7 @@ jz when_269_end
 push 3
 push "<sg>|<pl>|<sp>|<ND>"
 #<var n="nombre">
-push "nombre"
+push nombre
 storecl
 jmp choose_257_end
 when_269_end:
@@ -9777,7 +9777,7 @@ jz when_271_end
 push 3
 push "<m>|<f>|<mf>|<GD>|<nt>"
 #<var n="genere">
-push "genere"
+push genere
 storecl
 jmp choose_259_end
 when_271_end:
