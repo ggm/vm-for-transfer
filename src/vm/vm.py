@@ -124,7 +124,8 @@ class VM:
             self.tokenizer = ChunkWordTokenizer()
         elif "postchunk" in transferHeader:
             self.transferStage = TRANSFER_STAGE.POSTCHUNK
-            self.tokenizer = ChunkWordTokenizer(solveRefs=True)
+            self.tokenizer = ChunkWordTokenizer(solveRefs=True,
+                                                parseContent=True)
 
     def tokenizeInput(self):
         """Call to the tokenizer to divide the input in tokens."""
@@ -275,10 +276,10 @@ class VM:
         #with the case of the chunk pseudolemma.
         else:
             case = self.getCase(word.chunk.attrs['lem'])
-            lus = word.chunk.attrs['chcontent'].split('$')
-            default += self.changeLemmaCase(lus[0], case) + '$'
+            lus = word.content
+            default += '^' + self.changeLemmaCase(lus[0].lu, case) + '$'
             for lu in lus[1:]:
-                if lu: default += lu + '$'
+                if lu: default += '^' + lu.lu + '$'
 
         self.output.write(default.encode("utf-8"))
 

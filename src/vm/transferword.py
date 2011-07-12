@@ -14,8 +14,8 @@
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-class LexicalUnit:
-    """Represent a lexical unit and all its attributes."""
+class TransferLexicalUnit:
+    """Represent a lexical unit and all its attributes for the transfer stage."""
 
     def __init__(self):
         self.lu = ""
@@ -24,8 +24,10 @@ class LexicalUnit:
     def modifyAttr(self, attr, value):
         """Modify the part of the full lexical unit and the attr."""
 
-        self.lu = self.lu.replace(self.attrs[attr], value)
-        self.attrs[attr] = value
+        if attr == 'whole': self.setAttributes(value)
+        else:
+            self.lu = self.lu.replace(self.attrs[attr], value)
+            self.attrs[attr] = value
 
     def modifyTag(self, tag, value):
         """Modify the tag of the full lexical unit and the attr."""
@@ -33,12 +35,42 @@ class LexicalUnit:
         self.lu = self.lu.replace(tag, value)
         self.attrs["tags"] = self.attrs["tags"].replace(tag, value)
 
+    def setAttributes(self, token):
+        """Set some of the attributes of a transfer lexical unit."""
+
+        self.lu = token
+        #Get the position of the key characters.
+        tag = token.find('<')
+        head = token.find('#')
+
+        if tag > -1:
+            #Set tags depending on if the '#' is before or after tags.
+            if head < tag:
+                self.attrs['lem'] = token[:tag]
+                self.attrs['tags'] = token[tag:]
+            else:
+                self.attrs['lem'] = token[:tag] + token[head:]
+                self.attrs['tags'] = token[tag:head]
+        else:
+            #If there isn't any tag, the lemma is everything.
+            self.attrs['lem'] = token
+            self.attrs['tags'] = ""
+
+        if head > -1:
+            #Set lemh, lemq depending on if the '#' is before or after tags.
+            if head < tag:
+                self.attrs['lemh'] = token[:head]
+                self.attrs['lemq'] = token[head:tag]
+            else:
+                self.attrs['lemh'] = token[:tag] 
+                self.attrs['lemq'] = token[head:]
+
 class TransferWord:
     """Represent a word as a source/target language pair."""
 
     def __init__(self):
-        self.source = LexicalUnit()
-        self.target = LexicalUnit()
+        self.source = TransferLexicalUnit()
+        self.target = TransferLexicalUnit()
 
     def __str__(self):
         return "^{}/{}$: {}/{}".format(self.source.lu, self.target.lu,
@@ -59,39 +91,18 @@ class TransferWordTokenizer():
         superblanks = []
         sb = ""
         insideSb = False
-        firstTag = True
-        source = True
 
         word = TransferWord()
         for char in input:
             if char == '^': pass
             elif char == '$':
-                word.target.lu = token.strip()
-                self.setAttributes(word.target, token)
+                word.target.setAttributes(token.strip())
                 tokens.append(word)
-                #Initialize auxiliary variables.
-                source = True
-                firstTag = True
                 token = ""
                 word = TransferWord()
             elif char == '/':
-                word.source.lu = token.strip()
-                self.setAttributes(word.source, token)
-                #Initialize auxiliary variables.
-                source = False
-                firstTag = True
+                word.source.setAttributes(token.strip())
                 token = ""
-            elif firstTag and char == '<' :
-                #The lemma is everything until the first tag.
-                if source: word.source.attrs['lem'] = token.strip()
-                else: word.target.attrs['lem'] = token.strip()
-                token += str(char)
-                firstTag = False
-            elif char == '#':
-                #The head is the part of the lemma until the '#' character.
-                if source: word.source.attrs['lemh'] = token.strip()
-                else: word.target.attrs['lemh'] = token.strip()
-                token += str(char)
             elif char == '[' or (insideSb and char != ']'):
                 sb += char
                 insideSb = True
@@ -105,25 +116,53 @@ class TransferWordTokenizer():
 
         return tokens, superblanks
 
-    def setAttributes(self, word, token):
-        """Set some of the attributes of a transfer word."""
+class ChunkLexicalUnit:
+    """Represent a lexical unit and all its attributes for the inter/postchunk."""
 
-        tag = word.lu.find('<')
-        head = word.lu.find('#')
-        if head > -1: word.attrs['lemq'] = word.lu[head:tag]
-        if tag > -1: word.attrs['tags'] = word.lu[tag:]
-        #If there isn't any tag, the lemma is everything until the moment.
-        if 'lem' not in word.attrs:
-            word.attrs['lem'] = token.strip()
-        #If it's not a multiword, then the lemh is the lemma.
-        if 'lemh' not in word.attrs:
-            word.attrs['lemh'] = word.attrs['lem']
+    def __init__(self):
+        self.lu = ""
+        self.attrs = {}
+
+    def modifyAttr(self, attr, value):
+        """Modify the part of the full lexical unit and the attr."""
+
+        if attr == 'whole': self.setAttributes(value)
+        else:
+            self.lu = self.lu.replace(self.attrs[attr], value)
+            self.attrs[attr] = value
+
+    def modifyTag(self, tag, value):
+        """Modify the tag of the full lexical unit and the attr."""
+
+        self.lu = self.lu.replace(tag, value)
+        self.attrs["tags"] = self.attrs["tags"].replace(tag, value)
+            
+    def setAttributes(self, token):
+        """Set some of the attributes of a chunk lexical unit."""
+
+        #Get the position of the key characters.
+        self.lu = token
+        tag = token.find('<')
+        contentsStart = token.find('{')
+        contentsEnd = token.find('}')
+
+        if tag > -1:
+            #The lemma is everything until the first tag.
+            self.attrs['lem'] = token[:tag]
+            self.attrs['tags'] = token[tag:contentsStart]
+        else:
+            #If there isn't any tag, the lemma is everything until the '{'.
+            self.attrs['lem'] = token[:contentsStart]
+            self.attrs['tags'] = ""
+
+        #Store chunk contents with the '{' and '}'.
+        self.attrs['chcontent'] = token[contentsStart:contentsEnd + 1]
 
 class ChunkWord:
     """Represent a word as a chunk for the interchunk and postchunk stages."""
 
     def __init__(self):
-        self.chunk = LexicalUnit()
+        self.chunk = ChunkLexicalUnit()
         self.content = []
 
     def __str__(self):
@@ -134,11 +173,25 @@ class ChunkWord:
 
         return string
 
+    def parseChunkContent(self):
+        """Set the content of the chunk word as a list of lexical units."""
+
+        content = []
+        chcontent = self.chunk.attrs['chcontent'][1:-1] #Remove { and }.
+        for token in chcontent.split('$'):
+            if len(token) < 2: continue
+            lu = TransferLexicalUnit()
+            lu.setAttributes(token.replace('^', '').strip())
+            content.append(lu)
+
+        self.content = content
+
 class ChunkWordTokenizer():
     """Create a set of chunk words from an input stream."""
 
-    def __init__(self, solveRefs=False):
+    def __init__(self, solveRefs=False, parseContent=False):
         self.solveRefs = solveRefs
+        self.parseContent = parseContent
 
     def tokenize(self, input):
         """Tokenize the input in ^name<tags>{^...$} tokens."""
@@ -149,7 +202,6 @@ class ChunkWordTokenizer():
         superblanks = []
         sb = ""
         insideSb = False
-        firstTag = True
         chunkStart = True
 
         word = ChunkWord()
@@ -162,21 +214,14 @@ class ChunkWordTokenizer():
                 if not chunkStart: token += str(char)
             elif char == '}':
                 token += str(char)
-                word.chunk.lu = token.strip()
-                self.setAttributes(word.chunk)
+                word.chunk.setAttributes(token.strip())
                 if self.solveRefs: self.solveReferences(word)
-                self.setContent(word)
+                if self.parseContent: word.parseChunkContent()
                 tokens.append(word)
                 #Initialize auxiliary variables.
                 chunkStart = True
-                firstTag = True
                 token = ""
                 word = ChunkWord()
-            elif firstTag and char == '<' :
-                #The lemma is everything until the first tag.
-                word.chunk.attrs['lem'] = token.strip()
-                token += str(char)
-                firstTag = False
             elif char == '[' or (insideSb and char != ']'):
                 sb += char
                 insideSb = True
@@ -189,26 +234,6 @@ class ChunkWordTokenizer():
             else: token += str(char)
 
         return tokens, superblanks
-
-    def setAttributes(self, word):
-        """Set some of the attributes of a chunk word."""
-
-        #Get the position of the key characters.
-        token = word.lu
-        tag = token.find('<')
-        contentsStart = token.find('{')
-        contentsEnd = token.find('}') + 1
-
-        #Initialize the attributes using the positions.
-        word.attrs['tags'] = token[tag:contentsStart]
-        #Store chunk contents without the '{' and '}'.
-        word.attrs['chcontent'] = token[contentsStart + 1:contentsEnd - 1]
-        #If there isn't any tag, the lemma is everything until the '{'.
-        if 'lem' not in word.attrs:
-            word.attrs['lem'] = token[:contentsStart]
-        #If it's not a multiword, then the lemh is the lemma.
-        if 'lemh' not in word.attrs:
-            word.attrs['lemh'] = word.attrs['lem']
 
     def solveReferences(self, word):
         """Solve the references to the chunk tags."""
@@ -223,27 +248,7 @@ class ChunkWordTokenizer():
                 pos = int(char)
                 lu = lu.replace(char, tags[pos - 1])
                 chcontent = chcontent.replace(char, tags[pos - 1])
+
         word.chunk.lu = lu
         word.chunk.attrs['chcontent'] = chcontent
 
-    def setContent(self, word):
-        """Set the content of the chunk word as a list of lexical units."""
-
-        content = []
-        chcontent = word.chunk.attrs['chcontent']
-        for token in chcontent.split('$'):
-            if len(token) < 2: continue
-            lu = LexicalUnit()
-            token = token.replace('^', '')  #Ignore the '^' symbol.
-            lu.lu = token
-            tag = token.find('<')
-            lu.attrs['lem'] = token[:tag]
-            lu.attrs['tags'] = token[tag:]
-            head = token.find('#')
-            if head > -1:
-                lu.attrs['lemh'] = token[:head]
-                lu.attrs['lemq'] = token[head:tag]
-            else: lu.attrs['lemh'] = lu.attrs['lem']
-
-            content.append(lu)
-        word.content = content

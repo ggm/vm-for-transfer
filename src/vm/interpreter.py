@@ -109,7 +109,7 @@ class Interpreter:
         elif isUpper: return "AA"
         else: return "aa"
 
-    def getSourceWord(self, pos):
+    def getSourceLexicalUnit(self, pos):
         """Get a word from the source side for every transfer stage."""
 
         if self.vm.transferStage == TRANSFER_STAGE.CHUNKER:
@@ -121,7 +121,7 @@ class Interpreter:
             if pos == 0: return word.chunk
             else: return word.content[pos - 1]
 
-    def getTargetWord(self, pos):
+    def getTargetLexicalUnit(self, pos):
         """Get a word from the target side only for the chunker stage."""
 
         return self.vm.words[self.vm.currentWords[pos - 1]].target
@@ -221,53 +221,53 @@ class Interpreter:
     def executeClip(self, instr):
         parts = self.systemStack.pop()
         pos = self.systemStack.pop()
-        word = self.getSourceWord(pos)
+        lu = self.getSourceLexicalUnit(pos)
 
         if len(instr) > 1: linkTo = str(instr[1].replace('"', ''))
         else: linkTo = None
 
-        lu = word.attrs['lem'] + word.attrs['tags']
-        self.handleClipInstruction(parts, word, lu, linkTo)
+        lemmaAndTags = lu.attrs['lem'] + lu.attrs['tags']
+        self.handleClipInstruction(parts, lu, lemmaAndTags, linkTo)
 
     def executeClipsl(self, instr):
         parts = self.systemStack.pop()
         pos = self.systemStack.pop()
-        word = self.getSourceWord(pos)
+        lu = self.getSourceLexicalUnit(pos)
 
         if len(instr) > 1: linkTo = str(instr[1].replace('"', ''))
         else: linkTo = None
 
-        self.handleClipInstruction(parts, word, word.lu, linkTo)
+        self.handleClipInstruction(parts, lu, lu.lu, linkTo)
 
     def executeCliptl(self, instr):
         parts = self.systemStack.pop()
         pos = self.systemStack.pop()
-        word = self.getTargetWord(pos)
+        lu = self.getTargetLexicalUnit(pos)
 
         if len(instr) > 1: linkTo = str(instr[1].replace('"', ''))
         else: linkTo = None
 
-        self.handleClipInstruction(parts, word, word.lu, linkTo)
+        self.handleClipInstruction(parts, lu, lu.lu, linkTo)
 
-    def handleClipInstruction(self, parts, word, lu, linkTo):
+    def handleClipInstruction(self, parts, lu, lemmaAndTags, linkTo):
         if linkTo is None and parts in ("lem", "lemh", "lemq", "tags", "chcontent"):
             try:
-                self.systemStack.push(word.attrs[parts])
+                self.systemStack.push(lu.attrs[parts])
             except KeyError:
                 self.systemStack.push("")
             return
         elif linkTo is None and parts == "whole":
-            self.systemStack.push(word.lu)
+            self.systemStack.push(lu.lu)
             return
         else:
             for part in parts.split('|'):
-                if part in lu:
+                if part in lemmaAndTags:
                     if linkTo:
                         self.systemStack.push(linkTo)
                     else: self.systemStack.push(part)
                     return
 
-        #If the word doesn't have the part needed, return "".
+        #If the lu doesn't have the part needed, return "".
         self.systemStack.push("")
 
     def executeCmp(self, instr):
@@ -335,9 +335,11 @@ class Interpreter:
             tags = ops[1]
             chunk = '^' + name + tags
             if len(ops) > 2:
-                chunk += '{'
+                #Only output enclosing {} in the chunker, in the interchunk the
+                #'chcontent' will already have the {}.
+                if self.vm.transferStage == TRANSFER_STAGE.CHUNKER: chunk += '{'
                 for op in ops[2:]: chunk += op
-                chunk += '}'
+                if self.vm.transferStage == TRANSFER_STAGE.CHUNKER: chunk += '}'
             chunk += '$'
 
         self.systemStack.push(chunk)
@@ -409,8 +411,8 @@ class Interpreter:
 
     def executeGetCaseFrom(self, instr):
         pos = self.systemStack.pop()
-        word = self.getSourceWord(pos)
-        lem = word.attrs['lem']
+        lu = self.getSourceLexicalUnit(pos)
+        lem = lu.attrs['lem']
 
         case = self.getCase(lem)
         self.systemStack.push(case)
@@ -458,38 +460,48 @@ class Interpreter:
         value = self.systemStack.pop()
         parts = self.systemStack.pop()
         pos = self.systemStack.pop()
-        word = self.getSourceWord(pos)
+        lu = self.getSourceLexicalUnit(pos)
 
-        lu = word.attrs['lem'] + word.attrs['tags']
-        self.handleStoreClipInstruction(parts, word, lu, value)
+        lemmaAndTags = lu.attrs['lem'] + lu.attrs['tags']
+        self.handleStoreClipInstruction(parts, lu, lemmaAndTags, value)
 
     def executeStoresl(self, instr):
         value = self.systemStack.pop()
         parts = self.systemStack.pop()
         pos = self.systemStack.pop()
-        word = self.getSourceWord(pos)
+        lu = self.getSourceLexicalUnit(pos)
 
-        self.handleStoreClipInstruction(parts, word, word.lu, value)
+        self.handleStoreClipInstruction(parts, lu, lu.lu, value)
 
     def executeStoretl(self, instr):
         value = self.systemStack.pop()
         parts = self.systemStack.pop()
         pos = self.systemStack.pop()
-        word = self.getTargetWord(pos)
+        lu = self.getTargetLexicalUnit(pos)
 
-        self.handleStoreClipInstruction(parts, word, word.lu, value)
+        self.handleStoreClipInstruction(parts, lu, lu.lu, value)
 
-    def handleStoreClipInstruction(self, parts, word, lu, value):
-        if parts in ('lem', 'lemh', 'lemq', 'tags', 'chcontent'):
-            word.modifyAttr(parts, value)
+    def handleStoreClipInstruction(self, parts, lu, lemmaAndTags, value):
+        if parts in ('lem', 'lemh', 'lemq', 'tags'):
+            lu.modifyAttr(parts, value)
+            return
+        elif parts == 'chcontent':
+            lu.modifyAttr(parts, value)
+            if self.vm.transferStage == TRANSFER_STAGE.POSTCHUNK:
+                #If we are in the postchunk stage and change the chunk content
+                #we need to parse it again, so we can use it as lexical units.
+                chunkWord = self.vm.words[self.vm.currentWords[0]]
+                chunkWord.parseChunkContent()
+        elif parts == 'whole':
+            lu.modifyAttr(parts, value)
             return
         else:
             for part in parts.split('|'):
-                if part in lu:
-                    word.modifyTag(part, value)
+                if part in lemmaAndTags:
+                    lu.modifyTag(part, value)
                     return
 
-        #If the word doesn't have the part needed, return "".
+        #If the lu doesn't have the part needed, return "".
         self.systemStack.push("")
 
     def executeStorev(self, instr):
