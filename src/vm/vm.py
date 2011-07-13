@@ -279,35 +279,10 @@ class VM:
             #If the chunk doesn't have anything as content, output nothing.
             if len(lus) == 0: return
 
-            case = self.getCase(word.chunk.attrs['lem'])
-            default += '^' + self.changeLemmaCase(lus[0].lu, case) + '$'
-            for lu in lus[1:]:
+            for lu in lus:
                 if lu: default += '^' + lu.lu + '$'
 
         self.output.write(default.encode("utf-8"))
-
-    def getCase(self, string):
-        """Get the case of a string, defaulting to capitals."""
-
-        isFirstUpper = string[0].isupper()
-        isUpper = string.isupper()
-
-        #If it's a 1-length string and is upper, capitalize it.
-        if isUpper and len(string) == 1: return "Aa"
-        elif isFirstUpper and not isUpper: return "Aa"
-        elif isUpper: return "AA"
-        else: return "aa"
-
-    def changeLemmaCase(self, lu, case):
-        """Change the case of the lemma in a lexical unit."""
-
-        lemStart = lu.find('^') + 1
-        tag = lu.find('<')
-        oldLem = lu[lemStart:tag]
-        if case == "aa": newLem = oldLem.lower()
-        elif case == "Aa": newLem = oldLem.capitalize()
-        elif case == "AA": newLem = oldLem.upper()
-        return lu.replace(oldLem, newLem)
 
     def terminateVM(self):
         """Do all the processing needed when the vm is being turned off."""

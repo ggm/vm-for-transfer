@@ -180,7 +180,17 @@ class ChunkWord:
         return string
 
     def parseChunkContent(self):
-        """Set the content of the chunk word as a list of lexical units."""
+        """Set the content of the chunk word as a list of lexical units
+           and apply the postchunk rule of setting the case of the lexical
+           units as the one of the chunk pseudolemma.
+        """
+
+        #Depending on the case, change all cases or just the first lexical unit.
+        pseudoLemmaCase = self.getCase(self.chunk.attrs['lem'])
+        upperCaseAll = False
+        firstUpper = False
+        if pseudoLemmaCase == "AA": upperCaseAll = True
+        elif pseudoLemmaCase == "Aa": firstUpper = True
 
         content = []
         chcontent = self.chunk.attrs['chcontent'][1:-1] #Remove { and }.
@@ -188,9 +198,36 @@ class ChunkWord:
             if len(token) < 2: continue
             lu = TransferLexicalUnit()
             lu.setAttributes(token.replace('^', '').strip())
+
+            if upperCaseAll: self.changeLemmaCase(lu, pseudoLemmaCase)
+            elif firstUpper:
+                self.changeLemmaCase(lu, pseudoLemmaCase)
+                firstUpper = False
+
             content.append(lu)
 
         self.content = content
+
+    def getCase(self, string):
+        """Get the case of a string, defaulting to capitals."""
+
+        isFirstUpper = string[0].isupper()
+        isUpper = string.isupper()
+
+        #If it's a 1-length string and is upper, capitalize it.
+        if isUpper and len(string) == 1: return "Aa"
+        elif isFirstUpper and not isUpper: return "Aa"
+        elif isUpper: return "AA"
+        else: return "aa"
+
+    def changeLemmaCase(self, lu, case):
+        """Change the case of the lemma in a lexical unit."""
+
+        oldLem = lu.attrs['lem']
+        if case == "aa": newLem = oldLem.lower()
+        elif case == "Aa": newLem = oldLem.capitalize()
+        elif case == "AA": newLem = oldLem.upper()
+        lu.modifyAttr('lem', newLem)
 
 class ChunkWordTokenizer():
     """Create a set of chunk words from an input stream."""
