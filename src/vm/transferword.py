@@ -27,6 +27,10 @@ class TransferLexicalUnit:
         if attr == 'whole': self.setAttributes(value)
         else:
             self.lu = self.lu.replace(self.attrs[attr], value)
+            if attr == 'lem':
+                #If the lemh is the same as the lem, we update both.
+                if self.attrs['lem'] == self.attrs['lemh']:
+                    self.attrs['lemh'] = value
             self.attrs[attr] = value
 
     def modifyTag(self, tag, value):
