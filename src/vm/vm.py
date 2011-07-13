@@ -16,34 +16,16 @@
 
 import sys
 import logging
+
+from constants import VM_STATUS, TRANSFER_STAGE, CHUNKER_MODE
 from systemstack import SystemStack
 from assemblyloader import AssemblyLoader
+from interpreter import Interpreter
 from systemtrie import SystemTrie
 from transferword import TransferWordTokenizer
 from transferword import ChunkWordTokenizer
 from callstack import CallStack
-
-class VM_STATUS:
-    """Represents the state of the vm as a set of constants."""
-
-    RUNNING = 0
-    HALTED = 1
-    FAILED = 2
-
-class TRANSFER_STAGE:
-    """Represents the current stage of the transfer system."""
-
-    CHUNKER = 0
-    INTERCHUNK = 1
-    POSTCHUNK = 2
-
-class CHUNKER_MODE:
-    """Represents the default behavior in the chunker stage."""
-
-    CHUNK = 0
-    LU = 1
-
-from interpreter import Interpreter
+from debugger import Debugger
 
 class VM:
     """This class encapsulates all the VM processing."""
@@ -87,6 +69,10 @@ class VM:
         self.loader = None
         self.interpreter = Interpreter(self)
 
+        #Components used only in debug mode.
+        self.debugger = None
+        self.debugMode = False
+
         self.input = sys.stdin
         #We use 'buffer' to get a stream of bytes, not str, because we want to
         #encode it using utf-8 (just for safety).
@@ -126,6 +112,12 @@ class VM:
             self.transferStage = TRANSFER_STAGE.POSTCHUNK
             self.tokenizer = ChunkWordTokenizer(solveRefs=True,
                                                 parseContent=True)
+
+    def setDebugMode(self):
+        self.debugMode = True
+        self.debugger = Debugger(self, self.interpreter)
+        #Set the debugger as a proxy.
+        self.interpreter = self.debugger
 
     def tokenizeInput(self):
         """Call to the tokenizer to divide the input in tokens."""
@@ -178,7 +170,7 @@ class VM:
             startPatternPos = self.nextPattern - 1
             if ruleNumber is not None:
 #                print('Pattern "{}" match rule: {}'.format(pattern, ruleNumber))
-                self.setRuleSelected(ruleNumber, startPatternPos)
+                self.setRuleSelected(ruleNumber, startPatternPos, pattern)
                 return
             else:
                 self.processUnmatchedPattern(self.words[startPatternPos])
@@ -230,7 +222,7 @@ class VM:
             #If there is a longest match, set the rule to process
             if longestMatch is not None:
 #                print('Pattern "{}" match rule: {}'.format(fullPattern, longestMatch))
-                self.setRuleSelected(longestMatch, startPatternPos)
+                self.setRuleSelected(longestMatch, startPatternPos, fullPattern)
                 return
             #Otherwise, process the unmatched pattern.
             else: self.processUnmatchedPattern(self.words[self.nextPattern - 1])
@@ -240,7 +232,7 @@ class VM:
         #if there isn't any rule at all to execute, stop the vm.
         self.status = VM_STATUS.HALTED
 
-    def setRuleSelected(self, ruleNumber, startPos):
+    def setRuleSelected(self, ruleNumber, startPos, pattern):
         """Set a rule and its words as current ones."""
 
         #Add only a reference to the index pos of words, to avoid copying them.
@@ -251,6 +243,8 @@ class VM:
 
         #Create an entry in the call stack with the rule to execute.
         self.callStack.push("rules", ruleNumber, wordsIndex)
+
+        if self.debugMode: self.debugger.ruleSelected(pattern, ruleNumber)
 
     def processUnmatchedPattern(self, word):
         """Output unmatched patterns as the default form."""
@@ -298,18 +292,19 @@ class VM:
             self.interpreter.preprocess()
             self.initializeVM()
             self.tokenizeInput()
-#            self.printCodeSections()
+
+            if self.debugMode: self.debugger.start()
 
             #Select the first rule, if there isn't one, the vm work has ended.
-            self.selectNextRule()
+            if self.status == VM_STATUS.RUNNING: self.selectNextRule()
             while self.status == VM_STATUS.RUNNING:
                 #Execute the rule selected until it ends.
                 while self.status == VM_STATUS.RUNNING and self.PC < self.endAddress:
                     self.interpreter.execute(self.currentCodeSection[self.PC])
 
                 #If the vm executed correctly the rule we can continue.
-                if self.status == VM_STATUS.HALTED:
-                    self.status = VM_STATUS.RUNNING
+#                if self.status == VM_STATUS.HALTED:
+#                    self.status = VM_STATUS.RUNNING
 
                 #Select the next rule to execute.
                 self.selectNextRule()

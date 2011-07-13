@@ -15,11 +15,12 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 """
-USAGE: vm -c code_file [-i input_file] [-o output_file] [-h]
+USAGE: vm -c code_file [-i input_file] [-o output_file] [-g] [-h]
 Options:
   -c, --codefile:\t\t a [chunker|interchunk|postchunk] compiled rules file
   -i, --inputfile:\t input file (stdin by default)
   -o, --outputfile:\t output file (stdout by default)
+  -g, --debug:\t debug interactively the program code.
   -h, --help:\t\t show this help
 """
 
@@ -38,7 +39,7 @@ def main():
     vm = VM()
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "c:i:o:h", ["codefile=", "inputfile=", "outputfile=", "help"])
+        opts, args = getopt.getopt(sys.argv[1:], "c:i:o:gh", ["codefile=", "inputfile=", "outputfile=", "debug", "help"])
     except getopt.GetoptError as error:
         print(error)
         exit()                     
@@ -72,6 +73,8 @@ def main():
             except IOError as ioe:
                 print(ioe)
                 sys.exit(2)
+        elif opt in ("-g", "--debug"):
+            vm.setDebugMode()
 
     vm.run()
 
