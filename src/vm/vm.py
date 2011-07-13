@@ -275,8 +275,11 @@ class VM:
         #Lastly, for the postchunk stage output the lexical units inside chunks
         #with the case of the chunk pseudolemma.
         else:
-            case = self.getCase(word.chunk.attrs['lem'])
             lus = word.content
+            #If the chunk doesn't have anything as content, output nothing.
+            if len(lus) == 0: return
+
+            case = self.getCase(word.chunk.attrs['lem'])
             default += '^' + self.changeLemmaCase(lus[0].lu, case) + '$'
             for lu in lus[1:]:
                 if lu: default += '^' + lu.lu + '$'
