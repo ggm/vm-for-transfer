@@ -59,6 +59,7 @@ class AssemblyLoader:
 
         #We convert the macro's name to a numerical address, used for indexing.
         self.macroNumber = {}
+        self.macroName = None
         self.nextMacroNumber = -1
 
         #We convert each label to an internal numerical address, used by the vm.
@@ -255,3 +256,18 @@ class AssemblyLoader:
                     else: print(v, opCodes[c[0]])
 
         print(footer)
+
+    def printInstruction(self, instr):
+        """Print a instruction converted to assembly."""
+
+        opCodes = self.reversedOpCodes
+        if len(instr) > 1: print(opCodes[int(instr[0])], instr[1])
+        else: print(opCodes[instr[0]])
+
+    def getMacroNameFromNumber(self, number):
+        """Get the name of a macro from its number, useful for debugging."""
+
+        if self.macroName is None:
+            self.macroName = dict([(v, k) for k, v in self.macroNumber.items()])
+
+        return self.macroName[number]
