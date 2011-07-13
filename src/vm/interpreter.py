@@ -260,12 +260,17 @@ class Interpreter:
             self.systemStack.push(lu.lu)
             return
         else:
+            longestMatch = ""
             for part in parts.split('|'):
                 if part in lemmaAndTags:
                     if linkTo:
                         self.systemStack.push(linkTo)
-                    else: self.systemStack.push(part)
-                    return
+                        return
+                    else:
+                        if len(part) > len(longestMatch): longestMatch = part
+            if longestMatch:
+                self.systemStack.push(longestMatch)
+                return
 
         #If the lu doesn't have the part needed, return "".
         self.systemStack.push("")
@@ -496,10 +501,13 @@ class Interpreter:
             lu.modifyAttr(parts, value)
             return
         else:
+            longestMatch = ""
             for part in parts.split('|'):
                 if part in lemmaAndTags:
-                    lu.modifyTag(part, value)
-                    return
+                    if len(part) > len(longestMatch): longestMatch = part
+            if longestMatch:
+                lu.modifyTag(longestMatch, value)
+                return
 
         #If the lu doesn't have the part needed, return "".
         self.systemStack.push("")
