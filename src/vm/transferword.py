@@ -64,6 +64,8 @@ class TransferLexicalUnit:
             else:
                 self.attrs['lemh'] = token[:tag] 
                 self.attrs['lemq'] = token[head:]
+        #If it isn't a multiword, then the lemh is the lemma.
+        else: self.attrs['lemh'] = self.attrs['lem']
 
 class TransferWord:
     """Represent a word as a source/target language pair."""
