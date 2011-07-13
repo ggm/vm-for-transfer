@@ -389,11 +389,14 @@ class Interpreter:
 
     def executeLu(self, instr):
         ops = self.getOperands(instr)
+
         lu = "^"
         for op in ops: lu += op
         lu += "$"
 
-        self.systemStack.push(lu)
+        #If the lu is empty, only the ^$, then push an empty string.
+        if len(lu) == 2: self.systemStack.push("")
+        else: self.systemStack.push(lu)
 
     def executeLuCount(self, instr):
         chunk = self.vm.words[self.vm.currentWords[0]]
