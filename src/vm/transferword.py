@@ -286,12 +286,15 @@ class ChunkWordTokenizer():
         tags = tags.split('>')
         lu = word.chunk.lu
         chcontent = word.chunk.attrs['chcontent']
-        for char in word.chunk.attrs['chcontent']:
+        newChcontent = chcontent
+
+        for i, char in enumerate(word.chunk.attrs['chcontent']):
             if char.isnumeric():
-                pos = int(char)
-                lu = lu.replace(char, tags[pos - 1])
-                chcontent = chcontent.replace(char, tags[pos - 1])
+                if chcontent[i - 1] == '<' and chcontent[i + 1] == '>':
+                    pos = int(char)
+                    lu = lu.replace(char, tags[pos - 1])
+                    newChcontent = newChcontent.replace(char, tags[pos - 1])
 
         word.chunk.lu = lu
-        word.chunk.attrs['chcontent'] = chcontent
+        word.chunk.attrs['chcontent'] = newChcontent
 
