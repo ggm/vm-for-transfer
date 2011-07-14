@@ -302,12 +302,8 @@ class VM:
                 while self.status == VM_STATUS.RUNNING and self.PC < self.endAddress:
                     self.interpreter.execute(self.currentCodeSection[self.PC])
 
-                #If the vm executed correctly the rule we can continue.
-#                if self.status == VM_STATUS.HALTED:
-#                    self.status = VM_STATUS.RUNNING
-
                 #Select the next rule to execute.
-                self.selectNextRule()
+                if self.status == VM_STATUS.RUNNING: self.selectNextRule()
 
         except (Exception) as e:
             self.logger.exception(e)
