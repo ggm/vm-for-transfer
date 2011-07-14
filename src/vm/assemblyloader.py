@@ -257,12 +257,16 @@ class AssemblyLoader:
 
         print(footer)
 
-    def printInstruction(self, instr):
+    def printInstruction(self, instr, PC=None):
         """Print a instruction converted to assembly."""
 
         opCodes = self.reversedOpCodes
-        if len(instr) > 1: print(opCodes[int(instr[0])], instr[1])
-        else: print(opCodes[instr[0]])
+        if len(instr) > 1:
+            if PC is None: print(opCodes[int(instr[0])], instr[1])
+            else: print("{}\t {} {}".format(PC, opCodes[int(instr[0])], instr[1]))
+        else:
+            if PC is None: print(opCodes[instr[0]])
+            else: print("{}\t {}".format(PC, opCodes[instr[0]]))
 
     def getMacroNameFromNumber(self, number):
         """Get the name of a macro from its number, useful for debugging."""
