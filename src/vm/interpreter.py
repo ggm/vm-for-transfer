@@ -16,8 +16,7 @@
 
 from string import capwords
 
-from vm import VM_STATUS
-from vm import TRANSFER_STAGE
+from constants import VM_STATUS, TRANSFER_STAGE
 from instructions import OpCodes
 from assemblyloader import AssemblyLoader
 from interpretererror import InterpreterError
