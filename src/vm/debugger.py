@@ -26,6 +26,7 @@ class Debugger:
         self.breakOnRule = False
         self.step = False
         self.lastCommand = ""
+        self.startLine = 0
 
         #Components used by the debugger.
         self.vm = vm
@@ -127,7 +128,23 @@ class Debugger:
         self.getCommand()
 
     def commandList(self, args):
-        pass
+        loader = self.vm.loader
+
+        #If an argument is supplied, show lines around it.
+        if len(args) == 1:
+            line = int(args[0])
+            if line > 5: self.startLine = line - 5
+            else: self.startLine = 0
+            endLine = line + 5
+        else: endLine = self.startLine + 10
+
+        for line in range(self.startLine, endLine):
+            try:
+                loader.printInstruction(self.vm.currentCodeSection[line], line)
+            except IndexError:
+                break
+        self.startLine = endLine
+
         self.getCommand()
 
     def commandPrint(self, args):
@@ -187,10 +204,9 @@ class Debugger:
             print("\t 'info breakpoints' will show every current breakpoint")
             print("\t 'info stack' will show the system stack content")
         elif cmd in ('l', 'list'):
-            print("list [start] [end]")
+            print("list [line]")
             print("\t 'list' will show ten lines of code each time")
-            print("\t [start] is the start line of the code")
-            print("\t [end] is the end line of the code")
+            print("\t [line] list ten lines around line")
         elif cmd in ('p', 'print'):
             print("print [variables | variableName]:")
             print("\t 'print variables' will print all the variables and their "
@@ -219,6 +235,8 @@ class Debugger:
         self.interpreter.preprocess()
 
     def ruleSelected(self, pattern, ruleNumber):
+        self.startLine = 0
+
         if self.breakOnRule:
             print('\nPattern "{}" match rule: {}\n'.format(pattern, ruleNumber))
             self.getCommand()
