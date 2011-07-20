@@ -100,7 +100,12 @@ class TransferWordTokenizer():
 
         word = TransferWord()
         for char in input:
-            if char == '^': pass
+            if char == '^':
+                #A simple blank, without the '[]', is also a superblank.
+                if token != "": superblanks.append(token)
+                #If there aren't any blanks at the beginning, append an empty.
+                elif len(tokens) == 0 and len(superblanks) == 0:
+                    superblanks.append("")
             elif char == '$':
                 word.target.setAttributes(token.strip())
                 tokens.append(word)
@@ -109,15 +114,14 @@ class TransferWordTokenizer():
             elif char == '/':
                 word.source.setAttributes(token.strip())
                 token = ""
-            elif char == '[' or (insideSb and char != ']'):
-                sb += char
+            elif char == '[':
                 insideSb = True
             elif char == ']':
-                sb += char
                 if sb == "[]": superblanks.append("")
                 else: superblanks.append(sb)
                 insideSb = False
                 sb = ""
+            elif insideSb: sb += str(char)
             else: token += str(char)
 
         return tokens, superblanks
@@ -170,6 +174,7 @@ class ChunkWord:
     def __init__(self):
         self.chunk = ChunkLexicalUnit()
         self.content = []
+        self.blanks = []
 
     def __str__(self):
         string = "^{}$: {}, content = [ ".format(self.chunk.lu, self.chunk.attrs)
@@ -193,9 +198,18 @@ class ChunkWord:
         elif pseudoLemmaCase == "Aa": firstUpper = True
 
         content = []
+        #The first blank (0) is the one before the chunk name.
+        blanks = [""]
+        firstLu = True
         chcontent = self.chunk.attrs['chcontent'][1:-1] #Remove { and }.
+
         for token in chcontent.split('$'):
             if len(token) < 2: continue
+
+            #After the first blank, append the blanks between lexical units.
+            if firstLu: firstLu = False
+            else: blanks.append(token[:token.find('^')])
+
             lu = TransferLexicalUnit()
             lu.setAttributes(token.replace('^', '').strip())
 
@@ -207,6 +221,7 @@ class ChunkWord:
             content.append(lu)
 
         self.content = content
+        self.blanks = blanks
 
     def getCase(self, string):
         """Get the case of a string, defaulting to capitals."""
@@ -228,6 +243,10 @@ class ChunkWord:
         elif case == "Aa": newLem = oldLem.capitalize()
         elif case == "AA": newLem = oldLem.upper()
         lu.modifyAttr('lem', newLem)
+
+        #Also, update the chcontent attribute of the chunk.
+        chcontent = self.chunk.attrs['chcontent']
+        self.chunk.attrs['chcontent'] = chcontent.replace(oldLem, newLem)
 
 class ChunkWordTokenizer():
     """Create a set of chunk words from an input stream."""
@@ -252,7 +271,10 @@ class ChunkWordTokenizer():
             #Read the ^ and $ of the lexical units but not of the chunks.
             if char == '^':
                 if not chunkStart: token += str(char)
-                else: chunkStart = False
+                else:
+                    #A simple blank, without the '[]', is also a superblank.
+                    superblanks.append(token)
+                    chunkStart = False
             elif char == '$':
                 if not chunkStart: token += str(char)
             elif char == '}':
@@ -265,16 +287,18 @@ class ChunkWordTokenizer():
                 chunkStart = True
                 token = ""
                 word = ChunkWord()
-            elif char == '[' or (insideSb and char != ']'):
-                sb += char
+            elif char == '[':
                 insideSb = True
             elif char == ']':
-                sb += char
                 if sb == "[]": superblanks.append("")
                 else: superblanks.append(sb)
                 insideSb = False
                 sb = ""
+            elif insideSb: sb += str(char)
             else: token += str(char)
+
+        #Append the last superblank of the input, usually the '\n'.
+        superblanks.append(token)
 
         return tokens, superblanks
 
@@ -288,7 +312,7 @@ class ChunkWordTokenizer():
         chcontent = word.chunk.attrs['chcontent']
         newChcontent = chcontent
 
-        for i, char in enumerate(word.chunk.attrs['chcontent']):
+        for i, char in enumerate(chcontent):
             if char.isnumeric():
                 if chcontent[i - 1] == '<' and chcontent[i + 1] == '>':
                     pos = int(char)

@@ -438,7 +438,7 @@ class Interpreter:
         ops = self.getOperands(instr)
         out = ""
         for op in ops: out += op
-        self.vm.output.write(out.encode("utf-8"))
+        self.vm.writeOutput(out)
 
     def executePush(self, instr):
         #If it's a string, push it without quotes.
@@ -457,9 +457,18 @@ class Interpreter:
         self.systemStack.push(" ")
 
     def executePushsb(self, instr):
-        pos = int(instr[1])
+        #The position is relative to the current word(s), so we have to get the
+        #actual one. For the postchunk, the relative is the actual one because
+        #each chunk stores the blanks in their content.
+        relativePos = int(instr[1])
+
         try:
-            self.systemStack.push(self.vm.superblanks[pos - 1])
+            if self.vm.transferStage == TRANSFER_STAGE.POSTCHUNK:
+                word = self.vm.words[self.vm.currentWords[0]]
+                self.systemStack.push(word.blanks[relativePos])
+            else:
+                actualPos = relativePos + self.vm.currentWords[0]
+                self.systemStack.push(self.vm.superblanks[actualPos])
         except:
             self.systemStack.push("")
 

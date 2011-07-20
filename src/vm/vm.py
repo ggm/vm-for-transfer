@@ -59,6 +59,7 @@ class VM:
         #Input will be divided in words with their patterns information.
         self.words = []
         self.superblanks = []
+        self.lastSuperblank = -1
         self.currentWords = []
         self.nextPattern = 0
 
@@ -152,6 +153,18 @@ class VM:
 
         return pattern
 
+    def getUniqueSuperblank(self, pos):
+        """Get the superblank at pos avoiding duplicates."""
+
+        try:
+            if pos != self.lastSuperblank:
+                self.lastSuperblank = pos
+                return self.superblanks[pos]
+        except IndexError:
+            pass
+
+        return ""
+
     def selectNextRule(self):
         """Select the next rule to execute depending on the transfer stage."""
 
@@ -235,6 +248,9 @@ class VM:
     def setRuleSelected(self, ruleNumber, startPos, pattern):
         """Set a rule and its words as current ones."""
 
+        #Output the leading superblank of the matched pattern.
+        self.writeOutput(self.getUniqueSuperblank(startPos))
+
         #Add only a reference to the index pos of words, to avoid copying them.
         wordsIndex = []
         while startPos != self.nextPattern:
@@ -246,12 +262,18 @@ class VM:
 
         if self.debugMode: self.debugger.ruleSelected(pattern, ruleNumber)
 
+    def processRuleEnd(self):
+        """Do all the processing needed when rule ends."""
+
+        #Output the trailing superblank of the matched pattern.
+        self.writeOutput(self.getUniqueSuperblank(self.nextPattern))
+
     def processUnmatchedPattern(self, word):
         """Output unmatched patterns as the default form."""
+        default = ""
 
-        #If it isn't the first pattern print a blank.
-        if self.nextPattern != 1: default = " "
-        else: default = ""
+        #Output the leading superblank of the unmatched pattern.
+        default += self.getUniqueSuperblank(self.nextPattern - 1)
 
         #For the chunker, output the default version of the unmatched pattern.
         if self.transferStage == TRANSFER_STAGE.CHUNKER:
@@ -269,20 +291,22 @@ class VM:
         #Lastly, for the postchunk stage output the lexical units inside chunks
         #with the case of the chunk pseudolemma.
         else:
-            lus = word.content
-            #If the chunk doesn't have anything as content, output nothing.
-            if len(lus) == 0: return
+            default += word.chunk.attrs['chcontent'][1:-1]
 
-            for lu in lus:
-                if lu: default += '^' + lu.lu + '$'
+        #Output the trailing superblank of the matched pattern.
+        default += self.getUniqueSuperblank(self.nextPattern)
 
-        self.output.write(default.encode("utf-8"))
+        self.writeOutput(default)
 
     def terminateVM(self):
         """Do all the processing needed when the vm is being turned off."""
 
-        if self.status != VM_STATUS.FAILED:
-            self.output.write('\n'.encode("utf-8"))
+        pass
+
+    def writeOutput(self, string):
+        """A single entry point to write strings to the output."""
+
+        self.output.write(string.encode("utf-8"))
 
     def run(self):
         """Load, preprocess and execute the contents of the files."""
@@ -302,6 +326,7 @@ class VM:
                 while self.status == VM_STATUS.RUNNING and self.PC < self.endAddress:
                     self.interpreter.execute(self.currentCodeSection[self.PC])
 
+                self.processRuleEnd()
                 #Select the next rule to execute.
                 if self.status == VM_STATUS.RUNNING: self.selectNextRule()
 
