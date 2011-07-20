@@ -13,6 +13,7 @@
 #You should have received a copy of the GNU General Public License
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+import logging
 
 class TrieNode:
     """This class represents a node of the trie data structure."""
@@ -33,6 +34,8 @@ class SystemTrie:
     """
 
     def __init__(self):
+        self.logger = logging.getLogger('vm')
+
         self.root = TrieNode()
 
     def __canSkipChar(self, char):
@@ -75,7 +78,10 @@ class SystemTrie:
         #If a pattern already exists, keep the first rule on the rule's file.
         if ruleNumber is not None:
             if curNode.ruleNumber is None: curNode.ruleNumber = ruleNumber
-            else: curNode.ruleNumber = min(curNode.ruleNumber, ruleNumber)
+            else:
+                self.logger.warning("Paths to rule {} blocked by rule {}.".
+                      format(ruleNumber, curNode.ruleNumber))
+                curNode.ruleNumber = min(curNode.ruleNumber, ruleNumber)
 
         return curNode
 

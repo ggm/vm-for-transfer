@@ -90,6 +90,19 @@ class VM:
         errorHandler.setLevel(logging.ERROR)
         self.logger.addHandler(errorHandler)
 
+    def setDebugMode(self):
+        """Set the debug mode, creating a debugger an setting it up as a proxy."""
+        self.debugMode = True
+        self.debugger = Debugger(self, self.interpreter)
+        #Set the debugger as a proxy.
+        self.interpreter = self.debugger
+
+        #Create a logging handler for debugging messages.
+        debugHandler = logging.StreamHandler(sys.stdout)
+        debugHandler.setFormatter(logging.Formatter(self.formatStr))
+        debugHandler.setLevel(logging.DEBUG)
+        self.logger.addHandler(debugHandler)
+
     def setLoader(self, header, t1xFile):
         """Set the loader to use depending on the header of the code file."""
 
@@ -113,12 +126,6 @@ class VM:
             self.transferStage = TRANSFER_STAGE.POSTCHUNK
             self.tokenizer = ChunkWordTokenizer(solveRefs=True,
                                                 parseContent=True)
-
-    def setDebugMode(self):
-        self.debugMode = True
-        self.debugger = Debugger(self, self.interpreter)
-        #Set the debugger as a proxy.
-        self.interpreter = self.debugger
 
     def tokenizeInput(self):
         """Call to the tokenizer to divide the input in tokens."""
