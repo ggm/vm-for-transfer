@@ -15,6 +15,7 @@
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 from constants import VM_STATUS
+import sys
 
 class Debugger:
     """This class encapsulates all debugger logic."""
@@ -32,6 +33,10 @@ class Debugger:
 
     def start(self):
         """Start the debugger showing the message and ask for a command."""
+
+        #If the input was a shell redirection, we need to reopen the terminal
+        #to read the user commands.
+        if not sys.stdin.isatty(): sys.stdin = open("/dev/tty")
 
         print()
         print("Apertium transfer VM debugger")
