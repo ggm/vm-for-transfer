@@ -21,22 +21,32 @@ class TransferLexicalUnit:
         self.lu = ""
         self.attrs = {}
 
+        #Index of the first tag '<' character.
+        self.tagStart = None
+
     def modifyAttr(self, attr, value):
         """Modify the part of the full lexical unit and the attr."""
 
         if attr == 'whole': self.setAttributes(value)
         else:
-            self.lu = self.lu.replace(self.attrs[attr], value)
-            if attr == 'lem':
+            #Only modify the lu until the tags.
+            self.lu = self.lu[:self.tagStart].replace(self.attrs[attr], value) \
+                      + self.lu[self.tagStart:]
+
+            if attr == 'lem' or attr == 'lemh':
                 #If the lemh is the same as the lem, we update both.
                 if self.attrs['lem'] == self.attrs['lemh']:
+                    self.attrs['lem'] = value
                     self.attrs['lemh'] = value
+                    return
             self.attrs[attr] = value
 
     def modifyTag(self, tag, value):
         """Modify the tag of the full lexical unit and the attr."""
 
-        self.lu = self.lu.replace(tag, value)
+        #Only modify the tags and not the entire lu.
+        self.lu = self.lu[:self.tagStart] \
+                  + self.lu[self.tagStart:].replace(tag, value)
         self.attrs["tags"] = self.attrs["tags"].replace(tag, value)
 
     def setAttributes(self, token):
@@ -45,6 +55,7 @@ class TransferLexicalUnit:
         self.lu = token
         #Get the position of the key characters.
         tag = token.find('<')
+        self.tagStart = tag
         head = token.find('#')
 
         if tag > -1:
@@ -133,18 +144,25 @@ class ChunkLexicalUnit:
         self.lu = ""
         self.attrs = {}
 
+        #Index of the first tag '<' character.
+        self.tagStart = None
+
     def modifyAttr(self, attr, value):
         """Modify the part of the full lexical unit and the attr."""
 
         if attr == 'whole': self.setAttributes(value)
         else:
-            self.lu = self.lu.replace(self.attrs[attr], value)
+            #Only modify the lu until the tags.
+            self.lu = self.lu[:self.tagStart].replace(self.attrs[attr], value) \
+                      + self.lu[self.tagStart:]
             self.attrs[attr] = value
 
     def modifyTag(self, tag, value):
         """Modify the tag of the full lexical unit and the attr."""
 
-        self.lu = self.lu.replace(tag, value)
+        #Only modify the tags and not the entire lu.
+        self.lu = self.lu[:self.tagStart] \
+                  + self.lu[self.tagStart:].replace(tag, value)
         self.attrs["tags"] = self.attrs["tags"].replace(tag, value)
             
     def setAttributes(self, token):
@@ -153,6 +171,7 @@ class ChunkLexicalUnit:
         #Get the position of the key characters.
         self.lu = token
         tag = token.find('<')
+        self.tagStart = tag
         contentsStart = token.find('{')
         contentsEnd = token.find('}')
 
