@@ -103,7 +103,8 @@ class Debugger:
         if len(args) == 0:
             answer = ''
             while answer != 'y' and answer != 'n':
-                answer = input("Do you want to delete all breakpoints? (y o n) ")
+                answer = input("Do you want to delete all breakpoints? (y or n)"
+                               " ")
             if answer == 'y':
                 self.breakOnRule = False
                 self.breakpoints = []
@@ -119,6 +120,7 @@ class Debugger:
         elif args[0] in ('br', 'breakpoints'):
             if self.breakOnRule: print("Breakpoint on rule start")
             if len(self.breakpoints) > 0:
+                print("Breakpoints:")
                 print("{}\t {}".format("Num", "Line"))
                 for n, br in enumerate(self.breakpoints):
                     print("{}\t {}".format(n, br))
@@ -154,7 +156,8 @@ class Debugger:
             if wordPos <= 0: print("Remember: word positions start from 1")
             else:
                 try:
-                    print("{}".format(self.vm.words[self.vm.currentWords[wordPos - 1]]))
+                    word = self.vm.words[self.vm.currentWords[wordPos - 1]]
+                    print("{}".format(word))
                 except IndexError:
                     print("There isn't a current word in position {}"
                           .format(wordPos))
@@ -202,7 +205,8 @@ class Debugger:
             print("\t 'break N' will set a breakpoint at line N")
             print("\t 'break onrule will set a breakpoint at rule start")
         elif cmd in ('c', 'continue'):
-            print("c, continue: continue execution until a breakpoint or the end")
+            print("c, continue: continue execution until a breakpoint or the "
+                  "end")
         elif cmd in ('d', 'delete'):
             print("delete [N | onrule]:")
             print("\t 'delete' will delete all current breakpoints")
