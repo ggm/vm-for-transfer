@@ -284,12 +284,14 @@ class VM:
 
         #For the chunker, output the default version of the unmatched pattern.
         if self.transferStage == TRANSFER_STAGE.CHUNKER:
-            wordTL = '^' + word.target.lu + '$'
-            if self.chunkerMode == CHUNKER_MODE.CHUNK:
-                if wordTL[1] == '*': default += "^unknown<unknown>{" + wordTL + "}$"
-                else: default += "^default<default>{" + wordTL + "}$"
-            else:
-                default += wordTL
+            #If the target word is empty, we don't need to output anything.
+            if word.target.lu != "":
+                wordTL = '^' + word.target.lu + '$'
+                if self.chunkerMode == CHUNKER_MODE.CHUNK:
+                    if wordTL[1] == '*': default += "^unknown<unknown>{" + wordTL + "}$"
+                    else: default += "^default<default>{" + wordTL + "}$"
+                else:
+                    default += wordTL
 
         #For the interchunk stage only need to output the complete chunk.
         elif self.transferStage == TRANSFER_STAGE.INTERCHUNK:
