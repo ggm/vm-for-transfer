@@ -159,6 +159,8 @@ class ChunkLexicalUnit:
 
         #Index of the first tag '<' character.
         self.tagStart = None
+        #Index of the first '{', the start of the chunk content.
+        self.contentStart = None
 
     def modifyAttr(self, attr, value):
         """Modify the part of the full lexical unit and the attr."""
@@ -175,7 +177,8 @@ class ChunkLexicalUnit:
 
         #Only modify the tags and not the entire lu.
         self.lu = self.lu[:self.tagStart] \
-                  + self.lu[self.tagStart:].replace(tag, value)
+                + self.lu[self.tagStart:self.contentStart].replace(tag, value) \
+                + self.lu[self.contentStart:]
         self.attrs["tags"] = self.attrs["tags"].replace(tag, value)
             
     def setAttributes(self, token):
@@ -185,20 +188,21 @@ class ChunkLexicalUnit:
         self.lu = token
         tag = token.find('<')
         self.tagStart = tag
-        contentsStart = token.find('{')
-        contentsEnd = token.find('}')
+        contentStart = token.find('{')
+        self.contentStart = contentStart
+        contentEnd = token.find('}')
 
         if tag > -1:
             #The lemma is everything until the first tag.
             self.attrs['lem'] = token[:tag]
-            self.attrs['tags'] = token[tag:contentsStart]
+            self.attrs['tags'] = token[tag:contentStart]
         else:
             #If there isn't any tag, the lemma is everything until the '{'.
-            self.attrs['lem'] = token[:contentsStart]
+            self.attrs['lem'] = token[:contentStart]
             self.attrs['tags'] = ""
 
         #Store chunk contents with the '{' and '}'.
-        self.attrs['chcontent'] = token[contentsStart:contentsEnd + 1]
+        self.attrs['chcontent'] = token[contentStart:contentEnd + 1]
 
 class ChunkWord:
     """Represent a word as a chunk for the interchunk and postchunk stages."""
