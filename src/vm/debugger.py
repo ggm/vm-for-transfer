@@ -92,7 +92,7 @@ class Debugger:
         elif args[0].isnumeric():
             codeLine = args[0]
             self.breakpoints.append(int(codeLine))
-            print("Set breakpoint at {} line.".format(codeLine))
+            print("Set breakpoint at line {}.".format(codeLine))
 
         self.getCommand()
 
@@ -149,6 +149,15 @@ class Debugger:
 
     def commandPrint(self, args):
         if len(args) == 0: pass
+        elif args[0].isnumeric():
+            wordPos = int(args[0])
+            if wordPos <= 0: print("Remember: word positions start from 1")
+            else:
+                try:
+                    print("{}".format(self.vm.words[self.vm.currentWords[wordPos - 1]]))
+                except IndexError:
+                    print("There isn't a current word in position {}"
+                          .format(wordPos))
         elif args[0] == "variables":
             print(self.vm.variables)
         else:
@@ -208,10 +217,11 @@ class Debugger:
             print("\t 'list' will show ten lines of code each time")
             print("\t [line] list ten lines around line")
         elif cmd in ('p', 'print'):
-            print("print [variables | variableName]:")
+            print("print [variables | variablename | position]:")
             print("\t 'print variables' will print all the variables and their "
                   "values")
-            print("\t 'print variableName' will print the variable value")
+            print("\t 'print variablename' will print the variable value")
+            print("\t 'print position' will print the current word in position")
         elif cmd in ('s', 'step'):
             print("s, step: execute the next line and stop")
         elif cmd in ('r', 'run'):
