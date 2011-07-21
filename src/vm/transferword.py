@@ -298,8 +298,6 @@ class ChunkWordTokenizer():
         tokens = []
         token = ""
         superblanks = []
-        sb = ""
-        insideSb = False
         chunkStart = True
 
         word = ChunkWord()
@@ -308,8 +306,9 @@ class ChunkWordTokenizer():
             if char == '^':
                 if not chunkStart: token += str(char)
                 else:
-                    #A simple blank, without the '[]', is also a superblank.
+                    #Characters between chunks are treated like superblanks.
                     superblanks.append(token)
+                    token = ""
                     chunkStart = False
             elif char == '$':
                 if not chunkStart: token += str(char)
@@ -323,14 +322,6 @@ class ChunkWordTokenizer():
                 chunkStart = True
                 token = ""
                 word = ChunkWord()
-            elif char == '[':
-                insideSb = True
-            elif char == ']':
-                if sb == "[]": superblanks.append("")
-                else: superblanks.append(sb)
-                insideSb = False
-                sb = ""
-            elif insideSb: sb += str(char)
             else: token += str(char)
 
         #Append the last superblank of the input, usually the '\n'.
