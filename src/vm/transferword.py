@@ -108,15 +108,25 @@ class TransferWordTokenizer():
         superblanks = []
         sb = ""
         insideSb = False
+        escapeNextChar = False
 
         word = TransferWord()
         for char in input:
-            if char == '^':
-                #A simple blank, without the '[]', is also a superblank.
-                if token != "": superblanks.append(token)
+            if char == "\\": escapeNextChar = True
+            elif escapeNextChar:
+                token += str(char)
+                escapeNextChar = False
+            elif char == '^':
                 #If there aren't any blanks at the beginning, append an empty.
-                elif len(tokens) == 0 and len(superblanks) == 0:
-                    superblanks.append("")
+                if len(tokens) == 0 and len(superblanks) == 0:
+                    superblanks.append(token)
+                #Any character, between lus, is treated like a superblank.
+                elif len(tokens) == len(superblanks):
+                    superblanks.append(token)
+                #If there are characters after the superblank, append them.
+                elif token != "":
+                    superblanks.append(superblanks.pop() + token)
+                token = ""
             elif char == '$':
                 word.target.setAttributes(token.strip())
                 tokens.append(word)
@@ -126,10 +136,13 @@ class TransferWordTokenizer():
                 word.source.setAttributes(token.strip())
                 token = ""
             elif char == '[':
+                #If there are characters before the superblank, append them.
+                if token != "":
+                    sb += token
+                    token = ""
                 insideSb = True
             elif char == ']':
-                if sb == "[]": superblanks.append("")
-                else: superblanks.append(sb)
+                if sb != "": superblanks.append(sb)
                 insideSb = False
                 sb = ""
             elif insideSb: sb += str(char)
