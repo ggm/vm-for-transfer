@@ -46,7 +46,6 @@ class SystemTrie:
 
     def __getNextNodes(self, char, startNode):
         """Get a list of next nodes given a char and a start node."""
-
         nextNodes = []
         #If a word is unknown (*lemma) it shouldn't match with anything.
         if char == '*': return []
@@ -191,11 +190,15 @@ class SystemTrie:
             for node in curNodes:
                 if '|' in part:
                     for option in part.split('|'):
-                        if option[0] == '<': node = self.__insertStar(node)
-                        lastNodes.append(self.__insertPattern(option, node=node))
+                        if option[0] == '<':
+                            starNode = self.__insertStar(node)
+                            lastNodes.append(self.__insertPattern(option, node=starNode))
+                        else: lastNodes.append(self.__insertPattern(option, node=node))
                 else:
-                    if part[0] == '<': node = self.__insertStar(node)
-                    lastNodes.append(self.__insertPattern(part, node=node))
+                    if part[0] == '<':
+                        starNode = self.__insertStar(node)
+                        lastNodes.append(self.__insertPattern(part, node=starNode))
+                    else: lastNodes.append(self.__insertPattern(part, node=node))
             curNodes = lastNodes
 
         #Finally, we add the last part of the pattern with its rule number.
@@ -203,11 +206,15 @@ class SystemTrie:
         for node in curNodes:
             if '|' in lastPart:
                 for option in lastPart.split('|'):
-                    if option[0] == '<': node = self.__insertStar(node)
-                    self.__insertPattern(option, ruleNumber, node=node)
+                    if option[0] == '<':
+                        starNode = self.__insertStar(node)
+                        self.__insertPattern(option, ruleNumber, node=starNode)
+                    else: self.__insertPattern(option, ruleNumber, node=node)
             else:
-                if lastPart[0] == '<': node = self.__insertStar(node)
-                self.__insertPattern(lastPart, ruleNumber, node=node)
+                if lastPart[0] == '<':
+                    starNode = self.__insertStar(node)
+                    self.__insertPattern(lastPart, ruleNumber, node=starNode)
+                else: self.__insertPattern(lastPart, ruleNumber, node=node)
 
     def printTrie(self):
         """Print trie's contents and structure just for debugging purposes."""
