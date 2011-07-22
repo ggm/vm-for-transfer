@@ -86,12 +86,10 @@ class SystemTrie:
         return curNode
 
     def __insertStar(self, node):
-        """Insert a star node which can contain any alphabetic character."""
+        """Insert a star node which can accept any character except < >."""
 
-        #If there is already a tag star, create a new different star node,
-        #so that it does not eat every consequent lemma<tag>.
-        if '<' in node.children and '*' in node.children['<'].children:
-            node = node.children.setdefault('*', TrieNode())
+        #Create a new child node with the '*' special symbol.
+        node = node.children.setdefault('*', TrieNode())
 
         #Add a reference to itself to accept every alphabet char.
         node.addChild('*', node)
