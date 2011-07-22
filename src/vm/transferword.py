@@ -265,8 +265,10 @@ class ChunkWord:
             if len(token) < 2: continue
 
             #After the first blank, append the blanks between lexical units.
+            tag = token.find('^')
             if firstLu: firstLu = False
-            else: blanks.append(token[:token.find('^')])
+            else: blanks.append(token[:tag])
+            token = token[tag:]
 
             lu = TransferLexicalUnit()
             lu.setAttributes(token.replace('^', '').replace('/', '').strip())
