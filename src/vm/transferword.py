@@ -13,6 +13,7 @@
 #You should have received a copy of the GNU General Public License
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+import sys
 
 class TransferLexicalUnit:
     """Represent a lexical unit and all its attributes for the transfer stage."""
@@ -173,6 +174,11 @@ class ChunkLexicalUnit:
         else:
             if attr == 'tags':
                 self.lu = self.lu.replace(self.attrs[attr], value)
+            elif attr == 'chcontent':
+                chcontent = self.attrs[attr]
+                lu = self.lu[:self.contentStart]
+                lu += self.lu[self.contentStart:].replace(chcontent, value)
+                self.lu = lu
             else:
                 #Only modify the lu until the tags.
                 self.lu = self.lu[:self.tagStart].replace(self.attrs[attr],
@@ -281,6 +287,7 @@ class ChunkWord:
     def changeLemmaCase(self, lu, case):
         """Change the case of the lemma in a lexical unit."""
 
+        oldLu = lu.lu
         oldLem = lu.attrs['lem']
         if case == "aa": newLem = oldLem.lower()
         elif case == "Aa": newLem = oldLem.capitalize()
@@ -289,7 +296,7 @@ class ChunkWord:
 
         #Also, update the chcontent attribute of the chunk.
         chcontent = self.chunk.attrs['chcontent']
-        self.chunk.attrs['chcontent'] = chcontent.replace(oldLem, newLem)
+        self.chunk.attrs['chcontent'] = chcontent.replace(oldLu, lu.lu)
 
 class ChunkWordTokenizer():
     """Create a set of chunk words from an input stream."""
