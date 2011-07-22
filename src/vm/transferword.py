@@ -87,6 +87,9 @@ class TransferLexicalUnit:
         #If it isn't a multiword, then the lemh is the lemma.
         else: self.attrs['lemh'] = self.attrs['lem']
 
+    def isEmpty(self):
+        return self.lu == "" and self.attrs == {}
+
 class TransferWord:
     """Represent a word as a source/target language pair."""
 
@@ -114,10 +117,12 @@ class TransferWordTokenizer():
         sb = ""
         insideSb = False
         escapeNextChar = False
+        ignoreMultipleTargets = False
 
         word = TransferWord()
         for char in input:
-            if char == "\\": escapeNextChar = True
+            if ignoreMultipleTargets and char != '$': continue
+            elif char == "\\": escapeNextChar = True
             elif escapeNextChar:
                 token += str(char)
                 escapeNextChar = False
@@ -136,10 +141,14 @@ class TransferWordTokenizer():
                 word.target.setAttributes(token.strip())
                 tokens.append(word)
                 token = ""
+                ignoreMultipleTargets = False
                 word = TransferWord()
             elif char == '/':
-                word.source.setAttributes(token.strip())
-                token = ""
+                if word.source.isEmpty():
+                    word.source.setAttributes(token.strip())
+                    token = ""
+                else:
+                    ignoreMultipleTargets = True
             elif char == '[':
                 #If there are characters before the superblank, append them.
                 if token != "":
