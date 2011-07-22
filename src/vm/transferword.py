@@ -42,9 +42,11 @@ class TransferLexicalUnit:
                 if self.attrs['lem'] == self.attrs['lemh']:
                     self.attrs['lem'] = value
                     self.attrs['lemh'] = value
-                    return
 
             self.attrs[attr] = value
+
+        #Update the tag start index.
+        self.tagStart = self.lu.find('<')
 
     def modifyTag(self, tag, value):
         """Modify the tag of the full lexical unit and the attr."""
@@ -53,6 +55,9 @@ class TransferLexicalUnit:
         self.lu = self.lu[:self.tagStart] \
                   + self.lu[self.tagStart:].replace(tag, value)
         self.attrs["tags"] = self.attrs["tags"].replace(tag, value)
+
+        #Update the tag start index.
+        self.tagStart = self.lu.find('<')
 
     def setAttributes(self, token):
         """Set some of the attributes of a transfer lexical unit."""
@@ -194,6 +199,10 @@ class ChunkLexicalUnit:
                           value) + self.lu[self.tagStart:]
                 self.attrs[attr] = value
 
+        #Update index of first tag and content start.
+        self.tagStart = self.lu.find('<')
+        self.contentStart = self.lu.find('{')
+
     def modifyTag(self, tag, value):
         """Modify the tag of the full lexical unit and the attr."""
 
@@ -202,6 +211,10 @@ class ChunkLexicalUnit:
                 + self.lu[self.tagStart:self.contentStart].replace(tag, value) \
                 + self.lu[self.contentStart:]
         self.attrs["tags"] = self.attrs["tags"].replace(tag, value)
+
+        #Update index of first tag and content start.
+        self.tagStart = self.lu.find('<')
+        self.contentStart = self.lu.find('{')
             
     def setAttributes(self, token):
         """Set some of the attributes of a chunk lexical unit."""
