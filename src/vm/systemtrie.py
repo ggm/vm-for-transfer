@@ -78,7 +78,8 @@ class SystemTrie:
         if ruleNumber is not None:
             if curNode.ruleNumber is None: curNode.ruleNumber = ruleNumber
             else:
-                self.logger.warning("Paths to rule {} blocked by rule {}.".
+                if curNode.ruleNumber != ruleNumber:
+                    self.logger.warning("Paths to rule {} blocked by rule {}.".
                       format(ruleNumber, curNode.ruleNumber))
                 curNode.ruleNumber = min(curNode.ruleNumber, ruleNumber)
 
