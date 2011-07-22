@@ -381,7 +381,7 @@ lu 1
 out 3
 lu-count
 #<lit v="3">
-push "3"
+push 3
 cmp
 jz when_7_end
 pushsb 2
@@ -587,7 +587,7 @@ lu 1
 out 5
 lu-count
 #<lit v="4">
-push "4"
+push 4
 cmp
 jz when_10_end
 pushsb 3
@@ -601,7 +601,7 @@ jmp choose_10_end
 when_10_end:
 lu-count
 #<lit v="5">
-push "5"
+push 5
 cmp
 jz when_11_end
 pushsb 3
@@ -782,7 +782,7 @@ lu 1
 out 7
 lu-count
 #<lit v="5">
-push "5"
+push 5
 cmp
 jz when_14_end
 pushsb 4
@@ -796,7 +796,7 @@ jmp choose_13_end
 when_14_end:
 lu-count
 #<lit v="6">
-push "6"
+push 6
 cmp
 jz when_15_end
 pushsb 4
@@ -1090,7 +1090,7 @@ lu 1
 out 9
 lu-count
 #<lit v="6">
-push "6"
+push 6
 cmp
 jz when_19_end
 pushsb 5
@@ -1104,7 +1104,7 @@ jmp choose_17_end
 when_19_end:
 lu-count
 #<lit v="7">
-push "7"
+push 7
 cmp
 jz when_20_end
 pushsb 5
@@ -1220,7 +1220,7 @@ lu 1
 out 11
 lu-count
 #<lit v="7">
-push "7"
+push 7
 cmp
 jz when_22_end
 pushsb 6

@@ -242,7 +242,10 @@ class AssemblyCodeGenerator:
 
     def genLitStart(self, event):
         self.genDebugCode(event)
-        self.addCode(self.PUSH_OP + self.INSTR_SEP + '"{}"'.format(event.attrs['v']))
+        value = event.attrs['v']
+        if value.isnumeric():
+            self.addCode(self.PUSH_OP + self.INSTR_SEP + '{}'.format(value))
+        else: self.addCode(self.PUSH_OP + self.INSTR_SEP + '"{}"'.format(value))
 
     def genLitTagStart(self, event):
         self.genDebugCode(event)
