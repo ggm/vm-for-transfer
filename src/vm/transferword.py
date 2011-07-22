@@ -247,7 +247,7 @@ class ChunkWord:
             else: blanks.append(token[:token.find('^')])
 
             lu = TransferLexicalUnit()
-            lu.setAttributes(token.replace('^', '').strip())
+            lu.setAttributes(token.replace('^', '').replace('/', '').strip())
 
             if upperCaseAll: self.changeLemmaCase(lu, pseudoLemmaCase)
             elif firstUpper:
@@ -343,9 +343,19 @@ class ChunkWordTokenizer():
             if char.isnumeric():
                 if chcontent[i - 1] == '<' and chcontent[i + 1] == '>':
                     pos = int(char)
-                    lu = lu.replace(char, tags[pos - 1])
-                    newChcontent = newChcontent.replace(char, tags[pos - 1])
+                    tag = tags[pos - 1]
+                    lu = self.replaceReference(lu, char, tag)
+                    newChcontent = self.replaceReference(newChcontent, char, tag)
 
         word.chunk.lu = lu
         word.chunk.attrs['chcontent'] = newChcontent
 
+    def replaceReference(self, container, pos, tag):
+        """Replace a number (pos) with the tag in the container."""
+
+        for i, char in enumerate(container):
+            if char == pos:
+                if container[i - 1] == '<' and container[i + 1] == '>':
+                    newContainer = container[:i] + tag + container[i + 1:]
+
+        return newContainer
