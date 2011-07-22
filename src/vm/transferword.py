@@ -283,6 +283,16 @@ class ChunkWord:
         self.content = content
         self.blanks = blanks
 
+    def updateChunkContent(self, oldLu, newLu):
+        """Update chunk.lu and chcontent when a lu inside the chunk changes."""
+
+        chunkLu = self.chunk.lu[:self.chunk.contentStart]
+        chunkLu += self.chunk.lu[self.chunk.contentStart:].replace(oldLu, newLu)
+        self.chunk.lu = chunkLu
+
+        chcontent = self.chunk.attrs['chcontent'].replace(oldLu, newLu)
+        self.chunk.attrs['chcontent'] = chcontent
+
     def getCase(self, string):
         """Get the case of a string, defaulting to capitals."""
 

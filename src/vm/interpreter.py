@@ -510,7 +510,12 @@ class Interpreter:
 
     def handleStoreClipInstruction(self, parts, lu, lemmaAndTags, value):
         if parts in ('lem', 'lemh', 'lemq', 'tags'):
+            oldLu = lu.lu
             lu.modifyAttr(parts, value)
+            if self.vm.transferStage == TRANSFER_STAGE.POSTCHUNK:
+                #Update the chunk content when changing a lu inside the chunk.
+                chunkWord = self.vm.words[self.vm.currentWords[0]]
+                chunkWord.updateChunkContent(oldLu, lu.lu)
             return
         elif parts == 'chcontent':
             lu.modifyAttr(parts, value)
