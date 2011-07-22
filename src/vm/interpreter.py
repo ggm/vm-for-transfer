@@ -117,6 +117,10 @@ class Interpreter:
             return self.vm.words[self.vm.currentWords[pos - 1]].chunk
         else:
             word = self.vm.words[self.vm.currentWords[0]]
+
+            #If it's a macro, get the position passed as a parameter.
+            if len(self.vm.currentWords) > 1: pos = self.vm.currentWords[pos]
+
             if pos == 0: return word.chunk
             else: return word.content[pos - 1]
 
@@ -204,8 +208,15 @@ class Interpreter:
         #Get the words passed as argument to the macro.
         ops = self.getNOperands(self.systemStack.pop())
         words = []
-        for op in ops:
-            words.append(self.vm.currentWords[op - 1])
+
+        #For the postchunk append the index of the only current word and then
+        #append all the parameters.
+        if self.vm.transferStage == TRANSFER_STAGE.POSTCHUNK:
+            words.append(self.vm.currentWords[0])
+            for op in ops: words.append(op)
+        #For the rest, just append the index of the current words.
+        else:
+            for op in ops: words.append(self.vm.currentWords[op - 1])
 
         #Create an entry in the call stack with the macro called.
         macroNumber = int(instr[1])
