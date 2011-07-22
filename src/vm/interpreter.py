@@ -509,14 +509,12 @@ class Interpreter:
         self.handleStoreClipInstruction(parts, lu, lu.lu, value)
 
     def handleStoreClipInstruction(self, parts, lu, lemmaAndTags, value):
+        oldLu = lu.lu
+        change = False
+
         if parts in ('lem', 'lemh', 'lemq', 'tags'):
-            oldLu = lu.lu
             lu.modifyAttr(parts, value)
-            if self.vm.transferStage == TRANSFER_STAGE.POSTCHUNK:
-                #Update the chunk content when changing a lu inside the chunk.
-                chunkWord = self.vm.words[self.vm.currentWords[0]]
-                chunkWord.updateChunkContent(oldLu, lu.lu)
-            return
+            change = True
         elif parts == 'chcontent':
             lu.modifyAttr(parts, value)
             if self.vm.transferStage == TRANSFER_STAGE.POSTCHUNK:
@@ -526,7 +524,7 @@ class Interpreter:
                 chunkWord.parseChunkContent()
         elif parts == 'whole':
             lu.modifyAttr(parts, value)
-            return
+            change = True
         else:
             longestMatch = ""
             for part in parts.split('|'):
@@ -534,10 +532,12 @@ class Interpreter:
                     if len(part) > len(longestMatch): longestMatch = part
             if longestMatch:
                 lu.modifyTag(longestMatch, value)
-                return
+                change = True
 
-        #If the lu doesn't have the part needed, return "".
-        self.systemStack.push("")
+        if change and self.vm.transferStage == TRANSFER_STAGE.POSTCHUNK:
+            #Update the chunk content when changing a lu inside the chunk.
+            chunkWord = self.vm.words[self.vm.currentWords[0]]
+            chunkWord.updateChunkContent(oldLu, lu.lu)
 
     def executeStorev(self, instr):
         value = self.systemStack.pop()
