@@ -29,9 +29,12 @@ class TransferLexicalUnit:
 
         if attr == 'whole': self.setAttributes(value)
         else:
-            #Only modify the lu until the tags.
-            self.lu = self.lu[:self.tagStart].replace(self.attrs[attr], value) \
-                      + self.lu[self.tagStart:]
+            if attr == 'tags':
+                self.lu = self.lu.replace(self.attrs[attr], value)
+            else:
+                #Only modify the lu until the tags.
+                self.lu = self.lu[:self.tagStart].replace(self.attrs[attr],
+                          value) + self.lu[self.tagStart:]
 
             if attr == 'lem' or attr == 'lemh':
                 #If the lemh is the same as the lem, we update both.
@@ -39,6 +42,7 @@ class TransferLexicalUnit:
                     self.attrs['lem'] = value
                     self.attrs['lemh'] = value
                     return
+
             self.attrs[attr] = value
 
     def modifyTag(self, tag, value):
@@ -167,10 +171,13 @@ class ChunkLexicalUnit:
 
         if attr == 'whole': self.setAttributes(value)
         else:
-            #Only modify the lu until the tags.
-            self.lu = self.lu[:self.tagStart].replace(self.attrs[attr], value) \
-                      + self.lu[self.tagStart:]
-            self.attrs[attr] = value
+            if attr == 'tags':
+                self.lu = self.lu.replace(self.attrs[attr], value)
+            else:
+                #Only modify the lu until the tags.
+                self.lu = self.lu[:self.tagStart].replace(self.attrs[attr],
+                          value) + self.lu[self.tagStart:]
+                self.attrs[attr] = value
 
     def modifyTag(self, tag, value):
         """Modify the tag of the full lexical unit and the attr."""
