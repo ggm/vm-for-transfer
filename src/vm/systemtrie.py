@@ -46,6 +46,7 @@ class SystemTrie:
 
     def __getNextNodes(self, char, startNode):
         """Get a list of next nodes given a char and a start node."""
+
         nextNodes = []
         #If a word is unknown (*lemma) it shouldn't match with anything.
         if char == '*': return []

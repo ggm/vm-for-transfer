@@ -150,10 +150,12 @@ class VM:
             return self.words[self.nextPattern].chunk.attrs['lem']
 
     def getNextInputPattern(self):
-        """Get the next input pattern to analyse."""
+        """Get the next input pattern to analyse, lowering the lemma first."""
 
         try:
             pattern = self.getSourceWord(self.nextPattern)
+            tag = pattern.find('<')
+            pattern = pattern[:tag].lower() + pattern[tag:]
             self.nextPattern += 1
         except IndexError:
             return None
