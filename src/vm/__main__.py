@@ -17,10 +17,10 @@
 """
 USAGE: vm -c code_file [-i input_file] [-o output_file] [-g] [-h]
 Options:
-  -c, --codefile:\t\t a [chunker|interchunk|postchunk] compiled rules file
+  -c, --codefile:\t a [chunker|interchunk|postchunk] compiled rules file
   -i, --inputfile:\t input file (stdin by default)
   -o, --outputfile:\t output file (stdout by default)
-  -g, --debug:\t debug interactively the program code.
+  -g, --debug:\t\t debug interactively the program code.
   -h, --help:\t\t show this help
 """
 
@@ -75,6 +75,9 @@ def main():
                 sys.exit(2)
         elif opt in ("-g", "--debug"):
             vm.setDebugMode()
+
+    #If a code file isn't supplied, there won't be any loader so we end.
+    if vm.loader is None: exit()
 
     vm.run()
 
