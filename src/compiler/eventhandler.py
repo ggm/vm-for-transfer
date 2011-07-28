@@ -36,7 +36,6 @@ class EventHandler():
         self.currentDefList = None          #Keep the current list to avoid extra calls to the stack.
         
         #Assign some of the compiler's components needed
-        self.callStack = compiler.callStack
         self.codeGen = compiler.codeGenerator
         self.symbolTable = compiler.symbolTable
 

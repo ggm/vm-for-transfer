@@ -163,7 +163,7 @@ lu 1
 out 3
 lu-count
 #<lit v="3">
-push "3"
+push 3
 cmp
 jz when_3_end
 pushsb 2

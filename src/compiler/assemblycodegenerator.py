@@ -122,7 +122,7 @@ class AssemblyCodeGenerator:
     def genHeader(self, event):
         #Add the type of file so the vm can read it accordingly.
         self.addCode("#<assembly>")
-        #Add the rest of the header as the first element of the xml.
+        #Add the rest of the header using the first element of the xml.
         attrs = ""
         for k, v in event.attrs.items():
             attrs += ' {}="{}"'.format(k, v)
