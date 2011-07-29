@@ -230,8 +230,8 @@ class EventHandler():
         self.codeGen.genActionEnd(event)
 
     def handle_call_macro_start(self, event):
-        self.codeGen.genCallMacroStart(event)
         self.checkAttributeExists(event, 'n')
+        self.codeGen.genCallMacroStart(event)
 
     def handle_call_macro_end(self, event):
         macroName = event.attrs['n']
