@@ -121,6 +121,7 @@ class EventHandler():
         self.printDebugMessage("handle_cat_item_start", event)
         catItem = ''
         if self.transferStage == "postchunk":
+            self.checkAttributeExists(event, "name")
             catItem = event.attrs['name']
         else: #lemma attribute is optional.
             if 'lemma' in event.attrs:
