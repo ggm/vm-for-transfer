@@ -148,6 +148,7 @@ class EventHandler():
         
     def handle_attr_item_start(self, event):
         self.printDebugMessage("handle_attr_item_start", event)
+        self.checkAttributeExists(event, 'tags')
         attrItem = ''        
         for tag in event.attrs['tags'].split('.'):
             tag = "<{}>".format(tag)
