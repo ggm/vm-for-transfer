@@ -68,7 +68,7 @@ class EventHandler():
     def isContainer(self, event):
         """Check if a var or clip acts as a container."""
 
-        if event.parent.name in ('let'):
+        if event.parent.name in ('let', 'modify-case'):
             #If it's the first child, it's on the left, so it's a container.
             if event.parent.numChildren == 1:
                 return True
@@ -326,10 +326,9 @@ class EventHandler():
         self.codeGen.genInEnd(event)
 
     def handle_clip_end(self, event):
-        #If there is a link-to attribute, we ignore the other ones.
         partAttrs = []
-        if 'link-to' in event.attrs: linkTo = True
-        else: linkTo = False
+
+        linkTo = 'link-to' in event.attrs
 
         part = event.attrs['part']
         if part not in self.defAttrs:

@@ -308,11 +308,20 @@ class AssemblyCodeGenerator:
 
     def genVarStart(self, event, isContainer):
         self.genDebugCode(event)
+
+        varName = event.attrs['n']
+
         #If it's a container push its name as a quoted string.
-        if isContainer: varName = '"{}"'.format(event.attrs['n'])
+        if isContainer:
+            self.addCode(self.PUSH_OP + self.INSTR_SEP + '"{}"'.format(varName))
+
+            #If it's a container of a modify-case, we also need its content
+            if event.parent.name == 'modify-case':
+                self.addCode(self.PUSH_OP + self.INSTR_SEP + varName)
+                return
+
         #Otherwise, push it as a symbol (without quotes). 
-        else: varName = event.attrs['n']
-        self.addCode(self.PUSH_OP + self.INSTR_SEP + varName)
+        else: self.addCode(self.PUSH_OP + self.INSTR_SEP + varName)
 
     def genInEnd(self, event):
         self.addCode(self.getIgnoreCaseInstr(event, self.IN_OP, self.INIG_OP))
@@ -342,7 +351,7 @@ class AssemblyCodeGenerator:
 
         self.genClipCode(event, partAttrs)
 
-        if event.parent.name == "modify-case":
+        if isContainer and event.parent.name == "modify-case":
             #If it's a container of a modify-case, we need to generate another
             #clip instruction to get the clip value needed by the modify-case.
             self.genClipCode(event, partAttrs)
