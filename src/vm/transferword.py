@@ -13,7 +13,6 @@
 #You should have received a copy of the GNU General Public License
 #along with this program; if not, write to the Free Software
 #Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-import sys
 
 class TransferLexicalUnit:
     """Represent a lexical unit and all its attributes for the transfer stage."""
@@ -330,7 +329,7 @@ class ChunkWord:
 
         #Also, update the chcontent attribute of the chunk.
         chcontent = self.chunk.attrs['chcontent']
-        self.chunk.attrs['chcontent'] = chcontent.replace(oldLu, lu.lu)
+        self.chunk.attrs['chcontent'] = chcontent.replace(oldLu, lu.lu, 1)
 
 class ChunkWordTokenizer():
     """Create a set of chunk words from an input stream."""
