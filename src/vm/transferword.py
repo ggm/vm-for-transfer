@@ -324,7 +324,7 @@ class ChunkWord:
         oldLu = lu.lu
         oldLem = lu.attrs['lem']
         if case == "aa": newLem = oldLem.lower()
-        elif case == "Aa": newLem = oldLem.capitalize()
+        elif case == "Aa": newLem = oldLem[0].upper() + oldLem[1:]
         elif case == "AA": newLem = oldLem.upper()
         lu.modifyAttr('lem', newLem)
 
