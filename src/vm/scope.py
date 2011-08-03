@@ -40,3 +40,21 @@ class Scope:
                 instr = section[pos][1]
                 instr = instr.replace("#0#", address)
                 section[pos][1] = instr
+
+
+    def createNewLabelAddress(self, label):
+        """Create a new unique internal address for a label."""
+
+        labelAddress = self.nextAddress
+        self.labelAddress[label] = labelAddress
+        return labelAddress
+
+    def getReferenceToLabel(self, label, section):
+        """Get the label address if it's already processed or mark it as patch
+           needed if the label address is unknown yet.
+        """
+
+        if label in self.labelAddress: return self.labelAddress[label]
+        else:
+            self.addLabelToPatch(label, len(section))
+            return "#0#"

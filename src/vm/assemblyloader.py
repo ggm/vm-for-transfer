@@ -93,25 +93,6 @@ class AssemblyLoader:
         if len(self.scopes) > 0: self.currentScope = self.scopes[-1]
         else: self.currentScope = None
 
-    def createNewLabelAddress(self, label):
-        """Create a new unique internal address for a label."""
-
-        scope = self.currentScope
-        labelAddress = scope.nextAddress
-        scope.labelAddress[label] = labelAddress
-        return labelAddress
-
-    def getReferenceToLabel(self, label, section):
-        """Get the label address if it's already processed or mark it as patch
-           needed if the label address is unknown yet.
-        """
-
-        scope = self.currentScope
-        if label in scope.labelAddress: return scope.labelAddress[label]
-        else:
-            scope.addLabelToPatch(label, len(section))
-            return "#0#"
-
     def getRuleNumber(self, ruleLabel):
         """Get the number assigned to a rule by the compiler."""
 
@@ -141,7 +122,8 @@ class AssemblyLoader:
             opCode = self.opCodes[instr[0]]
         except KeyError:
             if ':' in line:
-                self.createNewLabelAddress(instr[0].replace(':', ''))
+                label = instr[0].replace(':', '')
+                self.currentScope.createNewLabelAddress(label)
                 return
             else: self.raiseError("Unrecognized instruction: " + line)
 
@@ -155,7 +137,8 @@ class AssemblyLoader:
                     instr[1] = self.macroNumber[instr[1]]
                 else:
                     label = instr[1].replace(':\n', '')
-                    instr[1] = self.getReferenceToLabel(label, section)
+                    instr[1] = \
+                        self.currentScope.getReferenceToLabel(label, section)
             return [opCode, instr[1]]
 
     def addCodeToSection(self, code, section):
