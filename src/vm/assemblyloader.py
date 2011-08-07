@@ -223,20 +223,17 @@ class AssemblyLoader:
         symbol = '='
         header = symbol * 20 + " {:=<39}"
         footer = symbol * 60 + '\n'
-        opCodes = self.reversedOpCodes
 
         if not enum:
             print(header.format(headerText + " section "))
             for number, code in enumerate(section):
-                if len(code) > 1: print(number, opCodes[int(code[0])], code[1])
-                else: print(number, opCodes[code[0]])
+                self.printInstruction(code, number)
         else:
             print(header.format(headerText + " code section "))
             for number, code in enumerate(section):
                 print("\n{} {}:".format(headerText[:-1], number))
                 for v, c in enumerate(code):
-                    if len(c) > 1: print(v, opCodes[int(c[0])], c[1])
-                    else: print(v, opCodes[c[0]])
+                    self.printInstruction(c, v)
 
         print(footer)
 
@@ -251,10 +248,10 @@ class AssemblyLoader:
             else: operand = instr[1]
 
             if PC is None: print(opCode, operand)
-            else: print("{}\t {} {}".format(PC, opCode, operand))
+            else: print("{}\t{} {}".format(PC, opCode, operand))
         else:
             if PC is None: print(opCode)
-            else: print("{}\t {}".format(PC, opCode))
+            else: print("{}\t{}".format(PC, opCode))
 
     def getMacroNameFromNumber(self, number):
         """Get the name of a macro from its number, useful for debugging."""
