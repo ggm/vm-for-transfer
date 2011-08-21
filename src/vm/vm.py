@@ -141,16 +141,19 @@ class VM:
             self.interpreter.execute(self.code[self.PC])
 
     def getSourceWord(self, pos):
+        """Get the part of a source word needed for pattern matching, depending
+           on the transfer stage."""
+
         if self.transferStage == TRANSFER_STAGE.CHUNKER:
-                return self.words[self.nextPattern].source.lu
+            return self.words[pos].source.lu
         elif self.transferStage == TRANSFER_STAGE.INTERCHUNK:
-            word = self.words[self.nextPattern].chunk
+            word = self.words[pos].chunk
             return word.attrs['lem'] + word.attrs['tags']
         else:
-            return self.words[self.nextPattern].chunk.attrs['lem']
+            return self.words[pos].chunk.attrs['lem']
 
     def getNextInputPattern(self):
-        """Get the next input pattern to analyse, lowering the lemma first."""
+        """Get the next input pattern to analyze, lowering the lemma first."""
 
         try:
             pattern = self.getSourceWord(self.nextPattern)
@@ -187,9 +190,9 @@ class VM:
 
         #Go through all the patterns until one matches a rule.
         while self.nextPattern < len(self.words):
+            startPatternPos = self.nextPattern
             pattern = self.getNextInputPattern()
             ruleNumber = self.trie.getRuleNumber(pattern)
-            startPatternPos = self.nextPattern - 1
             if ruleNumber is not None:
 #                print('Pattern "{}" match rule: {}'.format(pattern, ruleNumber))
                 self.setRuleSelected(ruleNumber, startPatternPos, pattern)
@@ -330,7 +333,7 @@ class VM:
 
             if self.debugMode: self.debugger.start()
 
-            #Select the first rule, if there isn't one, the vm work has ended.
+            #Select the first rule. If there isn't one, the vm work has ended.
             if self.status == VM_STATUS.RUNNING: self.selectNextRule()
             while self.status == VM_STATUS.RUNNING:
                 #Execute the rule selected until it ends.

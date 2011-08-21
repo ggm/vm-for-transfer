@@ -226,7 +226,7 @@ class ChunkLexicalUnit:
         self.contentStart = contentStart
         contentEnd = token.find('}')
 
-        if tag > -1:
+        if tag > -1 and tag < contentStart:
             #The lemma is everything until the first tag.
             self.attrs['lem'] = token[:tag]
             self.attrs['tags'] = token[tag:contentStart]
