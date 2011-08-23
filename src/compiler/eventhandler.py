@@ -86,7 +86,11 @@ class EventHandler():
 
     def handle_transfer_start(self, event):
         self.transferStage = "chunk"
-        self.chunkDefault = "chunk" in event.attrs['default']
+
+        if 'default' in event.attrs and "chunk" in event.attrs['default']:
+            self.chunkDefault = True
+        else: self.chunkDefault = False
+
         self.codeGen.genTransferStart(event)
 
     def handle_transfer_end(self, event):
