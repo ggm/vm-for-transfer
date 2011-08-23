@@ -72,6 +72,7 @@ class AssemblyCodeGenerator:
         self.code = []
         self.patternsCode = []
         self.patternsSection = 0
+        self.jumpToRulesSection = False
 
         #Used to get the next address of an instruction if needed.
         self.nextAddress = 0
@@ -148,9 +149,15 @@ class AssemblyCodeGenerator:
                      + '"{}"'.format(str(defaultValue)))
         self.addCode(self.STOREV_OP)
 
+    def addJumpToRulesSection(self):
+        if not self.jumpToRulesSection:
+            #Jump to the start of the rules, ignoring the macros until called.
+            self.addCode(self.JMP_OP + self.INSTR_SEP + "section_rules_start")
+            
+        self.jumpToRulesSection = True
+
     def genSectionDefMacrosStart(self, event):
-        #Jump to the start of the rules, ignoring the macros until called.
-        self.addCode(self.JMP_OP + self.INSTR_SEP + "section_rules_start")
+        self.addJumpToRulesSection()
 
     def genDefMacroStart(self, event):
         self.genDebugCode(event)
@@ -162,6 +169,9 @@ class AssemblyCodeGenerator:
 
     def genSectionRulesStart(self, event):
         self.genDebugCode(event)
+
+        self.addJumpToRulesSection()
+        
         self.addCode("section_rules_start:")
         self.patternsSection = self.nextAddress
 
