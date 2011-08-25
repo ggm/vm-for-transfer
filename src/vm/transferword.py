@@ -118,20 +118,18 @@ class TransferWordTokenizer():
         tokens = []
         token = ""
         superblanks = []
-        sb = ""
-        insideSb = False
         escapeNextChar = False
         ignoreMultipleTargets = False
 
         word = TransferWord()
         for char in input:
             if ignoreMultipleTargets and char != '$': continue
-            elif char == "\\":
-                token += str(char) 
-                escapeNextChar = True
             elif escapeNextChar:
                 token += str(char)
                 escapeNextChar = False
+            elif char == "\\":
+                token += str(char) 
+                escapeNextChar = True
             elif char == '^':
                 superblanks.append(token)
                 token = ""
@@ -147,9 +145,9 @@ class TransferWordTokenizer():
                     token = ""
                 else:
                     ignoreMultipleTargets = True
-            elif insideSb: sb += str(char)
             else: token += str(char)
             
+        #Add everything at the end until the last ']' as a superblank.
         superblanks.append(token[:1 + token.rfind(']')])
 
         return tokens, superblanks
@@ -336,12 +334,12 @@ class ChunkWordTokenizer():
 
         word = ChunkWord()
         for char in input:
-            if char == "\\":
-                token += str(char) 
-                escapeNextChar = True
-            elif escapeNextChar:
+            if escapeNextChar:
                 token += str(char)
                 escapeNextChar = False
+            elif char == "\\":
+                token += str(char) 
+                escapeNextChar = True
             #Read the ^ and $ of the lexical units but not of the chunks.
             elif char == '^':
                 if not chunkStart: token += str(char)
