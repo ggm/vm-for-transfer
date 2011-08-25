@@ -126,20 +126,14 @@ class TransferWordTokenizer():
         word = TransferWord()
         for char in input:
             if ignoreMultipleTargets and char != '$': continue
-            elif char == "\\": escapeNextChar = True
+            elif char == "\\":
+                token += str(char) 
+                escapeNextChar = True
             elif escapeNextChar:
                 token += str(char)
                 escapeNextChar = False
             elif char == '^':
-                #If there aren't any blanks at the beginning, append an empty.
-                if len(tokens) == 0 and len(superblanks) == 0:
-                    superblanks.append(token)
-                #Any character, between lus, is treated like a superblank.
-                elif len(tokens) == len(superblanks):
-                    superblanks.append(token)
-                #If there are characters after the superblank, append them.
-                elif token != "":
-                    superblanks.append(superblanks.pop() + token)
+                superblanks.append(token)
                 token = ""
             elif char == '$':
                 word.target.setAttributes(token.strip())
@@ -153,18 +147,10 @@ class TransferWordTokenizer():
                     token = ""
                 else:
                     ignoreMultipleTargets = True
-            elif char == '[':
-                #If there are characters before the superblank, append them.
-                if token != "":
-                    sb += token
-                    token = ""
-                insideSb = True
-            elif char == ']':
-                if sb != "": superblanks.append(sb)
-                insideSb = False
-                sb = ""
             elif insideSb: sb += str(char)
             else: token += str(char)
+            
+        superblanks.append(token[:1 + token.rfind(']')])
 
         return tokens, superblanks
 
@@ -346,11 +332,18 @@ class ChunkWordTokenizer():
         token = ""
         superblanks = []
         chunkStart = True
+        escapeNextChar = False
 
         word = ChunkWord()
         for char in input:
+            if char == "\\":
+                token += str(char) 
+                escapeNextChar = True
+            elif escapeNextChar:
+                token += str(char)
+                escapeNextChar = False
             #Read the ^ and $ of the lexical units but not of the chunks.
-            if char == '^':
+            elif char == '^':
                 if not chunkStart: token += str(char)
                 else:
                     #Characters between chunks are treated like superblanks.
