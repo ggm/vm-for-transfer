@@ -462,7 +462,8 @@ class Interpreter:
             try:
                 self.systemStack.push(self.vm.variables[varName])
             except:
-                self.raiseError("Variable {} is not defined.".format(varName))
+                self.vm.variables[varName] = ""
+                self.systemStack.push("")
 
     def executePushbl(self, instr):
         self.systemStack.push(" ")
