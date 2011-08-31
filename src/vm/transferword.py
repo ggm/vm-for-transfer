@@ -180,6 +180,13 @@ class ChunkLexicalUnit:
                 #Only modify the lu until the tags.
                 self.lu = self.lu[:self.tagStart].replace(self.attrs[attr],
                           value) + self.lu[self.tagStart:]
+
+                if attr == 'lem' or attr == 'lemh':
+                #If the lemh is the same as the lem, we update both.
+                    if self.attrs['lem'] == self.attrs['lemh']:
+                        self.attrs['lem'] = value
+                        self.attrs['lemh'] = value
+
                 self.attrs[attr] = value
 
         #Update index of first tag and content start.
@@ -218,6 +225,10 @@ class ChunkLexicalUnit:
             #If there isn't any tag, the lemma is everything until the '{'.
             self.attrs['lem'] = token[:contentStart]
             self.attrs['tags'] = ""
+
+        #In a chunk the lemh == lem and lemq is always "".
+        self.attrs['lemh'] = self.attrs['lem']
+        self.attrs['lemq'] = ""
 
         #Store chunk contents with the '{' and '}'.
         self.attrs['chcontent'] = token[contentStart:contentEnd + 1]

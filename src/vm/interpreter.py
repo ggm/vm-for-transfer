@@ -439,9 +439,10 @@ class Interpreter:
         case = self.systemStack.pop()
         container = self.systemStack.pop()
 
-        if case == "aa": container = container.lower()
-        elif case == "Aa": container = container[0].upper() + container[1:]
-        elif case == "AA": container = container.upper()
+        if container != "":
+            if case == "aa": container = container.lower()
+            elif case == "Aa": container = container[0].upper() + container[1:]
+            elif case == "AA": container = container.upper()
 
         self.systemStack.push(container)
 
